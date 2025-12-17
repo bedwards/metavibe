@@ -509,6 +509,72 @@ This project assumes:
 
 **No MCP servers or SKILLS**: This foundation is tool-agnostic. Add integrations as needed for specific projects.
 
+## Content Writing Philosophy
+
+Books and essays are the core output of metavibe. Quality matters more than quantity. These are not documentation or tutorials—they are literature about software development.
+
+### Writing Style
+
+**Flowing prose optimized for text-to-speech.** Readers will consume this content via Speechify and similar apps. The writing must sound natural when read aloud.
+
+- Vary sentence length. Short punchy sentences. Then longer ones that develop an idea across multiple clauses, building toward a point. Mix it up.
+- Vary paragraph length too. Some paragraphs need just one or two sentences.
+- Others explore an idea more fully, giving the reader time to absorb a concept before moving to the next thought. The page should look organic, not like a wall of uniform blocks.
+- No headers that read like outline bullet points. Chapter titles should intrigue. Section breaks should feel like natural breathing points.
+
+**Avoid code blocks.** These books are about techniques and understanding, not copy-paste snippets. When code is absolutely necessary, keep it brief—a single line or two woven into the prose. Long code blocks destroy the reading experience, especially in audio.
+
+**English prose, not technical documentation.** Write like you're explaining to a smart friend over coffee. Use "you" freely. Tell stories. Make connections. Let your voice come through.
+
+### Research Requirements
+
+**Claude Code sessions are inspiration, not content.** The session logs show what worked. But the books must synthesize broader knowledge:
+
+1. **Research the domain on the web.** What were best practices before vibe coding? What books, courses, frameworks dominated? What pain points did developers face?
+2. **Research what has changed.** How does AI-assisted development alter the calculus? What's now possible that wasn't before? What old constraints have evaporated?
+3. **Form creative connections.** Link ideas across domains. If a technique from game development applies to healthcare software, make that connection explicit.
+
+**The source of truth is the Claude Code sessions.** Web research provides context and history. But the actual techniques—what works, what doesn't, what surprised us—must come from real vibe coding experience documented in the sessions.
+
+### Content Depth
+
+**Books should be substantially longer.** Not padded with fluff, but genuinely deeper:
+
+- Explore the "why" behind techniques, not just the "how"
+- Include historical context—how did we get here?
+- Address common misconceptions and failure modes
+- Share specific discoveries from the sessions
+- Discuss tradeoffs honestly—vibe coding isn't magic
+
+**Never be vaporous.** Every paragraph must contain real information. If you find yourself writing vague platitudes about "leveraging AI capabilities" or "embracing modern workflows"—stop. Get specific. What exact technique? What exact result?
+
+### The Techniques
+
+Every book must reveal vibe coding techniques, both general and domain-specific:
+
+**General vibe coding techniques** (may appear across books):
+- How to prompt effectively for different types of code
+- When to let the AI lead vs. when to guide firmly
+- Debugging strategies when AI-generated code fails
+- Context management—what to include, what to leave out
+- Iteration patterns—when to accept, refine, or restart
+- The rhythm of human-AI collaboration
+
+**Domain-specific techniques** (unique to each book):
+- What works specifically for this platform/application type
+- Discoveries that emerged from the actual sessions
+- Surprises—things that worked better or worse than expected
+- Platform quirks and how vibe coding navigates them
+
+### What Not To Do
+
+- No systematic, uniform structure that reads like a template
+- No "Chapter 1: Introduction, Chapter 2: Getting Started" blandness
+- No walls of code with minimal explanation
+- No generic advice that could apply to anything
+- No repetition masquerading as emphasis
+- No filler paragraphs that say nothing new
+
 ## Content Files (Substack/Blog)
 
 When writing markdown files in `content/`:
