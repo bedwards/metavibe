@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Essays | metavibe</title>
+  <meta name="description" content="Essays on vibe coding, AI-first development, and building software with Claude.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .subtitle { color: var(--text-muted); font-size: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .search-container { margin: 1.5rem 0; }
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .tag-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 2rem;
+    }
+    .tag-filter {
+      background: var(--code-bg);
+      color: var(--text-muted);
+      border: none;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tag-filter:hover {
+      background: var(--accent);
+      color: white;
+    }
+    .tag-filter.active {
+      background: var(--accent);
+      color: white;
+    }
+    .essays-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .essay-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .essay-card:hover {
+      border-color: var(--accent);
+    }
+    .essay-card.hidden {
+      display: none;
+    }
+    .essay-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .essay-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .essay-card:hover h3 {
+      text-decoration: underline;
+    }
+    .essay-card .description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .essay-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .essay-card .tag {
+      background: var(--code-bg);
+      color: var(--text-muted);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+    }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../" class="back">← Back to home</a>
+    <header>
+      <h1>Essays</h1>
+      <p class="subtitle">Thoughts on vibe coding and AI-first development</p>
+    </header>
+
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search essays..." id="searchInput">
+    </div>
+
+    <div class="tag-filters">
+      <button class="tag-filter active" data-tag="all">all</button>
+      <button class="tag-filter" data-tag="3d">3d</button><button class="tag-filter" data-tag="agents">agents</button><button class="tag-filter" data-tag="automation">automation</button><button class="tag-filter" data-tag="blender">blender</button><button class="tag-filter" data-tag="cli">cli</button><button class="tag-filter" data-tag="code-review">code-review</button><button class="tag-filter" data-tag="debugging">debugging</button><button class="tag-filter" data-tag="eslint">eslint</button><button class="tag-filter" data-tag="game-dev">game-dev</button><button class="tag-filter" data-tag="git">git</button><button class="tag-filter" data-tag="github">github</button><button class="tag-filter" data-tag="linting">linting</button><button class="tag-filter" data-tag="luau">luau</button><button class="tag-filter" data-tag="mcp">mcp</button><button class="tag-filter" data-tag="production">production</button><button class="tag-filter" data-tag="quality">quality</button><button class="tag-filter" data-tag="roblox">roblox</button><button class="tag-filter" data-tag="screenshots">screenshots</button><button class="tag-filter" data-tag="security">security</button><button class="tag-filter" data-tag="testing">testing</button><button class="tag-filter" data-tag="verification">verification</button><button class="tag-filter" data-tag="vibe-coding">vibe-coding</button><button class="tag-filter" data-tag="workflow">workflow</button>
+    </div>
+
+    <div class="essays-grid">
+      
+    <article class="essay-card" data-tags="blender,3d,automation,roblox,game-dev">
+      <a href="blender-headless-mode/">
+        <h3>Blender Headless Mode</h3>
+        <p class="description">How to generate 3D assets programmatically using Blender without</p>
+        <div class="tags"><span class="tag">blender</span><span class="tag">3d</span><span class="tag">automation</span><span class="tag">roblox</span><span class="tag">game-dev</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="production,quality,debugging,vibe-coding">
+      <a href="fail-fast-hard-and-ugly/">
+        <h3>Fail Fast, Hard, and Ugly</h3>
+        <p class="description">Why production code should never contain mock data, shims, or</p>
+        <div class="tags"><span class="tag">production</span><span class="tag">quality</span><span class="tag">debugging</span><span class="tag">vibe-coding</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="automation,agents,workflow,vibe-coding">
+      <a href="init-mode-vs-worker-mode/">
+        <h3>Init Mode vs Worker Mode</h3>
+        <p class="description">How to run AI agents in two distinct operational modes—one for setup</p>
+        <div class="tags"><span class="tag">automation</span><span class="tag">agents</span><span class="tag">workflow</span><span class="tag">vibe-coding</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="github,code-review,automation,vibe-coding">
+      <a href="owning-your-pull-requests/">
+        <h3>Owning Your Pull Requests</h3>
+        <p class="description">Why AI agents should review and merge their own PRs without</p>
+        <div class="tags"><span class="tag">github</span><span class="tag">code-review</span><span class="tag">automation</span><span class="tag">vibe-coding</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="automation,agents,workflow,vibe-coding">
+      <a href="the-infinite-development-loop/">
+        <h3>The Infinite Development Loop</h3>
+        <p class="description">How AI agents work in an unbounded loop, continuously picking</p>
+        <div class="tags"><span class="tag">automation</span><span class="tag">agents</span><span class="tag">workflow</span><span class="tag">vibe-coding</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="git,quality,automation,vibe-coding">
+      <a href="the-pre-commit-hook-philosophy/">
+        <h3>The Pre-commit Hook Philosophy</h3>
+        <p class="description">Why you should never bypass pre-commit hooks with --no-verify,</p>
+        <div class="tags"><span class="tag">git</span><span class="tag">quality</span><span class="tag">automation</span><span class="tag">vibe-coding</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="testing,verification,screenshots,vibe-coding">
+      <a href="visual-verification-with-screenshots/">
+        <h3>Visual Verification with Screenshots</h3>
+        <p class="description">Why screenshots are the most reliable verification technique for</p>
+        <div class="tags"><span class="tag">testing</span><span class="tag">verification</span><span class="tag">screenshots</span><span class="tag">vibe-coding</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="mcp,security,cli,vibe-coding">
+      <a href="why-we-dont-use-mcp-servers/">
+        <h3>Why We Don't Use MCP Servers</h3>
+        <p class="description">A principled case against MCP servers in AI-assisted development.</p>
+        <div class="tags"><span class="tag">mcp</span><span class="tag">security</span><span class="tag">cli</span><span class="tag">vibe-coding</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="roblox,luau,automation,game-dev">
+      <a href="writing-roblox-studio-plugins/">
+        <h3>Writing Roblox Studio Plugins</h3>
+        <p class="description">If you're clicking around in Studio, you should be writing a</p>
+        <div class="tags"><span class="tag">roblox</span><span class="tag">luau</span><span class="tag">automation</span><span class="tag">game-dev</span></div>
+      </a>
+    </article>
+
+    <article class="essay-card" data-tags="linting,eslint,quality,vibe-coding">
+      <a href="zero-warnings-zero-exceptions/">
+        <h3>Zero Warnings, Zero Exceptions</h3>
+        <p class="description">Why ESLint warnings are an anti-pattern and how to configure</p>
+        <div class="tags"><span class="tag">linting</span><span class="tag">eslint</span><span class="tag">quality</span><span class="tag">vibe-coding</span></div>
+      </a>
+    </article>
+    </div>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const tagButtons = document.querySelectorAll('.tag-filter');
+    const essayCards = document.querySelectorAll('.essay-card');
+    let activeTag = 'all';
+
+    function filterEssays() {
+      const searchTerm = searchInput.value.toLowerCase();
+
+      essayCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('.description').textContent.toLowerCase();
+        const tags = card.dataset.tags.split(',');
+
+        const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+        const matchesTag = activeTag === 'all' || tags.includes(activeTag);
+
+        if (matchesSearch && matchesTag) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterEssays);
+
+    tagButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tagButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTag = btn.dataset.tag;
+        filterEssays();
+      });
+    });
+  </script>
+</body>
+</html>

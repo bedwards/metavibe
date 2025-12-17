@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Verification with Screenshots | metavibe</title>
+  <meta name="description" content="Why screenshots are the most reliable verification technique for">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--code-bg); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../" class="back">← Back to essays</a>
+    <header>
+      <h1>Visual Verification with Screenshots</h1>
+      <p class="meta">2025-12-17</p>
+      <div class="tags"><span class="tag" data-tag="testing">testing</span><span class="tag" data-tag="verification">verification</span><span class="tag" data-tag="screenshots">screenshots</span><span class="tag" data-tag="vibe-coding">vibe-coding</span></div>
+    </header>
+
+    <main>
+      <p><br>
+<h1>Visual Verification with Screenshots</h1><p>Anthropic's engineering team discovered something during Claude's development that should reshape how we think about verification. Claude struggled to recognize end-to-end failures without explicit prompting to test as a human user would. Automated tests passed. Unit tests passed. But the actual user experience was broken.</p><p>Screenshots fix this. They show what users actually see. They reveal layout problems that no test suite catches. They expose the gap between "the code is correct" and "the thing works."</p><p>The Anthropic engineering blog put it clearly: verify like a user. Open the browser. Click through flows. See what users see. For AI-assisted development, this translates to: capture screenshots and actually look at them.</p><p>Claude can read images. When you provide a screenshot, Claude sees the layout, the spacing, the color contrast, the visual hierarchy. It applies UI/UX expertise to evaluate what it sees. This isn't a parlor trick—it's a primary verification technique.</p><p>The workflow is straightforward. Make a change to the UI. Capture a screenshot. Look at the screenshot before moving on. Does the change look right? Is the spacing appropriate? Are the colors working? Is anything misaligned? Catch problems while the context is fresh.</p><p>Screenshot capture should be trivial. A single command that captures the current state and names it meaningfully. The capture tool we build takes a URL and a name, saves the screenshot to a predictable location. The developer never thinks about file paths or image formats.</p><p>Comparison builds on capture. Before and after screenshots reveal what changed. A feature comparison shows the old state and new state side by side. Regression detection catches unintended changes—you fixed a bug but broke the header layout. The comparison makes this visible.</p><p>Mobile verification requires mobile screenshots. What looks fine on desktop might be broken on a phone. Capture at multiple viewport sizes. Check that touch targets are large enough. Verify that text remains readable.</p><p>Dark mode and light mode are different verification targets. A color choice that works in light mode might have insufficient contrast in dark mode. Capture both. Compare both. Don't assume that if one works, both work.</p><p>The tooling investment is minimal. Browser automation libraries like Playwright can capture screenshots programmatically. Headless browsers capture without requiring a visible window. The infrastructure to support screenshot verification costs hours to build and pays dividends forever.</p><p>For Roblox development, the workflow adapts. Screenshot capture might involve the run-in-roblox tool or macOS screen recording. Camera positions can be scripted—capture twenty-six angles across the game world automatically. Even without the actual images, outputting camera position and terrain height for each position verifies that the world is generating correctly.</p><p>In-game debug overlays enhance screenshot value. Press F3 to toggle an overlay showing FPS, memory usage, player position, zone name, terrain height. Now screenshots contain diagnostic information alongside the visual content. You see both what the user sees and what the system is doing.</p><p>The technique extends to before-deploy verification. Capture screenshots locally. Deploy. Capture screenshots of production. Compare. The deployment either preserved the visual experience or it didn't. Differences demand investigation.</p><p>CI integration automates what we'd otherwise do manually. On each PR, capture screenshots of affected pages. Store them as artifacts. Reviewers can look at visual changes without running the code locally. Visual regression tests fail when screenshots diverge from baselines beyond a threshold.</p><p>The Anthropic principle is simple: don't trust that code changes work—verify them. Screenshots are the primary verification tool for anything visual. They require human judgment to interpret, which is why AI assistants are so effective at this—they apply expert judgment to visual content.</p><p>A screenshot-heavy workflow surfaces problems early. The developer sees issues immediately after making changes. The reviewer sees issues during PR review. The user never sees issues because they were caught and fixed before reaching production.</p><p>This is how verification works in AI-first development. Automated tests catch regressions. Screenshots catch everything else.<br>
+</p>
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>

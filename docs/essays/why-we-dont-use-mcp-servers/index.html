@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why We Don't Use MCP Servers | metavibe</title>
+  <meta name="description" content="A principled case against MCP servers in AI-assisted development.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--code-bg); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../" class="back">← Back to essays</a>
+    <header>
+      <h1>Why We Don't Use MCP Servers</h1>
+      <p class="meta">2025-12-17</p>
+      <div class="tags"><span class="tag" data-tag="mcp">mcp</span><span class="tag" data-tag="security">security</span><span class="tag" data-tag="cli">cli</span><span class="tag" data-tag="vibe-coding">vibe-coding</span></div>
+    </header>
+
+    <main>
+      <p><br>
+<h1>Why We Don't Use MCP Servers</h1><p>The Model Context Protocol sounds useful on paper. External servers that extend Claude's capabilities, providing database access, API integrations, file system operations. When Anthropic announced MCP, the developer community rushed to build servers for everything from GitHub to PostgreSQL to Discord.</p><p>We don't use them. We've permanently disabled them across our projects. The reasoning isn't ideological opposition to extensions. It's practical security analysis combined with recognition that the supposed benefits don't exist.</p><p>MCP servers execute arbitrary code on your machine. This isn't a bug or an edge case—it's the fundamental architecture. When you connect an MCP server, you're granting that server the ability to run any command, access any file, modify any data that your user account can reach. The server might be well-intentioned. The server might be perfectly safe today. But you're trusting code you didn't write to run with your privileges.</p><p>Anthropic's own engineering team published guidance on MCP security that should give any developer pause. They recommend careful review of each server's code, isolation strategies, and principle of least privilege. These are exactly the mitigations you'd apply when running untrusted code—because that's what you're doing.</p><p>The Claude Code environment already includes native tools that cover every legitimate use case. File operations work through Read, Write, Edit, Glob, and Grep. Web operations work through WebFetch and WebSearch. The bash tool runs any CLI command. What exactly would an MCP server add that these tools don't already provide?</p><p>Consider the supposed value proposition of a PostgreSQL MCP server. It would let Claude query your database directly. But Claude can already run psql commands through bash. It can execute SQL files. It can interact with any database through your application's existing interfaces. The MCP server adds no capability that wasn't already present. What it adds is another layer of code that could contain vulnerabilities, another process consuming resources, another thing to maintain and update.</p><p>The GitHub MCP server provides another instructive example. It promises to give Claude access to issues, pull requests, and repository operations. But the gh CLI already does all of this. Every single operation the GitHub MCP server enables, the gh CLI enables. The difference is that gh is maintained by GitHub itself, receives constant security updates, and has been audited by thousands of developers. The MCP server is maintained by whoever wrote it and may or may not receive updates when vulnerabilities are discovered.</p><p>Discord integration follows the same pattern. We use webhooks with curl. One line in bash sends a message. The webhook URL is a secret we control. There's no bot token that could be compromised, no long-running process that could be exploited, no dependency on external MCP code.</p><p>The attack surface analysis favors CLI tools overwhelmingly. Each MCP server you add is a potential vulnerability. Each one runs in a process that has access to your system. Each one communicates over channels that could be intercepted or manipulated. Compare this to running gh through bash—the same cli you'd use manually, executing the same commands you'd type, with no additional attack surface beyond what you already accepted when you installed the tool.</p><p>Maintenance burden compounds the security concerns. MCP servers need updates. They can break when APIs change. They can develop incompatibilities with Claude Code versions. Each one is a dependency you're choosing to manage. CLI tools update independently through your package manager. When gh gets a new feature, you get it automatically. When the GitHub API changes, the gh maintainers update their tool. You don't have to track which MCP server version works with which API version.</p><p>The one-off exceptions don't justify the general case. Some MCP servers provide genuinely unique capabilities that CLI tools don't match. Visual file browsers, perhaps, or specialized integrations with proprietary systems. Even granting that these exceptions exist, the response should be careful evaluation of each specific server, not blanket enablement of the MCP ecosystem. We default to disabled with explicit exceptions, not enabled with occasional concerns.</p><p>Our projects now include explicit documentation that MCP servers are permanently disabled. The reasoning is spelled out. The policy is non-negotiable. New contributors see this immediately in CLAUDE.md. The instructions explain not just what we don't do, but why we don't do it.</p><p>This isn't about distrust of Anthropic or pessimism about the MCP ecosystem. It's about recognizing that Claude Code already has the tools we need. Adding MCP servers adds risk without adding capability. In security analysis, you question every addition that increases attack surface. MCP servers fail that test.</p><p>The broader principle applies beyond MCP. Every integration, every extension, every plugin should justify its existence against native capabilities. If you can accomplish the same goal with tools that already exist, prefer those tools. They're tested, maintained, and already present in your security model. New additions must clear a high bar.</p><p>Claude Code ships with powerful native tools for a reason. They cover the legitimate use cases without requiring external code execution. When Anthropic designed the tool architecture, they made deliberate choices about capability boundaries. MCP servers exist for use cases outside those boundaries—but we haven't found use cases in that category that we actually need.</p><p>The simplest architecture is the most secure architecture. Run Claude Code. Use its native tools. Execute CLI commands through bash when you need external capabilities. Don't add attack surface you don't need.<br>
+</p>
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>

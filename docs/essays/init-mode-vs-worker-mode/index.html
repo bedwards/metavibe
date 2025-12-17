@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Init Mode vs Worker Mode | metavibe</title>
+  <meta name="description" content="How to run AI agents in two distinct operational modes—one for setup">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--code-bg); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../" class="back">← Back to essays</a>
+    <header>
+      <h1>Init Mode vs Worker Mode</h1>
+      <p class="meta">2025-12-17</p>
+      <div class="tags"><span class="tag" data-tag="automation">automation</span><span class="tag" data-tag="agents">agents</span><span class="tag" data-tag="workflow">workflow</span><span class="tag" data-tag="vibe-coding">vibe-coding</span></div>
+    </header>
+
+    <main>
+      <p><br>
+<h1>Init Mode vs Worker Mode</h1><p>The most effective AI-first development teams run their Claude instances in two distinct modes. Init mode handles setup and maintenance—infrastructure, backlog grooming, issue creation. Worker mode handles production—an infinite loop of picking issues, implementing features, reviewing code, and merging.</p><p>This separation isn't arbitrary. It emerges from understanding what AI agents do well autonomously versus what requires occasional human guidance.</p><p>Init mode is the manager. When you drop into a repository for the first time, the init agent sets up infrastructure. It creates the project structure, configures tooling, writes the CLAUDE.md that guides future instances. It also handles ongoing maintenance: grooming the GitHub issues backlog, prioritizing work, closing stale issues, creating new issues when it notices problems.</p><p>The init agent runs with higher human interaction tolerance. Setup tasks often require clarification—which database, what deployment target, how should authentication work. The init agent asks questions, gets answers, and implements decisions. Once the infrastructure is solid, the init agent's work becomes sporadic—occasional backlog maintenance, periodic cleanup.</p><p>Worker mode is the developer. The worker agent runs in an infinite loop without human supervision. Check Discord for urgent messages. Verify the main branch is healthy. Pick the highest-impact issue from the backlog. Implement it. Verify with screenshots and tests. Create a PR, review it yourself, merge it. Post an update to Discord. Repeat forever.</p><p>The worker agent has extremely low human interaction. It's not waiting for code review—it reviews its own work. It's not waiting for approval—it merges when ready. It's not asking permission—it follows the guidelines established during init mode and executes independently.</p><p>This division enables parallel operation. The init agent might be grooming the backlog on one machine while the worker agent is implementing features on another. They coordinate through GitHub and Discord rather than blocking each other.</p><p>The init agent's responsibilities cluster around preparation and maintenance. When starting a new repository, it creates the CLAUDE.md file that documents how Claude should work in this project. It sets up the development environment—package.json configuration, TypeScript settings, linting rules, pre-commit hooks. It configures CI/CD pipelines that will validate the worker's output. It creates the initial issue backlog that the worker will work through.</p><p>Ongoing init work happens periodically rather than continuously. The agent checks GitHub rate limits before bulk operations, because the gh CLI uses the GraphQL API heavily and rate limits apply. It creates issues responsibly, batching when necessary. It closes stale issues that no longer apply. It adjusts labels and priorities as the project evolves.</p><p>The worker agent's responsibilities cluster around continuous production. The infinite development loop runs without breaks. Each iteration picks work based on impact—what will most benefit real users? The worker implements features fully before moving to the next, following the one-feature-at-a-time principle from the Anthropic engineering blog. It commits frequently, creating checkpoints that enable recovery if something goes wrong.</p><p>Verification happens visually. The worker captures screenshots and examines them, applying UI/UX expertise to evaluate layouts. Automated tests run in pre-commit hooks, but visual verification catches problems that tests miss. Does this actually look right? Would a user understand this interface?</p><p>The worker merges its own PRs because waiting for human review defeats the purpose of AI-first development. Code review by humans was designed for human limitations—slow reading speed, limited attention, communication overhead. Claude doesn't have those limitations. The worker reviews its own diff, checking for bugs, security issues, style problems. If it passes, it merges. If the Claude GitHub app is configured, it provides an additional review perspective, but the worker doesn't wait indefinitely for that either.</p><p>Discord serves as the coordination channel. Both agents post updates there. The init agent announces when it's grooming the backlog or creating infrastructure. The worker agent announces when it starts and finishes features. If main breaks, both agents check Discord before attempting a fix—maybe the other agent is already on it. They post completion messages when fixes land.</p><p>The ownership model differs between modes. The init agent owns the development environment and backlog. When infrastructure is broken, the init agent fixes it. When issues are disorganized, the init agent reorganizes them. The worker agent owns the main branch. If main is broken, the worker drops whatever it's doing and fixes it immediately—nothing else matters until main is green.</p><p>Error handling follows different patterns too. The init agent encountering authentication issues stops and reports to the human. These are problems the agent genuinely cannot solve—logging into services requires human credentials. The worker agent encountering errors tries to fix them. Tests failing? Debug and fix. Lint errors? Clean them up. Only truly blocked situations—authentication, permission issues—warrant interrupting the human.</p><p>The technique that makes this work is thorough documentation in CLAUDE.md. Every project-specific decision gets recorded. Which tools to use. Which patterns to follow. What constraints apply. Future instances—whether init or worker—read this documentation and operate within its guidelines without needing clarification.</p><p>Multi-agent coordination scales this pattern. Multiple worker agents can operate in parallel, each on different feature branches, merging independently. They coordinate through the issue assignment system—when an agent picks an issue, it assigns itself and marks it in-progress. Other agents see this and work on different issues. The GitHub issue tracker becomes the shared work queue.</p><p>Time-slicing prevents task starvation in worker mode. If the worker only ever works on high-priority bugs, documentation never gets written, tech debt never gets addressed. A time-slice lookup table maps the current minute to a task category. Minute thirty-seven? Work on documentation this time. Minute fifty-two? Address tech debt. This ensures all work categories get attention over time.</p><p>The async workflow matters for long-running operations. CI pipelines take minutes to complete. Deployments take time. The worker doesn't wait—it notes the pending operation and switches to other work. Draft PRs serve as work-in-progress markers. When the operation completes, the worker can return and finish that thread. GitHub becomes the source of truth for in-progress work, enabling crash recovery.</p><p>Init mode and worker mode represent the mature pattern for AI-first development. The init agent handles what requires human guidance and periodic maintenance. The worker agent handles what can run continuously and autonomously. Together, they produce working software at a pace that human-only teams can't match.<br>
+</p>
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>

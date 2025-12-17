@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Pre-commit Hook Philosophy | metavibe</title>
+  <meta name="description" content="Why you should never bypass pre-commit hooks with --no-verify,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--code-bg); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../" class="back">← Back to essays</a>
+    <header>
+      <h1>The Pre-commit Hook Philosophy</h1>
+      <p class="meta">2025-12-17</p>
+      <div class="tags"><span class="tag" data-tag="git">git</span><span class="tag" data-tag="quality">quality</span><span class="tag" data-tag="automation">automation</span><span class="tag" data-tag="vibe-coding">vibe-coding</span></div>
+    </header>
+
+    <main>
+      <p><br>
+<h1>The Pre-commit Hook Philosophy</h1><p>The --no-verify flag exists in git. It bypasses pre-commit hooks entirely. Some developers use it routinely, treating hooks as optional suggestions rather than mandatory gates. This practice corrodes code quality slowly, invisibly, and inevitably.</p><p>Never use --no-verify. Not once. Not when you're in a hurry. Not when you're confident the change is safe. Not when the hook is taking too long. The moment you bypass hooks once, you'll bypass them again. The exception becomes the rule.</p><p>Pre-commit hooks exist for a reason. They catch problems before they become commits. A commit with lint errors, type errors, or failing tests is a commit that shouldn't exist. Fixing it later is more expensive than fixing it now. The hook is doing you a favor.</p><p>The hooks should run quickly. A few seconds, not minutes. If your hooks take too long, the problem isn't the hook concept—it's the hook implementation. Optimize the hook rather than bypassing it. Run only the checks that can run quickly. Save slow checks for CI.</p><p>What should hooks check? The essentials that prevent broken commits. Type checking catches errors that would break at runtime. Linting catches style issues and common bugs. Test suites catch regressions. Secret scanning catches credentials that should never be committed.</p><p>Type checking deserves inclusion because TypeScript errors are show-stoppers. Code that doesn't type-check doesn't work. Committing it just delays the inevitable fix while polluting the history with broken states. Run tsc --noEmit as a hook.</p><p>Linting deserves inclusion because consistent code is maintainable code. Style debates are boring—let the linter decide. Configure it once, enforce it always. Run eslint with zero warnings tolerance. Warnings are noise; either the rule matters or it doesn't.</p><p>Tests deserve inclusion if they run quickly. A comprehensive test suite might take minutes—that's too slow for a hook. But a core smoke test that verifies basic functionality can run in seconds. Include what's fast enough to not frustrate developers.</p><p>Secret scanning deserves inclusion because committing credentials is catastrophic. Once a secret hits the repository history, it's compromised forever. Rotating credentials is painful. Detecting secrets before commit is essential. Tools like git-secrets or gitleaks run quickly and prevent disasters.</p><p>The hook output should be helpful, not cryptic. When a check fails, the developer needs to know what failed and how to fix it. Generic failure messages waste time. Specific messages enable quick resolution.</p><p>Our projects include comprehensive pre-commit hooks that run in a few seconds. Check for secrets in staged files. Validate YAML frontmatter in content files. Run TypeScript type checking. Run the linter with zero warnings policy. Run the test suite. All of this completes in under five seconds for most commits.</p><p>The rule against --no-verify is documented explicitly. CLAUDE.md in every project states it clearly: never bypass the hook. The reasoning is spelled out. New contributors see this immediately. The expectation is set.</p><p>When the hook fails, fix the issue. Don't search for ways around it. The hook caught something that would have been a problem. Thank the hook and fix the problem. This mindset shift—from "the hook is blocking me" to "the hook is helping me"—is essential.</p><p>Some developers argue that hooks slow them down. They want to commit work-in-progress without meeting quality bars. This impulse is understandable but misguided. Git stash exists for work you're not ready to commit. Branches exist for exploratory work. If you're not ready to meet quality standards, you're not ready to commit.</p><p>The investment in good hooks pays compound returns. Every broken commit avoided is debugging time saved. Every consistent style choice is a code review argument prevented. Every caught secret is an incident avoided. The seconds spent running hooks save hours of fixing problems that hooks would have prevented.</p><p>AI-assisted development makes hooks even more important. Claude generates code quickly—fast enough that human review struggles to keep up. Automated hooks provide the quality gate that ensures generated code meets standards before it becomes part of the codebase.</p><p>The hook configuration belongs in the repository. Not in individual developer machines, not in external systems—in the repo, versioned alongside the code. This ensures everyone runs the same checks. No "it works on my machine" for hook configuration.</p><p>Husky is the standard tool for managing JavaScript/TypeScript project hooks. It sets up the hooks during npm install, ensuring everyone has them. lint-staged runs checks only on staged files, keeping hooks fast. Combined, they provide a solid foundation for hook infrastructure.</p><p>Test your hooks. Intentionally break things and verify the hook catches them. Add a type error; verify tsc fails. Add a lint violation; verify eslint catches it. Commit a fake API key; verify secret scanning alerts. Trust but verify.</p><p>The philosophy extends to CI. What hooks check locally, CI should check in the pipeline. This catches anything that slipped through—perhaps someone did use --no-verify despite the policy. CI is the safety net; hooks are the first line of defense.</p><p>Pre-commit hooks represent a commitment to quality that happens before problems exist rather than after. Every team that adopts this philosophy reports the same thing: initial resistance gives way to appreciation. The hooks become invisible because they always pass, which means they're working.<br>
+</p>
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>

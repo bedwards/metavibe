@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing Roblox Studio Plugins | metavibe</title>
+  <meta name="description" content="If you're clicking around in Studio, you should be writing a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--code-bg); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../" class="back">← Back to essays</a>
+    <header>
+      <h1>Writing Roblox Studio Plugins</h1>
+      <p class="meta">2025-12-17</p>
+      <div class="tags"><span class="tag" data-tag="roblox">roblox</span><span class="tag" data-tag="luau">luau</span><span class="tag" data-tag="automation">automation</span><span class="tag" data-tag="game-dev">game-dev</span></div>
+    </header>
+
+    <main>
+      <p><br>
+<h1>Writing Roblox Studio Plugins</h1><p>The philosophy is simple: if you're clicking around in Studio, you should be writing a plugin instead.</p><p>Roblox Studio is a visual editor with a complete Lua API. Anything you can do by clicking through menus and dragging objects, you can do programmatically. The question isn't whether automation is possible—it's whether you've written the automation yet.</p><p>Plugins are just Luau scripts with special permissions. They have full access to game services. They can create, modify, and delete objects. They can read and write files. They can interact with the editor itself—adding toolbar buttons, creating windows, responding to selection changes.</p><p>The installation is trivial. Save your plugin script to the Roblox plugins folder. On macOS, that's Documents/Roblox/Plugins. On Windows, it's the Roblox Plugins folder in LocalAppData. The next time Studio opens, your plugin loads automatically.</p><p>Asset organization is a perfect example. When you import a combined FBX file containing dozens of meshes, they arrive as one Model containing all the parts. You need to extract individual meshes, apply colors, organize them into folders. Doing this manually takes ten minutes and is error-prone. A plugin does it in seconds with perfect consistency.</p><p>The plugin pattern for asset organization looks like this. Create a toolbar with a button. When clicked, scan Workspace for imported content. Extract individual meshes. Apply colors from a lookup table. Move organized assets to ReplicatedStorage or ServerStorage. Delete the original import remnants.</p><p>Diagnostic plugins help during development. A button that scans the spawn area and reports what might be blocking player spawn. A button that lists all assets with missing textures. A button that validates that all required instances exist in the expected locations. These checks run instantly and report problems before you waste time playtesting.</p><p>Bulk operations become feasible with plugins. Rename hundreds of parts to follow a naming convention. Set properties across all objects of a certain type. Find and fix common problems like anchored parts that should be unanchored. The manual version of these tasks is tedious and error-prone; the plugin version is fast and reliable.</p><p>Rojo handles source code, not assets. Understanding this distinction matters. Rojo syncs your Luau files from the filesystem to Studio. It doesn't import FBX meshes or textures. Those must be imported manually through Studio—but once imported, plugins can organize them.</p><p>The workflow combines both tools. Build your place with Rojo to sync the source code. Import assets through Studio's import dialog. Run your organization plugin to move assets to the right locations. Save the place file to persist everything. Now the place contains both synced code and organized assets.</p><p>Plugin development with Claude works remarkably well. Describe what you want the plugin to do. Claude generates the Luau script. Copy it to the plugins folder. Restart Studio. Test the plugin. Iterate if needed.</p><p>Caching can interfere with plugin updates. Roblox Studio caches plugins aggressively. If you update a plugin and Studio still runs the old version, clear the cache. On macOS, remove the contents of Library/Caches/com.Roblox.RobloxStudio and Library/Roblox/LocalStorage. Restart Studio with a fresh load.</p><p>Toolbar buttons are the standard plugin interface. Each plugin creates a toolbar. Each button on the toolbar triggers a specific function. The toolbar appears in Studio's toolbar area, and users click buttons to invoke functionality.</p><p>Plugins can also respond to events. Selection changes, object creation, property modifications—all trigger events that plugins can handle. A validation plugin might run whenever something changes, continuously checking for problems.</p><p>The debugging cycle is fast. Edit the plugin file. Restart Studio. Test. Repeat. Since plugins are just text files, version control works normally. Multiple developers can collaborate on plugin development.</p><p>Complex plugins can create UI. Dock widgets provide persistent windows. Dialog boxes gather user input. The DockWidgetPluginGui API is comprehensive, though simpler plugins usually need only toolbar buttons.</p><p>The investment in plugin development pays compound returns. Time spent writing a plugin is time saved every time the plugin runs. For tasks you do regularly—importing assets, organizing structures, validating configurations—the automation value is enormous.</p><p>Claude can write plugins. Ask for what you want. Get a working script. Install it. This lowers the barrier to automation significantly. You don't need to memorize the plugin API; you describe the outcome and get the implementation.</p><p>The principle extends beyond Roblox. Any visual editor with a scripting API is a candidate for automation. Unity, Blender, Photoshop—all have scripting interfaces. The clicking-means-you-should-automate philosophy applies universally.</p><p>Stop clicking. Start scripting.<br>
+</p>
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>

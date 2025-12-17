@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Warnings, Zero Exceptions | metavibe</title>
+  <meta name="description" content="Why ESLint warnings are an anti-pattern and how to configure">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--code-bg); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../" class="back">← Back to essays</a>
+    <header>
+      <h1>Zero Warnings, Zero Exceptions</h1>
+      <p class="meta">2025-12-17</p>
+      <div class="tags"><span class="tag" data-tag="linting">linting</span><span class="tag" data-tag="eslint">eslint</span><span class="tag" data-tag="quality">quality</span><span class="tag" data-tag="vibe-coding">vibe-coding</span></div>
+    </header>
+
+    <main>
+      <p><br>
+<h1>Zero Warnings, Zero Exceptions</h1><p>Warnings are noise. They accumulate in the console output, ignored by developers who have seen them a thousand times. A codebase with three hundred warnings is a codebase where warning number three hundred and one goes unnoticed. The signal drowns in the noise.</p><p>Either a rule matters or it doesn't. If a rule catches real bugs, make it an error. Fix violations immediately. No exceptions, no suppressions, no "we'll get to it later." If a rule doesn't catch real bugs—if it's stylistic preference or outdated guidance—turn it off. Completely off, not just warnings.</p><p>ESLint warnings are an anti-pattern. This isn't a controversial opinion; it's documented analysis from developers who've worked with linting across many projects. Warnings become wallpaper. Errors demand attention.</p><p>Our approach is explicit. Configure eslint with max-warnings set to zero. Any warning fails the build. This forces a decision on every rule: is it an error or is it off? There is no middle ground.</p><p>The rules we keep as errors catch real bugs. no-floating-promises catches unhandled promises that cause silent failures. no-misused-promises catches promise misuse in wrong contexts. The no-unsafe family catches accidental any leakage that defeats type safety. no-explicit-any forces conscious decisions about when type safety is being sacrificed.</p><p>Curly enforcement seems stylistic until you consider the bug it prevents. Single-line if statements without braces work fine until someone adds a second line and forgets to add braces. The second line executes unconditionally, not inside the conditional. This bug is subtle and nasty. Requiring braces prevents it.</p><p>The prefer-ts-expect-error rule has an interesting property: it fails when the suppression is no longer needed. If you suppress a type error with ts-expect-error and then the underlying issue is fixed, the suppression itself becomes an error. This keeps suppression comments from outliving their usefulness.</p><p>The rules we disable are noisy or redundant. explicit-function-return-type demands explicit return types on every function, but TypeScript infers these correctly. The rule adds verbosity without catching bugs. Off.</p><p>no-non-null-assertion prohibits the exclamation point operator. But the exclamation point is a useful escape hatch when you know something TypeScript doesn't. Prohibiting it entirely is too aggressive. Off.</p><p>restrict-template-expressions wants type checking inside template literals. This is overly pedantic for most uses. You know that number will stringify correctly. Off.</p><p>no-unnecessary-condition sounds useful but generates false positives with arrays. Checking if an array element exists before using it seems unnecessary to the rule, but it's often exactly what you want. Off.</p><p>The configuration lives in eslint.config.js with comments explaining each decision. Future developers see why rules are on or off. The configuration is documentation.</p><p>When you see a lint error, fix it immediately. Don't add eslint-disable comments as a first instinct. Suppressions should be rare, explained, and ideally temporary. If you find yourself suppressing a rule frequently, either the rule is wrong for your codebase (turn it off) or your patterns need to change.</p><p>Running lint on pre-commit catches problems before they become commits. Running lint in CI catches anything that slipped through. Both checks enforce the same zero-warnings policy.</p><p>The psychological effect matters. A clean lint output—zero warnings, zero errors—becomes the expectation. Any output is anomalous and demands attention. Developers fix issues because fixing them is the normal state of affairs, not because they're being forced to.</p><p>Contrast this with the warning-heavy codebase. Three hundred warnings scroll by. Who notices number three hundred and one? Nobody's fixing the existing warnings; nobody notices new ones. The tool has lost its power to influence behavior.</p><p>The investment in configuring linting properly pays ongoing dividends. Every bug caught by linting is a bug not debugged in production. Every consistent style choice is a code review discussion avoided. The tool does the boring work so developers can focus on interesting problems.</p><p>Zero warnings, zero exceptions. Either it matters or it doesn't. This is the only sustainable approach to linting.<br>
+</p>
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>

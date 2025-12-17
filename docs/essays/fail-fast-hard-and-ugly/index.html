@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fail Fast, Hard, and Ugly | metavibe</title>
+  <meta name="description" content="Why production code should never contain mock data, shims, or">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag { background: var(--code-bg); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../" class="back">← Back to essays</a>
+    <header>
+      <h1>Fail Fast, Hard, and Ugly</h1>
+      <p class="meta">2025-12-17</p>
+      <div class="tags"><span class="tag" data-tag="production">production</span><span class="tag" data-tag="quality">quality</span><span class="tag" data-tag="debugging">debugging</span><span class="tag" data-tag="vibe-coding">vibe-coding</span></div>
+    </header>
+
+    <main>
+      <p><br>
+<h1>Fail Fast, Hard, and Ugly</h1><p>Mock data is a lie. It looks like data. It behaves like data in demos. But it's not connected to anything real. The feature that "works" in the demo will fail in production when actual data is expected.</p><p>The temptation is strong. You need to demo a feature. The backend isn't ready. You return hardcoded values. The demo goes well. The hardcoded values stay in the codebase, commented with "TODO: implement." Months later, someone assumes it works. It doesn't.</p><p>If a feature isn't implemented, throw an error. Not a polite error. Not a subtle error. An error so obvious that no one can miss it. The function name, the missing integration, specific instructions for what needs to happen.</p><p>The code pattern is simple. Where you might return mock data, throw instead. The error message should tell future developers exactly what's missing. "NOT IMPLEMENTED: getUser requires database integration" is infinitely more useful than returning a fake user object.</p><p>Silent fallbacks are the subtler version of the same problem. The try-catch that returns null when the database fails. The API call that returns empty results when the service is down. These look like they're handling errors gracefully. They're actually hiding errors completely.</p><p>A database error means the database isn't working. Returning null means the caller thinks there's just no data. The distinction matters enormously for debugging. One tells you where to look. The other sends you hunting through application logic that was never the problem.</p><p>The UI must reflect reality. Every button should either work end-to-end or throw a clear error. Users and developers must immediately see what's real and what's not. A button that looks functional but does nothing is worse than no button at all.</p><p>Frontend error handling should surface implementation errors prominently. Not as a subtle toast that disappears after three seconds. As a blocking modal. As an error state that demands attention. The error should say what's not implemented and optionally how to implement it.</p><p>The why behind this philosophy is simple. Mock data hides integration bugs until production. Silent failures create debugging nightmares. "Working" demos that aren't connected create false confidence. Future developers waste time figuring out what's real and what's fake.</p><p>The inversion is liberating. When if it looks like it works, it must actually work becomes the rule, you know where you stand. Every feature that appears in the UI is a real feature. Every API endpoint returns real data. There are no hidden lies waiting to surface.</p><p>Testing benefits too. A test that exercises mock data tests nothing. A test that exercises real integrations tests real behavior. The discipline of no mock data extends to test environments—they should use real databases, real services, real everything that matters.</p><p>The exception is clearly marked demo modes. Some products have explicit demo functionality where fake data is the point. But this should be explicit—a demo flag, a demo account, an obviously-fake environment. Not production code that sometimes returns fake data.</p><p>Roblox development follows the same principle. Luau code that would normally return a placeholder player object should error instead. "NOT IMPLEMENTED: GetPlayerData requires DataStore integration." The game either works or it obviously doesn't.</p><p>The Anthropic engineering blog contains related guidance: verify like a user. If you test like a user would, you'll discover the features that don't actually work. The fake data disappears when real users appear. Better to discover this while developing than in production.</p><p>Code review should catch these patterns. A function returning hardcoded data? Flag it. A try-catch that swallows errors and returns defaults? Flag it. A TODO comment near returned data? Flag it. These patterns should not survive review.</p><p>This philosophy produces code that's honest about its state. Implemented features work. Unimplemented features fail loudly. The gap between demo and production shrinks to zero. What you see is what you get.<br>
+</p>
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>
