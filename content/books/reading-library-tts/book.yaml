@@ -1,0 +1,126 @@
+title: "How to Vibe Code a Personal Reading Library with TTS"
+slug: reading-library-tts
+subtitle: "Building a distraction-free reading experience with RSS discovery and text-to-speech"
+status: complete
+version: "1.0.0"
+
+author:
+  name: "metavibe"
+  url: "https://github.com/bedwards/metavibe"
+
+description: |
+  A practical guide to building a personal reading library using vibe coding
+  techniques. Learn how to discover content via RSS, store articles for offline
+  reading, create clean reader interfaces, and integrate text-to-speech for
+  audio consumption.
+
+tags:
+  - reading
+  - tts
+  - rss
+  - typescript
+  - web-app
+  - content-curation
+
+audience:
+  - Developers building personal tools
+  - Content consumers wanting custom reading experiences
+  - TypeScript developers learning full-stack patterns
+  - Anyone interested in RSS and content aggregation
+
+prerequisites:
+  - TypeScript and Node.js proficiency
+  - Basic understanding of REST APIs
+  - Familiarity with HTML/CSS
+  - An AI coding assistant (Claude Code, Cursor, etc.)
+
+outline:
+  - id: introduction
+    title: "Introduction"
+    file: "00-introduction.md"
+    status: complete
+    summary: "Why build a personal reading library? Why TTS? Why vibe code it?"
+
+  - id: project-setup
+    title: "Project Setup"
+    file: "01-project-setup.md"
+    status: complete
+    sections:
+      - "TypeScript full-stack architecture"
+      - "Database design for content storage"
+      - "API structure"
+      - "Frontend setup with Vite"
+
+  - id: content-discovery
+    title: "Content Discovery with RSS"
+    file: "02-content-discovery.md"
+    status: complete
+    sections:
+      - "RSS feed parsing"
+      - "Substack and blog discovery"
+      - "Feed management"
+      - "Scheduled fetching"
+
+  - id: content-ingestion
+    title: "Content Ingestion and Storage"
+    file: "03-content-ingestion.md"
+    status: complete
+    sections:
+      - "Fetching full article content"
+      - "HTML cleaning and sanitization"
+      - "Metadata extraction"
+      - "Content deduplication"
+
+  - id: reader-interface
+    title: "Building the Reader Interface"
+    file: "04-reader-interface.md"
+    status: complete
+    sections:
+      - "Clean typography for reading"
+      - "Dark mode and themes"
+      - "Reading progress tracking"
+      - "Responsive design"
+
+  - id: tts-integration
+    title: "Text-to-Speech Integration"
+    file: "05-tts-integration.md"
+    status: complete
+    sections:
+      - "Browser speech synthesis"
+      - "Third-party TTS services"
+      - "Speechify integration"
+      - "Audio controls and progress"
+
+  - id: organization
+    title: "Organization and Search"
+    file: "06-organization.md"
+    status: complete
+    sections:
+      - "Tagging and categorization"
+      - "Full-text search"
+      - "Reading lists and queues"
+      - "Archive management"
+
+  - id: deployment
+    title: "Deployment and Sync"
+    file: "07-deployment.md"
+    status: complete
+    sections:
+      - "Self-hosting options"
+      - "Cross-device sync"
+      - "Offline support"
+      - "Backup strategies"
+
+publishing:
+  github_pages: true
+  gumroad:
+    enabled: true
+    price: 0
+    product_id: null
+  kobo:
+    enabled: false
+    isbn: null
+
+sources:
+  - project: "/Users/bedwards/hex-index"
+    topics: ["reading", "rss", "tts", "substack", "content-library"]
