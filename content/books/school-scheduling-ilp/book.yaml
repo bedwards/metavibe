@@ -1,0 +1,127 @@
+title: "How to Vibe Code a School Scheduling System with ILP"
+slug: school-scheduling-ilp
+subtitle: "Building optimal class schedules using Integer Linear Programming"
+status: complete
+version: "1.0.0"
+
+author:
+  name: "metavibe"
+  url: "https://github.com/bedwards/metavibe"
+
+description: |
+  A practical guide to building automated school scheduling software using
+  vibe coding techniques. Learn how to model complex scheduling constraints
+  as an Integer Linear Programming problem, implement a solver, and build
+  a user interface for schedule management.
+
+tags:
+  - scheduling
+  - ilp
+  - optimization
+  - typescript
+  - rust
+  - algorithms
+  - education-tech
+
+audience:
+  - Developers building scheduling systems
+  - EdTech engineers
+  - Developers learning optimization techniques
+  - Anyone interested in constraint satisfaction problems
+
+prerequisites:
+  - TypeScript proficiency
+  - Basic understanding of linear algebra (helpful but not required)
+  - Familiarity with optimization concepts (helpful)
+  - An AI coding assistant (Claude Code, Cursor, etc.)
+
+outline:
+  - id: introduction
+    title: "Introduction"
+    file: "00-introduction.md"
+    status: complete
+    summary: "Why school scheduling is hard. Why ILP. Why vibe code it."
+
+  - id: project-setup
+    title: "Project Setup"
+    file: "01-project-setup.md"
+    status: complete
+    sections:
+      - "TypeScript project structure"
+      - "ILP solver selection (HiGHS, OR-Tools, GLPK)"
+      - "Database design for schedules"
+      - "API and frontend architecture"
+
+  - id: data-model
+    title: "The Scheduling Data Model"
+    file: "02-data-model.md"
+    status: complete
+    sections:
+      - "Teachers, classes, rooms, and time slots"
+      - "Constraints: hard vs soft"
+      - "Preference modeling"
+      - "Database schema"
+
+  - id: ilp-fundamentals
+    title: "ILP Fundamentals"
+    file: "03-ilp-fundamentals.md"
+    status: complete
+    sections:
+      - "Linear programming basics"
+      - "Integer constraints"
+      - "Decision variables"
+      - "Objective functions and constraints"
+
+  - id: schedule-model
+    title: "Modeling the Schedule as ILP"
+    file: "04-schedule-model.md"
+    status: complete
+    sections:
+      - "Binary decision variables"
+      - "Hard constraints (no conflicts)"
+      - "Soft constraints (preferences)"
+      - "Building the constraint matrix"
+
+  - id: solver-integration
+    title: "Integrating the ILP Solver"
+    file: "05-solver-integration.md"
+    status: complete
+    sections:
+      - "HiGHS solver setup"
+      - "Translating model to solver format"
+      - "Solving and extracting results"
+      - "Handling infeasibility"
+
+  - id: user-interface
+    title: "Building the Schedule UI"
+    file: "06-user-interface.md"
+    status: complete
+    sections:
+      - "Schedule grid visualization"
+      - "Manual adjustments"
+      - "Conflict detection"
+      - "Export to calendar formats"
+
+  - id: optimization
+    title: "Advanced Optimization"
+    file: "07-optimization.md"
+    status: complete
+    sections:
+      - "Performance tuning"
+      - "Iterative solving"
+      - "Multi-objective optimization"
+      - "Real-world deployment"
+
+publishing:
+  github_pages: true
+  gumroad:
+    enabled: true
+    price: 0
+    product_id: null
+  kobo:
+    enabled: false
+    isbn: null
+
+sources:
+  - project: "/Users/bedwards/school-scheduling"
+    topics: ["scheduling", "ilp", "optimization", "constraint-satisfaction"]
