@@ -1,7 +1,7 @@
 title: "How to Vibe Code a Survival Horror Game in Roblox"
 slug: survival-horror-roblox
 subtitle: "Building atmospheric horror experiences with AI-assisted Luau development"
-status: draft
+status: complete
 version: "0.1.0"
 
 author:
@@ -35,13 +35,13 @@ outline:
   - id: introduction
     title: "Introduction"
     file: "00-introduction.md"
-    status: draft
+    status: complete
     summary: "Why survival horror? Why Roblox? Why vibe code it?"
 
   - id: project-setup
     title: "Project Setup with Rojo"
     file: "01-project-setup.md"
-    status: draft
+    status: complete
     sections:
       - "Installing Rojo and dependencies"
       - "Project structure for games"
@@ -51,7 +51,7 @@ outline:
   - id: atmosphere
     title: "Creating Atmosphere"
     file: "02-atmosphere.md"
-    status: draft
+    status: complete
     sections:
       - "Lighting for horror (fog, darkness, ambient)"
       - "Day/night cycles"
@@ -61,7 +61,7 @@ outline:
   - id: creature-ai
     title: "Creature AI and Threats"
     file: "03-creature-ai.md"
-    status: draft
+    status: complete
     sections:
       - "Pathfinding and chase behavior"
       - "Detection systems (sight, sound)"
@@ -71,48 +71,42 @@ outline:
   - id: survival-mechanics
     title: "Survival Mechanics"
     file: "04-survival-mechanics.md"
-    status: draft
+    status: complete
     sections:
       - "Health and stamina systems"
       - "Resource gathering and inventory"
-      - "Crafting and alchemy"
-      - "Save points and respawning"
+      - "Crafting systems"
+      - "Flashlight and battery management"
 
-  - id: world-building
-    title: "World Building"
-    file: "05-world-building.md"
-    status: draft
+  - id: environment-design
+    title: "Environment and Level Design"
+    file: "05-environment-design.md"
+    status: complete
     sections:
-      - "Terrain generation"
-      - "Level design for horror"
-      - "Hidden areas and secrets"
-      - "Procedural elements"
+      - "Psychology of horror spaces"
+      - "Modular building with Roblox parts"
+      - "Lighting design and zones"
+      - "Door systems and hiding spots"
 
   - id: multiplayer
-    title: "Multiplayer Horror"
-    file: "06-multiplayer.md"
-    status: draft
+    title: "Multiplayer Systems"
+    file: "06-multiplayer-systems.md"
+    status: complete
     sections:
-      - "Co-op survival mechanics"
-      - "Shared vs individual scares"
-      - "Network optimization"
-      - "Anti-cheat considerations"
+      - "Player data management"
+      - "Team communication and trading"
+      - "Player revival system"
+      - "Objective coordination"
 
   - id: polish
-    title: "Polish and Release"
-    file: "07-polish.md"
-    status: draft
+    title: "Polish and Publishing"
+    file: "07-polish-and-publishing.md"
+    status: complete
     sections:
-      - "Testing and playtesting"
+      - "UI/UX polish"
+      - "Sound polish"
       - "Performance optimization"
-      - "Monetization strategies"
-      - "Community building"
-
-  - id: conclusion
-    title: "Conclusion"
-    file: "99-conclusion.md"
-    status: draft
-    summary: "What we built and where to go next"
+      - "Publishing to Roblox"
 
 publishing:
   github_pages: true
