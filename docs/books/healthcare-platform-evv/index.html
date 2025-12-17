@@ -1,0 +1,3088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Vibe Code a Healthcare Platform with EVV | metavibe</title>
+  <meta name="description" content="A practical guide to building home healthcare coordination software using">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Charter', 'Bitstream Charter', Georgia, serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    .subtitle { color: var(--text-muted); font-size: 1.1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-family: sans-serif; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    nav { margin: 2rem 0; padding: 1.5rem; background: var(--code-bg); border-radius: 8px; }
+    nav h2 { font-size: 1rem; margin-bottom: 1rem; font-family: sans-serif; }
+    nav ul { list-style: none; padding-left: 0; }
+    nav li { margin: 0.5rem 0; }
+    nav a { color: var(--accent); text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    .chapter { margin: 3rem 0; padding-top: 2rem; border-top: 1px solid var(--border); }
+    h2 { font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; font-family: sans-serif; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 0.75rem; font-family: sans-serif; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../../" class="back">← Back to all books</a>
+    <header>
+      <h1>How to Vibe Code a Healthcare Platform with EVV</h1>
+      <p class="subtitle">Building home healthcare coordination software with AI-assisted TypeScript development</p>
+    </header>
+
+    <nav>
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#chapter-0">Introduction</a></li>
+<li><a href="#chapter-1">Project Setup and Architecture</a></li>
+<li><a href="#chapter-2">Care Plans and Tasks</a></li>
+<li><a href="#chapter-3">Caregiver Management and Matching</a></li>
+<li><a href="#chapter-4">Electronic Visit Verification</a></li>
+<li><a href="#chapter-5">Billing and Invoicing</a></li>
+<li><a href="#chapter-6">Compliance and Reporting</a></li>
+<li><a href="#chapter-7">AI-Powered Features</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      
+    <section id="chapter-0" class="chapter">
+      <h2>Introduction</h2>
+      <p>Healthcare software touches lives. Every care plan, every scheduled visit, every verified clock-in represents real people receiving care they need. Building this software is meaningful work—and surprisingly accessible with modern AI-assisted development.</p><p>This book shows you how.</p><h2>Why Healthcare Software?</h2><p>Home healthcare is a massive, growing industry:</p><p>- <strong>Aging population</strong> - More people need in-home care than ever before<br>
+- <strong>Cost pressure</strong> - Home care is cheaper than institutional care<br>
+- <strong>Quality of life</strong> - People prefer staying home to nursing facilities<br>
+- <strong>Technology gap</strong> - Most agencies still use paper, spreadsheets, or outdated software</p><p>The market opportunity is enormous. But more importantly, good software directly improves patient outcomes and caregiver experience.</p><h2>What is EVV?</h2><p>Electronic Visit Verification (EVV) is mandated by the 21st Century Cures Act for Medicaid-funded personal care and home health services. It requires verifying:</p><p>1. <strong>Type of service</strong> - What care was provided<br>
+2. <strong>Individual receiving service</strong> - The patient identity<br>
+3. <strong>Individual providing service</strong> - The caregiver identity<br>
+4. <strong>Date of service</strong> - When the visit occurred<br>
+5. <strong>Time in/out</strong> - Start and end times<br>
+6. <strong>Location</strong> - Where the service was delivered</p><p>Non-compliance means no Medicaid reimbursement. Agencies need EVV—and many existing solutions are clunky, expensive, or both.</p><h2>Why Vibe Code It?</h2><p>Healthcare software has traditionally required:</p><p>- Expensive consultants who understand healthcare regulations<br>
+- Long development cycles for compliance features<br>
+- Specialized domain knowledge that takes years to acquire</p><p>AI changes this equation:</p><p>- <strong>Regulatory knowledge</strong> - AI assistants know HIPAA, EVV requirements, healthcare billing codes<br>
+- <strong>Boilerplate generation</strong> - Compliance features are repetitive; AI handles them effortlessly<br>
+- <strong>Domain translation</strong> - Describe what you need in plain English, get working code<br>
+- <strong>Rapid iteration</strong> - Try ideas quickly, adjust based on real agency feedback</p><p>You don't need to become a healthcare expert before building healthcare software. You need to understand the <em>problems</em> agencies face. AI handles the implementation details.</p><h2>What We'll Build</h2><p>By the end of this book, you'll have built:</p><p>- A complete care management system with care plans and tasks<br>
+- Caregiver scheduling with availability management<br>
+- AI-powered caregiver-patient matching<br>
+- Full EVV compliance (clock-in, clock-out, GPS, signatures)<br>
+- Billing and invoicing with payer integration<br>
+- Compliance checking and reporting<br>
+- AI features: natural language care plans, churn prediction, smart alerts</p><p>More importantly, you'll understand <em>why</em> these features exist and how they fit together.</p><h2>The Healthcare Software Stack</h2><p>We'll use a modern TypeScript stack:</p><p><strong>Backend:</strong><br>
+- Node.js + Express for APIs<br>
+- PostgreSQL for relational data<br>
+- Redis for caching and real-time features<br>
+- TypeScript for type safety (critical in healthcare)</p><p><strong>Frontend:</strong><br>
+- React or Vue for web interfaces<br>
+- React Native for mobile (caregiver apps)</p><p><strong>Infrastructure:</strong><br>
+- Docker for local development<br>
+- Vercel or Kubernetes for deployment<br>
+- Neon or Supabase for managed PostgreSQL</p><p><strong>AI:</strong><br>
+- Claude API for natural language features<br>
+- Embeddings for semantic search<br>
+- Structured output for reliable data extraction</p><h2>HIPAA Considerations</h2><p>Healthcare data is sensitive. From day one:</p><p>- <strong>Encryption at rest</strong> - Database encryption enabled<br>
+- <strong>Encryption in transit</strong> - HTTPS everywhere<br>
+- <strong>Access controls</strong> - Role-based permissions<br>
+- <strong>Audit logging</strong> - Track who accessed what<br>
+- <strong>BAA compliance</strong> - Use HIPAA-compliant cloud providers</p><p>We won't build a fully HIPAA-certified system (that requires audits and legal work), but we'll build with HIPAA principles so your foundation is solid.</p><h2>Who This Book Is For</h2><p>- <strong>Developers</strong> who want to enter healthcare tech<br>
+- <strong>Agency operators</strong> who need custom software<br>
+- <strong>Entrepreneurs</strong> building healthcare startups<br>
+- <strong>Consultants</strong> helping agencies modernize</p><p>You should know TypeScript and be comfortable with REST APIs. Healthcare domain knowledge helps but isn't required—that's what vibe coding is for.</p><h2>How to Use This Book</h2><p>Each chapter builds on the previous, but they're designed to be useful references on their own:</p><p>- <strong>Building from scratch?</strong> Read front-to-back<br>
+- <strong>Adding EVV to existing software?</strong> Jump to Chapter 4<br>
+- <strong>Need AI features?</strong> Chapter 7 stands alone<br>
+- <strong>Figuring out billing?</strong> Chapter 5 covers healthcare billing models</p><p>Code examples are production-realistic. We show patterns that scale, not toys that break at the first edge case.</p><h2>A Note on Compliance</h2><p>Healthcare software operates under heavy regulation. This book teaches technical implementation, not legal compliance. Before deploying to production:</p><p>- Consult with healthcare compliance experts<br>
+- Get legal review of your data handling<br>
+- Consider SOC 2 or HITRUST certification<br>
+- Work with your state's EVV aggregator</p><p>Good software architecture makes compliance easier. We build that foundation.</p><p>Let's help people get better care.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-1" class="chapter">
+      <h2>Project Setup and Architecture</h2>
+      <p>Healthcare software demands rigor from the start. Decisions made in project setup echo through every feature—database design, API structure, security patterns. Getting the foundation right makes everything else easier.</p><p>This chapter covers setting up a healthcare platform the right way.</p><h2>Monorepo Structure</h2><p>Healthcare platforms have multiple moving parts: API servers, web apps, mobile apps, shared libraries. A monorepo keeps them in sync:</p><pre><code class="language-">folk-care/<br>
+├── packages/<br>
+│   ├── core/                 # Shared business logic<br>
+│   │   ├── src/<br>
+│   │   │   ├── db/          # Database utilities<br>
+│   │   │   ├── auth/        # Authentication<br>
+│   │   │   ├── ai/          # AI service abstractions<br>
+│   │   │   └── types/       # Shared TypeScript types<br>
+│   │   └── package.json<br>
+│   │<br>
+│   ├── app/                  # Main API server<br>
+│   │   ├── src/<br>
+│   │   │   ├── routes/      # Express routes<br>
+│   │   │   ├── middleware/  # Auth, validation, logging<br>
+│   │   │   └── services/    # Business logic<br>
+│   │   └── package.json<br>
+│   │<br>
+│   └── web/                  # Web frontend<br>
+│       ├── src/<br>
+│       └── package.json<br>
+│<br>
+├── verticals/               # Domain-specific packages<br>
+│   ├── care-plans-tasks/    # Care plan management<br>
+│   ├── scheduling-visits/   # Caregiver scheduling<br>
+│   ├── billing-invoicing/   # Financial features<br>
+│   └── compliance/          # Regulatory compliance<br>
+│<br>
+├── scripts/                 # Development utilities<br>
+├── docker-compose.yml       # Local development<br>
+├── turbo.json              # Turborepo configuration<br>
+└── package.json            # Root workspace</code></pre><h3>Why This Structure?</h3><p><strong><code>packages/core</code></strong> - Shared code that every other package needs: database connections, authentication, types. Changes here affect everything, so it stays stable.</p><p><strong><code>packages/app</code></strong> - The main API server. Routes, middleware, and orchestration. Thin—most business logic lives in verticals.</p><p><strong><code>verticals/</code></strong> - Domain-specific features. Each vertical is relatively independent:<br>
+- <code>care-plans-tasks</code> - Creating and managing care plans<br>
+- <code>scheduling-visits</code> - Caregiver assignments and scheduling<br>
+- <code>billing-invoicing</code> - Invoices and payments<br>
+- <code>compliance</code> - Regulatory features</p><p>Verticals can depend on <code>core</code> but not on each other. This keeps coupling low.</p><h2>TypeScript Configuration</h2><p>Healthcare software handles sensitive data. TypeScript's type system catches errors before they reach production:</p><pre><code class="language-json">// tsconfig.base.json<br>
+{<br>
+  &quot;compilerOptions&quot;: {<br>
+    &quot;strict&quot;: true,<br>
+    &quot;noUncheckedIndexedAccess&quot;: true,<br>
+    &quot;noImplicitReturns&quot;: true,<br>
+    &quot;noFallthroughCasesInSwitch&quot;: true,<br>
+    &quot;exactOptionalPropertyTypes&quot;: true,</p><p>    &quot;target&quot;: &quot;ES2022&quot;,<br>
+    &quot;module&quot;: &quot;NodeNext&quot;,<br>
+    &quot;moduleResolution&quot;: &quot;NodeNext&quot;,</p><p>    &quot;declaration&quot;: true,<br>
+    &quot;declarationMap&quot;: true,<br>
+    &quot;sourceMap&quot;: true,</p><p>    &quot;esModuleInterop&quot;: true,<br>
+    &quot;skipLibCheck&quot;: true,<br>
+    &quot;forceConsistentCasingInFileNames&quot;: true<br>
+  }<br>
+}</code></pre><p>Key settings for healthcare:</p><p>- <strong><code>strict: true</code></strong> - No implicit any, strict null checks. Every variable has a known type.<br>
+- <strong><code>noUncheckedIndexedAccess: true</code></strong> - Array access might return undefined. Forces you to handle missing data.<br>
+- <strong><code>exactOptionalPropertyTypes: true</code></strong> - Distinguishes between "property missing" and "property explicitly undefined."</p><p>These settings feel restrictive at first. They prevent the bugs that matter most in healthcare software.</p><h2>Database Design</h2><p>Healthcare data has specific patterns. Here's a foundation schema:</p><pre><code class="language-sql">-- packages/core/src/db/schema.sql</p><p>-- Core entities<br>
+CREATE TABLE clients (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    first_name VARCHAR(100) NOT NULL,<br>
+    last_name VARCHAR(100) NOT NULL,<br>
+    date_of_birth DATE NOT NULL,<br>
+    medicaid_id VARCHAR(50),<br>
+    medicare_id VARCHAR(50),<br>
+    phone VARCHAR(20),<br>
+    email VARCHAR(255),<br>
+    address_line1 VARCHAR(255),<br>
+    address_line2 VARCHAR(255),<br>
+    city VARCHAR(100),<br>
+    state VARCHAR(2),<br>
+    zip VARCHAR(10),<br>
+    latitude DECIMAL(10, 8),<br>
+    longitude DECIMAL(11, 8),<br>
+    status VARCHAR(20) DEFAULT 'active',<br>
+    created_at TIMESTAMPTZ DEFAULT NOW(),<br>
+    updated_at TIMESTAMPTZ DEFAULT NOW()<br>
+);</p><p>CREATE TABLE caregivers (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    first_name VARCHAR(100) NOT NULL,<br>
+    last_name VARCHAR(100) NOT NULL,<br>
+    email VARCHAR(255) UNIQUE NOT NULL,<br>
+    phone VARCHAR(20),<br>
+    hire_date DATE,<br>
+    certifications JSONB DEFAULT '[]',<br>
+    hourly_rate DECIMAL(10, 2),<br>
+    status VARCHAR(20) DEFAULT 'active',<br>
+    latitude DECIMAL(10, 8),<br>
+    longitude DECIMAL(11, 8),<br>
+    created_at TIMESTAMPTZ DEFAULT NOW(),<br>
+    updated_at TIMESTAMPTZ DEFAULT NOW()<br>
+);</p><p>-- Care plans<br>
+CREATE TABLE care_plans (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    client_id UUID REFERENCES clients(id) NOT NULL,<br>
+    name VARCHAR(255) NOT NULL,<br>
+    description TEXT,<br>
+    start_date DATE NOT NULL,<br>
+    end_date DATE,<br>
+    status VARCHAR(20) DEFAULT 'active',<br>
+    authorized_hours_per_week DECIMAL(5, 2),<br>
+    payer_id UUID REFERENCES payers(id),<br>
+    created_at TIMESTAMPTZ DEFAULT NOW(),<br>
+    updated_at TIMESTAMPTZ DEFAULT NOW()<br>
+);</p><p>CREATE TABLE care_plan_goals (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    care_plan_id UUID REFERENCES care_plans(id) NOT NULL,<br>
+    goal_text TEXT NOT NULL,<br>
+    target_date DATE,<br>
+    status VARCHAR(20) DEFAULT 'in_progress',<br>
+    created_at TIMESTAMPTZ DEFAULT NOW()<br>
+);</p><p>-- Scheduling<br>
+CREATE TABLE visits (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    client_id UUID REFERENCES clients(id) NOT NULL,<br>
+    caregiver_id UUID REFERENCES caregivers(id),<br>
+    care_plan_id UUID REFERENCES care_plans(id),<br>
+    scheduled_start TIMESTAMPTZ NOT NULL,<br>
+    scheduled_end TIMESTAMPTZ NOT NULL,<br>
+    actual_start TIMESTAMPTZ,<br>
+    actual_end TIMESTAMPTZ,<br>
+    status VARCHAR(20) DEFAULT 'scheduled',<br>
+    clock_in_latitude DECIMAL(10, 8),<br>
+    clock_in_longitude DECIMAL(11, 8),<br>
+    clock_out_latitude DECIMAL(10, 8),<br>
+    clock_out_longitude DECIMAL(11, 8),<br>
+    notes TEXT,<br>
+    created_at TIMESTAMPTZ DEFAULT NOW(),<br>
+    updated_at TIMESTAMPTZ DEFAULT NOW()<br>
+);</p><p>-- EVV compliance<br>
+CREATE TABLE evv_records (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    visit_id UUID REFERENCES visits(id) NOT NULL,<br>
+    service_type VARCHAR(50) NOT NULL,<br>
+    client_verified BOOLEAN DEFAULT FALSE,<br>
+    caregiver_verified BOOLEAN DEFAULT FALSE,<br>
+    location_verified BOOLEAN DEFAULT FALSE,<br>
+    client_signature_url TEXT,<br>
+    caregiver_signature_url TEXT,<br>
+    verification_method VARCHAR(50),<br>
+    submitted_to_aggregator BOOLEAN DEFAULT FALSE,<br>
+    aggregator_response JSONB,<br>
+    created_at TIMESTAMPTZ DEFAULT NOW()<br>
+);</p><p>-- Audit log (HIPAA requirement)<br>
+CREATE TABLE audit_log (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    user_id UUID,<br>
+    action VARCHAR(50) NOT NULL,<br>
+    entity_type VARCHAR(50) NOT NULL,<br>
+    entity_id UUID,<br>
+    old_values JSONB,<br>
+    new_values JSONB,<br>
+    ip_address INET,<br>
+    user_agent TEXT,<br>
+    created_at TIMESTAMPTZ DEFAULT NOW()<br>
+);</p><p>-- Indexes for common queries<br>
+CREATE INDEX idx_visits_client ON visits(client_id);<br>
+CREATE INDEX idx_visits_caregiver ON visits(caregiver_id);<br>
+CREATE INDEX idx_visits_scheduled ON visits(scheduled_start);<br>
+CREATE INDEX idx_audit_entity ON audit_log(entity_type, entity_id);<br>
+CREATE INDEX idx_audit_user ON audit_log(user_id);</code></pre><h3>Design Decisions</h3><p><strong>UUIDs over auto-increment</strong> - Healthcare data gets shared across systems. UUIDs prevent ID collisions during integrations.</p><p><strong>Separate EVV records</strong> - EVV has specific compliance requirements. A dedicated table makes auditing easier.</p><p><strong>Audit log table</strong> - HIPAA requires tracking who accessed what. Log every significant action.</p><p><strong>Geographic coordinates</strong> - EVV requires location verification. Store lat/long for distance calculations.</p><p><strong>JSONB for flexible data</strong> - Certifications, aggregator responses, and other semi-structured data use JSONB. Avoids schema changes for every new certification type.</p><h2>Docker Development Environment</h2><p>Local development should mirror production:</p><pre><code class="language-yaml"># docker-compose.yml<br>
+version: '3.8'</p><p>services:<br>
+  postgres:<br>
+    image: postgres:16<br>
+    environment:<br>
+      POSTGRES_USER: folkcare<br>
+      POSTGRES_PASSWORD: development<br>
+      POSTGRES_DB: folkcare<br>
+    ports:<br>
+      - &quot;5432:5432&quot;<br>
+    volumes:<br>
+      - postgres_data:/var/lib/postgresql/data<br>
+      - ./packages/core/src/db:/docker-entrypoint-initdb.d<br>
+    healthcheck:<br>
+      test: [&quot;CMD-SHELL&quot;, &quot;pg_isready -U folkcare&quot;]<br>
+      interval: 5s<br>
+      timeout: 5s<br>
+      retries: 5</p><p>  redis:<br>
+    image: redis:7-alpine<br>
+    ports:<br>
+      - &quot;6379:6379&quot;<br>
+    volumes:<br>
+      - redis_data:/data</p><p>  app:<br>
+    build:<br>
+      context: .<br>
+      dockerfile: Dockerfile.dev<br>
+    ports:<br>
+      - &quot;3000:3000&quot;<br>
+    environment:<br>
+      DATABASE_URL: postgres://folkcare:development@postgres:5432/folkcare<br>
+      REDIS_URL: redis://redis:6379<br>
+      NODE_ENV: development<br>
+    depends_on:<br>
+      postgres:<br>
+        condition: service_healthy<br>
+      redis:<br>
+        condition: service_started<br>
+    volumes:<br>
+      - .:/app<br>
+      - /app/node_modules</p><p>volumes:<br>
+  postgres_data:<br>
+  redis_data:</code></pre><h2>Security from Day One</h2><p>Healthcare software handles PHI (Protected Health Information). Build security in:</p><pre><code class="language-typescript">// packages/core/src/middleware/security.ts<br>
+import helmet from 'helmet';<br>
+import rateLimit from 'express-rate-limit';<br>
+import { Express } from 'express';</p><p>export function configureSecurityMiddleware(app: Express) {<br>
+  // Security headers<br>
+  app.use(helmet({<br>
+    contentSecurityPolicy: {<br>
+      directives: {<br>
+        defaultSrc: [&quot;'self'&quot;],<br>
+        scriptSrc: [&quot;'self'&quot;],<br>
+        styleSrc: [&quot;'self'&quot;, &quot;'unsafe-inline'&quot;],<br>
+        imgSrc: [&quot;'self'&quot;, &quot;data:&quot;, &quot;https:&quot;],<br>
+      },<br>
+    },<br>
+    hsts: {<br>
+      maxAge: 31536000,<br>
+      includeSubDomains: true,<br>
+      preload: true,<br>
+    },<br>
+  }));</p><p>  // Rate limiting<br>
+  const apiLimiter = rateLimit({<br>
+    windowMs: 15 <em> 60 </em> 1000, // 15 minutes<br>
+    max: 100, // 100 requests per window<br>
+    message: { error: 'Too many requests, please try again later' },<br>
+  });</p><p>  app.use('/api/', apiLimiter);</p><p>  // Disable fingerprinting<br>
+  app.disable('x-powered-by');<br>
+}</code></pre><h3>Audit Logging</h3><pre><code class="language-typescript">// packages/core/src/audit/logger.ts<br>
+import { db } from '../db';</p><p>interface AuditEntry {<br>
+  userId?: string;<br>
+  action: 'create' | 'read' | 'update' | 'delete';<br>
+  entityType: string;<br>
+  entityId: string;<br>
+  oldValues?: Record&lt;string, unknown&gt;;<br>
+  newValues?: Record&lt;string, unknown&gt;;<br>
+  ipAddress?: string;<br>
+  userAgent?: string;<br>
+}</p><p>export async function logAuditEntry(entry: AuditEntry): Promise&lt;void&gt; {<br>
+  await db.query(<br>
+    <code>INSERT INTO audit_log<br>
+     (user_id, action, entity_type, entity_id, old_values, new_values, ip_address, user_agent)<br>
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)</code>,<br>
+    [<br>
+      entry.userId,<br>
+      entry.action,<br>
+      entry.entityType,<br>
+      entry.entityId,<br>
+      JSON.stringify(entry.oldValues),<br>
+      JSON.stringify(entry.newValues),<br>
+      entry.ipAddress,<br>
+      entry.userAgent,<br>
+    ]<br>
+  );<br>
+}</p><p>// Middleware to track reads<br>
+export function auditReadMiddleware(entityType: string) {<br>
+  return async (req: Request, res: Response, next: NextFunction) =&gt; {<br>
+    const entityId = req.params.id;</p><p>    // Log after successful response<br>
+    res.on('finish', () =&gt; {<br>
+      if (res.statusCode === 200) {<br>
+        logAuditEntry({<br>
+          userId: req.user?.id,<br>
+          action: 'read',<br>
+          entityType,<br>
+          entityId,<br>
+          ipAddress: req.ip,<br>
+          userAgent: req.get('user-agent'),<br>
+        });<br>
+      }<br>
+    });</p><p>    next();<br>
+  };<br>
+}</code></pre><h2>Environment Configuration</h2><p>Never hardcode secrets:</p><pre><code class="language-typescript">// packages/core/src/config/index.ts<br>
+import { z } from 'zod';</p><p>const envSchema = z.object({<br>
+  NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),<br>
+  PORT: z.coerce.number().default(3000),</p><p>  // Database<br>
+  DATABASE_URL: z.string().url(),</p><p>  // Redis<br>
+  REDIS_URL: z.string().url(),</p><p>  // Auth<br>
+  JWT_SECRET: z.string().min(32),<br>
+  JWT_EXPIRES_IN: z.string().default('24h'),</p><p>  // AI<br>
+  ANTHROPIC_API_KEY: z.string().optional(),</p><p>  // EVV Aggregator<br>
+  EVV_AGGREGATOR_URL: z.string().url().optional(),<br>
+  EVV_AGGREGATOR_API_KEY: z.string().optional(),<br>
+});</p><p>export type Env = z.infer&lt;typeof envSchema&gt;;</p><p>function loadEnv(): Env {<br>
+  const result = envSchema.safeParse(process.env);</p><p>  if (!result.success) {<br>
+    console.error('Environment validation failed:');<br>
+    console.error(result.error.format());<br>
+    process.exit(1);<br>
+  }</p><p>  return result.data;<br>
+}</p><p>export const env = loadEnv();</code></pre><h2>Vibe Coding the Setup</h2><p>When setting up a healthcare project with AI:</p><p>> "Create a TypeScript monorepo structure for a healthcare platform with care plans, scheduling, billing, and compliance verticals"</p><p>> "Design a PostgreSQL schema for tracking patient visits with EVV compliance fields including GPS coordinates and signatures"</p><p>> "Add HIPAA-appropriate audit logging middleware that tracks all PHI access"</p><p>> "Configure security headers and rate limiting for a healthcare API"</p><p>AI handles the boilerplate beautifully. You focus on healthcare-specific requirements.</p><h2>Testing the Foundation</h2><p>Before building features, verify the foundation works:</p><pre><code class="language-bash"># Start services<br>
+docker-compose up -d</p><h1>Run migrations</h1><br>
+npm run db:migrate</p><h1>Verify database</h1><br>
+npm run db:status</p><h1>Run health check</h1><br>
+curl http://localhost:3000/health</code></pre><h2>Next Steps</h2><p>With the project structure in place, we can build the core healthcare feature: care plans. In the next chapter, we'll create the data models and APIs that power everything else in a home healthcare platform.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-2" class="chapter">
+      <h2>Care Plans and Tasks</h2>
+      <p>Care plans are the heart of home healthcare. They define what care a patient needs, what goals they're working toward, and what tasks caregivers should perform during visits. Everything else—scheduling, billing, compliance—flows from the care plan.</p><p>This chapter covers building a comprehensive care plan management system.</p><h2>Understanding Care Plans</h2><p>A care plan typically includes:</p><p>- <strong>Patient information</strong> - Who receives care<br>
+- <strong>Authorized services</strong> - What care is approved (and paid for)<br>
+- <strong>Goals</strong> - What outcomes we're working toward<br>
+- <strong>Interventions</strong> - Specific actions to achieve goals<br>
+- <strong>Tasks</strong> - Concrete activities for each visit<br>
+- <strong>Frequency</strong> - How often services occur</p><pre><code class="language-typescript">// verticals/care-plans-tasks/src/types.ts<br>
+export interface CarePlan {<br>
+  id: string;<br>
+  clientId: string;<br>
+  name: string;<br>
+  description?: string;<br>
+  startDate: Date;<br>
+  endDate?: Date;<br>
+  status: 'draft' | 'active' | 'completed' | 'cancelled';<br>
+  authorizedHoursPerWeek?: number;<br>
+  payerId?: string;<br>
+  goals: CarePlanGoal[];<br>
+  interventions: Intervention[];<br>
+  createdAt: Date;<br>
+  updatedAt: Date;<br>
+}</p><p>export interface CarePlanGoal {<br>
+  id: string;<br>
+  carePlanId: string;<br>
+  goalText: string;<br>
+  targetDate?: Date;<br>
+  status: 'not_started' | 'in_progress' | 'achieved' | 'discontinued';<br>
+  progressNotes: GoalProgressNote[];<br>
+}</p><p>export interface Intervention {<br>
+  id: string;<br>
+  carePlanId: string;<br>
+  goalId: string;<br>
+  description: string;<br>
+  frequency: string; // &quot;Daily&quot;, &quot;3x per week&quot;, etc.<br>
+  taskTemplates: TaskTemplate[];<br>
+}</p><p>export interface TaskTemplate {<br>
+  id: string;<br>
+  interventionId: string;<br>
+  name: string;<br>
+  description?: string;<br>
+  estimatedMinutes: number;<br>
+  category: TaskCategory;<br>
+  requiredCertifications: string[];<br>
+}</p><p>export type TaskCategory =<br>
+  | 'personal_care'<br>
+  | 'medication'<br>
+  | 'mobility'<br>
+  | 'nutrition'<br>
+  | 'companionship'<br>
+  | 'housekeeping'<br>
+  | 'transportation';</code></pre><h2>Care Plan Service</h2><p>The service layer handles business logic:</p><pre><code class="language-typescript">// verticals/care-plans-tasks/src/services/care-plan-service.ts<br>
+import { db } from '@folkcare/core';<br>
+import { logAuditEntry } from '@folkcare/core/audit';<br>
+import { CarePlan, CarePlanGoal, CreateCarePlanInput } from '../types';</p><p>export class CarePlanService {<br>
+  async createCarePlan(<br>
+    input: CreateCarePlanInput,<br>
+    userId: string<br>
+  ): Promise&lt;CarePlan&gt; {<br>
+    const result = await db.query(<br>
+      <code>INSERT INTO care_plans<br>
+       (client_id, name, description, start_date, end_date,<br>
+        authorized_hours_per_week, payer_id, status)<br>
+       VALUES ($1, $2, $3, $4, $5, $6, $7, 'draft')<br>
+       RETURNING *</code>,<br>
+      [<br>
+        input.clientId,<br>
+        input.name,<br>
+        input.description,<br>
+        input.startDate,<br>
+        input.endDate,<br>
+        input.authorizedHoursPerWeek,<br>
+        input.payerId,<br>
+      ]<br>
+    );</p><p>    const carePlan = this.mapRow(result.rows[0]);</p><p>    await logAuditEntry({<br>
+      userId,<br>
+      action: 'create',<br>
+      entityType: 'care_plan',<br>
+      entityId: carePlan.id,<br>
+      newValues: input,<br>
+    });</p><p>    return carePlan;<br>
+  }</p><p>  async getCarePlan(id: string): Promise&lt;CarePlan | null&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT cp.*,<br>
+              json_agg(DISTINCT cpg.*) as goals<br>
+       FROM care_plans cp<br>
+       LEFT JOIN care_plan_goals cpg ON cpg.care_plan_id = cp.id<br>
+       WHERE cp.id = $1<br>
+       GROUP BY cp.id</code>,<br>
+      [id]<br>
+    );</p><p>    if (result.rows.length === 0) return null;<br>
+    return this.mapRowWithRelations(result.rows[0]);<br>
+  }</p><p>  async getCarePlansForClient(clientId: string): Promise&lt;CarePlan[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT * FROM care_plans<br>
+       WHERE client_id = $1<br>
+       ORDER BY start_date DESC</code>,<br>
+      [clientId]<br>
+    );</p><p>    return result.rows.map(this.mapRow);<br>
+  }</p><p>  async activateCarePlan(id: string, userId: string): Promise&lt;CarePlan&gt; {<br>
+    // Validate plan has required elements<br>
+    const plan = await this.getCarePlan(id);<br>
+    if (!plan) throw new Error('Care plan not found');</p><p>    if (plan.goals.length === 0) {<br>
+      throw new Error('Cannot activate care plan without goals');<br>
+    }</p><p>    const result = await db.query(<br>
+      <code>UPDATE care_plans<br>
+       SET status = 'active', updated_at = NOW()<br>
+       WHERE id = $1<br>
+       RETURNING *</code>,<br>
+      [id]<br>
+    );</p><p>    await logAuditEntry({<br>
+      userId,<br>
+      action: 'update',<br>
+      entityType: 'care_plan',<br>
+      entityId: id,<br>
+      oldValues: { status: plan.status },<br>
+      newValues: { status: 'active' },<br>
+    });</p><p>    return this.mapRow(result.rows[0]);<br>
+  }</p><p>  async addGoal(<br>
+    carePlanId: string,<br>
+    goalText: string,<br>
+    targetDate: Date | null,<br>
+    userId: string<br>
+  ): Promise&lt;CarePlanGoal&gt; {<br>
+    const result = await db.query(<br>
+      <code>INSERT INTO care_plan_goals<br>
+       (care_plan_id, goal_text, target_date, status)<br>
+       VALUES ($1, $2, $3, 'not_started')<br>
+       RETURNING *</code>,<br>
+      [carePlanId, goalText, targetDate]<br>
+    );</p><p>    const goal = result.rows[0];</p><p>    await logAuditEntry({<br>
+      userId,<br>
+      action: 'create',<br>
+      entityType: 'care_plan_goal',<br>
+      entityId: goal.id,<br>
+      newValues: { carePlanId, goalText, targetDate },<br>
+    });</p><p>    return goal;<br>
+  }</p><p>  async updateGoalProgress(<br>
+    goalId: string,<br>
+    status: CarePlanGoal['status'],<br>
+    note: string,<br>
+    userId: string<br>
+  ): Promise&lt;void&gt; {<br>
+    await db.query('BEGIN');</p><p>    try {<br>
+      // Update goal status<br>
+      await db.query(<br>
+        <code>UPDATE care_plan_goals<br>
+         SET status = $1<br>
+         WHERE id = $2</code>,<br>
+        [status, goalId]<br>
+      );</p><p>      // Add progress note<br>
+      await db.query(<br>
+        <code>INSERT INTO goal_progress_notes<br>
+         (goal_id, note, recorded_by, created_at)<br>
+         VALUES ($1, $2, $3, NOW())</code>,<br>
+        [goalId, note, userId]<br>
+      );</p><p>      await db.query('COMMIT');</p><p>      await logAuditEntry({<br>
+        userId,<br>
+        action: 'update',<br>
+        entityType: 'care_plan_goal',<br>
+        entityId: goalId,<br>
+        newValues: { status, note },<br>
+      });<br>
+    } catch (error) {<br>
+      await db.query('ROLLBACK');<br>
+      throw error;<br>
+    }<br>
+  }</p><p>  private mapRow(row: Record&lt;string, unknown&gt;): CarePlan {<br>
+    return {<br>
+      id: row.id as string,<br>
+      clientId: row.client_id as string,<br>
+      name: row.name as string,<br>
+      description: row.description as string | undefined,<br>
+      startDate: new Date(row.start_date as string),<br>
+      endDate: row.end_date ? new Date(row.end_date as string) : undefined,<br>
+      status: row.status as CarePlan['status'],<br>
+      authorizedHoursPerWeek: row.authorized_hours_per_week as number | undefined,<br>
+      payerId: row.payer_id as string | undefined,<br>
+      goals: [],<br>
+      interventions: [],<br>
+      createdAt: new Date(row.created_at as string),<br>
+      updatedAt: new Date(row.updated_at as string),<br>
+    };<br>
+  }</p><p>  private mapRowWithRelations(row: Record&lt;string, unknown&gt;): CarePlan {<br>
+    const plan = this.mapRow(row);<br>
+    plan.goals = (row.goals as CarePlanGoal[]) || [];<br>
+    return plan;<br>
+  }<br>
+}</p><p>export const carePlanService = new CarePlanService();</code></pre><h2>API Routes</h2><p>RESTful endpoints for care plan management:</p><pre><code class="language-typescript">// verticals/care-plans-tasks/src/routes/care-plan-routes.ts<br>
+import { Router } from 'express';<br>
+import { z } from 'zod';<br>
+import { carePlanService } from '../services/care-plan-service';<br>
+import { validateBody, requireAuth } from '@folkcare/core/middleware';</p><p>const router = Router();</p><p>const createCarePlanSchema = z.object({<br>
+  clientId: z.string().uuid(),<br>
+  name: z.string().min(1).max(255),<br>
+  description: z.string().optional(),<br>
+  startDate: z.string().datetime(),<br>
+  endDate: z.string().datetime().optional(),<br>
+  authorizedHoursPerWeek: z.number().positive().optional(),<br>
+  payerId: z.string().uuid().optional(),<br>
+});</p><p>router.post(<br>
+  '/care-plans',<br>
+  requireAuth,<br>
+  validateBody(createCarePlanSchema),<br>
+  async (req, res, next) =&gt; {<br>
+    try {<br>
+      const carePlan = await carePlanService.createCarePlan(<br>
+        req.body,<br>
+        req.user.id<br>
+      );<br>
+      res.status(201).json(carePlan);<br>
+    } catch (error) {<br>
+      next(error);<br>
+    }<br>
+  }<br>
+);</p><p>router.get('/care-plans/:id', requireAuth, async (req, res, next) =&gt; {<br>
+  try {<br>
+    const carePlan = await carePlanService.getCarePlan(req.params.id);<br>
+    if (!carePlan) {<br>
+      return res.status(404).json({ error: 'Care plan not found' });<br>
+    }<br>
+    res.json(carePlan);<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</p><p>router.get(<br>
+  '/clients/:clientId/care-plans',<br>
+  requireAuth,<br>
+  async (req, res, next) =&gt; {<br>
+    try {<br>
+      const carePlans = await carePlanService.getCarePlansForClient(<br>
+        req.params.clientId<br>
+      );<br>
+      res.json(carePlans);<br>
+    } catch (error) {<br>
+      next(error);<br>
+    }<br>
+  }<br>
+);</p><p>router.post(<br>
+  '/care-plans/:id/activate',<br>
+  requireAuth,<br>
+  async (req, res, next) =&gt; {<br>
+    try {<br>
+      const carePlan = await carePlanService.activateCarePlan(<br>
+        req.params.id,<br>
+        req.user.id<br>
+      );<br>
+      res.json(carePlan);<br>
+    } catch (error) {<br>
+      next(error);<br>
+    }<br>
+  }<br>
+);</p><p>const addGoalSchema = z.object({<br>
+  goalText: z.string().min(1),<br>
+  targetDate: z.string().datetime().optional(),<br>
+});</p><p>router.post(<br>
+  '/care-plans/:id/goals',<br>
+  requireAuth,<br>
+  validateBody(addGoalSchema),<br>
+  async (req, res, next) =&gt; {<br>
+    try {<br>
+      const goal = await carePlanService.addGoal(<br>
+        req.params.id,<br>
+        req.body.goalText,<br>
+        req.body.targetDate ? new Date(req.body.targetDate) : null,<br>
+        req.user.id<br>
+      );<br>
+      res.status(201).json(goal);<br>
+    } catch (error) {<br>
+      next(error);<br>
+    }<br>
+  }<br>
+);</p><p>export { router as carePlanRoutes };</code></pre><h2>Task Management</h2><p>Tasks are generated from care plans and assigned to visits:</p><pre><code class="language-typescript">// verticals/care-plans-tasks/src/services/task-service.ts<br>
+import { db } from '@folkcare/core';</p><p>export interface Task {<br>
+  id: string;<br>
+  visitId: string;<br>
+  templateId: string;<br>
+  name: string;<br>
+  description?: string;<br>
+  status: 'pending' | 'in_progress' | 'completed' | 'skipped';<br>
+  completedAt?: Date;<br>
+  completedBy?: string;<br>
+  notes?: string;<br>
+}</p><p>export class TaskService {<br>
+  async generateTasksForVisit(visitId: string): Promise&lt;Task[]&gt; {<br>
+    // Get the visit with its care plan<br>
+    const visitResult = await db.query(<br>
+      <code>SELECT v.*, cp.id as care_plan_id<br>
+       FROM visits v<br>
+       JOIN care_plans cp ON cp.id = v.care_plan_id<br>
+       WHERE v.id = $1</code>,<br>
+      [visitId]<br>
+    );</p><p>    if (visitResult.rows.length === 0) {<br>
+      throw new Error('Visit not found');<br>
+    }</p><p>    const visit = visitResult.rows[0];</p><p>    // Get task templates for this care plan<br>
+    const templatesResult = await db.query(<br>
+      <code>SELECT tt.*<br>
+       FROM task_templates tt<br>
+       JOIN interventions i ON i.id = tt.intervention_id<br>
+       WHERE i.care_plan_id = $1</code>,<br>
+      [visit.care_plan_id]<br>
+    );</p><p>    // Create tasks from templates<br>
+    const tasks: Task[] = [];</p><p>    for (const template of templatesResult.rows) {<br>
+      const taskResult = await db.query(<br>
+        <code>INSERT INTO tasks<br>
+         (visit_id, template_id, name, description, status)<br>
+         VALUES ($1, $2, $3, $4, 'pending')<br>
+         RETURNING *</code>,<br>
+        [visitId, template.id, template.name, template.description]<br>
+      );</p><p>      tasks.push(this.mapRow(taskResult.rows[0]));<br>
+    }</p><p>    return tasks;<br>
+  }</p><p>  async completeTask(<br>
+    taskId: string,<br>
+    userId: string,<br>
+    notes?: string<br>
+  ): Promise&lt;Task&gt; {<br>
+    const result = await db.query(<br>
+      <code>UPDATE tasks<br>
+       SET status = 'completed',<br>
+           completed_at = NOW(),<br>
+           completed_by = $2,<br>
+           notes = $3<br>
+       WHERE id = $1<br>
+       RETURNING *</code>,<br>
+      [taskId, userId, notes]<br>
+    );</p><p>    if (result.rows.length === 0) {<br>
+      throw new Error('Task not found');<br>
+    }</p><p>    return this.mapRow(result.rows[0]);<br>
+  }</p><p>  async skipTask(<br>
+    taskId: string,<br>
+    userId: string,<br>
+    reason: string<br>
+  ): Promise&lt;Task&gt; {<br>
+    const result = await db.query(<br>
+      <code>UPDATE tasks<br>
+       SET status = 'skipped',<br>
+           completed_by = $2,<br>
+           notes = $3<br>
+       WHERE id = $1<br>
+       RETURNING *</code>,<br>
+      [taskId, userId, reason]<br>
+    );</p><p>    if (result.rows.length === 0) {<br>
+      throw new Error('Task not found');<br>
+    }</p><p>    return this.mapRow(result.rows[0]);<br>
+  }</p><p>  async getTasksForVisit(visitId: string): Promise&lt;Task[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT * FROM tasks<br>
+       WHERE visit_id = $1<br>
+       ORDER BY created_at</code>,<br>
+      [visitId]<br>
+    );</p><p>    return result.rows.map(this.mapRow);<br>
+  }</p><p>  private mapRow(row: Record&lt;string, unknown&gt;): Task {<br>
+    return {<br>
+      id: row.id as string,<br>
+      visitId: row.visit_id as string,<br>
+      templateId: row.template_id as string,<br>
+      name: row.name as string,<br>
+      description: row.description as string | undefined,<br>
+      status: row.status as Task['status'],<br>
+      completedAt: row.completed_at<br>
+        ? new Date(row.completed_at as string)<br>
+        : undefined,<br>
+      completedBy: row.completed_by as string | undefined,<br>
+      notes: row.notes as string | undefined,<br>
+    };<br>
+  }<br>
+}</p><p>export const taskService = new TaskService();</code></pre><h2>Task Prioritization</h2><p>Not all tasks are equally urgent:</p><pre><code class="language-typescript">// verticals/care-plans-tasks/src/services/task-prioritization-service.ts</p><p>export interface PrioritizedTask {<br>
+  task: Task;<br>
+  priority: 'urgent' | 'high' | 'medium' | 'low';<br>
+  priorityScore: number;<br>
+  reasons: string[];<br>
+}</p><p>export class TaskPrioritizationService {<br>
+  prioritizeTasks(tasks: Task[], context: TaskContext): PrioritizedTask[] {<br>
+    return tasks<br>
+      .map((task) =&gt; this.calculatePriority(task, context))<br>
+      .sort((a, b) =&gt; b.priorityScore - a.priorityScore);<br>
+  }</p><p>  private calculatePriority(<br>
+    task: Task,<br>
+    context: TaskContext<br>
+  ): PrioritizedTask {<br>
+    let score = 50; // Base score<br>
+    const reasons: string[] = [];</p><p>    // Category-based priority<br>
+    if (task.category === 'medication') {<br>
+      score += 30;<br>
+      reasons.push('Medication tasks are time-sensitive');<br>
+    } else if (task.category === 'personal_care') {<br>
+      score += 20;<br>
+      reasons.push('Personal care is essential');<br>
+    }</p><p>    // Deadline proximity<br>
+    if (task.dueTime) {<br>
+      const hoursUntilDue =<br>
+        (task.dueTime.getTime() - Date.now()) / (1000 <em> 60 </em> 60);<br>
+      if (hoursUntilDue &lt; 1) {<br>
+        score += 40;<br>
+        reasons.push('Due within 1 hour');<br>
+      } else if (hoursUntilDue &lt; 4) {<br>
+        score += 20;<br>
+        reasons.push('Due within 4 hours');<br>
+      }<br>
+    }</p><p>    // Client condition<br>
+    if (context.clientCondition === 'declining') {<br>
+      score += 15;<br>
+      reasons.push('Client condition requires attention');<br>
+    }</p><p>    // Previous missed tasks<br>
+    if (context.previousMissedTasks &gt; 0) {<br>
+      score += 10 * context.previousMissedTasks;<br>
+      reasons.push(<code>${context.previousMissedTasks} similar tasks missed recently</code>);<br>
+    }</p><p>    // Determine priority level<br>
+    let priority: PrioritizedTask['priority'];<br>
+    if (score &gt;= 90) priority = 'urgent';<br>
+    else if (score &gt;= 70) priority = 'high';<br>
+    else if (score &gt;= 50) priority = 'medium';<br>
+    else priority = 'low';</p><p>    return {<br>
+      task,<br>
+      priority,<br>
+      priorityScore: score,<br>
+      reasons,<br>
+    };<br>
+  }<br>
+}</p><p>interface TaskContext {<br>
+  clientCondition: 'stable' | 'improving' | 'declining';<br>
+  previousMissedTasks: number;<br>
+}</code></pre><h2>Vibe Coding Care Plans</h2><p>When building care plan features with AI:</p><p>> "Create a TypeScript service for managing care plans with goals, interventions, and task templates"</p><p>> "Build an API endpoint that generates tasks from care plan templates when a visit is created"</p><p>> "Implement task prioritization that considers medication timing, client condition, and missed tasks"</p><p>> "Add goal progress tracking with notes and status updates"</p><p>AI understands healthcare workflows. Describe what you need in clinical terms, and it translates to code.</p><h2>Testing Care Plan Logic</h2><p>Care plans have complex business rules. Test them:</p><pre><code class="language-typescript">// verticals/care-plans-tasks/src/services/__tests__/care-plan-service.test.ts<br>
+import { describe, it, expect, beforeEach } from 'vitest';<br>
+import { carePlanService } from '../care-plan-service';</p><p>describe('CarePlanService', () =&gt; {<br>
+  describe('activateCarePlan', () =&gt; {<br>
+    it('should not activate a plan without goals', async () =&gt; {<br>
+      const plan = await carePlanService.createCarePlan({<br>
+        clientId: 'test-client',<br>
+        name: 'Test Plan',<br>
+        startDate: new Date(),<br>
+      }, 'test-user');</p><p>      await expect(<br>
+        carePlanService.activateCarePlan(plan.id, 'test-user')<br>
+      ).rejects.toThrow('Cannot activate care plan without goals');<br>
+    });</p><p>    it('should activate a plan with goals', async () =&gt; {<br>
+      const plan = await carePlanService.createCarePlan({<br>
+        clientId: 'test-client',<br>
+        name: 'Test Plan',<br>
+        startDate: new Date(),<br>
+      }, 'test-user');</p><p>      await carePlanService.addGoal(<br>
+        plan.id,<br>
+        'Improve mobility',<br>
+        null,<br>
+        'test-user'<br>
+      );</p><p>      const activated = await carePlanService.activateCarePlan(<br>
+        plan.id,<br>
+        'test-user'<br>
+      );</p><p>      expect(activated.status).toBe('active');<br>
+    });<br>
+  });<br>
+});</code></pre><h2>Next Steps</h2><p>With care plans in place, we need caregivers to execute them. In the next chapter, we'll build the caregiver management system—profiles, credentials, availability, and AI-powered matching that pairs the right caregiver with each patient.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-3" class="chapter">
+      <h2>Caregiver Management and Matching</h2>
+      <p>Caregivers are the frontline of home healthcare. A great care plan means nothing without the right person to execute it. This chapter covers managing caregiver profiles, credentials, availability, and using AI to match caregivers with patients.</p><h2>Caregiver Profiles</h2><p>Caregivers have complex profiles:</p><pre><code class="language-typescript">// verticals/scheduling-visits/src/types/caregiver.ts<br>
+export interface Caregiver {<br>
+  id: string;<br>
+  firstName: string;<br>
+  lastName: string;<br>
+  email: string;<br>
+  phone: string;<br>
+  hireDate: Date;<br>
+  status: 'active' | 'inactive' | 'on_leave' | 'terminated';</p><p>  // Location for matching<br>
+  latitude?: number;<br>
+  longitude?: number;<br>
+  maxTravelDistance: number; // miles</p><p>  // Qualifications<br>
+  certifications: Certification[];<br>
+  skills: string[];<br>
+  languages: string[];</p><p>  // Preferences and constraints<br>
+  preferredShiftTypes: ShiftType[];<br>
+  maxHoursPerWeek: number;</p><p>  // Performance<br>
+  averageRating?: number;<br>
+  totalVisits: number;</p><p>  hourlyRate: number;<br>
+}</p><p>export interface Certification {<br>
+  type: CertificationType;<br>
+  issuedDate: Date;<br>
+  expirationDate: Date;<br>
+  verificationStatus: 'pending' | 'verified' | 'expired';<br>
+}</p><p>export type CertificationType =<br>
+  | 'CNA'           // Certified Nursing Assistant<br>
+  | 'HHA'           // Home Health Aide<br>
+  | 'LPN'           // Licensed Practical Nurse<br>
+  | 'RN'            // Registered Nurse<br>
+  | 'CPR'           // CPR Certification<br>
+  | 'FIRST_AID'<br>
+  | 'MED_ADMIN'     // Medication Administration<br>
+  | 'DEMENTIA_CARE'<br>
+  | 'HOSPICE';</p><p>export type ShiftType = 'morning' | 'afternoon' | 'evening' | 'overnight' | 'live_in';</code></pre><h2>Caregiver Service</h2><pre><code class="language-typescript">// verticals/scheduling-visits/src/services/caregiver-service.ts<br>
+import { db } from '@folkcare/core';</p><p>export class CaregiverService {<br>
+  async createCaregiver(input: CreateCaregiverInput): Promise&lt;Caregiver&gt; {<br>
+    const result = await db.query(<br>
+      <code>INSERT INTO caregivers<br>
+       (first_name, last_name, email, phone, hire_date,<br>
+        latitude, longitude, max_travel_distance,<br>
+        certifications, skills, languages,<br>
+        preferred_shift_types, max_hours_per_week, hourly_rate)<br>
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)<br>
+       RETURNING *</code>,<br>
+      [<br>
+        input.firstName,<br>
+        input.lastName,<br>
+        input.email,<br>
+        input.phone,<br>
+        input.hireDate,<br>
+        input.latitude,<br>
+        input.longitude,<br>
+        input.maxTravelDistance,<br>
+        JSON.stringify(input.certifications),<br>
+        input.skills,<br>
+        input.languages,<br>
+        input.preferredShiftTypes,<br>
+        input.maxHoursPerWeek,<br>
+        input.hourlyRate,<br>
+      ]<br>
+    );</p><p>    return this.mapRow(result.rows[0]);<br>
+  }</p><p>  async getCaregiverWithAvailability(<br>
+    id: string,<br>
+    startDate: Date,<br>
+    endDate: Date<br>
+  ): Promise&lt;CaregiverWithAvailability&gt; {<br>
+    const caregiver = await this.getCaregiver(id);<br>
+    if (!caregiver) throw new Error('Caregiver not found');</p><p>    const availability = await this.getAvailability(id, startDate, endDate);<br>
+    const scheduledVisits = await this.getScheduledVisits(id, startDate, endDate);</p><p>    return {<br>
+      ...caregiver,<br>
+      availability,<br>
+      scheduledVisits,<br>
+    };<br>
+  }</p><p>  async updateCertification(<br>
+    caregiverId: string,<br>
+    certification: Certification<br>
+  ): Promise&lt;void&gt; {<br>
+    const caregiver = await this.getCaregiver(caregiverId);<br>
+    if (!caregiver) throw new Error('Caregiver not found');</p><p>    const certifications = caregiver.certifications.filter(<br>
+      (c) =&gt; c.type !== certification.type<br>
+    );<br>
+    certifications.push(certification);</p><p>    await db.query(<br>
+      <code>UPDATE caregivers<br>
+       SET certifications = $1, updated_at = NOW()<br>
+       WHERE id = $2</code>,<br>
+      [JSON.stringify(certifications), caregiverId]<br>
+    );<br>
+  }</p><p>  async checkCertificationCompliance(caregiverId: string): Promise&lt;ComplianceResult&gt; {<br>
+    const caregiver = await this.getCaregiver(caregiverId);<br>
+    if (!caregiver) throw new Error('Caregiver not found');</p><p>    const issues: ComplianceIssue[] = [];<br>
+    const today = new Date();</p><p>    for (const cert of caregiver.certifications) {<br>
+      const expirationDate = new Date(cert.expirationDate);<br>
+      const daysUntilExpiration = Math.floor(<br>
+        (expirationDate.getTime() - today.getTime()) / (1000 <em> 60 </em> 60 * 24)<br>
+      );</p><p>      if (daysUntilExpiration &lt; 0) {<br>
+        issues.push({<br>
+          type: 'expired_certification',<br>
+          severity: 'critical',<br>
+          message: <code>${cert.type} certification expired ${Math.abs(daysUntilExpiration)} days ago</code>,<br>
+          certification: cert,<br>
+        });<br>
+      } else if (daysUntilExpiration &lt; 30) {<br>
+        issues.push({<br>
+          type: 'expiring_certification',<br>
+          severity: 'warning',<br>
+          message: <code>${cert.type} certification expires in ${daysUntilExpiration} days</code>,<br>
+          certification: cert,<br>
+        });<br>
+      }<br>
+    }</p><p>    return {<br>
+      compliant: issues.filter((i) =&gt; i.severity === 'critical').length === 0,<br>
+      issues,<br>
+    };<br>
+  }<br>
+}</code></pre><h2>Availability Management</h2><p>Caregivers set their availability:</p><pre><code class="language-typescript">// verticals/scheduling-visits/src/services/availability-service.ts<br>
+export interface AvailabilityBlock {<br>
+  id: string;<br>
+  caregiverId: string;<br>
+  dayOfWeek: number; // 0-6 (Sunday-Saturday)<br>
+  startTime: string; // &quot;09:00&quot;<br>
+  endTime: string;   // &quot;17:00&quot;<br>
+  isRecurring: boolean;<br>
+  effectiveDate?: Date;<br>
+  expirationDate?: Date;<br>
+}</p><p>export interface TimeOffRequest {<br>
+  id: string;<br>
+  caregiverId: string;<br>
+  startDate: Date;<br>
+  endDate: Date;<br>
+  reason: string;<br>
+  status: 'pending' | 'approved' | 'denied';<br>
+}</p><p>export class AvailabilityService {<br>
+  async setRecurringAvailability(<br>
+    caregiverId: string,<br>
+    blocks: Omit&lt;AvailabilityBlock, 'id' | 'caregiverId'&gt;[]<br>
+  ): Promise&lt;void&gt; {<br>
+    await db.query('BEGIN');</p><p>    try {<br>
+      // Clear existing recurring availability<br>
+      await db.query(<br>
+        <code>DELETE FROM availability_blocks<br>
+         WHERE caregiver_id = $1 AND is_recurring = true</code>,<br>
+        [caregiverId]<br>
+      );</p><p>      // Insert new blocks<br>
+      for (const block of blocks) {<br>
+        await db.query(<br>
+          <code>INSERT INTO availability_blocks<br>
+           (caregiver_id, day_of_week, start_time, end_time, is_recurring)<br>
+           VALUES ($1, $2, $3, $4, true)</code>,<br>
+          [caregiverId, block.dayOfWeek, block.startTime, block.endTime]<br>
+        );<br>
+      }</p><p>      await db.query('COMMIT');<br>
+    } catch (error) {<br>
+      await db.query('ROLLBACK');<br>
+      throw error;<br>
+    }<br>
+  }</p><p>  async requestTimeOff(<br>
+    caregiverId: string,<br>
+    startDate: Date,<br>
+    endDate: Date,<br>
+    reason: string<br>
+  ): Promise&lt;TimeOffRequest&gt; {<br>
+    // Check for conflicting scheduled visits<br>
+    const conflicts = await db.query(<br>
+      <code>SELECT COUNT(*) as count<br>
+       FROM visits<br>
+       WHERE caregiver_id = $1<br>
+         AND scheduled_start &gt;= $2<br>
+         AND scheduled_start &lt;= $3<br>
+         AND status NOT IN ('cancelled')</code>,<br>
+      [caregiverId, startDate, endDate]<br>
+    );</p><p>    const conflictCount = parseInt(conflicts.rows[0].count);</p><p>    const result = await db.query(<br>
+      <code>INSERT INTO time_off_requests<br>
+       (caregiver_id, start_date, end_date, reason, status, conflict_count)<br>
+       VALUES ($1, $2, $3, $4, 'pending', $5)<br>
+       RETURNING *</code>,<br>
+      [caregiverId, startDate, endDate, reason, conflictCount]<br>
+    );</p><p>    return result.rows[0];<br>
+  }</p><p>  async getAvailableSlots(<br>
+    caregiverId: string,<br>
+    date: Date<br>
+  ): Promise&lt;TimeSlot[]&gt; {<br>
+    const dayOfWeek = date.getDay();</p><p>    // Get recurring availability for this day<br>
+    const availabilityResult = await db.query(<br>
+      <code>SELECT * FROM availability_blocks<br>
+       WHERE caregiver_id = $1<br>
+         AND day_of_week = $2<br>
+         AND is_recurring = true</code>,<br>
+      [caregiverId, dayOfWeek]<br>
+    );</p><p>    // Get scheduled visits for this day<br>
+    const visitsResult = await db.query(<br>
+      <code>SELECT scheduled_start, scheduled_end<br>
+       FROM visits<br>
+       WHERE caregiver_id = $1<br>
+         AND DATE(scheduled_start) = $2<br>
+         AND status NOT IN ('cancelled')<br>
+       ORDER BY scheduled_start</code>,<br>
+      [caregiverId, date.toISOString().split('T')[0]]<br>
+    );</p><p>    // Calculate available slots by subtracting visits from availability<br>
+    const slots: TimeSlot[] = [];</p><p>    for (const block of availabilityResult.rows) {<br>
+      const availableStart = this.parseTime(date, block.start_time);<br>
+      const availableEnd = this.parseTime(date, block.end_time);</p><p>      // Subtract scheduled visits<br>
+      let currentStart = availableStart;</p><p>      for (const visit of visitsResult.rows) {<br>
+        const visitStart = new Date(visit.scheduled_start);<br>
+        const visitEnd = new Date(visit.scheduled_end);</p><p>        if (visitStart &gt; currentStart) {<br>
+          slots.push({<br>
+            start: currentStart,<br>
+            end: visitStart,<br>
+          });<br>
+        }</p><p>        currentStart = visitEnd &gt; currentStart ? visitEnd : currentStart;<br>
+      }</p><p>      if (currentStart &lt; availableEnd) {<br>
+        slots.push({<br>
+          start: currentStart,<br>
+          end: availableEnd,<br>
+        });<br>
+      }<br>
+    }</p><p>    return slots;<br>
+  }</p><p>  private parseTime(date: Date, timeStr: string): Date {<br>
+    const [hours, minutes] = timeStr.split(':').map(Number);<br>
+    const result = new Date(date);<br>
+    result.setHours(hours, minutes, 0, 0);<br>
+    return result;<br>
+  }<br>
+}</code></pre><h2>AI-Powered Caregiver Matching</h2><p>Matching the right caregiver to a patient is complex. AI helps:</p><pre><code class="language-typescript">// verticals/scheduling-visits/src/services/caregiver-matching-service.ts<br>
+import Anthropic from '@anthropic-ai/sdk';<br>
+import { db } from '@folkcare/core';</p><p>export interface MatchResult {<br>
+  caregiverId: string;<br>
+  score: number;<br>
+  reasons: string[];<br>
+  warnings: string[];<br>
+}</p><p>export class CaregiverMatchingService {<br>
+  private anthropic: Anthropic;</p><p>  constructor() {<br>
+    this.anthropic = new Anthropic();<br>
+  }</p><p>  async findBestMatches(<br>
+    clientId: string,<br>
+    visitDate: Date,<br>
+    visitDuration: number<br>
+  ): Promise&lt;MatchResult[]&gt; {<br>
+    // Get client information<br>
+    const client = await this.getClient(clientId);<br>
+    const carePlan = await this.getActiveCarePlan(clientId);</p><p>    // Get available caregivers<br>
+    const availableCaregivers = await this.getAvailableCaregivers(<br>
+      visitDate,<br>
+      visitDuration,<br>
+      client.latitude,<br>
+      client.longitude<br>
+    );</p><p>    if (availableCaregivers.length === 0) {<br>
+      return [];<br>
+    }</p><p>    // Get past visits for continuity scoring<br>
+    const pastVisits = await this.getPastVisits(clientId);</p><p>    // Use AI to rank caregivers<br>
+    const matches = await this.rankWithAI(<br>
+      client,<br>
+      carePlan,<br>
+      availableCaregivers,<br>
+      pastVisits<br>
+    );</p><p>    return matches;<br>
+  }</p><p>  private async getAvailableCaregivers(<br>
+    date: Date,<br>
+    duration: number,<br>
+    clientLat: number,<br>
+    clientLng: number<br>
+  ): Promise&lt;Caregiver[]&gt; {<br>
+    const dayOfWeek = date.getDay();<br>
+    const startTime = date.toTimeString().slice(0, 5);</p><p>    // Find caregivers who are:<br>
+    // 1. Available on this day/time<br>
+    // 2. Within travel distance<br>
+    // 3. Have required certifications (basic filter)<br>
+    const result = await db.query(<br>
+      <code>SELECT c.*,<br>
+              earth_distance(<br>
+                ll_to_earth(c.latitude, c.longitude),<br>
+                ll_to_earth($1, $2)<br>
+              ) / 1609.34 as distance_miles<br>
+       FROM caregivers c<br>
+       JOIN availability_blocks ab ON ab.caregiver_id = c.id<br>
+       WHERE c.status = 'active'<br>
+         AND ab.day_of_week = $3<br>
+         AND ab.start_time &lt;= $4<br>
+         AND ab.end_time &gt;= $5<br>
+         AND earth_distance(<br>
+               ll_to_earth(c.latitude, c.longitude),<br>
+               ll_to_earth($1, $2)<br>
+             ) / 1609.34 &lt;= c.max_travel_distance<br>
+       ORDER BY distance_miles</code>,<br>
+      [<br>
+        clientLat,<br>
+        clientLng,<br>
+        dayOfWeek,<br>
+        startTime,<br>
+        this.addMinutes(startTime, duration),<br>
+      ]<br>
+    );</p><p>    return result.rows;<br>
+  }</p><p>  private async rankWithAI(<br>
+    client: Client,<br>
+    carePlan: CarePlan,<br>
+    caregivers: Caregiver[],<br>
+    pastVisits: Visit[]<br>
+  ): Promise&lt;MatchResult[]&gt; {<br>
+    // Build context for AI<br>
+    const caregiverSummaries = caregivers.map((c) =&gt; ({<br>
+      id: c.id,<br>
+      name: <code>${c.firstName} ${c.lastName}</code>,<br>
+      certifications: c.certifications.map((cert) =&gt; cert.type),<br>
+      skills: c.skills,<br>
+      languages: c.languages,<br>
+      rating: c.averageRating,<br>
+      distanceMiles: c.distance_miles,<br>
+      pastVisitsWithClient: pastVisits.filter((v) =&gt; v.caregiverId === c.id).length,<br>
+    }));</p><p>    const prompt = <code>You are a healthcare staffing coordinator. Match caregivers to this client.</p><p>Client Needs:<br>
+- Conditions: ${client.conditions.join(', ')}<br>
+- Languages: ${client.preferredLanguages.join(', ')}<br>
+- Care Plan Tasks: ${carePlan.taskTypes.join(', ')}<br>
+- Special Requirements: ${carePlan.specialRequirements || 'None'}</p><p>Available Caregivers:<br>
+${JSON.stringify(caregiverSummaries, null, 2)}</p><p>Rank these caregivers from best to worst match. For each, provide:<br>
+1. A score from 0-100<br>
+2. 2-3 reasons why they're a good/poor match<br>
+3. Any warnings (certification gaps, distance concerns, etc.)</p><p>Return as JSON array:<br>
+[<br>
+  {<br>
+    &quot;caregiverId&quot;: &quot;...&quot;,<br>
+    &quot;score&quot;: 85,<br>
+    &quot;reasons&quot;: [&quot;...&quot;, &quot;...&quot;],<br>
+    &quot;warnings&quot;: [&quot;...&quot;]<br>
+  }<br>
+]</code>;</p><p>    const response = await this.anthropic.messages.create({<br>
+      model: 'claude-sonnet-4-20250514',<br>
+      max_tokens: 2000,<br>
+      messages: [{ role: 'user', content: prompt }],<br>
+    });</p><p>    const content = response.content[0];<br>
+    if (content.type !== 'text') {<br>
+      throw new Error('Unexpected response type');<br>
+    }</p><p>    // Parse JSON from response<br>
+    const jsonMatch = content.text.match(/\[[\s\S]*\]/);<br>
+    if (!jsonMatch) {<br>
+      throw new Error('Could not parse AI response');<br>
+    }</p><p>    return JSON.parse(jsonMatch[0]);<br>
+  }</p><p>  private addMinutes(time: string, minutes: number): string {<br>
+    const [hours, mins] = time.split(':').map(Number);<br>
+    const totalMinutes = hours * 60 + mins + minutes;<br>
+    const newHours = Math.floor(totalMinutes / 60) % 24;<br>
+    const newMins = totalMinutes % 60;<br>
+    return <code>${String(newHours).padStart(2, '0')}:${String(newMins).padStart(2, '0')}</code>;<br>
+  }<br>
+}</code></pre><h2>Open Shifts</h2><p>When caregivers aren't available, create open shifts:</p><pre><code class="language-typescript">// verticals/scheduling-visits/src/services/open-shift-service.ts<br>
+export interface OpenShift {<br>
+  id: string;<br>
+  clientId: string;<br>
+  carePlanId: string;<br>
+  scheduledStart: Date;<br>
+  scheduledEnd: Date;<br>
+  status: 'open' | 'claimed' | 'filled' | 'cancelled';<br>
+  requiredCertifications: string[];<br>
+  hourlyRate: number;<br>
+  claimedBy?: string;<br>
+  claimedAt?: Date;<br>
+}</p><p>export class OpenShiftService {<br>
+  async createOpenShift(visit: Visit): Promise&lt;OpenShift&gt; {<br>
+    const carePlan = await db.query(<br>
+      <code>SELECT * FROM care_plans WHERE id = $1</code>,<br>
+      [visit.carePlanId]<br>
+    );</p><p>    const result = await db.query(<br>
+      <code>INSERT INTO open_shifts<br>
+       (client_id, care_plan_id, scheduled_start, scheduled_end,<br>
+        required_certifications, hourly_rate, status)<br>
+       VALUES ($1, $2, $3, $4, $5, $6, 'open')<br>
+       RETURNING *</code>,<br>
+      [<br>
+        visit.clientId,<br>
+        visit.carePlanId,<br>
+        visit.scheduledStart,<br>
+        visit.scheduledEnd,<br>
+        carePlan.rows[0].required_certifications,<br>
+        carePlan.rows[0].hourly_rate,<br>
+      ]<br>
+    );</p><p>    // Notify eligible caregivers<br>
+    await this.notifyEligibleCaregivers(result.rows[0]);</p><p>    return result.rows[0];<br>
+  }</p><p>  async claimShift(shiftId: string, caregiverId: string): Promise&lt;OpenShift&gt; {<br>
+    await db.query('BEGIN');</p><p>    try {<br>
+      // Verify shift is still open<br>
+      const shift = await db.query(<br>
+        <code>SELECT * FROM open_shifts WHERE id = $1 FOR UPDATE</code>,<br>
+        [shiftId]<br>
+      );</p><p>      if (shift.rows[0].status !== 'open') {<br>
+        throw new Error('Shift is no longer available');<br>
+      }</p><p>      // Verify caregiver is eligible<br>
+      const eligible = await this.isCaregiverEligible(<br>
+        caregiverId,<br>
+        shift.rows[0]<br>
+      );</p><p>      if (!eligible) {<br>
+        throw new Error('Caregiver does not meet requirements');<br>
+      }</p><p>      // Update shift<br>
+      const result = await db.query(<br>
+        <code>UPDATE open_shifts<br>
+         SET status = 'claimed', claimed_by = $2, claimed_at = NOW()<br>
+         WHERE id = $1<br>
+         RETURNING *</code>,<br>
+        [shiftId, caregiverId]<br>
+      );</p><p>      // Create the visit assignment<br>
+      await db.query(<br>
+        <code>UPDATE visits<br>
+         SET caregiver_id = $1, status = 'scheduled'<br>
+         WHERE client_id = $2<br>
+           AND care_plan_id = $3<br>
+           AND scheduled_start = $4</code>,<br>
+        [<br>
+          caregiverId,<br>
+          result.rows[0].client_id,<br>
+          result.rows[0].care_plan_id,<br>
+          result.rows[0].scheduled_start,<br>
+        ]<br>
+      );</p><p>      await db.query('COMMIT');</p><p>      return result.rows[0];<br>
+    } catch (error) {<br>
+      await db.query('ROLLBACK');<br>
+      throw error;<br>
+    }<br>
+  }</p><p>  private async isCaregiverEligible(<br>
+    caregiverId: string,<br>
+    shift: OpenShift<br>
+  ): Promise&lt;boolean&gt; {<br>
+    const caregiver = await db.query(<br>
+      <code>SELECT * FROM caregivers WHERE id = $1</code>,<br>
+      [caregiverId]<br>
+    );</p><p>    if (caregiver.rows[0].status !== 'active') {<br>
+      return false;<br>
+    }</p><p>    // Check certifications<br>
+    const certs = caregiver.rows[0].certifications as Certification[];<br>
+    const required = shift.requiredCertifications;</p><p>    for (const req of required) {<br>
+      const hasCert = certs.some(<br>
+        (c) =&gt; c.type === req &amp;&amp; new Date(c.expirationDate) &gt; new Date()<br>
+      );<br>
+      if (!hasCert) return false;<br>
+    }</p><p>    // Check availability<br>
+    const conflicts = await db.query(<br>
+      <code>SELECT COUNT(*) as count FROM visits<br>
+       WHERE caregiver_id = $1<br>
+         AND status NOT IN ('cancelled')<br>
+         AND (<br>
+           (scheduled_start &lt;= $2 AND scheduled_end &gt; $2)<br>
+           OR (scheduled_start &lt; $3 AND scheduled_end &gt;= $3)<br>
+           OR (scheduled_start &gt;= $2 AND scheduled_end &lt;= $3)<br>
+         )</code>,<br>
+      [caregiverId, shift.scheduledStart, shift.scheduledEnd]<br>
+    );</p><p>    return parseInt(conflicts.rows[0].count) === 0;<br>
+  }<br>
+}</code></pre><h2>Vibe Coding Caregiver Features</h2><p>When building caregiver management with AI:</p><p>> "Create a caregiver availability system with recurring weekly schedules and time-off requests"</p><p>> "Build an AI-powered caregiver matching service that considers certifications, distance, language, and past care history"</p><p>> "Implement an open shift system where caregivers can claim unassigned visits"</p><p>> "Add certification expiration tracking with automated compliance alerts"</p><p>The AI understands healthcare staffing patterns. Describe the workflow, get the code.</p><h2>Next Steps</h2><p>With caregivers matched to patients, we need to verify they actually provide care. In the next chapter, we'll implement Electronic Visit Verification—the compliance requirement that tracks every visit with timestamps, GPS, and signatures.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-4" class="chapter">
+      <h2>Electronic Visit Verification</h2>
+      <p>Electronic Visit Verification (EVV) is federally mandated for Medicaid-funded home healthcare services. It's not optional—agencies that don't comply don't get paid. This chapter covers building a compliant EVV system.</p><h2>EVV Requirements</h2><p>The 21st Century Cures Act requires verifying six elements:</p><p>1. <strong>Type of service</strong> - What care was provided<br>
+2. <strong>Individual receiving service</strong> - Patient identity<br>
+3. <strong>Individual providing service</strong> - Caregiver identity<br>
+4. <strong>Date of service</strong> - When the visit occurred<br>
+5. <strong>Time in/out</strong> - Start and end times<br>
+6. <strong>Location</strong> - Where service was delivered</p><p>States implement EVV through aggregators—centralized systems that collect data from all providers. Your software must submit to these aggregators.</p><h2>EVV Data Model</h2><pre><code class="language-typescript">// verticals/scheduling-visits/src/types/evv.ts<br>
+export interface EVVRecord {<br>
+  id: string;<br>
+  visitId: string;</p><p>  // The six required elements<br>
+  serviceType: string;<br>
+  clientVerified: boolean;<br>
+  caregiverVerified: boolean;<br>
+  serviceDate: Date;<br>
+  clockInTime: Date;<br>
+  clockOutTime: Date;<br>
+  clockInLocation: GeoLocation;<br>
+  clockOutLocation: GeoLocation;</p><p>  // Verification methods<br>
+  verificationMethod: EVVVerificationMethod;<br>
+  clientSignature?: string; // Base64 or URL<br>
+  caregiverSignature?: string;</p><p>  // Aggregator submission<br>
+  submittedToAggregator: boolean;<br>
+  aggregatorSubmissionTime?: Date;<br>
+  aggregatorResponse?: AggregatorResponse;<br>
+  aggregatorRecordId?: string;</p><p>  // Exceptions and notes<br>
+  exceptions: EVVException[];<br>
+  notes?: string;</p><p>  createdAt: Date;<br>
+  updatedAt: Date;<br>
+}</p><p>export interface GeoLocation {<br>
+  latitude: number;<br>
+  longitude: number;<br>
+  accuracy: number; // meters<br>
+  capturedAt: Date;<br>
+}</p><p>export type EVVVerificationMethod =<br>
+  | 'mobile_gps'           // GPS from mobile app<br>
+  | 'telephony'            // Call-in/call-out<br>
+  | 'fixed_device'         // Device at client home<br>
+  | 'biometric'            // Fingerprint, face ID<br>
+  | 'manual_attestation';  // Paper backup</p><p>export interface EVVException {<br>
+  type: EVVExceptionType;<br>
+  reason: string;<br>
+  resolvedAt?: Date;<br>
+  resolvedBy?: string;<br>
+}</p><p>export type EVVExceptionType =<br>
+  | 'location_mismatch'    // GPS doesn't match client address<br>
+  | 'time_discrepancy'     // Clock times don't match schedule<br>
+  | 'missing_signature'    // Signature not captured<br>
+  | 'early_clockin'        // Arrived too early<br>
+  | 'late_clockout'        // Left too late<br>
+  | 'no_gps'               // Location couldn't be captured<br>
+  | 'manual_entry';        // Data entered manually (needs review)</p><p>export interface AggregatorResponse {<br>
+  status: 'accepted' | 'rejected' | 'pending';<br>
+  recordId?: string;<br>
+  errors?: string[];<br>
+  warnings?: string[];<br>
+}</code></pre><h2>Clock-In/Clock-Out Service</h2><p>The core EVV functionality:</p><pre><code class="language-typescript">// verticals/scheduling-visits/src/services/evv-service.ts<br>
+import { db } from '@folkcare/core';</p><p>const MAX_DISTANCE_METERS = 150; // Maximum distance from client address<br>
+const EARLY_CLOCKIN_MINUTES = 15; // How early is acceptable<br>
+const LATE_CLOCKOUT_MINUTES = 30; // How late is acceptable</p><p>export class EVVService {<br>
+  async clockIn(<br>
+    visitId: string,<br>
+    caregiverId: string,<br>
+    location: GeoLocation,<br>
+    verificationMethod: EVVVerificationMethod<br>
+  ): Promise&lt;EVVRecord&gt; {<br>
+    // Get visit details<br>
+    const visit = await this.getVisit(visitId);</p><p>    if (!visit) {<br>
+      throw new Error('Visit not found');<br>
+    }</p><p>    if (visit.caregiverId !== caregiverId) {<br>
+      throw new Error('Caregiver not assigned to this visit');<br>
+    }</p><p>    // Get client location<br>
+    const client = await this.getClient(visit.clientId);</p><p>    // Validate location<br>
+    const exceptions: EVVException[] = [];<br>
+    const distance = this.calculateDistance(<br>
+      location.latitude,<br>
+      location.longitude,<br>
+      client.latitude,<br>
+      client.longitude<br>
+    );</p><p>    if (distance &gt; MAX_DISTANCE_METERS) {<br>
+      exceptions.push({<br>
+        type: 'location_mismatch',<br>
+        reason: <code>GPS location ${Math.round(distance)}m from client address (max ${MAX_DISTANCE_METERS}m)</code>,<br>
+      });<br>
+    }</p><p>    // Validate timing<br>
+    const scheduledStart = new Date(visit.scheduledStart);<br>
+    const minutesEarly = (scheduledStart.getTime() - location.capturedAt.getTime()) / 60000;</p><p>    if (minutesEarly &gt; EARLY_CLOCKIN_MINUTES) {<br>
+      exceptions.push({<br>
+        type: 'early_clockin',<br>
+        reason: <code>Clocked in ${Math.round(minutesEarly)} minutes early</code>,<br>
+      });<br>
+    }</p><p>    // Create EVV record<br>
+    const result = await db.query(<br>
+      <code>INSERT INTO evv_records<br>
+       (visit_id, service_type, clock_in_time, clock_in_latitude,<br>
+        clock_in_longitude, clock_in_accuracy, verification_method,<br>
+        caregiver_verified, exceptions)<br>
+       VALUES ($1, $2, $3, $4, $5, $6, $7, true, $8)<br>
+       RETURNING *</code>,<br>
+      [<br>
+        visitId,<br>
+        visit.serviceType,<br>
+        location.capturedAt,<br>
+        location.latitude,<br>
+        location.longitude,<br>
+        location.accuracy,<br>
+        verificationMethod,<br>
+        JSON.stringify(exceptions),<br>
+      ]<br>
+    );</p><p>    // Update visit status<br>
+    await db.query(<br>
+      <code>UPDATE visits<br>
+       SET status = 'in_progress', actual_start = $2,<br>
+           clock_in_latitude = $3, clock_in_longitude = $4<br>
+       WHERE id = $1</code>,<br>
+      [visitId, location.capturedAt, location.latitude, location.longitude]<br>
+    );</p><p>    return this.mapRow(result.rows[0]);<br>
+  }</p><p>  async clockOut(<br>
+    visitId: string,<br>
+    caregiverId: string,<br>
+    location: GeoLocation,<br>
+    clientSignature?: string,<br>
+    caregiverSignature?: string,<br>
+    notes?: string<br>
+  ): Promise&lt;EVVRecord&gt; {<br>
+    // Get existing EVV record<br>
+    const evvRecord = await this.getEVVRecordByVisit(visitId);</p><p>    if (!evvRecord) {<br>
+      throw new Error('No clock-in record found');<br>
+    }</p><p>    const visit = await this.getVisit(visitId);<br>
+    const client = await this.getClient(visit.clientId);</p><p>    // Validate location<br>
+    const exceptions = [...evvRecord.exceptions];<br>
+    const distance = this.calculateDistance(<br>
+      location.latitude,<br>
+      location.longitude,<br>
+      client.latitude,<br>
+      client.longitude<br>
+    );</p><p>    if (distance &gt; MAX_DISTANCE_METERS) {<br>
+      exceptions.push({<br>
+        type: 'location_mismatch',<br>
+        reason: <code>Clock-out GPS ${Math.round(distance)}m from client address</code>,<br>
+      });<br>
+    }</p><p>    // Validate timing<br>
+    const scheduledEnd = new Date(visit.scheduledEnd);<br>
+    const minutesLate = (location.capturedAt.getTime() - scheduledEnd.getTime()) / 60000;</p><p>    if (minutesLate &gt; LATE_CLOCKOUT_MINUTES) {<br>
+      exceptions.push({<br>
+        type: 'late_clockout',<br>
+        reason: <code>Clocked out ${Math.round(minutesLate)} minutes late</code>,<br>
+      });<br>
+    }</p><p>    // Check for missing signatures<br>
+    if (!clientSignature) {<br>
+      exceptions.push({<br>
+        type: 'missing_signature',<br>
+        reason: 'Client signature not captured',<br>
+      });<br>
+    }</p><p>    // Update EVV record<br>
+    const result = await db.query(<br>
+      <code>UPDATE evv_records<br>
+       SET clock_out_time = $2,<br>
+           clock_out_latitude = $3,<br>
+           clock_out_longitude = $4,<br>
+           clock_out_accuracy = $5,<br>
+           client_signature_url = $6,<br>
+           caregiver_signature_url = $7,<br>
+           client_verified = $8,<br>
+           exceptions = $9,<br>
+           notes = $10,<br>
+           updated_at = NOW()<br>
+       WHERE id = $1<br>
+       RETURNING *</code>,<br>
+      [<br>
+        evvRecord.id,<br>
+        location.capturedAt,<br>
+        location.latitude,<br>
+        location.longitude,<br>
+        location.accuracy,<br>
+        clientSignature,<br>
+        caregiverSignature,<br>
+        !!clientSignature,<br>
+        JSON.stringify(exceptions),<br>
+        notes,<br>
+      ]<br>
+    );</p><p>    // Update visit status<br>
+    await db.query(<br>
+      <code>UPDATE visits<br>
+       SET status = 'completed', actual_end = $2,<br>
+           clock_out_latitude = $3, clock_out_longitude = $4,<br>
+           notes = $5<br>
+       WHERE id = $1</code>,<br>
+      [visitId, location.capturedAt, location.latitude, location.longitude, notes]<br>
+    );</p><p>    // Trigger aggregator submission<br>
+    await this.queueAggregatorSubmission(result.rows[0].id);</p><p>    return this.mapRow(result.rows[0]);<br>
+  }</p><p>  private calculateDistance(<br>
+    lat1: number,<br>
+    lon1: number,<br>
+    lat2: number,<br>
+    lon2: number<br>
+  ): number {<br>
+    // Haversine formula<br>
+    const R = 6371000; // Earth's radius in meters<br>
+    const dLat = this.toRad(lat2 - lat1);<br>
+    const dLon = this.toRad(lon2 - lon1);<br>
+    const a =<br>
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +<br>
+      Math.cos(this.toRad(lat1)) *<br>
+        Math.cos(this.toRad(lat2)) *<br>
+        Math.sin(dLon / 2) *<br>
+        Math.sin(dLon / 2);<br>
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));<br>
+    return R * c;<br>
+  }</p><p>  private toRad(deg: number): number {<br>
+    return deg * (Math.PI / 180);<br>
+  }<br>
+}</code></pre><h2>Mobile App Clock-In Flow</h2><p>The caregiver mobile app handles EVV:</p><pre><code class="language-typescript">// Example React Native component structure<br>
+// mobile/src/screens/ClockInScreen.tsx</p><p>interface ClockInScreenProps {<br>
+  visit: Visit;<br>
+}</p><p>export function ClockInScreen({ visit }: ClockInScreenProps) {<br>
+  const [location, setLocation] = useState&lt;GeoLocation | null&gt;(null);<br>
+  const [loading, setLoading] = useState(false);<br>
+  const [error, setError] = useState&lt;string | null&gt;(null);</p><p>  useEffect(() =&gt; {<br>
+    // Request location on mount<br>
+    requestLocationPermission();<br>
+    captureLocation();<br>
+  }, []);</p><p>  const captureLocation = async () =&gt; {<br>
+    try {<br>
+      const position = await Geolocation.getCurrentPosition({<br>
+        enableHighAccuracy: true,<br>
+        timeout: 15000,<br>
+        maximumAge: 10000,<br>
+      });</p><p>      setLocation({<br>
+        latitude: position.coords.latitude,<br>
+        longitude: position.coords.longitude,<br>
+        accuracy: position.coords.accuracy,<br>
+        capturedAt: new Date(),<br>
+      });<br>
+    } catch (err) {<br>
+      setError('Could not get location. Please enable GPS.');<br>
+    }<br>
+  };</p><p>  const handleClockIn = async () =&gt; {<br>
+    if (!location) {<br>
+      setError('Location required for clock-in');<br>
+      return;<br>
+    }</p><p>    setLoading(true);<br>
+    try {<br>
+      await api.clockIn(visit.id, location);<br>
+      navigation.navigate('VisitInProgress', { visitId: visit.id });<br>
+    } catch (err) {<br>
+      setError(err.message);<br>
+    } finally {<br>
+      setLoading(false);<br>
+    }<br>
+  };</p><p>  return (<br>
+    &lt;View style={styles.container}&gt;<br>
+      &lt;VisitHeader visit={visit} /&gt;</p><p>      &lt;LocationIndicator<br>
+        location={location}<br>
+        clientAddress={visit.clientAddress}<br>
+        isWithinRange={location ? isWithinRange(location, visit) : false}<br>
+      /&gt;</p><p>      {error &amp;&amp; &lt;ErrorMessage message={error} /&gt;}</p><p>      &lt;Button<br>
+        title=&quot;Clock In&quot;<br>
+        onPress={handleClockIn}<br>
+        loading={loading}<br>
+        disabled={!location}<br>
+      /&gt;</p><p>      &lt;Text style={styles.disclaimer}&gt;<br>
+        By clocking in, you verify that you are at the client's location<br>
+        and ready to provide care.<br>
+      &lt;/Text&gt;<br>
+    &lt;/View&gt;<br>
+  );<br>
+}</code></pre><h2>Signature Capture</h2><p>Signatures verify client participation:</p><pre><code class="language-typescript">// mobile/src/components/SignatureCapture.tsx<br>
+import SignatureCanvas from 'react-native-signature-canvas';</p><p>interface SignatureCaptureProps {<br>
+  onSave: (signatureBase64: string) =&gt; void;<br>
+  title: string;<br>
+}</p><p>export function SignatureCapture({ onSave, title }: SignatureCaptureProps) {<br>
+  const signatureRef = useRef&lt;SignatureCanvas&gt;(null);</p><p>  const handleSave = () =&gt; {<br>
+    signatureRef.current?.readSignature();<br>
+  };</p><p>  const handleClear = () =&gt; {<br>
+    signatureRef.current?.clearSignature();<br>
+  };</p><p>  const handleOK = (signature: string) =&gt; {<br>
+    // signature is base64 PNG<br>
+    onSave(signature);<br>
+  };</p><p>  return (<br>
+    &lt;View style={styles.container}&gt;<br>
+      &lt;Text style={styles.title}&gt;{title}&lt;/Text&gt;</p><p>      &lt;View style={styles.canvasContainer}&gt;<br>
+        &lt;SignatureCanvas<br>
+          ref={signatureRef}<br>
+          onOK={handleOK}<br>
+          webStyle={signatureWebStyle}<br>
+          autoClear={false}<br>
+        /&gt;<br>
+      &lt;/View&gt;</p><p>      &lt;View style={styles.buttons}&gt;<br>
+        &lt;Button title=&quot;Clear&quot; onPress={handleClear} variant=&quot;outline&quot; /&gt;<br>
+        &lt;Button title=&quot;Save&quot; onPress={handleSave} /&gt;<br>
+      &lt;/View&gt;</p><p>      &lt;Text style={styles.disclaimer}&gt;<br>
+        Sign above to confirm services were provided as documented.<br>
+      &lt;/Text&gt;<br>
+    &lt;/View&gt;<br>
+  );<br>
+}</p><p>const signatureWebStyle = <code><br>
+  .m-signature-pad { box-shadow: none; border: 1px solid #ccc; }<br>
+  .m-signature-pad--body { border: none; }<br>
+</code>;</code></pre><h2>Aggregator Integration</h2><p>Each state has an EVV aggregator. Here's a generic integration:</p><pre><code class="language-typescript">// verticals/scheduling-visits/src/services/aggregator-service.ts</p><p>export interface AggregatorConfig {<br>
+  apiUrl: string;<br>
+  apiKey: string;<br>
+  providerId: string;<br>
+  stateCode: string;<br>
+}</p><p>export class AggregatorService {<br>
+  constructor(private config: AggregatorConfig) {}</p><p>  async submitVisit(evvRecord: EVVRecord, visit: Visit, client: Client, caregiver: Caregiver): Promise&lt;AggregatorResponse&gt; {<br>
+    // Transform to aggregator format<br>
+    const payload = this.transformToAggregatorFormat(<br>
+      evvRecord,<br>
+      visit,<br>
+      client,<br>
+      caregiver<br>
+    );</p><p>    try {<br>
+      const response = await fetch(<code>${this.config.apiUrl}/visits</code>, {<br>
+        method: 'POST',<br>
+        headers: {<br>
+          'Content-Type': 'application/json',<br>
+          'Authorization': <code>Bearer ${this.config.apiKey}</code>,<br>
+          'X-Provider-ID': this.config.providerId,<br>
+        },<br>
+        body: JSON.stringify(payload),<br>
+      });</p><p>      const result = await response.json();</p><p>      if (response.ok) {<br>
+        // Update EVV record with aggregator response<br>
+        await db.query(<br>
+          <code>UPDATE evv_records<br>
+           SET submitted_to_aggregator = true,<br>
+               aggregator_submission_time = NOW(),<br>
+               aggregator_record_id = $2,<br>
+               aggregator_response = $3<br>
+           WHERE id = $1</code>,<br>
+          [evvRecord.id, result.recordId, JSON.stringify(result)]<br>
+        );</p><p>        return {<br>
+          status: 'accepted',<br>
+          recordId: result.recordId,<br>
+        };<br>
+      } else {<br>
+        return {<br>
+          status: 'rejected',<br>
+          errors: result.errors || [result.message],<br>
+        };<br>
+      }<br>
+    } catch (error) {<br>
+      return {<br>
+        status: 'rejected',<br>
+        errors: [<code>Network error: ${error.message}</code>],<br>
+      };<br>
+    }<br>
+  }</p><p>  private transformToAggregatorFormat(<br>
+    evvRecord: EVVRecord,<br>
+    visit: Visit,<br>
+    client: Client,<br>
+    caregiver: Caregiver<br>
+  ): AggregatorPayload {<br>
+    // Format varies by state - this is a common structure<br>
+    return {<br>
+      providerId: this.config.providerId,<br>
+      clientId: client.medicaidId,<br>
+      workerId: caregiver.id,<br>
+      serviceCode: visit.serviceType,<br>
+      serviceDate: evvRecord.serviceDate.toISOString().split('T')[0],<br>
+      startTime: evvRecord.clockInTime.toISOString(),<br>
+      endTime: evvRecord.clockOutTime.toISOString(),<br>
+      startLocation: {<br>
+        latitude: evvRecord.clockInLocation.latitude,<br>
+        longitude: evvRecord.clockInLocation.longitude,<br>
+      },<br>
+      endLocation: {<br>
+        latitude: evvRecord.clockOutLocation.latitude,<br>
+        longitude: evvRecord.clockOutLocation.longitude,<br>
+      },<br>
+      verificationMethod: this.mapVerificationMethod(evvRecord.verificationMethod),<br>
+      clientSignature: evvRecord.clientVerified,<br>
+    };<br>
+  }</p><p>  private mapVerificationMethod(method: EVVVerificationMethod): string {<br>
+    const mapping: Record&lt;EVVVerificationMethod, string&gt; = {<br>
+      mobile_gps: 'GPS',<br>
+      telephony: 'TEL',<br>
+      fixed_device: 'FVV',<br>
+      biometric: 'BIO',<br>
+      manual_attestation: 'MAN',<br>
+    };<br>
+    return mapping[method];<br>
+  }<br>
+}</code></pre><h2>Exception Handling</h2><p>EVV exceptions need review and resolution:</p><pre><code class="language-typescript">// verticals/scheduling-visits/src/services/evv-exception-service.ts</p><p>export class EVVExceptionService {<br>
+  async getUnresolvedExceptions(): Promise&lt;EVVRecordWithExceptions[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT er.<em>, v.</em>, c.first_name as client_name, cg.first_name as caregiver_name<br>
+       FROM evv_records er<br>
+       JOIN visits v ON v.id = er.visit_id<br>
+       JOIN clients c ON c.id = v.client_id<br>
+       JOIN caregivers cg ON cg.id = v.caregiver_id<br>
+       WHERE er.exceptions != '[]'::jsonb<br>
+         AND NOT EXISTS (<br>
+           SELECT 1 FROM jsonb_array_elements(er.exceptions) ex<br>
+           WHERE ex-&gt;&gt;'resolvedAt' IS NOT NULL<br>
+         )<br>
+       ORDER BY er.created_at DESC</code><br>
+    );</p><p>    return result.rows;<br>
+  }</p><p>  async resolveException(<br>
+    evvRecordId: string,<br>
+    exceptionIndex: number,<br>
+    resolution: string,<br>
+    userId: string<br>
+  ): Promise&lt;void&gt; {<br>
+    const record = await db.query(<br>
+      <code>SELECT exceptions FROM evv_records WHERE id = $1</code>,<br>
+      [evvRecordId]<br>
+    );</p><p>    const exceptions = record.rows[0].exceptions;<br>
+    exceptions[exceptionIndex] = {<br>
+      ...exceptions[exceptionIndex],<br>
+      resolvedAt: new Date().toISOString(),<br>
+      resolvedBy: userId,<br>
+      resolution,<br>
+    };</p><p>    await db.query(<br>
+      <code>UPDATE evv_records<br>
+       SET exceptions = $2, updated_at = NOW()<br>
+       WHERE id = $1</code>,<br>
+      [evvRecordId, JSON.stringify(exceptions)]<br>
+    );<br>
+  }</p><p>  async flagForReview(evvRecordId: string, reason: string): Promise&lt;void&gt; {<br>
+    await db.query(<br>
+      <code>INSERT INTO evv_reviews<br>
+       (evv_record_id, reason, status, created_at)<br>
+       VALUES ($1, $2, 'pending', NOW())</code>,<br>
+      [evvRecordId, reason]<br>
+    );<br>
+  }<br>
+}</code></pre><h2>Vibe Coding EVV</h2><p>When building EVV features with AI:</p><p>> "Create a clock-in/clock-out service that validates GPS location against client address and flags discrepancies"</p><p>> "Build an aggregator integration service that transforms EVV records to the state's required format and handles submission"</p><p>> "Implement an exception review workflow for EVV records with location or time discrepancies"</p><p>> "Add a signature capture component that stores signatures as base64 and validates presence"</p><p>AI knows EVV requirements. Describe your state's specific rules, and it adapts the code.</p><h2>Testing EVV</h2><p>EVV is compliance-critical. Test thoroughly:</p><pre><code class="language-typescript">describe('EVVService', () =&gt; {<br>
+  describe('clockIn', () =&gt; {<br>
+    it('should flag location mismatch when GPS is far from client', async () =&gt; {<br>
+      const visit = await createTestVisit();<br>
+      const farLocation = {<br>
+        latitude: visit.clientLatitude + 0.01, // ~1km away<br>
+        longitude: visit.clientLongitude,<br>
+        accuracy: 10,<br>
+        capturedAt: new Date(),<br>
+      };</p><p>      const result = await evvService.clockIn(<br>
+        visit.id,<br>
+        visit.caregiverId,<br>
+        farLocation,<br>
+        'mobile_gps'<br>
+      );</p><p>      expect(result.exceptions).toContainEqual(<br>
+        expect.objectContaining({ type: 'location_mismatch' })<br>
+      );<br>
+    });</p><p>    it('should flag early clock-in', async () =&gt; {<br>
+      const visit = await createTestVisit({<br>
+        scheduledStart: new Date(Date.now() + 60 <em> 60 </em> 1000), // 1 hour from now<br>
+      });</p><p>      const result = await evvService.clockIn(<br>
+        visit.id,<br>
+        visit.caregiverId,<br>
+        validLocation,<br>
+        'mobile_gps'<br>
+      );</p><p>      expect(result.exceptions).toContainEqual(<br>
+        expect.objectContaining({ type: 'early_clockin' })<br>
+      );<br>
+    });<br>
+  });<br>
+});</code></pre><h2>Next Steps</h2><p>With EVV capturing visit data, we need to bill for services. In the next chapter, we'll build the billing and invoicing system that turns verified visits into revenue.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-5" class="chapter">
+      <h2>Billing and Invoicing</h2>
+      <p>Healthcare billing is complex. Multiple payers, different rates, authorization limits, claim submissions—all need to work together. This chapter covers building a billing system that handles real-world complexity.</p><h2>Healthcare Billing Models</h2><p>Home healthcare gets paid through several channels:</p><p>- <strong>Medicaid</strong> - Government insurance for low-income individuals<br>
+- <strong>Medicare</strong> - Government insurance for seniors/disabled<br>
+- <strong>Private Insurance</strong> - Commercial health plans<br>
+- <strong>Private Pay</strong> - Out-of-pocket from patients/families<br>
+- <strong>Managed Care Organizations (MCOs)</strong> - Insurance companies administering Medicaid</p><p>Each payer has different:<br>
+- Reimbursement rates<br>
+- Authorization requirements<br>
+- Claim submission formats<br>
+- Payment timelines</p><h2>Billing Data Model</h2><pre><code class="language-typescript">// verticals/billing-invoicing/src/types.ts<br>
+export interface Payer {<br>
+  id: string;<br>
+  name: string;<br>
+  type: 'medicaid' | 'medicare' | 'private_insurance' | 'private_pay' | 'mco';<br>
+  billingAddress?: Address;<br>
+  submissionMethod: 'electronic' | 'paper' | 'portal';<br>
+  paymentTermsDays: number;<br>
+  defaultRates: ServiceRate[];<br>
+}</p><p>export interface ServiceRate {<br>
+  serviceCode: string;<br>
+  serviceName: string;<br>
+  unitType: 'hour' | '15min' | 'visit' | 'day';<br>
+  rate: number;<br>
+  effectiveDate: Date;<br>
+  expirationDate?: Date;<br>
+}</p><p>export interface Authorization {<br>
+  id: string;<br>
+  clientId: string;<br>
+  payerId: string;<br>
+  authorizationNumber: string;<br>
+  serviceCode: string;<br>
+  startDate: Date;<br>
+  endDate: Date;<br>
+  authorizedUnits: number;<br>
+  usedUnits: number;<br>
+  unitType: 'hour' | '15min' | 'visit';<br>
+  status: 'active' | 'expired' | 'exhausted';<br>
+}</p><p>export interface Invoice {<br>
+  id: string;<br>
+  payerId: string;<br>
+  clientId: string;<br>
+  invoiceNumber: string;<br>
+  invoiceDate: Date;<br>
+  dueDate: Date;<br>
+  status: 'draft' | 'sent' | 'paid' | 'partial' | 'overdue' | 'void';<br>
+  lineItems: InvoiceLineItem[];<br>
+  subtotal: number;<br>
+  adjustments: number;<br>
+  total: number;<br>
+  amountPaid: number;<br>
+  balance: number;<br>
+  notes?: string;<br>
+}</p><p>export interface InvoiceLineItem {<br>
+  id: string;<br>
+  invoiceId: string;<br>
+  visitId: string;<br>
+  serviceDate: Date;<br>
+  serviceCode: string;<br>
+  description: string;<br>
+  units: number;<br>
+  unitRate: number;<br>
+  amount: number;<br>
+  authorizationId?: string;<br>
+}</p><p>export interface Payment {<br>
+  id: string;<br>
+  invoiceId: string;<br>
+  paymentDate: Date;<br>
+  amount: number;<br>
+  paymentMethod: 'check' | 'ach' | 'credit_card' | 'remittance';<br>
+  referenceNumber?: string;<br>
+  notes?: string;<br>
+}</code></pre><h2>Billing Service</h2><pre><code class="language-typescript">// verticals/billing-invoicing/src/services/billing-service.ts<br>
+import { db } from '@folkcare/core';</p><p>export class BillingService {<br>
+  async generateInvoice(<br>
+    payerId: string,<br>
+    clientId: string,<br>
+    startDate: Date,<br>
+    endDate: Date<br>
+  ): Promise&lt;Invoice&gt; {<br>
+    // Get billable visits in date range<br>
+    const visits = await this.getBillableVisits(<br>
+      clientId,<br>
+      payerId,<br>
+      startDate,<br>
+      endDate<br>
+    );</p><p>    if (visits.length === 0) {<br>
+      throw new Error('No billable visits in date range');<br>
+    }</p><p>    // Get payer rates<br>
+    const payer = await this.getPayer(payerId);<br>
+    const rates = new Map(payer.defaultRates.map((r) =&gt; [r.serviceCode, r]));</p><p>    // Generate line items<br>
+    const lineItems: Omit&lt;InvoiceLineItem, 'id' | 'invoiceId'&gt;[] = [];</p><p>    for (const visit of visits) {<br>
+      const rate = rates.get(visit.serviceType);<br>
+      if (!rate) {<br>
+        console.warn(<code>No rate for service ${visit.serviceType}</code>);<br>
+        continue;<br>
+      }</p><p>      const units = this.calculateUnits(<br>
+        visit.actualStart,<br>
+        visit.actualEnd,<br>
+        rate.unitType<br>
+      );</p><p>      const amount = units * rate.rate;</p><p>      lineItems.push({<br>
+        visitId: visit.id,<br>
+        serviceDate: visit.actualStart,<br>
+        serviceCode: visit.serviceType,<br>
+        description: <code>${rate.serviceName} - ${visit.caregiverName}</code>,<br>
+        units,<br>
+        unitRate: rate.rate,<br>
+        amount,<br>
+        authorizationId: visit.authorizationId,<br>
+      });<br>
+    }</p><p>    // Calculate totals<br>
+    const subtotal = lineItems.reduce((sum, item) =&gt; sum + item.amount, 0);<br>
+    const total = subtotal; // Adjustments handled separately</p><p>    // Generate invoice number<br>
+    const invoiceNumber = await this.generateInvoiceNumber();</p><p>    // Create invoice<br>
+    const result = await db.query(<br>
+      <code>INSERT INTO invoices<br>
+       (payer_id, client_id, invoice_number, invoice_date, due_date,<br>
+        status, subtotal, adjustments, total, amount_paid, balance)<br>
+       VALUES ($1, $2, $3, NOW(), NOW() + INTERVAL '${payer.paymentTermsDays} days',<br>
+               'draft', $4, 0, $5, 0, $5)<br>
+       RETURNING *</code>,<br>
+      [payerId, clientId, invoiceNumber, subtotal, total]<br>
+    );</p><p>    const invoice = result.rows[0];</p><p>    // Insert line items<br>
+    for (const item of lineItems) {<br>
+      await db.query(<br>
+        <code>INSERT INTO invoice_line_items<br>
+         (invoice_id, visit_id, service_date, service_code, description,<br>
+          units, unit_rate, amount, authorization_id)<br>
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)</code>,<br>
+        [<br>
+          invoice.id,<br>
+          item.visitId,<br>
+          item.serviceDate,<br>
+          item.serviceCode,<br>
+          item.description,<br>
+          item.units,<br>
+          item.unitRate,<br>
+          item.amount,<br>
+          item.authorizationId,<br>
+        ]<br>
+      );</p><p>      // Mark visit as billed<br>
+      await db.query(<br>
+        <code>UPDATE visits SET billed = true, invoice_id = $2 WHERE id = $1</code>,<br>
+        [item.visitId, invoice.id]<br>
+      );</p><p>      // Update authorization usage<br>
+      if (item.authorizationId) {<br>
+        await this.updateAuthorizationUsage(item.authorizationId, item.units);<br>
+      }<br>
+    }</p><p>    return this.getInvoice(invoice.id);<br>
+  }</p><p>  private calculateUnits(<br>
+    start: Date,<br>
+    end: Date,<br>
+    unitType: ServiceRate['unitType']<br>
+  ): number {<br>
+    const minutes = (end.getTime() - start.getTime()) / 60000;</p><p>    switch (unitType) {<br>
+      case 'hour':<br>
+        return Math.ceil(minutes / 60 * 4) / 4; // Round to nearest 15 min<br>
+      case '15min':<br>
+        return Math.ceil(minutes / 15);<br>
+      case 'visit':<br>
+        return 1;<br>
+      case 'day':<br>
+        return 1;<br>
+      default:<br>
+        return minutes / 60;<br>
+    }<br>
+  }</p><p>  async recordPayment(<br>
+    invoiceId: string,<br>
+    amount: number,<br>
+    paymentMethod: Payment['paymentMethod'],<br>
+    referenceNumber?: string<br>
+  ): Promise&lt;Payment&gt; {<br>
+    const invoice = await this.getInvoice(invoiceId);</p><p>    if (amount &gt; invoice.balance) {<br>
+      throw new Error('Payment exceeds invoice balance');<br>
+    }</p><p>    const result = await db.query(<br>
+      <code>INSERT INTO payments<br>
+       (invoice_id, payment_date, amount, payment_method, reference_number)<br>
+       VALUES ($1, NOW(), $2, $3, $4)<br>
+       RETURNING *</code>,<br>
+      [invoiceId, amount, paymentMethod, referenceNumber]<br>
+    );</p><p>    // Update invoice<br>
+    const newAmountPaid = invoice.amountPaid + amount;<br>
+    const newBalance = invoice.total - newAmountPaid;<br>
+    const newStatus = newBalance === 0 ? 'paid' : 'partial';</p><p>    await db.query(<br>
+      <code>UPDATE invoices<br>
+       SET amount_paid = $2, balance = $3, status = $4, updated_at = NOW()<br>
+       WHERE id = $1</code>,<br>
+      [invoiceId, newAmountPaid, newBalance, newStatus]<br>
+    );</p><p>    return result.rows[0];<br>
+  }</p><p>  async getOutstandingInvoices(payerId?: string): Promise&lt;Invoice[]&gt; {<br>
+    let query = <code><br>
+      SELECT i.*, p.name as payer_name, c.first_name, c.last_name<br>
+      FROM invoices i<br>
+      JOIN payers p ON p.id = i.payer_id<br>
+      JOIN clients c ON c.id = i.client_id<br>
+      WHERE i.status IN ('sent', 'partial', 'overdue')<br>
+    </code>;</p><p>    const params: unknown[] = [];<br>
+    if (payerId) {<br>
+      query += <code> AND i.payer_id = $1</code>;<br>
+      params.push(payerId);<br>
+    }</p><p>    query += <code> ORDER BY i.due_date</code>;</p><p>    const result = await db.query(query, params);<br>
+    return result.rows.map(this.mapInvoiceRow);<br>
+  }</p><p>  async markOverdueInvoices(): Promise&lt;number&gt; {<br>
+    const result = await db.query(<br>
+      <code>UPDATE invoices<br>
+       SET status = 'overdue'<br>
+       WHERE status = 'sent'<br>
+         AND due_date &lt; NOW()<br>
+       RETURNING id</code><br>
+    );</p><p>    return result.rows.length;<br>
+  }<br>
+}</code></pre><h2>Authorization Tracking</h2><p>Payers authorize specific hours. Track usage:</p><pre><code class="language-typescript">// verticals/billing-invoicing/src/services/authorization-service.ts</p><p>export class AuthorizationService {<br>
+  async createAuthorization(input: CreateAuthorizationInput): Promise&lt;Authorization&gt; {<br>
+    const result = await db.query(<br>
+      <code>INSERT INTO authorizations<br>
+       (client_id, payer_id, authorization_number, service_code,<br>
+        start_date, end_date, authorized_units, used_units, unit_type, status)<br>
+       VALUES ($1, $2, $3, $4, $5, $6, $7, 0, $8, 'active')<br>
+       RETURNING *</code>,<br>
+      [<br>
+        input.clientId,<br>
+        input.payerId,<br>
+        input.authorizationNumber,<br>
+        input.serviceCode,<br>
+        input.startDate,<br>
+        input.endDate,<br>
+        input.authorizedUnits,<br>
+        input.unitType,<br>
+      ]<br>
+    );</p><p>    return result.rows[0];<br>
+  }</p><p>  async getActiveAuthorization(<br>
+    clientId: string,<br>
+    payerId: string,<br>
+    serviceCode: string,<br>
+    serviceDate: Date<br>
+  ): Promise&lt;Authorization | null&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT * FROM authorizations<br>
+       WHERE client_id = $1<br>
+         AND payer_id = $2<br>
+         AND service_code = $3<br>
+         AND start_date &lt;= $4<br>
+         AND end_date &gt;= $4<br>
+         AND status = 'active'<br>
+       ORDER BY end_date<br>
+       LIMIT 1</code>,<br>
+      [clientId, payerId, serviceCode, serviceDate]<br>
+    );</p><p>    return result.rows[0] || null;<br>
+  }</p><p>  async checkAuthorizationAvailability(<br>
+    authorizationId: string,<br>
+    requestedUnits: number<br>
+  ): Promise&lt;AuthorizationAvailability&gt; {<br>
+    const auth = await this.getAuthorization(authorizationId);</p><p>    const remainingUnits = auth.authorizedUnits - auth.usedUnits;<br>
+    const percentUsed = (auth.usedUnits / auth.authorizedUnits) * 100;</p><p>    return {<br>
+      authorization: auth,<br>
+      remainingUnits,<br>
+      percentUsed,<br>
+      canAccommodate: remainingUnits &gt;= requestedUnits,<br>
+      daysUntilExpiration: this.daysUntil(new Date(auth.endDate)),<br>
+    };<br>
+  }</p><p>  async updateUsage(authorizationId: string, units: number): Promise&lt;void&gt; {<br>
+    await db.query(<br>
+      <code>UPDATE authorizations<br>
+       SET used_units = used_units + $2,<br>
+           status = CASE<br>
+             WHEN used_units + $2 &gt;= authorized_units THEN 'exhausted'<br>
+             ELSE status<br>
+           END<br>
+       WHERE id = $1</code>,<br>
+      [authorizationId, units]<br>
+    );<br>
+  }</p><p>  async getExpiringAuthorizations(daysAhead: number): Promise&lt;Authorization[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT a.*, c.first_name, c.last_name, p.name as payer_name<br>
+       FROM authorizations a<br>
+       JOIN clients c ON c.id = a.client_id<br>
+       JOIN payers p ON p.id = a.payer_id<br>
+       WHERE a.status = 'active'<br>
+         AND a.end_date &lt;= NOW() + INTERVAL '${daysAhead} days'<br>
+       ORDER BY a.end_date</code>,<br>
+      []<br>
+    );</p><p>    return result.rows;<br>
+  }</p><p>  async getLowAuthorizations(thresholdPercent: number): Promise&lt;Authorization[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT a.*, c.first_name, c.last_name, p.name as payer_name<br>
+       FROM authorizations a<br>
+       JOIN clients c ON c.id = a.client_id<br>
+       JOIN payers p ON p.id = a.payer_id<br>
+       WHERE a.status = 'active'<br>
+         AND (a.used_units::float / a.authorized_units) * 100 &gt;= $1<br>
+       ORDER BY (a.used_units::float / a.authorized_units) DESC</code>,<br>
+      [thresholdPercent]<br>
+    );</p><p>    return result.rows;<br>
+  }</p><p>  private daysUntil(date: Date): number {<br>
+    return Math.ceil((date.getTime() - Date.now()) / (1000 <em> 60 </em> 60 * 24));<br>
+  }<br>
+}</code></pre><h2>Revenue Forecasting (AI-Powered)</h2><p>Predict future revenue based on current data:</p><pre><code class="language-typescript">// verticals/billing-invoicing/src/services/revenue-forecast-service.ts<br>
+import Anthropic from '@anthropic-ai/sdk';</p><p>export interface RevenueForecast {<br>
+  period: string;<br>
+  projectedRevenue: number;<br>
+  confidence: number;<br>
+  factors: ForecastFactor[];<br>
+  risks: ForecastRisk[];<br>
+}</p><p>export class RevenueForecastService {<br>
+  private anthropic: Anthropic;</p><p>  constructor() {<br>
+    this.anthropic = new Anthropic();<br>
+  }</p><p>  async generateForecast(months: number): Promise&lt;RevenueForecast[]&gt; {<br>
+    // Gather historical data<br>
+    const historicalRevenue = await this.getHistoricalRevenue(12);<br>
+    const activeClients = await this.getActiveClientCount();<br>
+    const activeAuthorizations = await this.getActiveAuthorizations();<br>
+    const expiringAuthorizations = await this.getExpiringAuthorizations(90);<br>
+    const scheduledVisits = await this.getScheduledVisits(90);</p><p>    const prompt = <code>You are a healthcare billing analyst. Generate a revenue forecast.</p><p>Historical Monthly Revenue (last 12 months):<br>
+${historicalRevenue.map((r) =&gt; </code>${r.month}: $${r.revenue.toLocaleString()}<code>).join('\n')}</p><p>Current State:<br>
+- Active clients: ${activeClients}<br>
+- Active authorizations: ${activeAuthorizations.length}<br>
+- Authorizations expiring in 90 days: ${expiringAuthorizations.length}<br>
+- Visits scheduled next 90 days: ${scheduledVisits}</p><p>Generate a ${months}-month revenue forecast. For each month, provide:<br>
+1. Projected revenue (dollar amount)<br>
+2. Confidence level (0-100)<br>
+3. Key factors affecting the projection<br>
+4. Risks that could impact revenue</p><p>Return as JSON:<br>
+{<br>
+  &quot;forecasts&quot;: [<br>
+    {<br>
+      &quot;period&quot;: &quot;2025-01&quot;,<br>
+      &quot;projectedRevenue&quot;: 150000,<br>
+      &quot;confidence&quot;: 85,<br>
+      &quot;factors&quot;: [&quot;steady client base&quot;, &quot;seasonal increase&quot;],<br>
+      &quot;risks&quot;: [&quot;3 authorizations expiring&quot;]<br>
+    }<br>
+  ]<br>
+}</code>;</p><p>    const response = await this.anthropic.messages.create({<br>
+      model: 'claude-sonnet-4-20250514',<br>
+      max_tokens: 2000,<br>
+      messages: [{ role: 'user', content: prompt }],<br>
+    });</p><p>    const content = response.content[0];<br>
+    if (content.type !== 'text') {<br>
+      throw new Error('Unexpected response type');<br>
+    }</p><p>    const jsonMatch = content.text.match(/\{[\s\S]*\}/);<br>
+    if (!jsonMatch) {<br>
+      throw new Error('Could not parse forecast response');<br>
+    }</p><p>    const result = JSON.parse(jsonMatch[0]);<br>
+    return result.forecasts;<br>
+  }</p><p>  private async getHistoricalRevenue(months: number): Promise&lt;{ month: string; revenue: number }[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT<br>
+         TO_CHAR(DATE_TRUNC('month', invoice_date), 'YYYY-MM') as month,<br>
+         SUM(amount_paid) as revenue<br>
+       FROM invoices<br>
+       WHERE invoice_date &gt;= NOW() - INTERVAL '${months} months'<br>
+         AND status IN ('paid', 'partial')<br>
+       GROUP BY DATE_TRUNC('month', invoice_date)<br>
+       ORDER BY month</code><br>
+    );</p><p>    return result.rows;<br>
+  }<br>
+}</code></pre><h2>Billing Dashboard API</h2><pre><code class="language-typescript">// verticals/billing-invoicing/src/routes/billing-routes.ts<br>
+import { Router } from 'express';<br>
+import { billingService } from '../services/billing-service';<br>
+import { authorizationService } from '../services/authorization-service';</p><p>const router = Router();</p><p>// Dashboard summary<br>
+router.get('/summary', requireAuth, async (req, res, next) =&gt; {<br>
+  try {<br>
+    const [<br>
+      outstandingTotal,<br>
+      overdueCount,<br>
+      recentPayments,<br>
+      expiringAuths,<br>
+      lowAuths,<br>
+    ] = await Promise.all([<br>
+      billingService.getOutstandingTotal(),<br>
+      billingService.getOverdueCount(),<br>
+      billingService.getRecentPayments(7),<br>
+      authorizationService.getExpiringAuthorizations(30),<br>
+      authorizationService.getLowAuthorizations(80),<br>
+    ]);</p><p>    res.json({<br>
+      outstandingTotal,<br>
+      overdueCount,<br>
+      recentPayments,<br>
+      alerts: {<br>
+        expiringAuthorizations: expiringAuths.length,<br>
+        lowAuthorizations: lowAuths.length,<br>
+      },<br>
+    });<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</p><p>// Generate invoice<br>
+router.post('/invoices/generate', requireAuth, async (req, res, next) =&gt; {<br>
+  try {<br>
+    const { payerId, clientId, startDate, endDate } = req.body;</p><p>    const invoice = await billingService.generateInvoice(<br>
+      payerId,<br>
+      clientId,<br>
+      new Date(startDate),<br>
+      new Date(endDate)<br>
+    );</p><p>    res.status(201).json(invoice);<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</p><p>// Record payment<br>
+router.post('/invoices/:id/payments', requireAuth, async (req, res, next) =&gt; {<br>
+  try {<br>
+    const { amount, paymentMethod, referenceNumber } = req.body;</p><p>    const payment = await billingService.recordPayment(<br>
+      req.params.id,<br>
+      amount,<br>
+      paymentMethod,<br>
+      referenceNumber<br>
+    );</p><p>    res.status(201).json(payment);<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</p><p>// Revenue forecast<br>
+router.post('/forecast', requireAuth, async (req, res, next) =&gt; {<br>
+  try {<br>
+    const { months } = req.body;<br>
+    const forecast = await revenueForecastService.generateForecast(months || 3);<br>
+    res.json(forecast);<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</p><p>export { router as billingRoutes };</code></pre><h2>Vibe Coding Billing</h2><p>When building billing features with AI:</p><p>> "Create an invoice generation service that calculates billable hours from completed visits and applies payer-specific rates"</p><p>> "Build an authorization tracking system that alerts when authorizations are about to expire or run low"</p><p>> "Implement an AI-powered revenue forecast that analyzes historical billing and predicts future revenue"</p><p>> "Add payment recording with automatic invoice balance updates"</p><p>Healthcare billing has many edge cases. AI handles the complexity while you focus on business rules.</p><h2>Next Steps</h2><p>With billing in place, we need to ensure everything is compliant. In the next chapter, we'll build compliance checking and reporting systems that keep agencies audit-ready.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-6" class="chapter">
+      <h2>Compliance and Reporting</h2>
+      <p>Healthcare is heavily regulated. Agencies face audits from state Medicaid programs, CMS, accreditation bodies, and payers. Compliance isn't optional—it's survival. This chapter covers building systems that keep agencies audit-ready.</p><h2>Compliance Requirements</h2><p>Home healthcare agencies must comply with:</p><p>- <strong>State Medicaid rules</strong> - Vary by state, cover EVV, documentation, staffing<br>
+- <strong>Medicare Conditions of Participation</strong> - For Medicare-certified agencies<br>
+- <strong>HIPAA</strong> - Patient privacy and data security<br>
+- <strong>Labor laws</strong> - Overtime, minimum wage, breaks<br>
+- <strong>Accreditation standards</strong> - CHAP, ACHC, Joint Commission</p><h2>Automated Compliance Checking</h2><p>Build proactive compliance monitoring:</p><pre><code class="language-typescript">// verticals/compliance/src/services/compliance-checker-service.ts<br>
+import { db } from '@folkcare/core';</p><p>export interface ComplianceIssue {<br>
+  id: string;<br>
+  entityType: 'caregiver' | 'client' | 'visit' | 'invoice' | 'authorization';<br>
+  entityId: string;<br>
+  ruleId: string;<br>
+  ruleName: string;<br>
+  severity: 'critical' | 'warning' | 'info';<br>
+  description: string;<br>
+  detectedAt: Date;<br>
+  resolvedAt?: Date;<br>
+  resolvedBy?: string;<br>
+  resolution?: string;<br>
+}</p><p>export interface ComplianceRule {<br>
+  id: string;<br>
+  name: string;<br>
+  description: string;<br>
+  category: 'evv' | 'certification' | 'documentation' | 'billing' | 'labor';<br>
+  severity: ComplianceIssue['severity'];<br>
+  checkFn: () =&gt; Promise&lt;ComplianceIssue[]&gt;;<br>
+}</p><p>export class ComplianceCheckerService {<br>
+  private rules: ComplianceRule[] = [];</p><p>  constructor() {<br>
+    this.registerDefaultRules();<br>
+  }</p><p>  private registerDefaultRules() {<br>
+    // EVV Rules<br>
+    this.rules.push({<br>
+      id: 'evv-missing-clockout',<br>
+      name: 'Missing EVV Clock-Out',<br>
+      description: 'Visits without clock-out after scheduled end time',<br>
+      category: 'evv',<br>
+      severity: 'critical',<br>
+      checkFn: this.checkMissingClockouts.bind(this),<br>
+    });</p><p>    this.rules.push({<br>
+      id: 'evv-location-mismatch',<br>
+      name: 'EVV Location Discrepancy',<br>
+      description: 'Clock-in/out location far from client address',<br>
+      category: 'evv',<br>
+      severity: 'warning',<br>
+      checkFn: this.checkLocationMismatches.bind(this),<br>
+    });</p><p>    // Certification Rules<br>
+    this.rules.push({<br>
+      id: 'cert-expired',<br>
+      name: 'Expired Certification',<br>
+      description: 'Caregivers with expired required certifications',<br>
+      category: 'certification',<br>
+      severity: 'critical',<br>
+      checkFn: this.checkExpiredCertifications.bind(this),<br>
+    });</p><p>    this.rules.push({<br>
+      id: 'cert-expiring-soon',<br>
+      name: 'Certification Expiring Soon',<br>
+      description: 'Certifications expiring within 30 days',<br>
+      category: 'certification',<br>
+      severity: 'warning',<br>
+      checkFn: this.checkExpiringCertifications.bind(this),<br>
+    });</p><p>    // Documentation Rules<br>
+    this.rules.push({<br>
+      id: 'doc-missing-signature',<br>
+      name: 'Missing Client Signature',<br>
+      description: 'Completed visits without client signature',<br>
+      category: 'documentation',<br>
+      severity: 'warning',<br>
+      checkFn: this.checkMissingSignatures.bind(this),<br>
+    });</p><p>    this.rules.push({<br>
+      id: 'doc-missing-notes',<br>
+      name: 'Missing Visit Notes',<br>
+      description: 'Completed visits without caregiver notes',<br>
+      category: 'documentation',<br>
+      severity: 'info',<br>
+      checkFn: this.checkMissingNotes.bind(this),<br>
+    });</p><p>    // Labor Rules<br>
+    this.rules.push({<br>
+      id: 'labor-overtime',<br>
+      name: 'Overtime Threshold Exceeded',<br>
+      description: 'Caregivers exceeding weekly hour limits',<br>
+      category: 'labor',<br>
+      severity: 'warning',<br>
+      checkFn: this.checkOvertimeViolations.bind(this),<br>
+    });<br>
+  }</p><p>  async runAllChecks(): Promise&lt;ComplianceIssue[]&gt; {<br>
+    const issues: ComplianceIssue[] = [];</p><p>    for (const rule of this.rules) {<br>
+      const ruleIssues = await rule.checkFn();<br>
+      issues.push(...ruleIssues.map((issue) =&gt; ({<br>
+        ...issue,<br>
+        ruleId: rule.id,<br>
+        ruleName: rule.name,<br>
+        severity: rule.severity,<br>
+      })));<br>
+    }</p><p>    // Store new issues<br>
+    await this.storeIssues(issues);</p><p>    return issues;<br>
+  }</p><p>  async runCheck(ruleId: string): Promise&lt;ComplianceIssue[]&gt; {<br>
+    const rule = this.rules.find((r) =&gt; r.id === ruleId);<br>
+    if (!rule) throw new Error(<code>Unknown rule: ${ruleId}</code>);</p><p>    const issues = await rule.checkFn();<br>
+    return issues.map((issue) =&gt; ({<br>
+      ...issue,<br>
+      ruleId: rule.id,<br>
+      ruleName: rule.name,<br>
+      severity: rule.severity,<br>
+    }));<br>
+  }</p><p>  // Individual check implementations<br>
+  private async checkMissingClockouts(): Promise&lt;Partial&lt;ComplianceIssue&gt;[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT v.id, v.client_id, v.caregiver_id, v.scheduled_end,<br>
+              c.first_name as client_name, cg.first_name as caregiver_name<br>
+       FROM visits v<br>
+       JOIN clients c ON c.id = v.client_id<br>
+       JOIN caregivers cg ON cg.id = v.caregiver_id<br>
+       WHERE v.status = 'in_progress'<br>
+         AND v.scheduled_end &lt; NOW() - INTERVAL '1 hour'</code><br>
+    );</p><p>    return result.rows.map((row) =&gt; ({<br>
+      entityType: 'visit',<br>
+      entityId: row.id,<br>
+      description: <code>Visit for ${row.client_name} with ${row.caregiver_name} missing clock-out (scheduled end: ${row.scheduled_end})</code>,<br>
+      detectedAt: new Date(),<br>
+    }));<br>
+  }</p><p>  private async checkExpiredCertifications(): Promise&lt;Partial&lt;ComplianceIssue&gt;[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT cg.id, cg.first_name, cg.last_name, cg.certifications<br>
+       FROM caregivers cg<br>
+       WHERE cg.status = 'active'</code><br>
+    );</p><p>    const issues: Partial&lt;ComplianceIssue&gt;[] = [];</p><p>    for (const row of result.rows) {<br>
+      const certs = row.certifications as { type: string; expirationDate: string }[];<br>
+      for (const cert of certs) {<br>
+        if (new Date(cert.expirationDate) &lt; new Date()) {<br>
+          issues.push({<br>
+            entityType: 'caregiver',<br>
+            entityId: row.id,<br>
+            description: <code>${row.first_name} ${row.last_name}'s ${cert.type} certification expired on ${cert.expirationDate}</code>,<br>
+            detectedAt: new Date(),<br>
+          });<br>
+        }<br>
+      }<br>
+    }</p><p>    return issues;<br>
+  }</p><p>  private async checkOvertimeViolations(): Promise&lt;Partial&lt;ComplianceIssue&gt;[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT cg.id, cg.first_name, cg.last_name, cg.max_hours_per_week,<br>
+              SUM(EXTRACT(EPOCH FROM (v.actual_end - v.actual_start)) / 3600) as hours_worked<br>
+       FROM caregivers cg<br>
+       JOIN visits v ON v.caregiver_id = cg.id<br>
+       WHERE v.status = 'completed'<br>
+         AND v.actual_start &gt;= DATE_TRUNC('week', NOW())<br>
+       GROUP BY cg.id<br>
+       HAVING SUM(EXTRACT(EPOCH FROM (v.actual_end - v.actual_start)) / 3600) &gt; cg.max_hours_per_week</code><br>
+    );</p><p>    return result.rows.map((row) =&gt; ({<br>
+      entityType: 'caregiver',<br>
+      entityId: row.id,<br>
+      description: <code>${row.first_name} ${row.last_name} worked ${row.hours_worked.toFixed(1)} hours this week (limit: ${row.max_hours_per_week})</code>,<br>
+      detectedAt: new Date(),<br>
+    }));<br>
+  }</p><p>  // Additional check methods...<br>
+  private async checkLocationMismatches(): Promise&lt;Partial&lt;ComplianceIssue&gt;[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT er.id, er.visit_id, er.exceptions<br>
+       FROM evv_records er<br>
+       WHERE er.exceptions @&gt; '[{&quot;type&quot;: &quot;location_mismatch&quot;}]'<br>
+         AND NOT EXISTS (<br>
+           SELECT 1 FROM compliance_issues ci<br>
+           WHERE ci.entity_id = er.id<br>
+             AND ci.rule_id = 'evv-location-mismatch'<br>
+             AND ci.resolved_at IS NULL<br>
+         )</code><br>
+    );</p><p>    return result.rows.map((row) =&gt; ({<br>
+      entityType: 'visit',<br>
+      entityId: row.visit_id,<br>
+      description: 'EVV clock-in/out location does not match client address',<br>
+      detectedAt: new Date(),<br>
+    }));<br>
+  }</p><p>  private async checkMissingSignatures(): Promise&lt;Partial&lt;ComplianceIssue&gt;[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT v.id, c.first_name, c.last_name, v.actual_start<br>
+       FROM visits v<br>
+       JOIN clients c ON c.id = v.client_id<br>
+       LEFT JOIN evv_records er ON er.visit_id = v.id<br>
+       WHERE v.status = 'completed'<br>
+         AND (er.client_signature_url IS NULL OR er.client_signature_url = '')<br>
+         AND v.actual_start &gt;= NOW() - INTERVAL '7 days'</code><br>
+    );</p><p>    return result.rows.map((row) =&gt; ({<br>
+      entityType: 'visit',<br>
+      entityId: row.id,<br>
+      description: <code>Visit for ${row.first_name} ${row.last_name} on ${row.actual_start} missing client signature</code>,<br>
+      detectedAt: new Date(),<br>
+    }));<br>
+  }</p><p>  private async checkExpiringCertifications(): Promise&lt;Partial&lt;ComplianceIssue&gt;[]&gt; {<br>
+    // Similar to checkExpiredCertifications but for 30-day window<br>
+    return [];<br>
+  }</p><p>  private async checkMissingNotes(): Promise&lt;Partial&lt;ComplianceIssue&gt;[]&gt; {<br>
+    return [];<br>
+  }</p><p>  private async storeIssues(issues: ComplianceIssue[]): Promise&lt;void&gt; {<br>
+    for (const issue of issues) {<br>
+      await db.query(<br>
+        <code>INSERT INTO compliance_issues<br>
+         (entity_type, entity_id, rule_id, rule_name, severity, description, detected_at)<br>
+         VALUES ($1, $2, $3, $4, $5, $6, $7)<br>
+         ON CONFLICT (entity_id, rule_id) WHERE resolved_at IS NULL<br>
+         DO NOTHING</code>,<br>
+        [<br>
+          issue.entityType,<br>
+          issue.entityId,<br>
+          issue.ruleId,<br>
+          issue.ruleName,<br>
+          issue.severity,<br>
+          issue.description,<br>
+          issue.detectedAt,<br>
+        ]<br>
+      );<br>
+    }<br>
+  }<br>
+}</code></pre><h2>Compliance Dashboard</h2><pre><code class="language-typescript">// verticals/compliance/src/routes/compliance-routes.ts<br>
+import { Router } from 'express';<br>
+import { complianceChecker } from '../services/compliance-checker-service';</p><p>const router = Router();</p><p>router.get('/dashboard', requireAuth, async (req, res, next) =&gt; {<br>
+  try {<br>
+    const [summary, recentIssues, issuesByCategory] = await Promise.all([<br>
+      getComplianceSummary(),<br>
+      getRecentIssues(20),<br>
+      getIssuesByCategory(),<br>
+    ]);</p><p>    res.json({<br>
+      summary,<br>
+      recentIssues,<br>
+      issuesByCategory,<br>
+    });<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</p><p>router.post('/check', requireAuth, async (req, res, next) =&gt; {<br>
+  try {<br>
+    const issues = await complianceChecker.runAllChecks();<br>
+    res.json({<br>
+      issuesFound: issues.length,<br>
+      critical: issues.filter((i) =&gt; i.severity === 'critical').length,<br>
+      warnings: issues.filter((i) =&gt; i.severity === 'warning').length,<br>
+      issues,<br>
+    });<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</p><p>router.post('/issues/:id/resolve', requireAuth, async (req, res, next) =&gt; {<br>
+  try {<br>
+    const { resolution } = req.body;</p><p>    await db.query(<br>
+      <code>UPDATE compliance_issues<br>
+       SET resolved_at = NOW(), resolved_by = $2, resolution = $3<br>
+       WHERE id = $1</code>,<br>
+      [req.params.id, req.user.id, resolution]<br>
+    );</p><p>    res.json({ success: true });<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</p><p>export { router as complianceRoutes };</code></pre><h2>Report Generation</h2><p>Generate compliance reports for audits:</p><pre><code class="language-typescript">// verticals/compliance/src/services/report-service.ts</p><p>export interface ComplianceReport {<br>
+  reportType: string;<br>
+  generatedAt: Date;<br>
+  period: { start: Date; end: Date };<br>
+  summary: ReportSummary;<br>
+  sections: ReportSection[];<br>
+}</p><p>export class ReportService {<br>
+  async generateEVVComplianceReport(<br>
+    startDate: Date,<br>
+    endDate: Date<br>
+  ): Promise&lt;ComplianceReport&gt; {<br>
+    const [<br>
+      visitStats,<br>
+      evvStats,<br>
+      exceptionStats,<br>
+      aggregatorStats,<br>
+    ] = await Promise.all([<br>
+      this.getVisitStats(startDate, endDate),<br>
+      this.getEVVStats(startDate, endDate),<br>
+      this.getExceptionStats(startDate, endDate),<br>
+      this.getAggregatorStats(startDate, endDate),<br>
+    ]);</p><p>    return {<br>
+      reportType: 'EVV Compliance',<br>
+      generatedAt: new Date(),<br>
+      period: { start: startDate, end: endDate },<br>
+      summary: {<br>
+        totalVisits: visitStats.total,<br>
+        compliantVisits: evvStats.compliant,<br>
+        complianceRate: (evvStats.compliant / visitStats.total) * 100,<br>
+        aggregatorSubmissionRate: aggregatorStats.submitted / evvStats.total * 100,<br>
+      },<br>
+      sections: [<br>
+        {<br>
+          title: 'Visit Summary',<br>
+          data: visitStats,<br>
+        },<br>
+        {<br>
+          title: 'EVV Verification',<br>
+          data: evvStats,<br>
+        },<br>
+        {<br>
+          title: 'Exceptions by Type',<br>
+          data: exceptionStats,<br>
+        },<br>
+        {<br>
+          title: 'Aggregator Submission',<br>
+          data: aggregatorStats,<br>
+        },<br>
+      ],<br>
+    };<br>
+  }</p><p>  async generateCaregiverComplianceReport(<br>
+    caregiverId?: string<br>
+  ): Promise&lt;ComplianceReport&gt; {<br>
+    const caregivers = caregiverId<br>
+      ? [await this.getCaregiver(caregiverId)]<br>
+      : await this.getAllActiveCaregivers();</p><p>    const sections: ReportSection[] = [];</p><p>    for (const caregiver of caregivers) {<br>
+      const certStatus = await this.getCertificationStatus(caregiver.id);<br>
+      const trainingStatus = await this.getTrainingStatus(caregiver.id);<br>
+      const performanceMetrics = await this.getPerformanceMetrics(caregiver.id);</p><p>      sections.push({<br>
+        title: <code>${caregiver.firstName} ${caregiver.lastName}</code>,<br>
+        data: {<br>
+          certifications: certStatus,<br>
+          training: trainingStatus,<br>
+          performance: performanceMetrics,<br>
+        },<br>
+      });<br>
+    }</p><p>    return {<br>
+      reportType: 'Caregiver Compliance',<br>
+      generatedAt: new Date(),<br>
+      period: { start: new Date(), end: new Date() },<br>
+      summary: {<br>
+        totalCaregivers: caregivers.length,<br>
+        fullyCompliant: sections.filter((s) =&gt; s.data.certifications.allValid).length,<br>
+      },<br>
+      sections,<br>
+    };<br>
+  }</p><p>  async generateBillingComplianceReport(<br>
+    startDate: Date,<br>
+    endDate: Date<br>
+  ): Promise&lt;ComplianceReport&gt; {<br>
+    const [<br>
+      invoiceStats,<br>
+      authorizationStats,<br>
+      claimStats,<br>
+    ] = await Promise.all([<br>
+      this.getInvoiceStats(startDate, endDate),<br>
+      this.getAuthorizationStats(startDate, endDate),<br>
+      this.getClaimStats(startDate, endDate),<br>
+    ]);</p><p>    return {<br>
+      reportType: 'Billing Compliance',<br>
+      generatedAt: new Date(),<br>
+      period: { start: startDate, end: endDate },<br>
+      summary: {<br>
+        totalBilled: invoiceStats.totalAmount,<br>
+        collectionRate: invoiceStats.collected / invoiceStats.totalAmount * 100,<br>
+        authorizationUtilization: authorizationStats.used / authorizationStats.authorized * 100,<br>
+      },<br>
+      sections: [<br>
+        { title: 'Invoice Summary', data: invoiceStats },<br>
+        { title: 'Authorization Usage', data: authorizationStats },<br>
+        { title: 'Claim Status', data: claimStats },<br>
+      ],<br>
+    };<br>
+  }</p><p>  private async getVisitStats(start: Date, end: Date): Promise&lt;VisitStats&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT<br>
+         COUNT(*) as total,<br>
+         COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed,<br>
+         COUNT(CASE WHEN status = 'cancelled' THEN 1 END) as cancelled,<br>
+         COUNT(CASE WHEN status = 'no_show' THEN 1 END) as no_show<br>
+       FROM visits<br>
+       WHERE scheduled_start &gt;= $1 AND scheduled_start &lt;= $2</code>,<br>
+      [start, end]<br>
+    );</p><p>    return result.rows[0];<br>
+  }</p><p>  // Additional helper methods...<br>
+}</code></pre><h2>Audit Trail</h2><p>Comprehensive audit logging for compliance:</p><pre><code class="language-typescript">// packages/core/src/audit/comprehensive-logger.ts</p><p>export interface AuditEvent {<br>
+  id: string;<br>
+  timestamp: Date;<br>
+  userId?: string;<br>
+  userRole?: string;<br>
+  action: AuditAction;<br>
+  entityType: string;<br>
+  entityId: string;<br>
+  description: string;<br>
+  previousState?: Record&lt;string, unknown&gt;;<br>
+  newState?: Record&lt;string, unknown&gt;;<br>
+  ipAddress?: string;<br>
+  userAgent?: string;<br>
+  sessionId?: string;<br>
+}</p><p>export type AuditAction =<br>
+  | 'create'<br>
+  | 'read'<br>
+  | 'update'<br>
+  | 'delete'<br>
+  | 'login'<br>
+  | 'logout'<br>
+  | 'export'<br>
+  | 'print'<br>
+  | 'access_denied';</p><p>export class AuditLogger {<br>
+  async log(event: Omit&lt;AuditEvent, 'id' | 'timestamp'&gt;): Promise&lt;void&gt; {<br>
+    await db.query(<br>
+      <code>INSERT INTO audit_log<br>
+       (user_id, user_role, action, entity_type, entity_id, description,<br>
+        previous_state, new_state, ip_address, user_agent, session_id)<br>
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)</code>,<br>
+      [<br>
+        event.userId,<br>
+        event.userRole,<br>
+        event.action,<br>
+        event.entityType,<br>
+        event.entityId,<br>
+        event.description,<br>
+        JSON.stringify(event.previousState),<br>
+        JSON.stringify(event.newState),<br>
+        event.ipAddress,<br>
+        event.userAgent,<br>
+        event.sessionId,<br>
+      ]<br>
+    );<br>
+  }</p><p>  async getAuditTrail(<br>
+    entityType: string,<br>
+    entityId: string<br>
+  ): Promise&lt;AuditEvent[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT * FROM audit_log<br>
+       WHERE entity_type = $1 AND entity_id = $2<br>
+       ORDER BY timestamp DESC</code>,<br>
+      [entityType, entityId]<br>
+    );</p><p>    return result.rows;<br>
+  }</p><p>  async getUserActivity(<br>
+    userId: string,<br>
+    startDate: Date,<br>
+    endDate: Date<br>
+  ): Promise&lt;AuditEvent[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT * FROM audit_log<br>
+       WHERE user_id = $1<br>
+         AND timestamp &gt;= $2<br>
+         AND timestamp &lt;= $3<br>
+       ORDER BY timestamp DESC</code>,<br>
+      [userId, startDate, endDate]<br>
+    );</p><p>    return result.rows;<br>
+  }</p><p>  async getSecurityEvents(days: number): Promise&lt;AuditEvent[]&gt; {<br>
+    const result = await db.query(<br>
+      <code>SELECT * FROM audit_log<br>
+       WHERE action IN ('login', 'logout', 'access_denied')<br>
+         AND timestamp &gt;= NOW() - INTERVAL '${days} days'<br>
+       ORDER BY timestamp DESC</code><br>
+    );</p><p>    return result.rows;<br>
+  }<br>
+}</code></pre><h2>Vibe Coding Compliance</h2><p>When building compliance features with AI:</p><p>> "Create an automated compliance checker that validates EVV records, caregiver certifications, and visit documentation"</p><p>> "Build a report generator for EVV compliance that shows verification rates and exception trends"</p><p>> "Implement comprehensive audit logging that tracks all PHI access and modifications"</p><p>> "Add compliance dashboard endpoints showing current issues grouped by severity and category"</p><p>AI understands healthcare regulations. Describe your compliance requirements, get the checking logic.</p><h2>Next Steps</h2><p>With compliance monitoring in place, we can add the final layer: AI-powered features that make the platform smarter. In the next chapter, we'll build natural language care plan generation, churn prediction, and intelligent alerts.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-7" class="chapter">
+      <h2>AI-Powered Features</h2>
+      <p>AI transforms healthcare software from record-keeping to intelligent assistance. This chapter covers building AI features that make agencies more effective—natural language care plans, churn prediction, smart recommendations, and intelligent alerts.</p><h2>Natural Language Care Plan Generation</h2><p>Care coordinators spend hours creating care plans. AI can draft them from simple descriptions:</p><pre><code class="language-typescript">// verticals/care-plans-tasks/src/services/natural-language-care-plan-service.ts<br>
+import Anthropic from '@anthropic-ai/sdk';<br>
+import { z } from 'zod';</p><p>const CarePlanSchema = z.object({<br>
+  name: z.string(),<br>
+  description: z.string(),<br>
+  goals: z.array(z.object({<br>
+    goalText: z.string(),<br>
+    targetDate: z.string().optional(),<br>
+    interventions: z.array(z.object({<br>
+      description: z.string(),<br>
+      frequency: z.string(),<br>
+      tasks: z.array(z.object({<br>
+        name: z.string(),<br>
+        description: z.string(),<br>
+        estimatedMinutes: z.number(),<br>
+        category: z.enum([<br>
+          'personal_care', 'medication', 'mobility',<br>
+          'nutrition', 'companionship', 'housekeeping', 'transportation'<br>
+        ]),<br>
+      })),<br>
+    })),<br>
+  })),<br>
+  authorizedHoursPerWeek: z.number(),<br>
+});</p><p>export type GeneratedCarePlan = z.infer&lt;typeof CarePlanSchema&gt;;</p><p>export interface NaturalLanguageCarePlanRequest {<br>
+  clientDescription: string;<br>
+  conditions: string[];<br>
+  currentChallenges: string;<br>
+  desiredOutcomes: string;<br>
+  authorizationConstraints?: {<br>
+    maxHoursPerWeek: number;<br>
+    allowedServices: string[];<br>
+  };<br>
+}</p><p>export class NaturalLanguageCarePlanService {<br>
+  private anthropic: Anthropic;</p><p>  constructor() {<br>
+    this.anthropic = new Anthropic();<br>
+  }</p><p>  async generateCarePlan(<br>
+    request: NaturalLanguageCarePlanRequest<br>
+  ): Promise&lt;GeneratedCarePlan&gt; {<br>
+    const systemPrompt = <code>You are an expert home healthcare care plan writer.<br>
+Create detailed, actionable care plans that:<br>
+- Address the client's specific conditions and challenges<br>
+- Include measurable, achievable goals<br>
+- Define concrete interventions with specific tasks<br>
+- Respect authorization constraints<br>
+- Follow home healthcare best practices</p><p>Return ONLY valid JSON matching this schema:<br>
+${JSON.stringify(CarePlanSchema.shape, null, 2)}</code>;</p><p>    const userPrompt = <code>Create a care plan for this client:</p><p>Client Description: ${request.clientDescription}</p><p>Medical Conditions: ${request.conditions.join(', ')}</p><p>Current Challenges: ${request.currentChallenges}</p><p>Desired Outcomes: ${request.desiredOutcomes}</p><p>${request.authorizationConstraints ? </code><br>
+Authorization Constraints:<br>
+- Maximum ${request.authorizationConstraints.maxHoursPerWeek} hours per week<br>
+- Allowed services: ${request.authorizationConstraints.allowedServices.join(', ')}<br>
+<code> : ''}</p><p>Generate a comprehensive care plan with 2-4 goals, each with specific interventions and tasks.</code>;</p><p>    const response = await this.anthropic.messages.create({<br>
+      model: 'claude-sonnet-4-20250514',<br>
+      max_tokens: 4000,<br>
+      system: systemPrompt,<br>
+      messages: [{ role: 'user', content: userPrompt }],<br>
+    });</p><p>    const content = response.content[0];<br>
+    if (content.type !== 'text') {<br>
+      throw new Error('Unexpected response type');<br>
+    }</p><p>    // Parse and validate response<br>
+    const jsonMatch = content.text.match(/\{[\s\S]*\}/);<br>
+    if (!jsonMatch) {<br>
+      throw new Error('Could not extract JSON from response');<br>
+    }</p><p>    const parsed = JSON.parse(jsonMatch[0]);<br>
+    return CarePlanSchema.parse(parsed);<br>
+  }</p><p>  async refineCarePlan(<br>
+    existingPlan: GeneratedCarePlan,<br>
+    feedback: string<br>
+  ): Promise&lt;GeneratedCarePlan&gt; {<br>
+    const prompt = <code>Here's an existing care plan:<br>
+${JSON.stringify(existingPlan, null, 2)}</p><p>The care coordinator has this feedback: &quot;${feedback}&quot;</p><p>Please revise the care plan to address this feedback. Return the complete updated care plan as JSON.</code>;</p><p>    const response = await this.anthropic.messages.create({<br>
+      model: 'claude-sonnet-4-20250514',<br>
+      max_tokens: 4000,<br>
+      messages: [{ role: 'user', content: prompt }],<br>
+    });</p><p>    const content = response.content[0];<br>
+    if (content.type !== 'text') {<br>
+      throw new Error('Unexpected response type');<br>
+    }</p><p>    const jsonMatch = content.text.match(/\{[\s\S]*\}/);<br>
+    if (!jsonMatch) {<br>
+      throw new Error('Could not extract JSON from response');<br>
+    }</p><p>    return CarePlanSchema.parse(JSON.parse(jsonMatch[0]));<br>
+  }<br>
+}</code></pre><h2>Client Churn Prediction</h2><p>Predict which clients might discontinue service:</p><pre><code class="language-typescript">// verticals/analytics-reporting/src/services/churn-prediction-service.ts<br>
+import Anthropic from '@anthropic-ai/sdk';</p><p>export interface ChurnPrediction {<br>
+  clientId: string;<br>
+  clientName: string;<br>
+  churnRisk: 'high' | 'medium' | 'low';<br>
+  riskScore: number;<br>
+  riskFactors: string[];<br>
+  recommendations: string[];<br>
+  predictedTimeframe?: string;<br>
+}</p><p>export class ChurnPredictionService {<br>
+  private anthropic: Anthropic;</p><p>  constructor() {<br>
+    this.anthropic = new Anthropic();<br>
+  }</p><p>  async predictChurnRisk(clientId: string): Promise&lt;ChurnPrediction&gt; {<br>
+    // Gather client data<br>
+    const [<br>
+      client,<br>
+      visits,<br>
+      complaints,<br>
+      caregiverChanges,<br>
+      missedVisits,<br>
+      billingIssues,<br>
+    ] = await Promise.all([<br>
+      this.getClient(clientId),<br>
+      this.getRecentVisits(clientId, 90),<br>
+      this.getComplaints(clientId, 180),<br>
+      this.getCaregiverChanges(clientId, 90),<br>
+      this.getMissedVisits(clientId, 90),<br>
+      this.getBillingIssues(clientId),<br>
+    ]);</p><p>    // Calculate metrics<br>
+    const metrics = {<br>
+      visitConsistency: this.calculateVisitConsistency(visits),<br>
+      caregiverStability: caregiverChanges.length,<br>
+      missedVisitRate: missedVisits.length / (visits.length + missedVisits.length),<br>
+      complaintCount: complaints.length,<br>
+      hasBillingIssues: billingIssues.length &gt; 0,<br>
+      daysSinceLastVisit: this.daysSince(visits[0]?.date),<br>
+      totalActiveMonths: this.monthsSince(client.startDate),<br>
+    };</p><p>    const prompt = <code>Analyze this home healthcare client for churn risk.</p><p>Client: ${client.firstName} ${client.lastName}<br>
+Active since: ${client.startDate}<br>
+Conditions: ${client.conditions?.join(', ') || 'Not specified'}</p><p>Recent Metrics (90 days):<br>
+- Visit consistency: ${(metrics.visitConsistency * 100).toFixed(1)}%<br>
+- Caregiver changes: ${metrics.caregiverStability}<br>
+- Missed visit rate: ${(metrics.missedVisitRate * 100).toFixed(1)}%<br>
+- Complaints filed: ${metrics.complaintCount}<br>
+- Days since last visit: ${metrics.daysSinceLastVisit}<br>
+- Has billing issues: ${metrics.hasBillingIssues}</p><p>Based on this data:<br>
+1. Assess churn risk (high/medium/low)<br>
+2. Provide a risk score (0-100)<br>
+3. List specific risk factors<br>
+4. Recommend retention actions</p><p>Return JSON:<br>
+{<br>
+  &quot;churnRisk&quot;: &quot;high|medium|low&quot;,<br>
+  &quot;riskScore&quot;: 0-100,<br>
+  &quot;riskFactors&quot;: [&quot;factor1&quot;, &quot;factor2&quot;],<br>
+  &quot;recommendations&quot;: [&quot;action1&quot;, &quot;action2&quot;],<br>
+  &quot;predictedTimeframe&quot;: &quot;optional - e.g., '30 days'&quot;<br>
+}</code>;</p><p>    const response = await this.anthropic.messages.create({<br>
+      model: 'claude-sonnet-4-20250514',<br>
+      max_tokens: 1000,<br>
+      messages: [{ role: 'user', content: prompt }],<br>
+    });</p><p>    const content = response.content[0];<br>
+    if (content.type !== 'text') {<br>
+      throw new Error('Unexpected response type');<br>
+    }</p><p>    const jsonMatch = content.text.match(/\{[\s\S]*\}/);<br>
+    if (!jsonMatch) {<br>
+      throw new Error('Could not parse response');<br>
+    }</p><p>    const prediction = JSON.parse(jsonMatch[0]);</p><p>    return {<br>
+      clientId,<br>
+      clientName: <code>${client.firstName} ${client.lastName}</code>,<br>
+      ...prediction,<br>
+    };<br>
+  }</p><p>  async getHighRiskClients(limit = 20): Promise&lt;ChurnPrediction[]&gt; {<br>
+    // Get all active clients<br>
+    const clients = await this.getActiveClients();</p><p>    // Score each client<br>
+    const predictions: ChurnPrediction[] = [];</p><p>    for (const client of clients.slice(0, limit * 2)) {<br>
+      const prediction = await this.predictChurnRisk(client.id);<br>
+      predictions.push(prediction);<br>
+    }</p><p>    // Sort by risk score and return top N<br>
+    return predictions<br>
+      .sort((a, b) =&gt; b.riskScore - a.riskScore)<br>
+      .slice(0, limit);<br>
+  }</p><p>  private calculateVisitConsistency(visits: Visit[]): number {<br>
+    if (visits.length === 0) return 0;</p><p>    const completedVisits = visits.filter((v) =&gt; v.status === 'completed');<br>
+    return completedVisits.length / visits.length;<br>
+  }</p><p>  private daysSince(date?: Date): number {<br>
+    if (!date) return 999;<br>
+    return Math.floor((Date.now() - new Date(date).getTime()) / (1000 <em> 60 </em> 60 * 24));<br>
+  }</p><p>  private monthsSince(date: Date): number {<br>
+    const months = (Date.now() - new Date(date).getTime()) / (1000 <em> 60 </em> 60 <em> 24 </em> 30);<br>
+    return Math.floor(months);<br>
+  }<br>
+}</code></pre><h2>Smart Alerts</h2><p>Proactive alerts that surface important information:</p><pre><code class="language-typescript">// verticals/analytics-reporting/src/services/smart-alert-service.ts<br>
+import Anthropic from '@anthropic-ai/sdk';</p><p>export interface SmartAlert {<br>
+  id: string;<br>
+  type: AlertType;<br>
+  severity: 'critical' | 'warning' | 'info';<br>
+  title: string;<br>
+  description: string;<br>
+  context: Record&lt;string, unknown&gt;;<br>
+  suggestedActions: string[];<br>
+  createdAt: Date;<br>
+  acknowledgedAt?: Date;<br>
+  acknowledgedBy?: string;<br>
+}</p><p>export type AlertType =<br>
+  | 'certification_expiring'<br>
+  | 'authorization_low'<br>
+  | 'visit_pattern_change'<br>
+  | 'caregiver_burnout_risk'<br>
+  | 'client_health_decline'<br>
+  | 'scheduling_conflict'<br>
+  | 'billing_anomaly'<br>
+  | 'compliance_risk';</p><p>export class SmartAlertService {<br>
+  private anthropic: Anthropic;</p><p>  constructor() {<br>
+    this.anthropic = new Anthropic();<br>
+  }</p><p>  async generateDailyAlerts(): Promise&lt;SmartAlert[]&gt; {<br>
+    const alerts: SmartAlert[] = [];</p><p>    // Check various conditions<br>
+    const checks = await Promise.all([<br>
+      this.checkCertificationExpirations(),<br>
+      this.checkAuthorizationLevels(),<br>
+      this.checkVisitPatterns(),<br>
+      this.checkCaregiverWorkload(),<br>
+      this.checkClientHealthIndicators(),<br>
+      this.checkBillingAnomalies(),<br>
+    ]);</p><p>    for (const checkAlerts of checks) {<br>
+      alerts.push(...checkAlerts);<br>
+    }</p><p>    return alerts;<br>
+  }</p><p>  private async checkCaregiverWorkload(): Promise&lt;SmartAlert[]&gt; {<br>
+    // Get caregivers with high workload<br>
+    const result = await db.query(<br>
+      <code>SELECT cg.id, cg.first_name, cg.last_name,<br>
+              COUNT(v.id) as visits_this_week,<br>
+              SUM(EXTRACT(EPOCH FROM (v.actual_end - v.actual_start)) / 3600) as hours_this_week<br>
+       FROM caregivers cg<br>
+       JOIN visits v ON v.caregiver_id = cg.id<br>
+       WHERE v.status = 'completed'<br>
+         AND v.actual_start &gt;= DATE_TRUNC('week', NOW())<br>
+       GROUP BY cg.id<br>
+       HAVING SUM(EXTRACT(EPOCH FROM (v.actual_end - v.actual_start)) / 3600) &gt; 35</code><br>
+    );</p><p>    const alerts: SmartAlert[] = [];</p><p>    for (const row of result.rows) {<br>
+      const prompt = <code>A caregiver has worked ${row.hours_this_week.toFixed(1)} hours this week across ${row.visits_this_week} visits.</p><p>Assess burnout risk and provide:<br>
+1. Risk level (critical/warning/info)<br>
+2. Specific risk factors<br>
+3. Recommended actions</p><p>Return JSON:<br>
+{<br>
+  &quot;severity&quot;: &quot;critical|warning|info&quot;,<br>
+  &quot;riskFactors&quot;: [&quot;factor1&quot;],<br>
+  &quot;recommendations&quot;: [&quot;action1&quot;]<br>
+}</code>;</p><p>      const response = await this.anthropic.messages.create({<br>
+        model: 'claude-sonnet-4-20250514',<br>
+        max_tokens: 500,<br>
+        messages: [{ role: 'user', content: prompt }],<br>
+      });</p><p>      const content = response.content[0];<br>
+      if (content.type === 'text') {<br>
+        const jsonMatch = content.text.match(/\{[\s\S]*\}/);<br>
+        if (jsonMatch) {<br>
+          const analysis = JSON.parse(jsonMatch[0]);</p><p>          alerts.push({<br>
+            id: <code>burnout-${row.id}-${Date.now()}</code>,<br>
+            type: 'caregiver_burnout_risk',<br>
+            severity: analysis.severity,<br>
+            title: <code>Potential Burnout Risk: ${row.first_name} ${row.last_name}</code>,<br>
+            description: <code>${row.hours_this_week.toFixed(1)} hours worked this week</code>,<br>
+            context: {<br>
+              caregiverId: row.id,<br>
+              hoursWorked: row.hours_this_week,<br>
+              visitCount: row.visits_this_week,<br>
+              riskFactors: analysis.riskFactors,<br>
+            },<br>
+            suggestedActions: analysis.recommendations,<br>
+            createdAt: new Date(),<br>
+          });<br>
+        }<br>
+      }<br>
+    }</p><p>    return alerts;<br>
+  }</p><p>  private async checkClientHealthIndicators(): Promise&lt;SmartAlert[]&gt; {<br>
+    // Analyze visit notes for health concerns<br>
+    const result = await db.query(<br>
+      <code>SELECT v.id, v.client_id, v.notes,<br>
+              c.first_name, c.last_name<br>
+       FROM visits v<br>
+       JOIN clients c ON c.id = v.client_id<br>
+       WHERE v.status = 'completed'<br>
+         AND v.notes IS NOT NULL<br>
+         AND v.actual_start &gt;= NOW() - INTERVAL '7 days'<br>
+       ORDER BY v.actual_start DESC</code><br>
+    );</p><p>    const clientNotes = new Map&lt;string, { client: string; notes: string[] }&gt;();</p><p>    for (const row of result.rows) {<br>
+      const existing = clientNotes.get(row.client_id) || {<br>
+        client: <code>${row.first_name} ${row.last_name}</code>,<br>
+        notes: [],<br>
+      };<br>
+      existing.notes.push(row.notes);<br>
+      clientNotes.set(row.client_id, existing);<br>
+    }</p><p>    const alerts: SmartAlert[] = [];</p><p>    for (const [clientId, data] of clientNotes) {<br>
+      if (data.notes.length &lt; 2) continue;</p><p>      const prompt = <code>Analyze these recent visit notes for a home healthcare client. Look for signs of health decline, concerning patterns, or issues requiring attention.</p><p>Recent visit notes (newest first):<br>
+${data.notes.slice(0, 5).map((n, i) =&gt; </code>Visit ${i + 1}: ${n}<code>).join('\n\n')}</p><p>If you identify concerning patterns, return JSON:<br>
+{<br>
+  &quot;concernFound&quot;: true,<br>
+  &quot;severity&quot;: &quot;critical|warning|info&quot;,<br>
+  &quot;concern&quot;: &quot;brief description&quot;,<br>
+  &quot;details&quot;: &quot;detailed analysis&quot;,<br>
+  &quot;recommendations&quot;: [&quot;action1&quot;, &quot;action2&quot;]<br>
+}</p><p>If no concerns, return:<br>
+{<br>
+  &quot;concernFound&quot;: false<br>
+}</code>;</p><p>      const response = await this.anthropic.messages.create({<br>
+        model: 'claude-sonnet-4-20250514',<br>
+        max_tokens: 800,<br>
+        messages: [{ role: 'user', content: prompt }],<br>
+      });</p><p>      const content = response.content[0];<br>
+      if (content.type === 'text') {<br>
+        const jsonMatch = content.text.match(/\{[\s\S]*\}/);<br>
+        if (jsonMatch) {<br>
+          const analysis = JSON.parse(jsonMatch[0]);</p><p>          if (analysis.concernFound) {<br>
+            alerts.push({<br>
+              id: <code>health-${clientId}-${Date.now()}</code>,<br>
+              type: 'client_health_decline',<br>
+              severity: analysis.severity,<br>
+              title: <code>Health Concern: ${data.client}</code>,<br>
+              description: analysis.concern,<br>
+              context: {<br>
+                clientId,<br>
+                analysis: analysis.details,<br>
+              },<br>
+              suggestedActions: analysis.recommendations,<br>
+              createdAt: new Date(),<br>
+            });<br>
+          }<br>
+        }<br>
+      }<br>
+    }</p><p>    return alerts;<br>
+  }</p><p>  // Additional check methods...<br>
+  private async checkCertificationExpirations(): Promise&lt;SmartAlert[]&gt; {<br>
+    return [];<br>
+  }</p><p>  private async checkAuthorizationLevels(): Promise&lt;SmartAlert[]&gt; {<br>
+    return [];<br>
+  }</p><p>  private async checkVisitPatterns(): Promise&lt;SmartAlert[]&gt; {<br>
+    return [];<br>
+  }</p><p>  private async checkBillingAnomalies(): Promise&lt;SmartAlert[]&gt; {<br>
+    return [];<br>
+  }<br>
+}</code></pre><h2>AI-Powered Search</h2><p>Let users query data naturally:</p><pre><code class="language-typescript">// packages/core/src/ai/natural-language-query-service.ts<br>
+import Anthropic from '@anthropic-ai/sdk';</p><p>export class NaturalLanguageQueryService {<br>
+  private anthropic: Anthropic;</p><p>  constructor() {<br>
+    this.anthropic = new Anthropic();<br>
+  }</p><p>  async query(naturalLanguageQuery: string): Promise&lt;QueryResult&gt; {<br>
+    // First, determine what type of query this is<br>
+    const classificationPrompt = <code>Classify this healthcare query:<br>
+&quot;${naturalLanguageQuery}&quot;</p><p>Categories:<br>
+- client_lookup: Finding specific clients<br>
+- caregiver_lookup: Finding caregivers<br>
+- visit_search: Searching visits<br>
+- billing_query: Billing/invoice questions<br>
+- schedule_query: Scheduling questions<br>
+- compliance_query: Compliance/regulatory questions<br>
+- analytics: Statistical questions</p><p>Return JSON: { &quot;category&quot;: &quot;...&quot;, &quot;entities&quot;: [...], &quot;filters&quot;: {...} }</code>;</p><p>    const classResponse = await this.anthropic.messages.create({<br>
+      model: 'claude-sonnet-4-20250514',<br>
+      max_tokens: 500,<br>
+      messages: [{ role: 'user', content: classificationPrompt }],<br>
+    });</p><p>    const classContent = classResponse.content[0];<br>
+    if (classContent.type !== 'text') {<br>
+      throw new Error('Unexpected response type');<br>
+    }</p><p>    const classification = JSON.parse(<br>
+      classContent.text.match(/\{[\s\S]*\}/)?.[0] || '{}'<br>
+    );</p><p>    // Generate SQL based on classification<br>
+    const sql = await this.generateSQL(classification, naturalLanguageQuery);</p><p>    // Execute query (with safety checks)<br>
+    const results = await this.executeQuery(sql);</p><p>    // Generate human-readable summary<br>
+    const summary = await this.summarizeResults(<br>
+      naturalLanguageQuery,<br>
+      results<br>
+    );</p><p>    return {<br>
+      query: naturalLanguageQuery,<br>
+      classification,<br>
+      sql,<br>
+      results,<br>
+      summary,<br>
+    };<br>
+  }</p><p>  private async generateSQL(<br>
+    classification: QueryClassification,<br>
+    originalQuery: string<br>
+  ): Promise&lt;string&gt; {<br>
+    const schemaContext = <code><br>
+Tables:<br>
+- clients (id, first_name, last_name, status, conditions, city, state)<br>
+- caregivers (id, first_name, last_name, status, certifications, hourly_rate)<br>
+- visits (id, client_id, caregiver_id, scheduled_start, scheduled_end, status, actual_start, actual_end)<br>
+- care_plans (id, client_id, name, status, authorized_hours_per_week)<br>
+- invoices (id, client_id, payer_id, total, status, invoice_date)<br>
+</code>;</p><p>    const prompt = <code>Generate a safe, read-only PostgreSQL query for:<br>
+&quot;${originalQuery}&quot;</p><p>Schema:<br>
+${schemaContext}</p><p>Requirements:<br>
+- SELECT only (no INSERT, UPDATE, DELETE)<br>
+- Include LIMIT 100 for safety<br>
+- Use proper JOINs for related data<br>
+- Return practical columns for display</p><p>Return only the SQL query, no explanation.</code>;</p><p>    const response = await this.anthropic.messages.create({<br>
+      model: 'claude-sonnet-4-20250514',<br>
+      max_tokens: 500,<br>
+      messages: [{ role: 'user', content: prompt }],<br>
+    });</p><p>    const content = response.content[0];<br>
+    if (content.type !== 'text') {<br>
+      throw new Error('Unexpected response type');<br>
+    }</p><p>    // Extract SQL from response<br>
+    const sqlMatch = content.text.match(/</code></pre>sql\n?([\s\S]*?)``<code>/);<br>
+    return sqlMatch ? sqlMatch[1].trim() : content.text.trim();<br>
+  }</p><p>  private async executeQuery(sql: string): Promise<unknown[]> {<br>
+    // Safety check - only allow SELECT<br>
+    if (!sql.trim().toLowerCase().startsWith('select')) {<br>
+      throw new Error('Only SELECT queries are allowed');<br>
+    }</p><p>    // Additional safety: no semicolons (prevent multiple statements)<br>
+    if (sql.includes(';')) {<br>
+      throw new Error('Multiple statements not allowed');<br>
+    }</p><p>    const result = await db.query(sql);<br>
+    return result.rows;<br>
+  }</p><p>  private async summarizeResults(<br>
+    query: string,<br>
+    results: unknown[]<br>
+  ): Promise<string> {<br>
+    if (results.length === 0) {<br>
+      return 'No results found matching your query.';<br>
+    }</p><p>    const prompt = </code>Summarize these query results in 1-2 sentences:</p><p>User asked: "${query}"</p><p>Results (${results.length} rows):<br>
+${JSON.stringify(results.slice(0, 10), null, 2)}<br>
+${results.length > 10 ? <code>\n... and ${results.length - 10} more rows</code> : ''}</p><p>Provide a helpful, concise summary.<code>;</p><p>    const response = await this.anthropic.messages.create({<br>
+      model: 'claude-sonnet-4-20250514',<br>
+      max_tokens: 200,<br>
+      messages: [{ role: 'user', content: prompt }],<br>
+    });</p><p>    const content = response.content[0];<br>
+    return content.type === 'text' ? content.text : 'Results retrieved successfully.';<br>
+  }<br>
+}<br>
+</code>``</p><h2>Vibe Coding AI Features</h2><p>When building AI features with AI:</p><p>> "Create a natural language care plan generator that takes a client description and outputs structured goals, interventions, and tasks"</p><p>> "Build a client churn prediction service that analyzes visit patterns, complaints, and caregiver changes"</p><p>> "Implement smart alerts that analyze visit notes for signs of client health decline"</p><p>> "Add natural language querying that converts questions like 'show me all clients in Phoenix with missed visits' into SQL"</p><p>AI building AI features—it understands what you're trying to accomplish and generates robust implementations.</p><h2>Final Thoughts</h2><p>You've built a complete healthcare platform:</p><p>- <strong>Care Plans</strong> - Structured care with goals and tasks<br>
+- <strong>Caregiver Management</strong> - Profiles, credentials, matching<br>
+- <strong>EVV Compliance</strong> - Clock-in/out with GPS and signatures<br>
+- <strong>Billing</strong> - Invoices, payments, authorizations<br>
+- <strong>Compliance</strong> - Automated checking and audit trails<br>
+- <strong>AI Features</strong> - Natural language, predictions, alerts</p><p>More importantly, you've learned the <em>patterns</em>. Healthcare software follows specific rules—understanding them lets you adapt these solutions to any agency's needs.</p><p>The healthcare industry needs better software. Now you can build it.<br>
+</p>
+    </section>
+  
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>

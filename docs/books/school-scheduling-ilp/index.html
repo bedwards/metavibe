@@ -1,0 +1,3087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Vibe Code a School Scheduling System with ILP | metavibe</title>
+  <meta name="description" content="A practical guide to building automated school scheduling software using">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Charter', 'Bitstream Charter', Georgia, serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem; }
+    header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    .subtitle { color: var(--text-muted); font-size: 1.1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-family: sans-serif; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    nav { margin: 2rem 0; padding: 1.5rem; background: var(--code-bg); border-radius: 8px; }
+    nav h2 { font-size: 1rem; margin-bottom: 1rem; font-family: sans-serif; }
+    nav ul { list-style: none; padding-left: 0; }
+    nav li { margin: 0.5rem 0; }
+    nav a { color: var(--accent); text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    .chapter { margin: 3rem 0; padding-top: 2rem; border-top: 1px solid var(--border); }
+    h2 { font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; font-family: sans-serif; }
+    h3 { font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 0.75rem; font-family: sans-serif; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.9em; background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; }
+    pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.85em; }
+    strong { font-weight: 600; }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.9rem; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../../" class="back">← Back to all books</a>
+    <header>
+      <h1>How to Vibe Code a School Scheduling System with ILP</h1>
+      <p class="subtitle">Building optimal class schedules using Integer Linear Programming</p>
+    </header>
+
+    <nav>
+      <h2>Table of Contents</h2>
+      <ul>
+        <li><a href="#chapter-0">Introduction</a></li>
+<li><a href="#chapter-1">Project Setup</a></li>
+<li><a href="#chapter-2">The Scheduling Data Model</a></li>
+<li><a href="#chapter-3">ILP Fundamentals</a></li>
+<li><a href="#chapter-4">Modeling the Schedule as ILP</a></li>
+<li><a href="#chapter-5">Integrating the ILP Solver</a></li>
+<li><a href="#chapter-6">Building the Schedule UI</a></li>
+<li><a href="#chapter-7">Advanced Optimization</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      
+    <section id="chapter-0" class="chapter">
+      <h2>Introduction</h2>
+      <h2>The School Scheduling Problem</h2><p>Every semester, school administrators face the same nightmare: create a schedule that assigns teachers to classes, classes to rooms, and everything to time slots—without conflicts.</p><p>Sounds simple. It's not.</p><p>A typical high school has:<br>
+- 50+ teachers with varying availability<br>
+- 200+ class sections across subjects<br>
+- 30+ rooms with different capacities and equipment<br>
+- 6-8 periods per day<br>
+- Hundreds of constraints (teacher preferences, room requirements, student conflicts)</p><p>The number of possible schedules is astronomical. A school with 50 teachers, 40 rooms, and 8 periods has over 10^100 possible assignments. Brute force doesn't work.</p><p>This is a classic constraint satisfaction problem—and it's NP-hard. There's no polynomial-time algorithm to find the optimal solution. But we don't need optimal. We need good enough, fast enough.</p><h2>Why Integer Linear Programming?</h2><p>Integer Linear Programming (ILP) is the industry-standard approach for scheduling problems. It works by:</p><p>1. <strong>Modeling decisions as variables</strong> - Each possible assignment (teacher X teaches class Y in room Z at time T) becomes a binary variable (0 or 1)<br>
+2. <strong>Expressing constraints as linear equations</strong> - "No teacher can be in two places at once" becomes a sum constraint<br>
+3. <strong>Optimizing an objective function</strong> - Minimize conflicts, maximize preference satisfaction</p><p>ILP solvers have decades of research behind them. They use branch-and-bound, cutting planes, and other sophisticated techniques to find solutions quickly. A problem with millions of variables can often be solved in seconds.</p><h2>Why Not Other Approaches?</h2><p><strong>Genetic algorithms</strong> - Popular but unreliable. They often get stuck in local optima and provide no guarantee of finding feasible solutions. You might run for hours and still have conflicts.</p><p><strong>Constraint programming</strong> - Good for small problems, but scaling is difficult. CP solvers enumerate possibilities, which becomes intractable for large instances.</p><p><strong>Manual scheduling</strong> - The traditional approach. Administrators spend weeks shuffling spreadsheets. Any change triggers cascading conflicts. It's error-prone and exhausting.</p><p><strong>Commercial software</strong> - Expensive ($10,000+ per year), often inflexible, and you don't own your data. Many are black boxes that don't explain why certain assignments were made.</p><p>ILP gives you the best of all worlds: mathematical guarantees, scalability, transparency, and control.</p><h2>Why Vibe Code It?</h2><p>Building a scheduling system from scratch sounds daunting:<br>
+- Linear algebra and optimization theory<br>
+- Complex constraint modeling<br>
+- Solver integration<br>
+- User interfaces for data entry and visualization</p><p>With vibe coding, you describe what you want and iterate toward a working system. The AI handles the mathematical notation, the solver integration, the edge cases. You focus on the domain: what makes a good schedule?</p><p>This book walks through building a complete school scheduling system:<br>
+- Data model for teachers, classes, rooms, and constraints<br>
+- ILP formulation for the scheduling problem<br>
+- Integration with HiGHS (a high-performance open-source solver)<br>
+- Web interface for data management and schedule visualization<br>
+- Export to calendar formats</p><p>By the end, you'll have a working system and understand how to apply ILP to other scheduling problems: employee shifts, conference sessions, sports leagues, manufacturing.</p><h2>What We're Building</h2><p>A web application with:</p><p><strong>Data Management</strong><br>
+- Teacher profiles with availability windows<br>
+- Class definitions with room requirements<br>
+- Room inventory with capacity and equipment<br>
+- Time slot configuration (periods, days)<br>
+- Constraint definitions (hard and soft)</p><p><strong>Schedule Generation</strong><br>
+- ILP model construction<br>
+- Solver execution with timeout<br>
+- Solution extraction and validation<br>
+- Infeasibility diagnosis</p><p><strong>Schedule Visualization</strong><br>
+- Grid view by teacher, room, or class<br>
+- Conflict highlighting<br>
+- Manual override interface<br>
+- Preference satisfaction metrics</p><p><strong>Export</strong><br>
+- iCal format for calendars<br>
+- CSV for spreadsheets<br>
+- PDF for printing</p><h2>The Technology Stack</h2><p>- <strong>TypeScript</strong> - Type safety for complex data structures<br>
+- <strong>Node.js + Express</strong> - API server<br>
+- <strong>PostgreSQL</strong> - Relational data storage<br>
+- <strong>HiGHS</strong> - Open-source ILP solver (via highs-js)<br>
+- <strong>Vite + React</strong> - Frontend (or vanilla TypeScript)</p><p>Why HiGHS? It's:<br>
+- Free and open-source (MIT license)<br>
+- Fast (competitive with commercial solvers)<br>
+- Available as WebAssembly (runs in browser)<br>
+- Active development (part of COIN-OR project)</p><h2>Prerequisites</h2><p>To follow along:<br>
+- <strong>TypeScript experience</strong> - You'll write complex types<br>
+- <strong>Basic linear algebra</strong> - Vectors, matrices, sums (helpful but we'll explain)<br>
+- <strong>An AI coding assistant</strong> - Claude Code, Cursor, or similar</p><p>You don't need prior experience with:<br>
+- Optimization theory (we'll cover it)<br>
+- ILP solvers (we'll integrate step by step)<br>
+- School administration (we'll model the domain)</p><h2>A Note on Complexity</h2><p>School scheduling is genuinely hard. Real schools have bizarre constraints:<br>
+- "Mr. Smith can only teach periods 1-4 because he coaches after school"<br>
+- "The chemistry lab can't be used during lunch because of fume ventilation"<br>
+- "These two teachers can't be scheduled in adjacent rooms because they're too loud"<br>
+- "The band needs the auditorium every Thursday 3rd period"</p><p>No software handles every edge case out of the box. But ILP is flexible. Any constraint you can express as a linear equation can be added to the model. This book teaches you to think in constraints.</p><h2>Let's Build</h2><p>School scheduling touches lives. A good schedule means teachers can balance work and life, students can take the classes they need, and administrators can stop dreading September.</p><p>Let's build something that makes schedules better.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-1" class="chapter">
+      <h2>Project Setup</h2>
+      <h2>Architecture Overview</h2><p>A school scheduling system has three main components:</p><pre><code class="language-">┌─────────────────────────────────────────────────────────────┐<br>
+│                         Frontend                             │<br>
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │<br>
+│  │ Data Entry  │  │  Schedule   │  │    Export/Import    │  │<br>
+│  │   Forms     │  │    Grid     │  │                     │  │<br>
+│  └─────────────┘  └─────────────┘  └─────────────────────┘  │<br>
+└─────────────────────────────────────────────────────────────┘<br>
+                              │<br>
+                              ▼<br>
+┌─────────────────────────────────────────────────────────────┐<br>
+│                        REST API                              │<br>
+│  /teachers  /classes  /rooms  /timeslots  /constraints      │<br>
+│                              │                               │<br>
+│                     /schedules/generate                      │<br>
+└─────────────────────────────────────────────────────────────┘<br>
+                              │<br>
+                              ▼<br>
+┌─────────────────────────────────────────────────────────────┐<br>
+│                       Services                               │<br>
+│  ┌────────────────┐  ┌────────────────┐  ┌──────────────┐  │<br>
+│  │  Data Service  │  │  ILP Builder   │  │    Solver    │  │<br>
+│  │                │  │                │  │   (HiGHS)    │  │<br>
+│  └────────────────┘  └────────────────┘  └──────────────┘  │<br>
+└─────────────────────────────────────────────────────────────┘<br>
+                              │<br>
+                              ▼<br>
+┌─────────────────────────────────────────────────────────────┐<br>
+│                      PostgreSQL                              │<br>
+│  teachers │ classes │ rooms │ timeslots │ constraints       │<br>
+│                      schedules │ assignments                 │<br>
+└─────────────────────────────────────────────────────────────┘</code></pre><p>The key insight: the ILP solver is a black box. You feed it a model, it returns a solution. The complexity is in building the model correctly.</p><h2>Project Structure</h2><pre><code class="language-">school-scheduler/<br>
+├── src/<br>
+│   ├── api/<br>
+│   │   ├── index.ts              # Express app<br>
+│   │   ├── routes/<br>
+│   │   │   ├── teachers.ts<br>
+│   │   │   ├── classes.ts<br>
+│   │   │   ├── rooms.ts<br>
+│   │   │   ├── timeslots.ts<br>
+│   │   │   ├── constraints.ts<br>
+│   │   │   └── schedules.ts<br>
+│   │   └── middleware/<br>
+│   │       └── error.ts<br>
+│   ├── services/<br>
+│   │   ├── data-service.ts       # CRUD operations<br>
+│   │   ├── ilp-builder.ts        # Builds ILP model<br>
+│   │   ├── solver-service.ts     # Runs HiGHS<br>
+│   │   └── schedule-service.ts   # Extracts/validates solutions<br>
+│   ├── db/<br>
+│   │   ├── client.ts             # Database connection<br>
+│   │   ├── migrations/           # Schema migrations<br>
+│   │   └── seed.ts               # Sample data<br>
+│   ├── types/<br>
+│   │   └── index.ts              # TypeScript interfaces<br>
+│   └── utils/<br>
+│       └── ilp-utils.ts          # Helper functions<br>
+├── web/<br>
+│   ├── src/<br>
+│   │   ├── main.ts<br>
+│   │   ├── components/<br>
+│   │   │   ├── TeacherForm.ts<br>
+│   │   │   ├── ScheduleGrid.ts<br>
+│   │   │   └── ...<br>
+│   │   └── api/<br>
+│   │       └── client.ts<br>
+│   ├── index.html<br>
+│   └── vite.config.ts<br>
+├── package.json<br>
+├── tsconfig.json<br>
+└── docker-compose.yml</code></pre><h2>Core Types</h2><p>Define the domain model first:</p><pre><code class="language-typescript">// src/types/index.ts</p><p>// === Entities ===</p><p>export interface Teacher {<br>
+  id: string;<br>
+  name: string;<br>
+  email: string;<br>
+  department: string;<br>
+  maxPeriodsPerDay: number;<br>
+  maxPeriodsPerWeek: number;<br>
+  createdAt: Date;<br>
+  updatedAt: Date;<br>
+}</p><p>export interface TeacherAvailability {<br>
+  id: string;<br>
+  teacherId: string;<br>
+  dayOfWeek: number;  // 0-6, Sunday-Saturday<br>
+  periodId: string;<br>
+  isAvailable: boolean;<br>
+  preference: number; // -2 to 2, negative=avoid, positive=prefer<br>
+}</p><p>export interface Class {<br>
+  id: string;<br>
+  name: string;         // &quot;Algebra I&quot;<br>
+  code: string;         // &quot;MATH101&quot;<br>
+  department: string;<br>
+  periodsPerWeek: number;<br>
+  requiresLab: boolean;<br>
+  maxStudents: number;<br>
+  createdAt: Date;<br>
+  updatedAt: Date;<br>
+}</p><p>export interface Room {<br>
+  id: string;<br>
+  name: string;         // &quot;Room 101&quot;<br>
+  building: string;<br>
+  capacity: number;<br>
+  isLab: boolean;<br>
+  equipment: string[];  // [&quot;projector&quot;, &quot;whiteboard&quot;, &quot;computers&quot;]<br>
+  createdAt: Date;<br>
+  updatedAt: Date;<br>
+}</p><p>export interface TimeSlot {<br>
+  id: string;<br>
+  dayOfWeek: number;<br>
+  periodNumber: number;<br>
+  startTime: string;    // &quot;08:00&quot;<br>
+  endTime: string;      // &quot;08:50&quot;<br>
+  isBreak: boolean;<br>
+}</p><p>export interface Section {<br>
+  id: string;<br>
+  classId: string;<br>
+  teacherId: string;<br>
+  sectionNumber: number; // For multiple sections of same class<br>
+  maxStudents: number;<br>
+}</p><p>// === Constraints ===</p><p>export type ConstraintType =<br>
+  | 'teacher_unavailable'      // Teacher can't teach at this time<br>
+  | 'room_unavailable'         // Room can't be used at this time<br>
+  | 'teacher_max_consecutive'  // Max consecutive periods for teacher<br>
+  | 'section_same_time'        // Two sections must be at same time<br>
+  | 'section_different_time'   // Two sections can't be at same time<br>
+  | 'room_required'            // Section must be in specific room<br>
+  | 'period_preference';       // Prefer/avoid certain periods</p><p>export interface Constraint {<br>
+  id: string;<br>
+  type: ConstraintType;<br>
+  priority: 'hard' | 'soft';   // Hard = must satisfy, Soft = try to satisfy<br>
+  weight: number;              // For soft constraints, higher = more important<br>
+  parameters: Record&lt;string, unknown&gt;;<br>
+  createdAt: Date;<br>
+}</p><p>// === Schedule ===</p><p>export interface Schedule {<br>
+  id: string;<br>
+  name: string;<br>
+  semester: string;<br>
+  status: 'draft' | 'published';<br>
+  generatedAt: Date | null;<br>
+  solverTime: number | null;   // milliseconds<br>
+  objectiveValue: number | null;<br>
+  createdAt: Date;<br>
+  updatedAt: Date;<br>
+}</p><p>export interface Assignment {<br>
+  id: string;<br>
+  scheduleId: string;<br>
+  sectionId: string;<br>
+  roomId: string;<br>
+  timeSlotId: string;<br>
+  isManualOverride: boolean;<br>
+  createdAt: Date;<br>
+}</p><p>// === ILP Model Types ===</p><p>export interface ILPVariable {<br>
+  name: string;<br>
+  type: 'binary' | 'integer' | 'continuous';<br>
+  lowerBound: number;<br>
+  upperBound: number;<br>
+  objectiveCoefficient: number;<br>
+}</p><p>export interface ILPConstraint {<br>
+  name: string;<br>
+  coefficients: Map&lt;string, number&gt;;  // variable name -&gt; coefficient<br>
+  sense: '&lt;=' | '=' | '&gt;=';<br>
+  rhs: number;  // right-hand side value<br>
+}</p><p>export interface ILPModel {<br>
+  variables: ILPVariable[];<br>
+  constraints: ILPConstraint[];<br>
+  objective: 'minimize' | 'maximize';<br>
+}</p><p>export interface ILPSolution {<br>
+  status: 'optimal' | 'feasible' | 'infeasible' | 'unbounded' | 'timeout';<br>
+  objectiveValue: number | null;<br>
+  variables: Map&lt;string, number&gt;;<br>
+  solveTime: number;<br>
+}</code></pre><h2>Database Schema</h2><pre><code class="language-sql">-- src/db/migrations/001_initial.sql</p><p>-- Teachers<br>
+CREATE TABLE teachers (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    name TEXT NOT NULL,<br>
+    email TEXT UNIQUE,<br>
+    department TEXT NOT NULL,<br>
+    max_periods_per_day INTEGER DEFAULT 6,<br>
+    max_periods_per_week INTEGER DEFAULT 25,<br>
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),<br>
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()<br>
+);</p><p>-- Teacher availability<br>
+CREATE TABLE teacher_availability (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    teacher_id UUID NOT NULL REFERENCES teachers(id) ON DELETE CASCADE,<br>
+    day_of_week INTEGER NOT NULL CHECK (day_of_week BETWEEN 0 AND 6),<br>
+    period_id UUID NOT NULL REFERENCES time_slots(id) ON DELETE CASCADE,<br>
+    is_available BOOLEAN DEFAULT true,<br>
+    preference INTEGER DEFAULT 0 CHECK (preference BETWEEN -2 AND 2),<br>
+    UNIQUE (teacher_id, day_of_week, period_id)<br>
+);</p><p>-- Classes (course definitions)<br>
+CREATE TABLE classes (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    name TEXT NOT NULL,<br>
+    code TEXT NOT NULL UNIQUE,<br>
+    department TEXT NOT NULL,<br>
+    periods_per_week INTEGER NOT NULL DEFAULT 5,<br>
+    requires_lab BOOLEAN DEFAULT false,<br>
+    max_students INTEGER DEFAULT 30,<br>
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),<br>
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()<br>
+);</p><p>-- Rooms<br>
+CREATE TABLE rooms (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    name TEXT NOT NULL UNIQUE,<br>
+    building TEXT,<br>
+    capacity INTEGER NOT NULL,<br>
+    is_lab BOOLEAN DEFAULT false,<br>
+    equipment TEXT[] DEFAULT '{}',<br>
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),<br>
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()<br>
+);</p><p>-- Time slots (periods)<br>
+CREATE TABLE time_slots (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    day_of_week INTEGER NOT NULL CHECK (day_of_week BETWEEN 0 AND 6),<br>
+    period_number INTEGER NOT NULL,<br>
+    start_time TIME NOT NULL,<br>
+    end_time TIME NOT NULL,<br>
+    is_break BOOLEAN DEFAULT false,<br>
+    UNIQUE (day_of_week, period_number)<br>
+);</p><p>-- Sections (instances of classes with assigned teacher)<br>
+CREATE TABLE sections (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    class_id UUID NOT NULL REFERENCES classes(id) ON DELETE CASCADE,<br>
+    teacher_id UUID NOT NULL REFERENCES teachers(id) ON DELETE CASCADE,<br>
+    section_number INTEGER NOT NULL DEFAULT 1,<br>
+    max_students INTEGER,<br>
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),<br>
+    UNIQUE (class_id, section_number)<br>
+);</p><p>-- Constraints<br>
+CREATE TABLE constraints (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    type TEXT NOT NULL,<br>
+    priority TEXT NOT NULL DEFAULT 'soft' CHECK (priority IN ('hard', 'soft')),<br>
+    weight INTEGER DEFAULT 1,<br>
+    parameters JSONB NOT NULL DEFAULT '{}',<br>
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()<br>
+);</p><p>-- Schedules<br>
+CREATE TABLE schedules (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    name TEXT NOT NULL,<br>
+    semester TEXT NOT NULL,<br>
+    status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft', 'published')),<br>
+    generated_at TIMESTAMP WITH TIME ZONE,<br>
+    solver_time INTEGER,<br>
+    objective_value REAL,<br>
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),<br>
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()<br>
+);</p><p>-- Assignments (the actual schedule)<br>
+CREATE TABLE assignments (<br>
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),<br>
+    schedule_id UUID NOT NULL REFERENCES schedules(id) ON DELETE CASCADE,<br>
+    section_id UUID NOT NULL REFERENCES sections(id) ON DELETE CASCADE,<br>
+    room_id UUID NOT NULL REFERENCES rooms(id) ON DELETE CASCADE,<br>
+    time_slot_id UUID NOT NULL REFERENCES time_slots(id) ON DELETE CASCADE,<br>
+    is_manual_override BOOLEAN DEFAULT false,<br>
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),<br>
+    UNIQUE (schedule_id, section_id, time_slot_id),<br>
+    UNIQUE (schedule_id, room_id, time_slot_id)<br>
+);</p><p>-- Indexes for common queries<br>
+CREATE INDEX idx_sections_teacher ON sections(teacher_id);<br>
+CREATE INDEX idx_sections_class ON sections(class_id);<br>
+CREATE INDEX idx_assignments_schedule ON assignments(schedule_id);<br>
+CREATE INDEX idx_assignments_section ON assignments(section_id);<br>
+CREATE INDEX idx_teacher_availability_teacher ON teacher_availability(teacher_id);</code></pre><h2>Database Client</h2><pre><code class="language-typescript">// src/db/client.ts<br>
+import { Pool } from 'pg';</p><p>const pool = new Pool({<br>
+  connectionString: process.env.DATABASE_URL,<br>
+  max: 20,<br>
+});</p><p>export async function query&lt;T&gt;(<br>
+  text: string,<br>
+  params?: unknown[]<br>
+): Promise&lt;T[]&gt; {<br>
+  const result = await pool.query(text, params);<br>
+  return result.rows as T[];<br>
+}</p><p>export async function queryOne&lt;T&gt;(<br>
+  text: string,<br>
+  params?: unknown[]<br>
+): Promise&lt;T | null&gt; {<br>
+  const rows = await query&lt;T&gt;(text, params);<br>
+  return rows[0] ?? null;<br>
+}</p><p>export async function execute(<br>
+  text: string,<br>
+  params?: unknown[]<br>
+): Promise&lt;number&gt; {<br>
+  const result = await pool.query(text, params);<br>
+  return result.rowCount ?? 0;<br>
+}</p><p>export { pool };</code></pre><h2>HiGHS Solver Setup</h2><p>Install HiGHS for Node.js:</p><pre><code class="language-bash">npm install highs</code></pre><p>The <code>highs</code> package provides WebAssembly bindings to the HiGHS solver. It works in both Node.js and browsers.</p><p>Basic solver wrapper:</p><pre><code class="language-typescript">// src/services/solver-service.ts<br>
+import highs from 'highs';</p><p>export interface SolverOptions {<br>
+  timeLimit?: number;      // seconds<br>
+  mipGap?: number;         // relative gap for stopping (0.01 = 1%)<br>
+  threads?: number;        // parallel threads<br>
+  presolve?: boolean;      // preprocessing<br>
+}</p><p>export class SolverService {<br>
+  private solver: Awaited&lt;ReturnType&lt;typeof highs&gt;&gt; | null = null;</p><p>  async initialize(): Promise&lt;void&gt; {<br>
+    if (!this.solver) {<br>
+      this.solver = await highs();<br>
+    }<br>
+  }</p><p>  async solve(<br>
+    model: string,  // LP/MPS format string<br>
+    options: SolverOptions = {}<br>
+  ): Promise&lt;{<br>
+    status: string;<br>
+    objectiveValue: number | null;<br>
+    solution: Record&lt;string, number&gt;;<br>
+    solveTime: number;<br>
+  }&gt; {<br>
+    await this.initialize();</p><p>    const startTime = Date.now();</p><p>    // Set options<br>
+    if (options.timeLimit) {<br>
+      this.solver!.setOption('time_limit', options.timeLimit);<br>
+    }<br>
+    if (options.mipGap) {<br>
+      this.solver!.setOption('mip_rel_gap', options.mipGap);<br>
+    }<br>
+    if (options.threads) {<br>
+      this.solver!.setOption('threads', options.threads);<br>
+    }<br>
+    if (options.presolve !== undefined) {<br>
+      this.solver!.setOption('presolve', options.presolve ? 'on' : 'off');<br>
+    }</p><p>    // Solve<br>
+    const result = this.solver!.solve(model);</p><p>    const solveTime = Date.now() - startTime;</p><p>    // Extract solution<br>
+    const solution: Record&lt;string, number&gt; = {};</p><p>    if (result.Status === 'Optimal' || result.Status === 'Feasible') {<br>
+      for (const col of result.Columns) {<br>
+        solution[col.Name] = col.Primal;<br>
+      }<br>
+    }</p><p>    return {<br>
+      status: result.Status,<br>
+      objectiveValue:<br>
+        result.Status === 'Optimal' || result.Status === 'Feasible'<br>
+          ? result.ObjectiveValue<br>
+          : null,<br>
+      solution,<br>
+      solveTime,<br>
+    };<br>
+  }<br>
+}</p><p>export const solverService = new SolverService();</code></pre><h2>Express API Setup</h2><pre><code class="language-typescript">// src/api/index.ts<br>
+import express from 'express';<br>
+import cors from 'cors';<br>
+import { teachersRouter } from './routes/teachers.js';<br>
+import { classesRouter } from './routes/classes.js';<br>
+import { roomsRouter } from './routes/rooms.js';<br>
+import { timeslotsRouter } from './routes/timeslots.js';<br>
+import { sectionsRouter } from './routes/sections.js';<br>
+import { constraintsRouter } from './routes/constraints.js';<br>
+import { schedulesRouter } from './routes/schedules.js';<br>
+import { errorHandler } from './middleware/error.js';</p><p>const app = express();</p><p>app.use(cors());<br>
+app.use(express.json());</p><p>// Routes<br>
+app.use('/api/teachers', teachersRouter);<br>
+app.use('/api/classes', classesRouter);<br>
+app.use('/api/rooms', roomsRouter);<br>
+app.use('/api/timeslots', timeslotsRouter);<br>
+app.use('/api/sections', sectionsRouter);<br>
+app.use('/api/constraints', constraintsRouter);<br>
+app.use('/api/schedules', schedulesRouter);</p><p>// Health check<br>
+app.get('/health', (_req, res) =&gt; {<br>
+  res.json({ status: 'ok' });<br>
+});</p><p>// Error handling<br>
+app.use(errorHandler);</p><p>const PORT = process.env.PORT ?? 3000;</p><p>app.listen(PORT, () =&gt; {<br>
+  console.log(<code>Server running on port ${PORT}</code>);<br>
+});</code></pre><h2>Docker Compose</h2><pre><code class="language-yaml"># docker-compose.yml<br>
+version: '3.8'</p><p>services:<br>
+  db:<br>
+    image: postgres:16-alpine<br>
+    environment:<br>
+      POSTGRES_USER: scheduler<br>
+      POSTGRES_PASSWORD: scheduler<br>
+      POSTGRES_DB: school_scheduler<br>
+    ports:<br>
+      - &quot;5432:5432&quot;<br>
+    volumes:<br>
+      - postgres_data:/var/lib/postgresql/data<br>
+      - ./src/db/migrations:/docker-entrypoint-initdb.d</p><p>volumes:<br>
+  postgres_data:</code></pre><h2>Package Configuration</h2><pre><code class="language-json">{<br>
+  &quot;name&quot;: &quot;school-scheduler&quot;,<br>
+  &quot;version&quot;: &quot;1.0.0&quot;,<br>
+  &quot;type&quot;: &quot;module&quot;,<br>
+  &quot;scripts&quot;: {<br>
+    &quot;dev&quot;: &quot;tsx watch src/api/index.ts&quot;,<br>
+    &quot;build&quot;: &quot;tsc&quot;,<br>
+    &quot;start&quot;: &quot;node dist/api/index.js&quot;,<br>
+    &quot;db:up&quot;: &quot;docker-compose up -d db&quot;,<br>
+    &quot;db:down&quot;: &quot;docker-compose down&quot;,<br>
+    &quot;db:seed&quot;: &quot;tsx src/db/seed.ts&quot;,<br>
+    &quot;test&quot;: &quot;vitest&quot;<br>
+  },<br>
+  &quot;dependencies&quot;: {<br>
+    &quot;cors&quot;: &quot;^2.8.5&quot;,<br>
+    &quot;express&quot;: &quot;^4.21.0&quot;,<br>
+    &quot;highs&quot;: &quot;^1.0.0&quot;,<br>
+    &quot;pg&quot;: &quot;^8.13.0&quot;<br>
+  },<br>
+  &quot;devDependencies&quot;: {<br>
+    &quot;@types/cors&quot;: &quot;^2.8.17&quot;,<br>
+    &quot;@types/express&quot;: &quot;^5.0.0&quot;,<br>
+    &quot;@types/node&quot;: &quot;^22.0.0&quot;,<br>
+    &quot;@types/pg&quot;: &quot;^8.11.0&quot;,<br>
+    &quot;tsx&quot;: &quot;^4.19.0&quot;,<br>
+    &quot;typescript&quot;: &quot;^5.6.0&quot;,<br>
+    &quot;vitest&quot;: &quot;^2.0.0&quot;<br>
+  }<br>
+}</code></pre><h2>Running the Application</h2><pre><code class="language-bash"># Start the database<br>
+npm run db:up</p><h1>Seed with sample data</h1><br>
+npm run db:seed</p><h1>Start the development server</h1><br>
+npm run dev</code></pre><h2>Next Steps</h2><p>With the foundation in place, the next chapter dives into the data model—how to represent teachers, classes, rooms, and the constraints that govern scheduling.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-2" class="chapter">
+      <h2>The Scheduling Data Model</h2>
+      <h2>Entities and Relationships</h2><p>School scheduling revolves around answering one question: "When does who teach what where?"</p><p>The entities:<br>
+- <strong>Teachers</strong> - Who teaches<br>
+- <strong>Classes</strong> - What is taught (course definitions)<br>
+- <strong>Sections</strong> - Instances of classes (Algebra I has 3 sections)<br>
+- <strong>Rooms</strong> - Where teaching happens<br>
+- <strong>Time Slots</strong> - When teaching happens</p><p>The relationships form a web of constraints.</p><pre><code class="language-">┌──────────────┐<br>
+                    │   Teacher    │<br>
+                    │ - name       │<br>
+                    │ - department │<br>
+                    │ - maxPeriods │<br>
+                    └──────┬───────┘<br>
+                           │<br>
+                           │ teaches<br>
+                           ▼<br>
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐<br>
+│    Class     │───▶│   Section    │◀───│    Room      │<br>
+│ - name       │    │ - number     │    │ - capacity   │<br>
+│ - code       │    │ - students   │    │ - equipment  │<br>
+│ - labNeeded  │    └──────┬───────┘    └──────────────┘<br>
+└──────────────┘           │<br>
+                           │ scheduled at<br>
+                           ▼<br>
+                    ┌──────────────┐<br>
+                    │  Time Slot   │<br>
+                    │ - day        │<br>
+                    │ - period     │<br>
+                    │ - time       │<br>
+                    └──────────────┘</code></pre><h2>Teachers</h2><p>Teachers are the most constrained resource. A teacher:<br>
+- Can only be in one place at a time<br>
+- Has limited availability (part-time, after-school duties)<br>
+- Has preferences (morning person, avoids Fridays)<br>
+- Has maximum teaching loads</p><pre><code class="language-typescript">// src/services/teacher-service.ts<br>
+import { query, queryOne, execute } from '../db/client.js';<br>
+import type { Teacher, TeacherAvailability } from '../types/index.js';</p><p>export class TeacherService {<br>
+  async createTeacher(data: {<br>
+    name: string;<br>
+    email?: string;<br>
+    department: string;<br>
+    maxPeriodsPerDay?: number;<br>
+    maxPeriodsPerWeek?: number;<br>
+  }): Promise&lt;Teacher&gt; {<br>
+    const teacher = await queryOne&lt;Teacher&gt;(<br>
+      <code>INSERT INTO teachers (name, email, department, max_periods_per_day, max_periods_per_week)<br>
+       VALUES ($1, $2, $3, $4, $5)<br>
+       RETURNING *</code>,<br>
+      [<br>
+        data.name,<br>
+        data.email ?? null,<br>
+        data.department,<br>
+        data.maxPeriodsPerDay ?? 6,<br>
+        data.maxPeriodsPerWeek ?? 25,<br>
+      ]<br>
+    );</p><p>    if (!teacher) throw new Error('Failed to create teacher');<br>
+    return teacher;<br>
+  }</p><p>  async getTeacher(id: string): Promise&lt;Teacher | null&gt; {<br>
+    return queryOne&lt;Teacher&gt;(<br>
+      'SELECT * FROM teachers WHERE id = $1',<br>
+      [id]<br>
+    );<br>
+  }</p><p>  async getAllTeachers(): Promise&lt;Teacher[]&gt; {<br>
+    return query&lt;Teacher&gt;(<br>
+      'SELECT * FROM teachers ORDER BY department, name'<br>
+    );<br>
+  }</p><p>  async getTeachersByDepartment(department: string): Promise&lt;Teacher[]&gt; {<br>
+    return query&lt;Teacher&gt;(<br>
+      'SELECT * FROM teachers WHERE department = $1 ORDER BY name',<br>
+      [department]<br>
+    );<br>
+  }</p><p>  async setAvailability(<br>
+    teacherId: string,<br>
+    availability: Array&lt;{<br>
+      dayOfWeek: number;<br>
+      periodId: string;<br>
+      isAvailable: boolean;<br>
+      preference: number;<br>
+    }&gt;<br>
+  ): Promise&lt;void&gt; {<br>
+    // Delete existing availability<br>
+    await execute(<br>
+      'DELETE FROM teacher_availability WHERE teacher_id = $1',<br>
+      [teacherId]<br>
+    );</p><p>    // Insert new availability<br>
+    for (const slot of availability) {<br>
+      await execute(<br>
+        <code>INSERT INTO teacher_availability (teacher_id, day_of_week, period_id, is_available, preference)<br>
+         VALUES ($1, $2, $3, $4, $5)</code>,<br>
+        [teacherId, slot.dayOfWeek, slot.periodId, slot.isAvailable, slot.preference]<br>
+      );<br>
+    }<br>
+  }</p><p>  async getAvailability(teacherId: string): Promise&lt;TeacherAvailability[]&gt; {<br>
+    return query&lt;TeacherAvailability&gt;(<br>
+      <code>SELECT * FROM teacher_availability<br>
+       WHERE teacher_id = $1<br>
+       ORDER BY day_of_week, period_id</code>,<br>
+      [teacherId]<br>
+    );<br>
+  }</p><p>  async getTeachersWithLoad(scheduleId: string): Promise&lt;Array&lt;Teacher &amp; {<br>
+    assignedPeriods: number;<br>
+  }&gt;&gt; {<br>
+    return query(<br>
+      <code>SELECT t.*, COUNT(a.id)::int as assigned_periods<br>
+       FROM teachers t<br>
+       LEFT JOIN sections s ON s.teacher_id = t.id<br>
+       LEFT JOIN assignments a ON a.section_id = s.id AND a.schedule_id = $1<br>
+       GROUP BY t.id<br>
+       ORDER BY t.department, t.name</code>,<br>
+      [scheduleId]<br>
+    );<br>
+  }<br>
+}</p><p>export const teacherService = new TeacherService();</code></pre><h2>Classes and Sections</h2><p>A <strong>class</strong> is a course definition (Algebra I, World History). A <strong>section</strong> is a specific instance of that class with an assigned teacher.</p><p>Why separate them?<br>
+- Multiple teachers may teach the same class<br>
+- Each section might have different student counts<br>
+- Constraints can apply to classes (all Algebra sections need labs) or sections (this specific section needs room 101)</p><pre><code class="language-typescript">// src/services/class-service.ts<br>
+import { query, queryOne, execute } from '../db/client.js';<br>
+import type { Class, Section } from '../types/index.js';</p><p>export class ClassService {<br>
+  async createClass(data: {<br>
+    name: string;<br>
+    code: string;<br>
+    department: string;<br>
+    periodsPerWeek: number;<br>
+    requiresLab: boolean;<br>
+    maxStudents: number;<br>
+  }): Promise&lt;Class&gt; {<br>
+    const cls = await queryOne&lt;Class&gt;(<br>
+      <code>INSERT INTO classes (name, code, department, periods_per_week, requires_lab, max_students)<br>
+       VALUES ($1, $2, $3, $4, $5, $6)<br>
+       RETURNING *</code>,<br>
+      [data.name, data.code, data.department, data.periodsPerWeek, data.requiresLab, data.maxStudents]<br>
+    );</p><p>    if (!cls) throw new Error('Failed to create class');<br>
+    return cls;<br>
+  }</p><p>  async getAllClasses(): Promise&lt;Class[]&gt; {<br>
+    return query&lt;Class&gt;(<br>
+      'SELECT * FROM classes ORDER BY department, code'<br>
+    );<br>
+  }</p><p>  async getClassesByDepartment(department: string): Promise&lt;Class[]&gt; {<br>
+    return query&lt;Class&gt;(<br>
+      'SELECT * FROM classes WHERE department = $1 ORDER BY code',<br>
+      [department]<br>
+    );<br>
+  }</p><p>  async createSection(data: {<br>
+    classId: string;<br>
+    teacherId: string;<br>
+    sectionNumber?: number;<br>
+    maxStudents?: number;<br>
+  }): Promise&lt;Section&gt; {<br>
+    // Get next section number if not provided<br>
+    let sectionNumber = data.sectionNumber;<br>
+    if (!sectionNumber) {<br>
+      const result = await queryOne&lt;{ max: number }&gt;(<br>
+        <code>SELECT COALESCE(MAX(section_number), 0) as max<br>
+         FROM sections WHERE class_id = $1</code>,<br>
+        [data.classId]<br>
+      );<br>
+      sectionNumber = (result?.max ?? 0) + 1;<br>
+    }</p><p>    const section = await queryOne&lt;Section&gt;(<br>
+      <code>INSERT INTO sections (class_id, teacher_id, section_number, max_students)<br>
+       VALUES ($1, $2, $3, $4)<br>
+       RETURNING *</code>,<br>
+      [data.classId, data.teacherId, sectionNumber, data.maxStudents ?? null]<br>
+    );</p><p>    if (!section) throw new Error('Failed to create section');<br>
+    return section;<br>
+  }</p><p>  async getAllSections(): Promise&lt;Array&lt;Section &amp; {<br>
+    className: string;<br>
+    classCode: string;<br>
+    teacherName: string;<br>
+    periodsPerWeek: number;<br>
+    requiresLab: boolean;<br>
+  }&gt;&gt; {<br>
+    return query(<br>
+      <code>SELECT s.*, c.name as class_name, c.code as class_code,<br>
+              t.name as teacher_name, c.periods_per_week, c.requires_lab<br>
+       FROM sections s<br>
+       JOIN classes c ON c.id = s.class_id<br>
+       JOIN teachers t ON t.id = s.teacher_id<br>
+       ORDER BY c.department, c.code, s.section_number</code><br>
+    );<br>
+  }</p><p>  async getSectionsByTeacher(teacherId: string): Promise&lt;Section[]&gt; {<br>
+    return query&lt;Section&gt;(<br>
+      <code>SELECT s.*, c.name as class_name, c.code as class_code<br>
+       FROM sections s<br>
+       JOIN classes c ON c.id = s.class_id<br>
+       WHERE s.teacher_id = $1<br>
+       ORDER BY c.code, s.section_number</code>,<br>
+      [teacherId]<br>
+    );<br>
+  }<br>
+}</p><p>export const classService = new ClassService();</code></pre><h2>Rooms</h2><p>Rooms have capacity and equipment constraints. A chemistry class needs a lab. A lecture needs enough seats.</p><pre><code class="language-typescript">// src/services/room-service.ts<br>
+import { query, queryOne, execute } from '../db/client.js';<br>
+import type { Room } from '../types/index.js';</p><p>export class RoomService {<br>
+  async createRoom(data: {<br>
+    name: string;<br>
+    building?: string;<br>
+    capacity: number;<br>
+    isLab: boolean;<br>
+    equipment: string[];<br>
+  }): Promise&lt;Room&gt; {<br>
+    const room = await queryOne&lt;Room&gt;(<br>
+      <code>INSERT INTO rooms (name, building, capacity, is_lab, equipment)<br>
+       VALUES ($1, $2, $3, $4, $5)<br>
+       RETURNING *</code>,<br>
+      [data.name, data.building ?? null, data.capacity, data.isLab, data.equipment]<br>
+    );</p><p>    if (!room) throw new Error('Failed to create room');<br>
+    return room;<br>
+  }</p><p>  async getAllRooms(): Promise&lt;Room[]&gt; {<br>
+    return query&lt;Room&gt;(<br>
+      'SELECT * FROM rooms ORDER BY building, name'<br>
+    );<br>
+  }</p><p>  async getLabRooms(): Promise&lt;Room[]&gt; {<br>
+    return query&lt;Room&gt;(<br>
+      'SELECT * FROM rooms WHERE is_lab = true ORDER BY building, name'<br>
+    );<br>
+  }</p><p>  async getRoomsByCapacity(minCapacity: number): Promise&lt;Room[]&gt; {<br>
+    return query&lt;Room&gt;(<br>
+      'SELECT * FROM rooms WHERE capacity &gt;= $1 ORDER BY capacity',<br>
+      [minCapacity]<br>
+    );<br>
+  }</p><p>  async getRoomsWithUtilization(scheduleId: string): Promise&lt;Array&lt;Room &amp; {<br>
+    usedSlots: number;<br>
+    totalSlots: number;<br>
+    utilization: number;<br>
+  }&gt;&gt; {<br>
+    return query(<br>
+      <code>WITH slot_count AS (<br>
+         SELECT COUNT(*)::int as total FROM time_slots WHERE NOT is_break<br>
+       )<br>
+       SELECT r.*,<br>
+              COUNT(a.id)::int as used_slots,<br>
+              (SELECT total FROM slot_count) as total_slots,<br>
+              ROUND(COUNT(a.id)::numeric / (SELECT total FROM slot_count) * 100, 1) as utilization<br>
+       FROM rooms r<br>
+       LEFT JOIN assignments a ON a.room_id = r.id AND a.schedule_id = $1<br>
+       GROUP BY r.id<br>
+       ORDER BY r.building, r.name</code>,<br>
+      [scheduleId]<br>
+    );<br>
+  }<br>
+}</p><p>export const roomService = new RoomService();</code></pre><h2>Time Slots</h2><p>Time slots define when classes can be scheduled. Most schools use:<br>
+- 5 days per week (Monday-Friday)<br>
+- 6-8 periods per day<br>
+- Some periods are breaks (lunch, passing time)</p><pre><code class="language-typescript">// src/services/timeslot-service.ts<br>
+import { query, queryOne, execute } from '../db/client.js';<br>
+import type { TimeSlot } from '../types/index.js';</p><p>export class TimeSlotService {<br>
+  async createTimeSlot(data: {<br>
+    dayOfWeek: number;<br>
+    periodNumber: number;<br>
+    startTime: string;<br>
+    endTime: string;<br>
+    isBreak: boolean;<br>
+  }): Promise&lt;TimeSlot&gt; {<br>
+    const slot = await queryOne&lt;TimeSlot&gt;(<br>
+      <code>INSERT INTO time_slots (day_of_week, period_number, start_time, end_time, is_break)<br>
+       VALUES ($1, $2, $3, $4, $5)<br>
+       RETURNING *</code>,<br>
+      [data.dayOfWeek, data.periodNumber, data.startTime, data.endTime, data.isBreak]<br>
+    );</p><p>    if (!slot) throw new Error('Failed to create time slot');<br>
+    return slot;<br>
+  }</p><p>  async getAllTimeSlots(): Promise&lt;TimeSlot[]&gt; {<br>
+    return query&lt;TimeSlot&gt;(<br>
+      'SELECT * FROM time_slots ORDER BY day_of_week, period_number'<br>
+    );<br>
+  }</p><p>  async getSchedulableSlots(): Promise&lt;TimeSlot[]&gt; {<br>
+    return query&lt;TimeSlot&gt;(<br>
+      'SELECT * FROM time_slots WHERE NOT is_break ORDER BY day_of_week, period_number'<br>
+    );<br>
+  }</p><p>  async getSlotsByDay(dayOfWeek: number): Promise&lt;TimeSlot[]&gt; {<br>
+    return query&lt;TimeSlot&gt;(<br>
+      'SELECT * FROM time_slots WHERE day_of_week = $1 ORDER BY period_number',<br>
+      [dayOfWeek]<br>
+    );<br>
+  }</p><p>  /**<br>
+   * Generate standard school time slots<br>
+   */<br>
+  async generateStandardSlots(config: {<br>
+    startTime: string;      // &quot;08:00&quot;<br>
+    periodMinutes: number;  // 50<br>
+    passingMinutes: number; // 5<br>
+    periodsBeforeLunch: number; // 4<br>
+    lunchMinutes: number;   // 45<br>
+    totalPeriods: number;   // 8<br>
+    daysPerWeek: number;    // 5 (Mon-Fri)<br>
+  }): Promise&lt;void&gt; {<br>
+    // Clear existing slots<br>
+    await execute('DELETE FROM time_slots');</p><p>    const parseTime = (time: string): { hours: number; minutes: number } =&gt; {<br>
+      const [hours, minutes] = time.split(':').map(Number);<br>
+      return { hours: hours!, minutes: minutes! };<br>
+    };</p><p>    const formatTime = (hours: number, minutes: number): string =&gt; {<br>
+      return <code>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}</code>;<br>
+    };</p><p>    const addMinutes = (time: { hours: number; minutes: number }, mins: number) =&gt; {<br>
+      let totalMinutes = time.hours * 60 + time.minutes + mins;<br>
+      return {<br>
+        hours: Math.floor(totalMinutes / 60),<br>
+        minutes: totalMinutes % 60,<br>
+      };<br>
+    };</p><p>    for (let day = 1; day &lt;= config.daysPerWeek; day++) {<br>
+      let currentTime = parseTime(config.startTime);</p><p>      for (let period = 1; period &lt;= config.totalPeriods; period++) {<br>
+        const startTime = formatTime(currentTime.hours, currentTime.minutes);<br>
+        currentTime = addMinutes(currentTime, config.periodMinutes);<br>
+        const endTime = formatTime(currentTime.hours, currentTime.minutes);</p><p>        await this.createTimeSlot({<br>
+          dayOfWeek: day,<br>
+          periodNumber: period,<br>
+          startTime,<br>
+          endTime,<br>
+          isBreak: false,<br>
+        });</p><p>        // Add passing time<br>
+        currentTime = addMinutes(currentTime, config.passingMinutes);</p><p>        // Add lunch after specified period<br>
+        if (period === config.periodsBeforeLunch) {<br>
+          const lunchStart = formatTime(currentTime.hours, currentTime.minutes);<br>
+          currentTime = addMinutes(currentTime, config.lunchMinutes);<br>
+          const lunchEnd = formatTime(currentTime.hours, currentTime.minutes);</p><p>          await this.createTimeSlot({<br>
+            dayOfWeek: day,<br>
+            periodNumber: 0, // Special period number for lunch<br>
+            startTime: lunchStart,<br>
+            endTime: lunchEnd,<br>
+            isBreak: true,<br>
+          });</p><p>          // More passing time after lunch<br>
+          currentTime = addMinutes(currentTime, config.passingMinutes);<br>
+        }<br>
+      }<br>
+    }<br>
+  }<br>
+}</p><p>export const timeSlotService = new TimeSlotService();</code></pre><h2>Constraints</h2><p>Constraints are the rules that make scheduling hard. They fall into two categories:</p><p><strong>Hard constraints</strong> - Must be satisfied or the schedule is invalid<br>
+- No teacher in two places at once<br>
+- No room double-booked<br>
+- Teacher must be available<br>
+- Section needs enough room capacity</p><p><strong>Soft constraints</strong> - Should be satisfied but can be violated (with penalty)<br>
+- Teacher preferences (avoid 8 AM)<br>
+- Minimize consecutive periods<br>
+- Keep same class in same room<br>
+- Balance teacher loads</p><pre><code class="language-typescript">// src/services/constraint-service.ts<br>
+import { query, queryOne, execute } from '../db/client.js';<br>
+import type { Constraint, ConstraintType } from '../types/index.js';</p><p>export class ConstraintService {<br>
+  async createConstraint(data: {<br>
+    type: ConstraintType;<br>
+    priority: 'hard' | 'soft';<br>
+    weight?: number;<br>
+    parameters: Record&lt;string, unknown&gt;;<br>
+  }): Promise&lt;Constraint&gt; {<br>
+    const constraint = await queryOne&lt;Constraint&gt;(<br>
+      <code>INSERT INTO constraints (type, priority, weight, parameters)<br>
+       VALUES ($1, $2, $3, $4)<br>
+       RETURNING *</code>,<br>
+      [data.type, data.priority, data.weight ?? 1, JSON.stringify(data.parameters)]<br>
+    );</p><p>    if (!constraint) throw new Error('Failed to create constraint');<br>
+    return constraint;<br>
+  }</p><p>  async getAllConstraints(): Promise&lt;Constraint[]&gt; {<br>
+    return query&lt;Constraint&gt;(<br>
+      'SELECT * FROM constraints ORDER BY priority DESC, weight DESC'<br>
+    );<br>
+  }</p><p>  async getHardConstraints(): Promise&lt;Constraint[]&gt; {<br>
+    return query&lt;Constraint&gt;(<br>
+      &quot;SELECT * FROM constraints WHERE priority = 'hard'&quot;<br>
+    );<br>
+  }</p><p>  async getSoftConstraints(): Promise&lt;Constraint[]&gt; {<br>
+    return query&lt;Constraint&gt;(<br>
+      &quot;SELECT * FROM constraints WHERE priority = 'soft' ORDER BY weight DESC&quot;<br>
+    );<br>
+  }</p><p>  async deleteConstraint(id: string): Promise&lt;void&gt; {<br>
+    await execute('DELETE FROM constraints WHERE id = $1', [id]);<br>
+  }</p><p>  /**<br>
+   * Create common default constraints<br>
+   */<br>
+  async createDefaultConstraints(): Promise&lt;void&gt; {<br>
+    // Hard constraints<br>
+    await this.createConstraint({<br>
+      type: 'teacher_unavailable',<br>
+      priority: 'hard',<br>
+      parameters: { description: 'Teachers cannot teach when marked unavailable' },<br>
+    });</p><p>    await this.createConstraint({<br>
+      type: 'room_required',<br>
+      priority: 'hard',<br>
+      parameters: { description: 'Lab classes must be in lab rooms' },<br>
+    });</p><p>    // Soft constraints<br>
+    await this.createConstraint({<br>
+      type: 'teacher_max_consecutive',<br>
+      priority: 'soft',<br>
+      weight: 10,<br>
+      parameters: { maxConsecutive: 3, description: 'Avoid more than 3 consecutive periods' },<br>
+    });</p><p>    await this.createConstraint({<br>
+      type: 'period_preference',<br>
+      priority: 'soft',<br>
+      weight: 5,<br>
+      parameters: { description: 'Honor teacher period preferences' },<br>
+    });<br>
+  }<br>
+}</p><p>export const constraintService = new ConstraintService();</code></pre><h2>Validation</h2><p>Before solving, validate the input data:</p><pre><code class="language-typescript">// src/services/validation-service.ts</p><p>export interface ValidationError {<br>
+  type: 'error' | 'warning';<br>
+  entity: string;<br>
+  entityId: string;<br>
+  message: string;<br>
+}</p><p>export class ValidationService {<br>
+  async validateScheduleInput(scheduleId: string): Promise&lt;ValidationError[]&gt; {<br>
+    const errors: ValidationError[] = [];</p><p>    // Check: Every section has a teacher<br>
+    const orphanSections = await query&lt;{ id: string; class_name: string }&gt;(<br>
+      <code>SELECT s.id, c.name as class_name<br>
+       FROM sections s<br>
+       JOIN classes c ON c.id = s.class_id<br>
+       WHERE s.teacher_id IS NULL</code><br>
+    );</p><p>    for (const section of orphanSections) {<br>
+      errors.push({<br>
+        type: 'error',<br>
+        entity: 'section',<br>
+        entityId: section.id,<br>
+        message: <code>Section of ${section.class_name} has no assigned teacher</code>,<br>
+      });<br>
+    }</p><p>    // Check: Enough time slots for all sections<br>
+    const totalPeriodsNeeded = await queryOne&lt;{ total: number }&gt;(<br>
+      <code>SELECT SUM(c.periods_per_week)::int as total<br>
+       FROM sections s<br>
+       JOIN classes c ON c.id = s.class_id</code><br>
+    );</p><p>    const availableSlots = await queryOne&lt;{ total: number }&gt;(<br>
+      <code>SELECT COUNT(*)::int as total FROM time_slots WHERE NOT is_break</code><br>
+    );</p><p>    const totalRoomSlots = await queryOne&lt;{ total: number }&gt;(<br>
+      <code>SELECT COUNT(r.id)::int * COUNT(t.id)::int as total<br>
+       FROM rooms r, time_slots t<br>
+       WHERE NOT t.is_break</code><br>
+    );</p><p>    if ((totalPeriodsNeeded?.total ?? 0) &gt; (totalRoomSlots?.total ?? 0)) {<br>
+      errors.push({<br>
+        type: 'error',<br>
+        entity: 'schedule',<br>
+        entityId: scheduleId,<br>
+        message: <code>Need ${totalPeriodsNeeded?.total} period-slots but only have ${totalRoomSlots?.total} room-slots available</code>,<br>
+      });<br>
+    }</p><p>    // Check: Lab classes have lab rooms<br>
+    const labClassCount = await queryOne&lt;{ count: number }&gt;(<br>
+      <code>SELECT COUNT(DISTINCT s.id)::int as count<br>
+       FROM sections s<br>
+       JOIN classes c ON c.id = s.class_id<br>
+       WHERE c.requires_lab = true</code><br>
+    );</p><p>    const labRoomSlots = await queryOne&lt;{ total: number }&gt;(<br>
+      <code>SELECT COUNT(r.id)::int * COUNT(t.id)::int as total<br>
+       FROM rooms r, time_slots t<br>
+       WHERE r.is_lab = true AND NOT t.is_break</code><br>
+    );</p><p>    const labPeriodsNeeded = await queryOne&lt;{ total: number }&gt;(<br>
+      <code>SELECT SUM(c.periods_per_week)::int as total<br>
+       FROM sections s<br>
+       JOIN classes c ON c.id = s.class_id<br>
+       WHERE c.requires_lab = true</code><br>
+    );</p><p>    if ((labPeriodsNeeded?.total ?? 0) &gt; (labRoomSlots?.total ?? 0)) {<br>
+      errors.push({<br>
+        type: 'error',<br>
+        entity: 'schedule',<br>
+        entityId: scheduleId,<br>
+        message: <code>Need ${labPeriodsNeeded?.total} lab period-slots but only have ${labRoomSlots?.total} available</code>,<br>
+      });<br>
+    }</p><p>    // Warning: Teacher overload<br>
+    const overloadedTeachers = await query&lt;{ id: string; name: string; periods: number; max: number }&gt;(<br>
+      <code>SELECT t.id, t.name, SUM(c.periods_per_week)::int as periods, t.max_periods_per_week as max<br>
+       FROM teachers t<br>
+       JOIN sections s ON s.teacher_id = t.id<br>
+       JOIN classes c ON c.id = s.class_id<br>
+       GROUP BY t.id<br>
+       HAVING SUM(c.periods_per_week) &gt; t.max_periods_per_week</code><br>
+    );</p><p>    for (const teacher of overloadedTeachers) {<br>
+      errors.push({<br>
+        type: 'warning',<br>
+        entity: 'teacher',<br>
+        entityId: teacher.id,<br>
+        message: <code>${teacher.name} assigned ${teacher.periods} periods but max is ${teacher.max}</code>,<br>
+      });<br>
+    }</p><p>    return errors;<br>
+  }<br>
+}</p><p>export const validationService = new ValidationService();</code></pre><h2>Next Steps</h2><p>With the data model defined, the next chapter explains the fundamentals of Integer Linear Programming—how to express scheduling as an optimization problem.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-3" class="chapter">
+      <h2>ILP Fundamentals</h2>
+      <h2>What is Linear Programming?</h2><p>Linear Programming (LP) is a mathematical technique for optimization. You have:</p><p>1. <strong>Decision variables</strong> - What you're trying to determine<br>
+2. <strong>Objective function</strong> - What you're optimizing (minimize or maximize)<br>
+3. <strong>Constraints</strong> - Rules the solution must satisfy</p><p>All relationships must be linear—no multiplication of variables, no exponents, no trigonometry.</p><h3>A Simple Example</h3><p>Imagine a factory making chairs and tables:<br>
+- Each chair requires 2 hours of labor, earns $20 profit<br>
+- Each table requires 4 hours of labor, earns $50 profit<br>
+- You have 40 hours of labor available</p><p><strong>Question</strong>: How many chairs and tables should you make to maximize profit?</p><p><strong>Variables</strong>:<br>
+- x = number of chairs<br>
+- y = number of tables</p><p><strong>Objective</strong> (maximize):<br>
+<pre><code class="language-">20x + 50y</code></pre><p><strong>Constraints</strong>:<br>
+<pre><code class="language-">2x + 4y ≤ 40    (labor hours)<br>
+x ≥ 0           (can't make negative chairs)<br>
+y ≥ 0           (can't make negative tables)</code></pre><p>LP solvers find the optimal solution: x=0, y=10 (make only tables, profit=$500).</p><h2>Integer Linear Programming</h2><p>Standard LP allows fractional solutions (x=3.7 chairs). For scheduling, we need whole numbers—you can't have half a class.</p><p><strong>Integer Linear Programming (ILP)</strong> adds the constraint that some or all variables must be integers.</p><p><strong>Binary variables</strong> are a special case: variables that can only be 0 or 1. Perfect for yes/no decisions:<br>
+- Does teacher T teach section S in room R at time T? (0=no, 1=yes)</p><p>ILP is much harder to solve than LP. LP has polynomial-time algorithms; ILP is NP-hard. But modern solvers handle surprisingly large problems.</p><h2>Decision Variables for Scheduling</h2><p>For school scheduling, we define binary variables:</p><pre><code class="language-">x[s,r,t] = 1 if section s is assigned to room r at time slot t<br>
+         = 0 otherwise</code></pre><p>For a school with:<br>
+- 100 sections<br>
+- 30 rooms<br>
+- 40 time slots (8 periods × 5 days)</p><p>We have 100 × 30 × 40 = 120,000 variables.</p><p>That sounds like a lot, but ILP solvers routinely handle millions of variables.</p><h2>The Objective Function</h2><p>The objective tells the solver what to optimize. For scheduling:</p><p><strong>Option 1: Minimize constraint violations</strong><br>
+<pre><code class="language-">minimize: sum of all soft constraint penalties</code></pre><p><strong>Option 2: Maximize preference satisfaction</strong><br>
+<pre><code class="language-">maximize: sum of all preference scores</code></pre><p><strong>Option 3: Combined</strong><br>
+<pre><code class="language-">minimize: (soft constraint penalties) - (preference scores)</code></pre><p>Example objective function:</p><pre><code class="language-">minimize:<br>
+  10 × (consecutive period violations) +<br>
+   5 × (teacher preference violations) +<br>
+   1 × (room preference violations)</code></pre><p>The coefficients (10, 5, 1) determine relative importance.</p><h2>Hard Constraints</h2><p>Hard constraints must be satisfied. If any is violated, the solution is infeasible.</p><h3>No Double-Booking Teachers</h3><p>A teacher can't teach two sections at the same time:</p><pre><code class="language-">For each teacher T and time slot t:<br>
+  sum over all sections s taught by T, all rooms r:<br>
+    x[s,r,t] ≤ 1</code></pre><p>In math notation:<br>
+<pre><code class="language-">∑(s∈sections_of_T) ∑(r∈rooms) x[s,r,t] ≤ 1   ∀T, ∀t</code></pre><h3>No Double-Booking Rooms</h3><p>A room can't host two sections at the same time:</p><pre><code class="language-">For each room r and time slot t:<br>
+  sum over all sections s:<br>
+    x[s,r,t] ≤ 1</code></pre><h3>Each Section Gets Required Periods</h3><p>If section s needs 5 periods per week:</p><pre><code class="language-">For each section s:<br>
+  sum over all rooms r, all time slots t:<br>
+    x[s,r,t] = periods_required[s]</code></pre><h3>Teacher Availability</h3><p>If teacher T is unavailable at time t, no section taught by T can be scheduled then:</p><pre><code class="language-">For each teacher T, each time slot t where T is unavailable:<br>
+  sum over all sections s taught by T, all rooms r:<br>
+    x[s,r,t] = 0</code></pre><h3>Room Capacity</h3><p>Section s can't be in room r if capacity is insufficient:</p><pre><code class="language-">For each section s, each room r where capacity[r] &lt; students[s]:<br>
+  sum over all time slots t:<br>
+    x[s,r,t] = 0</code></pre><h3>Lab Requirements</h3><p>Lab sections must be in lab rooms:</p><pre><code class="language-">For each section s that requires a lab, each non-lab room r:<br>
+  sum over all time slots t:<br>
+    x[s,r,t] = 0</code></pre><h2>Soft Constraints with Penalties</h2><p>Soft constraints use auxiliary variables to measure violations.</p><h3>Teacher Consecutive Periods</h3><p>Penalize teachers working more than 3 consecutive periods.</p><p>Define auxiliary variable:<br>
+<pre><code class="language-">consec[T,d,p] = 1 if teacher T teaches 4+ consecutive periods<br>
+               starting at day d, period p</code></pre><p>Add constraint:<br>
+<pre><code class="language-">For each teacher T, day d, starting period p:<br>
+  sum over periods p to p+3, all sections s of T, all rooms r:<br>
+    x[s,r,t(d,p)] + x[s,r,t(d,p+1)] + x[s,r,t(d,p+2)] + x[s,r,t(d,p+3)]<br>
+    ≤ 3 + consec[T,d,p]</code></pre><p>Add to objective:<br>
+<pre><code class="language-">minimize: ... + 10 × sum of all consec[T,d,p]</code></pre><h3>Period Preferences</h3><p>If teacher T prefers period p (preference=2) and dislikes period q (preference=-2):</p><p>Define preference violation:<br>
+<pre><code class="language-">pref_viol[T,t] = 1 if teacher T is scheduled at dispreferred time t</code></pre><p>Add constraint:<br>
+<pre><code class="language-">For each teacher T, dispreferred time t:<br>
+  sum over sections s of T, rooms r:<br>
+    x[s,r,t] ≤ pref_viol[T,t]</code></pre><p>Add to objective:<br>
+<pre><code class="language-">minimize: ... + 5 × sum of pref_viol[T,t] × (-preference[T,t])</code></pre><h2>Building the Model in Code</h2><pre><code class="language-typescript">// src/services/ilp-builder.ts</p><p>import type {<br>
+  ILPVariable,<br>
+  ILPConstraint,<br>
+  ILPModel,<br>
+  Section,<br>
+  Room,<br>
+  TimeSlot,<br>
+  Teacher,<br>
+  TeacherAvailability,<br>
+} from '../types/index.js';</p><p>export class ILPBuilder {<br>
+  private variables: Map&lt;string, ILPVariable&gt; = new Map();<br>
+  private constraints: ILPConstraint[] = [];<br>
+  private objectiveCoefficients: Map&lt;string, number&gt; = new Map();</p><p>  /**<br>
+   * Create assignment variable name<br>
+   */<br>
+  private varName(sectionId: string, roomId: string, slotId: string): string {<br>
+    return <code>x_${sectionId}_${roomId}_${slotId}</code>;<br>
+  }</p><p>  /**<br>
+   * Build the complete ILP model<br>
+   */<br>
+  async build(data: {<br>
+    sections: Array&lt;Section &amp; {<br>
+      teacherId: string;<br>
+      periodsPerWeek: number;<br>
+      requiresLab: boolean;<br>
+      maxStudents: number;<br>
+    }&gt;;<br>
+    rooms: Room[];<br>
+    timeSlots: TimeSlot[];<br>
+    teachers: Teacher[];<br>
+    teacherAvailability: Map&lt;string, TeacherAvailability[]&gt;;<br>
+  }): Promise&lt;ILPModel&gt; {<br>
+    // Clear previous model<br>
+    this.variables.clear();<br>
+    this.constraints = [];<br>
+    this.objectiveCoefficients.clear();</p><p>    // Create decision variables<br>
+    this.createVariables(data.sections, data.rooms, data.timeSlots);</p><p>    // Add hard constraints<br>
+    this.addTeacherConflictConstraints(data.sections, data.rooms, data.timeSlots);<br>
+    this.addRoomConflictConstraints(data.sections, data.rooms, data.timeSlots);<br>
+    this.addPeriodsRequiredConstraints(data.sections, data.rooms, data.timeSlots);<br>
+    this.addTeacherAvailabilityConstraints(<br>
+      data.sections,<br>
+      data.rooms,<br>
+      data.timeSlots,<br>
+      data.teacherAvailability<br>
+    );<br>
+    this.addRoomCapacityConstraints(data.sections, data.rooms, data.timeSlots);<br>
+    this.addLabRequirementConstraints(data.sections, data.rooms, data.timeSlots);</p><p>    // Add soft constraint penalties<br>
+    this.addPreferencePenalties(<br>
+      data.sections,<br>
+      data.rooms,<br>
+      data.timeSlots,<br>
+      data.teacherAvailability<br>
+    );</p><p>    return {<br>
+      variables: Array.from(this.variables.values()),<br>
+      constraints: this.constraints,<br>
+      objective: 'minimize',<br>
+    };<br>
+  }</p><p>  /**<br>
+   * Create binary decision variables<br>
+   */<br>
+  private createVariables(<br>
+    sections: Array&lt;{ id: string; requiresLab: boolean; maxStudents: number }&gt;,<br>
+    rooms: Room[],<br>
+    timeSlots: TimeSlot[]<br>
+  ): void {<br>
+    for (const section of sections) {<br>
+      for (const room of rooms) {<br>
+        // Skip incompatible room-section pairs<br>
+        if (section.requiresLab &amp;&amp; !room.isLab) continue;<br>
+        if (room.capacity &lt; section.maxStudents) continue;</p><p>        for (const slot of timeSlots) {<br>
+          if (slot.isBreak) continue;</p><p>          const name = this.varName(section.id, room.id, slot.id);<br>
+          this.variables.set(name, {<br>
+            name,<br>
+            type: 'binary',<br>
+            lowerBound: 0,<br>
+            upperBound: 1,<br>
+            objectiveCoefficient: 0, // Set later<br>
+          });<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * No teacher teaches two sections at same time<br>
+   */<br>
+  private addTeacherConflictConstraints(<br>
+    sections: Array&lt;{ id: string; teacherId: string }&gt;,<br>
+    rooms: Room[],<br>
+    timeSlots: TimeSlot[]<br>
+  ): void {<br>
+    // Group sections by teacher<br>
+    const sectionsByTeacher = new Map&lt;string, string[]&gt;();<br>
+    for (const section of sections) {<br>
+      const list = sectionsByTeacher.get(section.teacherId) ?? [];<br>
+      list.push(section.id);<br>
+      sectionsByTeacher.set(section.teacherId, list);<br>
+    }</p><p>    for (const [teacherId, sectionIds] of sectionsByTeacher) {<br>
+      if (sectionIds.length &lt; 2) continue; // No conflict possible</p><p>      for (const slot of timeSlots) {<br>
+        if (slot.isBreak) continue;</p><p>        const coefficients = new Map&lt;string, number&gt;();</p><p>        for (const sectionId of sectionIds) {<br>
+          for (const room of rooms) {<br>
+            const varName = this.varName(sectionId, room.id, slot.id);<br>
+            if (this.variables.has(varName)) {<br>
+              coefficients.set(varName, 1);<br>
+            }<br>
+          }<br>
+        }</p><p>        if (coefficients.size &gt; 0) {<br>
+          this.constraints.push({<br>
+            name: <code>teacher_conflict_${teacherId}_${slot.id}</code>,<br>
+            coefficients,<br>
+            sense: '&lt;=',<br>
+            rhs: 1,<br>
+          });<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * No room hosts two sections at same time<br>
+   */<br>
+  private addRoomConflictConstraints(<br>
+    sections: Array&lt;{ id: string }&gt;,<br>
+    rooms: Room[],<br>
+    timeSlots: TimeSlot[]<br>
+  ): void {<br>
+    for (const room of rooms) {<br>
+      for (const slot of timeSlots) {<br>
+        if (slot.isBreak) continue;</p><p>        const coefficients = new Map&lt;string, number&gt;();</p><p>        for (const section of sections) {<br>
+          const varName = this.varName(section.id, room.id, slot.id);<br>
+          if (this.variables.has(varName)) {<br>
+            coefficients.set(varName, 1);<br>
+          }<br>
+        }</p><p>        if (coefficients.size &gt; 1) {<br>
+          this.constraints.push({<br>
+            name: <code>room_conflict_${room.id}_${slot.id}</code>,<br>
+            coefficients,<br>
+            sense: '&lt;=',<br>
+            rhs: 1,<br>
+          });<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * Each section gets exactly required periods<br>
+   */<br>
+  private addPeriodsRequiredConstraints(<br>
+    sections: Array&lt;{ id: string; periodsPerWeek: number }&gt;,<br>
+    rooms: Room[],<br>
+    timeSlots: TimeSlot[]<br>
+  ): void {<br>
+    for (const section of sections) {<br>
+      const coefficients = new Map&lt;string, number&gt;();</p><p>      for (const room of rooms) {<br>
+        for (const slot of timeSlots) {<br>
+          if (slot.isBreak) continue;</p><p>          const varName = this.varName(section.id, room.id, slot.id);<br>
+          if (this.variables.has(varName)) {<br>
+            coefficients.set(varName, 1);<br>
+          }<br>
+        }<br>
+      }</p><p>      if (coefficients.size &gt; 0) {<br>
+        this.constraints.push({<br>
+          name: <code>periods_required_${section.id}</code>,<br>
+          coefficients,<br>
+          sense: '=',<br>
+          rhs: section.periodsPerWeek,<br>
+        });<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * Teachers can't teach when unavailable<br>
+   */<br>
+  private addTeacherAvailabilityConstraints(<br>
+    sections: Array&lt;{ id: string; teacherId: string }&gt;,<br>
+    rooms: Room[],<br>
+    timeSlots: TimeSlot[],<br>
+    teacherAvailability: Map&lt;string, TeacherAvailability[]&gt;<br>
+  ): void {<br>
+    for (const section of sections) {<br>
+      const availability = teacherAvailability.get(section.teacherId) ?? [];</p><p>      for (const avail of availability) {<br>
+        if (avail.isAvailable) continue; // Only constrain unavailable slots</p><p>        for (const room of rooms) {<br>
+          const varName = this.varName(section.id, room.id, avail.periodId);<br>
+          if (this.variables.has(varName)) {<br>
+            // Set upper bound to 0 (can't be selected)<br>
+            const variable = this.variables.get(varName)!;<br>
+            variable.upperBound = 0;<br>
+          }<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * Section can't be in room with insufficient capacity<br>
+   */<br>
+  private addRoomCapacityConstraints(<br>
+    sections: Array&lt;{ id: string; maxStudents: number }&gt;,<br>
+    rooms: Room[],<br>
+    timeSlots: TimeSlot[]<br>
+  ): void {<br>
+    // Already handled in createVariables by not creating variables<br>
+    // for incompatible pairs<br>
+  }</p><p>  /**<br>
+   * Lab sections must be in lab rooms<br>
+   */<br>
+  private addLabRequirementConstraints(<br>
+    sections: Array&lt;{ id: string; requiresLab: boolean }&gt;,<br>
+    rooms: Room[],<br>
+    timeSlots: TimeSlot[]<br>
+  ): void {<br>
+    // Already handled in createVariables by not creating variables<br>
+    // for incompatible pairs<br>
+  }</p><p>  /**<br>
+   * Add penalties for violating preferences<br>
+   */<br>
+  private addPreferencePenalties(<br>
+    sections: Array&lt;{ id: string; teacherId: string }&gt;,<br>
+    rooms: Room[],<br>
+    timeSlots: TimeSlot[],<br>
+    teacherAvailability: Map&lt;string, TeacherAvailability[]&gt;<br>
+  ): void {<br>
+    // Penalty for scheduling at dispreferred times<br>
+    for (const section of sections) {<br>
+      const availability = teacherAvailability.get(section.teacherId) ?? [];</p><p>      for (const avail of availability) {<br>
+        if (!avail.isAvailable) continue; // Already hard-constrained<br>
+        if (avail.preference &gt;= 0) continue; // No penalty for neutral/preferred</p><p>        // Negative preference = penalty<br>
+        const penalty = Math.abs(avail.preference);</p><p>        for (const room of rooms) {<br>
+          const varName = this.varName(section.id, room.id, avail.periodId);<br>
+          if (this.variables.has(varName)) {<br>
+            const current = this.objectiveCoefficients.get(varName) ?? 0;<br>
+            this.objectiveCoefficients.set(varName, current + penalty);</p><p>            const variable = this.variables.get(varName)!;<br>
+            variable.objectiveCoefficient = this.objectiveCoefficients.get(varName)!;<br>
+          }<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * Convert model to LP format string for solver<br>
+   */<br>
+  toLPFormat(model: ILPModel): string {<br>
+    const lines: string[] = [];</p><p>    // Objective<br>
+    lines.push('Minimize');<br>
+    const objTerms = model.variables<br>
+      .filter((v) =&gt; v.objectiveCoefficient !== 0)<br>
+      .map((v) =&gt; <code>${v.objectiveCoefficient} ${v.name}</code>)<br>
+      .join(' + ');<br>
+    lines.push(<code> obj: ${objTerms || '0'}</code>);</p><p>    // Constraints<br>
+    lines.push('Subject To');<br>
+    for (const constraint of model.constraints) {<br>
+      const terms = Array.from(constraint.coefficients.entries())<br>
+        .map(([name, coef]) =&gt; <code>${coef} ${name}</code>)<br>
+        .join(' + ');<br>
+      const sense = constraint.sense === '&lt;=' ? '&lt;=' : constraint.sense === '&gt;=' ? '&gt;=' : '=';<br>
+      lines.push(<code> ${constraint.name}: ${terms} ${sense} ${constraint.rhs}</code>);<br>
+    }</p><p>    // Bounds<br>
+    lines.push('Bounds');<br>
+    for (const variable of model.variables) {<br>
+      lines.push(<code> ${variable.lowerBound} &lt;= ${variable.name} &lt;= ${variable.upperBound}</code>);<br>
+    }</p><p>    // Binary variables<br>
+    lines.push('Binary');<br>
+    const binaryVars = model.variables<br>
+      .filter((v) =&gt; v.type === 'binary')<br>
+      .map((v) =&gt; v.name);<br>
+    lines.push(<code> ${binaryVars.join(' ')}</code>);</p><p>    lines.push('End');</p><p>    return lines.join('\n');<br>
+  }<br>
+}</p><p>export const ilpBuilder = new ILPBuilder();</code></pre><h2>Understanding the Math</h2><p>The key insight: every constraint becomes a linear equation.</p><p><strong>"No double-booking"</strong> becomes a sum constraint:<br>
+<pre><code class="language-">(all assignments for teacher T at time t) ≤ 1</code></pre><p><strong>"Exactly N periods"</strong> becomes an equality:<br>
+<pre><code class="language-">(all assignments for section S) = N</code></pre><p><strong>"Prefer mornings"</strong> becomes an objective term:<br>
+<pre><code class="language-">penalty × (assignments at afternoon slots)</code></pre><p>The solver explores the space of all 0/1 combinations for the variables, using branch-and-bound and cutting planes to eliminate infeasible regions efficiently.</p><h2>Why ILP Works Well for Scheduling</h2><p>1. <strong>Complete search</strong>: Unlike heuristics, ILP proves optimality or infeasibility<br>
+2. <strong>Flexible constraints</strong>: Any linear constraint can be added<br>
+3. <strong>Weighted objectives</strong>: Balance multiple competing goals<br>
+4. <strong>Incremental solving</strong>: Add constraints without rebuilding<br>
+5. <strong>Proven technology</strong>: Decades of algorithmic improvements</p><p>The downside: model building requires care. Bugs in constraints cause incorrect or infeasible solutions with opaque error messages.</p><h2>Next Steps</h2><p>With the fundamentals covered, the next chapter shows how to model the complete scheduling problem as an ILP—turning business requirements into mathematical constraints.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-4" class="chapter">
+      <h2>Modeling the Schedule as ILP</h2>
+      <h2>The Complete Model</h2><p>Now we put together a full ILP model for school scheduling. This chapter shows the complete formulation with all constraints.</p><h2>Variable Indexing</h2><p>For efficient access, we create indices:</p><pre><code class="language-typescript">// src/services/model-indexer.ts</p><p>export interface ModelIndices {<br>
+  // Entity lists<br>
+  sections: string[];<br>
+  rooms: string[];<br>
+  timeSlots: string[];<br>
+  teachers: string[];</p><p>  // Mappings<br>
+  sectionTeacher: Map&lt;string, string&gt;;      // section -&gt; teacher<br>
+  teacherSections: Map&lt;string, string[]&gt;;    // teacher -&gt; [sections]<br>
+  sectionPeriods: Map&lt;string, number&gt;;       // section -&gt; periods needed<br>
+  roomCapacity: Map&lt;string, number&gt;;         // room -&gt; capacity<br>
+  sectionStudents: Map&lt;string, number&gt;;      // section -&gt; student count<br>
+  sectionNeedsLab: Set&lt;string&gt;;              // sections that need lab<br>
+  roomIsLab: Set&lt;string&gt;;                    // rooms that are labs<br>
+  slotDay: Map&lt;string, number&gt;;              // slot -&gt; day of week<br>
+  slotPeriod: Map&lt;string, number&gt;;           // slot -&gt; period number<br>
+  daySlots: Map&lt;number, string[]&gt;;           // day -&gt; [slots]</p><p>  // Availability<br>
+  teacherUnavailable: Map&lt;string, Set&lt;string&gt;&gt;;  // teacher -&gt; unavailable slots<br>
+  teacherPreference: Map&lt;string, Map&lt;string, number&gt;&gt;;  // teacher -&gt; slot -&gt; preference<br>
+}</p><p>export function buildIndices(data: {<br>
+  sections: Array&lt;{<br>
+    id: string;<br>
+    teacherId: string;<br>
+    periodsPerWeek: number;<br>
+    maxStudents: number;<br>
+    requiresLab: boolean;<br>
+  }&gt;;<br>
+  rooms: Array&lt;{ id: string; capacity: number; isLab: boolean }&gt;;<br>
+  timeSlots: Array&lt;{<br>
+    id: string;<br>
+    dayOfWeek: number;<br>
+    periodNumber: number;<br>
+    isBreak: boolean;<br>
+  }&gt;;<br>
+  teachers: Array&lt;{ id: string }&gt;;<br>
+  availability: Array&lt;{<br>
+    teacherId: string;<br>
+    periodId: string;<br>
+    isAvailable: boolean;<br>
+    preference: number;<br>
+  }&gt;;<br>
+}): ModelIndices {<br>
+  const indices: ModelIndices = {<br>
+    sections: data.sections.map((s) =&gt; s.id),<br>
+    rooms: data.rooms.map((r) =&gt; r.id),<br>
+    timeSlots: data.timeSlots.filter((t) =&gt; !t.isBreak).map((t) =&gt; t.id),<br>
+    teachers: data.teachers.map((t) =&gt; t.id),<br>
+    sectionTeacher: new Map(),<br>
+    teacherSections: new Map(),<br>
+    sectionPeriods: new Map(),<br>
+    roomCapacity: new Map(),<br>
+    sectionStudents: new Map(),<br>
+    sectionNeedsLab: new Set(),<br>
+    roomIsLab: new Set(),<br>
+    slotDay: new Map(),<br>
+    slotPeriod: new Map(),<br>
+    daySlots: new Map(),<br>
+    teacherUnavailable: new Map(),<br>
+    teacherPreference: new Map(),<br>
+  };</p><p>  // Build section mappings<br>
+  for (const section of data.sections) {<br>
+    indices.sectionTeacher.set(section.id, section.teacherId);<br>
+    indices.sectionPeriods.set(section.id, section.periodsPerWeek);<br>
+    indices.sectionStudents.set(section.id, section.maxStudents);<br>
+    if (section.requiresLab) {<br>
+      indices.sectionNeedsLab.add(section.id);<br>
+    }</p><p>    // Teacher -&gt; sections<br>
+    const teacherSecs = indices.teacherSections.get(section.teacherId) ?? [];<br>
+    teacherSecs.push(section.id);<br>
+    indices.teacherSections.set(section.teacherId, teacherSecs);<br>
+  }</p><p>  // Build room mappings<br>
+  for (const room of data.rooms) {<br>
+    indices.roomCapacity.set(room.id, room.capacity);<br>
+    if (room.isLab) {<br>
+      indices.roomIsLab.add(room.id);<br>
+    }<br>
+  }</p><p>  // Build time slot mappings<br>
+  for (const slot of data.timeSlots) {<br>
+    if (slot.isBreak) continue;<br>
+    indices.slotDay.set(slot.id, slot.dayOfWeek);<br>
+    indices.slotPeriod.set(slot.id, slot.periodNumber);</p><p>    const daySlots = indices.daySlots.get(slot.dayOfWeek) ?? [];<br>
+    daySlots.push(slot.id);<br>
+    indices.daySlots.set(slot.dayOfWeek, daySlots);<br>
+  }</p><p>  // Build availability mappings<br>
+  for (const teacher of data.teachers) {<br>
+    indices.teacherUnavailable.set(teacher.id, new Set());<br>
+    indices.teacherPreference.set(teacher.id, new Map());<br>
+  }</p><p>  for (const avail of data.availability) {<br>
+    if (!avail.isAvailable) {<br>
+      indices.teacherUnavailable.get(avail.teacherId)?.add(avail.periodId);<br>
+    }<br>
+    indices.teacherPreference.get(avail.teacherId)?.set(avail.periodId, avail.preference);<br>
+  }</p><p>  return indices;<br>
+}</code></pre><h2>The Complete Model Builder</h2><pre><code class="language-typescript">// src/services/complete-model-builder.ts</p><p>import type { ModelIndices } from './model-indexer.js';</p><p>interface Variable {<br>
+  name: string;<br>
+  objectiveCoeff: number;<br>
+}</p><p>interface Constraint {<br>
+  name: string;<br>
+  terms: Array&lt;{ variable: string; coefficient: number }&gt;;<br>
+  sense: '&lt;=' | '=' | '&gt;=';<br>
+  rhs: number;<br>
+}</p><p>export class CompleteModelBuilder {<br>
+  private variables: Map&lt;string, Variable&gt; = new Map();<br>
+  private constraints: Constraint[] = [];<br>
+  private indices: ModelIndices;</p><p>  constructor(indices: ModelIndices) {<br>
+    this.indices = indices;<br>
+  }</p><p>  /**<br>
+   * Variable naming convention<br>
+   */<br>
+  private x(section: string, room: string, slot: string): string {<br>
+    return <code>x_${section}_${room}_${slot}</code>;<br>
+  }</p><p>  /**<br>
+   * Check if assignment is feasible (room compatible with section)<br>
+   */<br>
+  private isFeasible(section: string, room: string): boolean {<br>
+    // Lab check<br>
+    if (this.indices.sectionNeedsLab.has(section) &amp;&amp;<br>
+        !this.indices.roomIsLab.has(room)) {<br>
+      return false;<br>
+    }</p><p>    // Capacity check<br>
+    const capacity = this.indices.roomCapacity.get(room) ?? 0;<br>
+    const students = this.indices.sectionStudents.get(section) ?? 0;<br>
+    if (capacity &lt; students) {<br>
+      return false;<br>
+    }</p><p>    return true;<br>
+  }</p><p>  /**<br>
+   * Check if time slot is available for section's teacher<br>
+   */<br>
+  private isAvailable(section: string, slot: string): boolean {<br>
+    const teacher = this.indices.sectionTeacher.get(section);<br>
+    if (!teacher) return true;</p><p>    const unavailable = this.indices.teacherUnavailable.get(teacher);<br>
+    return !unavailable?.has(slot);<br>
+  }</p><p>  /**<br>
+   * Build the complete model<br>
+   */<br>
+  build(): { variables: Variable[]; constraints: Constraint[] } {<br>
+    // Step 1: Create variables<br>
+    this.createVariables();</p><p>    // Step 2: Hard constraints<br>
+    this.addNoTeacherConflict();<br>
+    this.addNoRoomConflict();<br>
+    this.addPeriodsRequired();<br>
+    this.addOneSectionPerSlot();</p><p>    // Step 3: Soft constraints (objective)<br>
+    this.addPreferencePenalties();<br>
+    this.addConsecutivePenalties();</p><p>    return {<br>
+      variables: Array.from(this.variables.values()),<br>
+      constraints: this.constraints,<br>
+    };<br>
+  }</p><p>  /**<br>
+   * Create all decision variables<br>
+   */<br>
+  private createVariables(): void {<br>
+    for (const section of this.indices.sections) {<br>
+      for (const room of this.indices.rooms) {<br>
+        if (!this.isFeasible(section, room)) continue;</p><p>        for (const slot of this.indices.timeSlots) {<br>
+          if (!this.isAvailable(section, slot)) continue;</p><p>          const name = this.x(section, room, slot);<br>
+          this.variables.set(name, { name, objectiveCoeff: 0 });<br>
+        }<br>
+      }<br>
+    }</p><p>    console.log(<code>Created ${this.variables.size} decision variables</code>);<br>
+  }</p><p>  /**<br>
+   * HARD: No teacher can teach two sections at same time<br>
+   */<br>
+  private addNoTeacherConflict(): void {<br>
+    for (const [teacher, sections] of this.indices.teacherSections) {<br>
+      if (sections.length &lt; 2) continue;</p><p>      for (const slot of this.indices.timeSlots) {<br>
+        const terms: Array&lt;{ variable: string; coefficient: number }&gt; = [];</p><p>        for (const section of sections) {<br>
+          for (const room of this.indices.rooms) {<br>
+            const varName = this.x(section, room, slot);<br>
+            if (this.variables.has(varName)) {<br>
+              terms.push({ variable: varName, coefficient: 1 });<br>
+            }<br>
+          }<br>
+        }</p><p>        if (terms.length &gt; 1) {<br>
+          this.constraints.push({<br>
+            name: <code>no_teacher_conflict_${teacher}_${slot}</code>,<br>
+            terms,<br>
+            sense: '&lt;=',<br>
+            rhs: 1,<br>
+          });<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * HARD: No room can host two sections at same time<br>
+   */<br>
+  private addNoRoomConflict(): void {<br>
+    for (const room of this.indices.rooms) {<br>
+      for (const slot of this.indices.timeSlots) {<br>
+        const terms: Array&lt;{ variable: string; coefficient: number }&gt; = [];</p><p>        for (const section of this.indices.sections) {<br>
+          const varName = this.x(section, room, slot);<br>
+          if (this.variables.has(varName)) {<br>
+            terms.push({ variable: varName, coefficient: 1 });<br>
+          }<br>
+        }</p><p>        if (terms.length &gt; 1) {<br>
+          this.constraints.push({<br>
+            name: <code>no_room_conflict_${room}_${slot}</code>,<br>
+            terms,<br>
+            sense: '&lt;=',<br>
+            rhs: 1,<br>
+          });<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * HARD: Each section gets exactly required number of periods<br>
+   */<br>
+  private addPeriodsRequired(): void {<br>
+    for (const section of this.indices.sections) {<br>
+      const required = this.indices.sectionPeriods.get(section) ?? 0;<br>
+      const terms: Array&lt;{ variable: string; coefficient: number }&gt; = [];</p><p>      for (const room of this.indices.rooms) {<br>
+        for (const slot of this.indices.timeSlots) {<br>
+          const varName = this.x(section, room, slot);<br>
+          if (this.variables.has(varName)) {<br>
+            terms.push({ variable: varName, coefficient: 1 });<br>
+          }<br>
+        }<br>
+      }</p><p>      if (terms.length &gt; 0) {<br>
+        this.constraints.push({<br>
+          name: <code>periods_required_${section}</code>,<br>
+          terms,<br>
+          sense: '=',<br>
+          rhs: required,<br>
+        });<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * HARD: Each section uses at most one room per time slot<br>
+   * (Prevents double-booking within same section)<br>
+   */<br>
+  private addOneSectionPerSlot(): void {<br>
+    for (const section of this.indices.sections) {<br>
+      for (const slot of this.indices.timeSlots) {<br>
+        const terms: Array&lt;{ variable: string; coefficient: number }&gt; = [];</p><p>        for (const room of this.indices.rooms) {<br>
+          const varName = this.x(section, room, slot);<br>
+          if (this.variables.has(varName)) {<br>
+            terms.push({ variable: varName, coefficient: 1 });<br>
+          }<br>
+        }</p><p>        if (terms.length &gt; 1) {<br>
+          this.constraints.push({<br>
+            name: <code>one_room_per_slot_${section}_${slot}</code>,<br>
+            terms,<br>
+            sense: '&lt;=',<br>
+            rhs: 1,<br>
+          });<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * SOFT: Penalize scheduling at dispreferred times<br>
+   */<br>
+  private addPreferencePenalties(): void {<br>
+    const PREFERENCE_WEIGHT = 5;</p><p>    for (const section of this.indices.sections) {<br>
+      const teacher = this.indices.sectionTeacher.get(section);<br>
+      if (!teacher) continue;</p><p>      const preferences = this.indices.teacherPreference.get(teacher);<br>
+      if (!preferences) continue;</p><p>      for (const [slot, preference] of preferences) {<br>
+        if (preference &gt;= 0) continue; // No penalty for neutral/preferred</p><p>        const penalty = Math.abs(preference) * PREFERENCE_WEIGHT;</p><p>        for (const room of this.indices.rooms) {<br>
+          const varName = this.x(section, room, slot);<br>
+          const variable = this.variables.get(varName);<br>
+          if (variable) {<br>
+            variable.objectiveCoeff += penalty;<br>
+          }<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * SOFT: Penalize consecutive periods beyond threshold<br>
+   */<br>
+  private addConsecutivePenalties(): void {<br>
+    const MAX_CONSECUTIVE = 3;<br>
+    const CONSECUTIVE_WEIGHT = 10;</p><p>    // For each teacher, for each day, check consecutive sequences<br>
+    for (const [teacher, sections] of this.indices.teacherSections) {<br>
+      for (const [day, slots] of this.indices.daySlots) {<br>
+        // Sort slots by period number<br>
+        const sortedSlots = slots.sort((a, b) =&gt; {<br>
+          const pA = this.indices.slotPeriod.get(a) ?? 0;<br>
+          const pB = this.indices.slotPeriod.get(b) ?? 0;<br>
+          return pA - pB;<br>
+        });</p><p>        // Check each window of MAX_CONSECUTIVE + 1 periods<br>
+        for (let i = 0; i &lt;= sortedSlots.length - MAX_CONSECUTIVE - 1; i++) {<br>
+          const windowSlots = sortedSlots.slice(i, i + MAX_CONSECUTIVE + 1);</p><p>          // Create auxiliary variable for this violation<br>
+          const auxName = <code>consec_${teacher}_${day}_${i}</code>;<br>
+          this.variables.set(auxName, {<br>
+            name: auxName,<br>
+            objectiveCoeff: CONSECUTIVE_WEIGHT,<br>
+          });</p><p>          // Constraint: sum of assignments in window &lt;= MAX_CONSECUTIVE + aux<br>
+          const terms: Array&lt;{ variable: string; coefficient: number }&gt; = [];</p><p>          for (const slot of windowSlots) {<br>
+            for (const section of sections) {<br>
+              for (const room of this.indices.rooms) {<br>
+                const varName = this.x(section, room, slot);<br>
+                if (this.variables.has(varName)) {<br>
+                  terms.push({ variable: varName, coefficient: 1 });<br>
+                }<br>
+              }<br>
+            }<br>
+          }</p><p>          terms.push({ variable: auxName, coefficient: -1 });</p><p>          this.constraints.push({<br>
+            name: <code>consecutive_${teacher}_${day}_${i}</code>,<br>
+            terms,<br>
+            sense: '&lt;=',<br>
+            rhs: MAX_CONSECUTIVE,<br>
+          });<br>
+        }<br>
+      }<br>
+    }<br>
+  }</p><p>  /**<br>
+   * Export to LP format<br>
+   */<br>
+  toLPFormat(): string {<br>
+    const lines: string[] = [];</p><p>    // Objective<br>
+    lines.push('Minimize');<br>
+    const objTerms = Array.from(this.variables.values())<br>
+      .filter((v) =&gt; v.objectiveCoeff !== 0)<br>
+      .map((v) =&gt; {<br>
+        const coeff = v.objectiveCoeff;<br>
+        return coeff === 1 ? v.name : <code>${coeff} ${v.name}</code>;<br>
+      });<br>
+    lines.push(<code> obj: ${objTerms.join(' + ') || '0'}</code>);</p><p>    // Constraints<br>
+    lines.push('Subject To');<br>
+    for (const c of this.constraints) {<br>
+      const termStrs = c.terms.map((t) =&gt; {<br>
+        if (t.coefficient === 1) return t.variable;<br>
+        if (t.coefficient === -1) return <code>- ${t.variable}</code>;<br>
+        return <code>${t.coefficient} ${t.variable}</code>;<br>
+      });<br>
+      lines.push(<code> ${c.name}: ${termStrs.join(' + ')} ${c.sense} ${c.rhs}</code>);<br>
+    }</p><p>    // Bounds (all binary are 0-1)<br>
+    lines.push('Bounds');<br>
+    for (const v of this.variables.values()) {<br>
+      lines.push(<code> 0 &lt;= ${v.name} &lt;= 1</code>);<br>
+    }</p><p>    // Binary<br>
+    lines.push('Binary');<br>
+    const binaryVars = Array.from(this.variables.keys())<br>
+      .filter((name) =&gt; name.startsWith('x_'));<br>
+    // Split into lines of reasonable length<br>
+    for (let i = 0; i &lt; binaryVars.length; i += 10) {<br>
+      lines.push(<code> ${binaryVars.slice(i, i + 10).join(' ')}</code>);<br>
+    }</p><p>    // General (integer) for auxiliary variables<br>
+    const intVars = Array.from(this.variables.keys())<br>
+      .filter((name) =&gt; !name.startsWith('x_'));<br>
+    if (intVars.length &gt; 0) {<br>
+      lines.push('General');<br>
+      lines.push(<code> ${intVars.join(' ')}</code>);<br>
+    }</p><p>    lines.push('End');</p><p>    return lines.join('\n');<br>
+  }<br>
+}</code></pre><h2>Constraint Counting</h2><p>Before solving, it's useful to know the model size:</p><pre><code class="language-typescript">export function countModel(model: { variables: Variable[]; constraints: Constraint[] }): {<br>
+  variables: number;<br>
+  binaryVariables: number;<br>
+  constraints: number;<br>
+  nonZeroCoefficients: number;<br>
+} {<br>
+  const binary = model.variables.filter((v) =&gt; v.name.startsWith('x_')).length;<br>
+  const nonZero = model.constraints.reduce(<br>
+    (sum, c) =&gt; sum + c.terms.length,<br>
+    0<br>
+  );</p><p>  return {<br>
+    variables: model.variables.length,<br>
+    binaryVariables: binary,<br>
+    constraints: model.constraints.length,<br>
+    nonZeroCoefficients: nonZero,<br>
+  };<br>
+}</code></pre><p>Typical sizes for a medium school:<br>
+- 100 sections, 30 rooms, 40 slots<br>
+- ~50,000 binary variables (after feasibility filtering)<br>
+- ~5,000 constraints<br>
+- ~200,000 non-zero coefficients</p><p>Modern ILP solvers handle this in seconds.</p><h2>Testing the Model</h2><p>Validate the model before solving:</p><pre><code class="language-typescript">// src/services/model-validator.ts</p><p>export interface ValidationResult {<br>
+  valid: boolean;<br>
+  errors: string[];<br>
+  warnings: string[];<br>
+}</p><p>export function validateModel(model: {<br>
+  variables: Variable[];<br>
+  constraints: Constraint[];<br>
+}, indices: ModelIndices): ValidationResult {<br>
+  const errors: string[] = [];<br>
+  const warnings: string[] = [];</p><p>  // Check: Every section has at least one possible assignment<br>
+  for (const section of indices.sections) {<br>
+    const possibleAssignments = model.variables.filter(<br>
+      (v) =&gt; v.name.startsWith(<code>x_${section}_</code>)<br>
+    );</p><p>    if (possibleAssignments.length === 0) {<br>
+      errors.push(<code>Section ${section} has no feasible room/slot combinations</code>);<br>
+    }</p><p>    const periodsRequired = indices.sectionPeriods.get(section) ?? 0;<br>
+    if (possibleAssignments.length &lt; periodsRequired) {<br>
+      warnings.push(<br>
+        <code>Section ${section} needs ${periodsRequired} periods but only </code> +<br>
+        <code>${possibleAssignments.length} combinations are feasible</code><br>
+      );<br>
+    }<br>
+  }</p><p>  // Check: Constraint references valid variables<br>
+  const varNames = new Set(model.variables.map((v) =&gt; v.name));<br>
+  for (const constraint of model.constraints) {<br>
+    for (const term of constraint.terms) {<br>
+      if (!varNames.has(term.variable)) {<br>
+        errors.push(<br>
+          <code>Constraint ${constraint.name} references unknown variable ${term.variable}</code><br>
+        );<br>
+      }<br>
+    }<br>
+  }</p><p>  // Check: No contradictory constraints<br>
+  const periodsConstraints = model.constraints.filter(<br>
+    (c) =&gt; c.name.startsWith('periods_required_')<br>
+  );<br>
+  for (const constraint of periodsConstraints) {<br>
+    if (constraint.terms.length &lt; constraint.rhs) {<br>
+      const section = constraint.name.replace('periods_required_', '');<br>
+      errors.push(<br>
+        <code>Section ${section} requires ${constraint.rhs} periods but only </code> +<br>
+        <code>${constraint.terms.length} options exist</code><br>
+      );<br>
+    }<br>
+  }</p><p>  return {<br>
+    valid: errors.length === 0,<br>
+    errors,<br>
+    warnings,<br>
+  };<br>
+}</code></pre><h2>Next Steps</h2><p>With the model built, the next chapter integrates the HiGHS solver—feeding it the LP format and extracting the solution.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-5" class="chapter">
+      <h2>Integrating the ILP Solver</h2>
+      <h2>HiGHS Overview</h2><p>HiGHS (High-performance Solver) is an open-source optimization solver. It handles:<br>
+- Linear Programming (LP)<br>
+- Mixed Integer Programming (MIP)<br>
+- Quadratic Programming (QP)</p><p>For scheduling, we use MIP (Mixed Integer Programming) with binary variables.</p><p>HiGHS is competitive with commercial solvers like Gurobi and CPLEX for many problem types, but it's free and MIT-licensed.</p><h2>Installing HiGHS</h2><pre><code class="language-bash">npm install highs</code></pre><p>The <code>highs</code> package provides WebAssembly bindings that work in both Node.js and browsers.</p><h2>Basic Solver Wrapper</h2><pre><code class="language-typescript">// src/services/highs-solver.ts<br>
+import highsLoader from 'highs';</p><p>export type SolverStatus =<br>
+  | 'Optimal'<br>
+  | 'Infeasible'<br>
+  | 'Unbounded'<br>
+  | 'TimeLimit'<br>
+  | 'Error';</p><p>export interface SolverResult {<br>
+  status: SolverStatus;<br>
+  objectiveValue: number | null;<br>
+  solution: Map&lt;string, number&gt;;<br>
+  solveTimeMs: number;<br>
+  iterations: number;<br>
+  nodes: number;<br>
+}</p><p>export interface SolverOptions {<br>
+  timeLimit?: number;       // seconds<br>
+  mipGap?: number;          // relative gap (0.01 = 1%)<br>
+  threads?: number;         // parallel threads<br>
+  presolve?: 'on' | 'off';<br>
+  verbose?: boolean;<br>
+}</p><p>export class HighsSolver {<br>
+  private highs: Awaited&lt;ReturnType&lt;typeof highsLoader&gt;&gt; | null = null;</p><p>  async initialize(): Promise&lt;void&gt; {<br>
+    if (!this.highs) {<br>
+      this.highs = await highsLoader();<br>
+    }<br>
+  }</p><p>  async solve(<br>
+    lpFormat: string,<br>
+    options: SolverOptions = {}<br>
+  ): Promise&lt;SolverResult&gt; {<br>
+    await this.initialize();</p><p>    const startTime = Date.now();</p><p>    // Configure options<br>
+    if (options.timeLimit) {<br>
+      this.highs!.setOptionValue('time_limit', options.timeLimit);<br>
+    }<br>
+    if (options.mipGap) {<br>
+      this.highs!.setOptionValue('mip_rel_gap', options.mipGap);<br>
+    }<br>
+    if (options.threads) {<br>
+      this.highs!.setOptionValue('threads', options.threads);<br>
+    }<br>
+    if (options.presolve) {<br>
+      this.highs!.setOptionValue('presolve', options.presolve);<br>
+    }<br>
+    if (!options.verbose) {<br>
+      this.highs!.setOptionValue('output_flag', false);<br>
+    }</p><p>    // Solve<br>
+    const result = this.highs!.solve(lpFormat);</p><p>    const solveTimeMs = Date.now() - startTime;</p><p>    // Extract solution<br>
+    const solution = new Map&lt;string, number&gt;();</p><p>    if (result.Status === 'Optimal' || result.Status === 'Feasible') {<br>
+      for (const col of result.Columns) {<br>
+        // Only include non-zero values for binary variables<br>
+        if (col.Primal &gt; 0.5) {<br>
+          solution.set(col.Name, Math.round(col.Primal));<br>
+        }<br>
+      }<br>
+    }</p><p>    // Map status<br>
+    let status: SolverStatus;<br>
+    switch (result.Status) {<br>
+      case 'Optimal':<br>
+        status = 'Optimal';<br>
+        break;<br>
+      case 'Infeasible':<br>
+        status = 'Infeasible';<br>
+        break;<br>
+      case 'Unbounded':<br>
+        status = 'Unbounded';<br>
+        break;<br>
+      case 'Time limit reached':<br>
+        status = 'TimeLimit';<br>
+        break;<br>
+      default:<br>
+        status = 'Error';<br>
+    }</p><p>    return {<br>
+      status,<br>
+      objectiveValue:<br>
+        status === 'Optimal' || status === 'TimeLimit'<br>
+          ? result.ObjectiveValue<br>
+          : null,<br>
+      solution,<br>
+      solveTimeMs,<br>
+      iterations: result.Info?.ipm_iteration_count ?? 0,<br>
+      nodes: result.Info?.mip_node_count ?? 0,<br>
+    };<br>
+  }</p><p>  /**<br>
+   * Solve with callback for progress updates<br>
+   */<br>
+  async solveWithProgress(<br>
+    lpFormat: string,<br>
+    options: SolverOptions = {},<br>
+    onProgress?: (info: {<br>
+      elapsedMs: number;<br>
+      gap: number | null;<br>
+      bestBound: number | null;<br>
+      bestSolution: number | null;<br>
+    }) =&gt; void<br>
+  ): Promise&lt;SolverResult&gt; {<br>
+    // For progress tracking, we use a polling approach<br>
+    // since HiGHS WASM doesn't support callbacks directly</p><p>    const startTime = Date.now();<br>
+    let lastUpdate = 0;</p><p>    // Start solving (non-blocking isn't directly supported, so this is simplified)<br>
+    const result = await this.solve(lpFormat, options);</p><p>    // Report final progress<br>
+    if (onProgress) {<br>
+      onProgress({<br>
+        elapsedMs: Date.now() - startTime,<br>
+        gap: 0,<br>
+        bestBound: result.objectiveValue,<br>
+        bestSolution: result.objectiveValue,<br>
+      });<br>
+    }</p><p>    return result;<br>
+  }<br>
+}</p><p>export const highsSolver = new HighsSolver();</code></pre><h2>Solution Extraction</h2><p>Convert solver output to schedule assignments:</p><pre><code class="language-typescript">// src/services/solution-extractor.ts</p><p>import type { SolverResult } from './highs-solver.js';<br>
+import type { Assignment } from '../types/index.js';</p><p>export interface ExtractedSchedule {<br>
+  assignments: Array&lt;{<br>
+    sectionId: string;<br>
+    roomId: string;<br>
+    timeSlotId: string;<br>
+  }&gt;;<br>
+  objectiveValue: number;<br>
+  stats: {<br>
+    totalAssignments: number;<br>
+    periodsUsed: Map&lt;string, number&gt;;  // section -&gt; periods<br>
+    roomUtilization: Map&lt;string, number&gt;;  // room -&gt; periods used<br>
+    teacherLoad: Map&lt;string, number&gt;;  // teacher -&gt; periods<br>
+  };<br>
+}</p><p>export function extractSchedule(<br>
+  result: SolverResult,<br>
+  sectionTeacher: Map&lt;string, string&gt;<br>
+): ExtractedSchedule {<br>
+  const assignments: ExtractedSchedule['assignments'] = [];<br>
+  const periodsUsed = new Map&lt;string, number&gt;();<br>
+  const roomUtilization = new Map&lt;string, number&gt;();<br>
+  const teacherLoad = new Map&lt;string, number&gt;();</p><p>  for (const [varName, value] of result.solution) {<br>
+    // Parse variable name: x_sectionId_roomId_slotId<br>
+    if (!varName.startsWith('x_')) continue;<br>
+    if (value &lt; 0.5) continue; // Not selected</p><p>    const parts = varName.substring(2).split('_');<br>
+    if (parts.length !== 3) continue;</p><p>    const [sectionId, roomId, timeSlotId] = parts as [string, string, string];</p><p>    assignments.push({ sectionId, roomId, timeSlotId });</p><p>    // Update stats<br>
+    periodsUsed.set(sectionId, (periodsUsed.get(sectionId) ?? 0) + 1);<br>
+    roomUtilization.set(roomId, (roomUtilization.get(roomId) ?? 0) + 1);</p><p>    const teacher = sectionTeacher.get(sectionId);<br>
+    if (teacher) {<br>
+      teacherLoad.set(teacher, (teacherLoad.get(teacher) ?? 0) + 1);<br>
+    }<br>
+  }</p><p>  return {<br>
+    assignments,<br>
+    objectiveValue: result.objectiveValue ?? 0,<br>
+    stats: {<br>
+      totalAssignments: assignments.length,<br>
+      periodsUsed,<br>
+      roomUtilization,<br>
+      teacherLoad,<br>
+    },<br>
+  };<br>
+}</p><p>/**<br>
+ * Validate extracted schedule<br>
+ */<br>
+export function validateSchedule(<br>
+  schedule: ExtractedSchedule,<br>
+  expected: {<br>
+    sectionPeriods: Map&lt;string, number&gt;;<br>
+    sectionTeacher: Map&lt;string, string&gt;;<br>
+  }<br>
+): { valid: boolean; errors: string[] } {<br>
+  const errors: string[] = [];</p><p>  // Check: Each section has correct number of periods<br>
+  for (const [sectionId, required] of expected.sectionPeriods) {<br>
+    const assigned = schedule.stats.periodsUsed.get(sectionId) ?? 0;<br>
+    if (assigned !== required) {<br>
+      errors.push(<br>
+        <code>Section ${sectionId}: expected ${required} periods, got ${assigned}</code><br>
+      );<br>
+    }<br>
+  }</p><p>  // Check: No teacher conflicts<br>
+  const teacherSlots = new Map&lt;string, Set&lt;string&gt;&gt;();<br>
+  for (const assignment of schedule.assignments) {<br>
+    const teacher = expected.sectionTeacher.get(assignment.sectionId);<br>
+    if (!teacher) continue;</p><p>    const slots = teacherSlots.get(teacher) ?? new Set();<br>
+    if (slots.has(assignment.timeSlotId)) {<br>
+      errors.push(<br>
+        <code>Teacher ${teacher} has conflict at slot ${assignment.timeSlotId}</code><br>
+      );<br>
+    }<br>
+    slots.add(assignment.timeSlotId);<br>
+    teacherSlots.set(teacher, slots);<br>
+  }</p><p>  // Check: No room conflicts<br>
+  const roomSlots = new Map&lt;string, Set&lt;string&gt;&gt;();<br>
+  for (const assignment of schedule.assignments) {<br>
+    const slots = roomSlots.get(assignment.roomId) ?? new Set();<br>
+    if (slots.has(assignment.timeSlotId)) {<br>
+      errors.push(<br>
+        <code>Room ${assignment.roomId} has conflict at slot ${assignment.timeSlotId}</code><br>
+      );<br>
+    }<br>
+    slots.add(assignment.timeSlotId);<br>
+    roomSlots.set(assignment.roomId, slots);<br>
+  }</p><p>  return {<br>
+    valid: errors.length === 0,<br>
+    errors,<br>
+  };<br>
+}</code></pre><h2>Handling Infeasibility</h2><p>When the solver returns "Infeasible", the model has contradictory constraints. Diagnosing this is crucial:</p><pre><code class="language-typescript">// src/services/infeasibility-analyzer.ts</p><p>export interface InfeasibilityDiagnosis {<br>
+  likely_causes: string[];<br>
+  suggestions: string[];<br>
+  constraint_analysis: Array&lt;{<br>
+    constraint: string;<br>
+    type: string;<br>
+    tension: 'high' | 'medium' | 'low';<br>
+  }&gt;;<br>
+}</p><p>export async function diagnoseInfeasibility(<br>
+  indices: ModelIndices<br>
+): Promise&lt;InfeasibilityDiagnosis&gt; {<br>
+  const causes: string[] = [];<br>
+  const suggestions: string[] = [];<br>
+  const analysis: InfeasibilityDiagnosis['constraint_analysis'] = [];</p><p>  // Check: Total periods vs available slots<br>
+  let totalPeriodsNeeded = 0;<br>
+  for (const periods of indices.sectionPeriods.values()) {<br>
+    totalPeriodsNeeded += periods;<br>
+  }</p><p>  const totalRoomSlots = indices.rooms.length * indices.timeSlots.length;</p><p>  if (totalPeriodsNeeded &gt; totalRoomSlots) {<br>
+    causes.push(<br>
+      <code>Need ${totalPeriodsNeeded} period-assignments but only </code> +<br>
+      <code>${totalRoomSlots} room-slots available</code><br>
+    );<br>
+    suggestions.push('Add more rooms or time slots');<br>
+    suggestions.push('Reduce number of sections or periods per section');<br>
+    analysis.push({<br>
+      constraint: 'capacity',<br>
+      type: 'total_capacity',<br>
+      tension: 'high',<br>
+    });<br>
+  }</p><p>  // Check: Lab capacity<br>
+  let labPeriodsNeeded = 0;<br>
+  for (const section of indices.sections) {<br>
+    if (indices.sectionNeedsLab.has(section)) {<br>
+      labPeriodsNeeded += indices.sectionPeriods.get(section) ?? 0;<br>
+    }<br>
+  }</p><p>  const labRooms = Array.from(indices.roomIsLab).length;<br>
+  const labSlots = labRooms * indices.timeSlots.length;</p><p>  if (labPeriodsNeeded &gt; labSlots) {<br>
+    causes.push(<br>
+      <code>Need ${labPeriodsNeeded} lab periods but only </code> +<br>
+      <code>${labSlots} lab-slots available</code><br>
+    );<br>
+    suggestions.push('Add more lab rooms');<br>
+    suggestions.push('Reduce lab sections or lab periods');<br>
+    analysis.push({<br>
+      constraint: 'lab_capacity',<br>
+      type: 'resource_constraint',<br>
+      tension: 'high',<br>
+    });<br>
+  }</p><p>  // Check: Teacher availability<br>
+  for (const [teacher, sections] of indices.teacherSections) {<br>
+    let periodsNeeded = 0;<br>
+    for (const section of sections) {<br>
+      periodsNeeded += indices.sectionPeriods.get(section) ?? 0;<br>
+    }</p><p>    const unavailable = indices.teacherUnavailable.get(teacher) ?? new Set();<br>
+    const availableSlots = indices.timeSlots.length - unavailable.size;</p><p>    if (periodsNeeded &gt; availableSlots) {<br>
+      causes.push(<br>
+        <code>Teacher ${teacher} needs ${periodsNeeded} periods but only </code> +<br>
+        <code>${availableSlots} slots available</code><br>
+      );<br>
+      suggestions.push(<code>Increase ${teacher}'s availability</code>);<br>
+      suggestions.push(<code>Reduce ${teacher}'s teaching load</code>);<br>
+      analysis.push({<br>
+        constraint: <code>teacher_${teacher}_availability</code>,<br>
+        type: 'availability_constraint',<br>
+        tension: 'high',<br>
+      });<br>
+    }<br>
+  }</p><p>  // Check: Room capacity vs section sizes<br>
+  const largestSection = Math.max(...Array.from(indices.sectionStudents.values()));<br>
+  const largestRoom = Math.max(...Array.from(indices.roomCapacity.values()));</p><p>  if (largestSection &gt; largestRoom) {<br>
+    causes.push(<br>
+      <code>Largest section has ${largestSection} students but </code> +<br>
+      <code>largest room only holds ${largestRoom}</code><br>
+    );<br>
+    suggestions.push('Add larger rooms');<br>
+    suggestions.push('Split large sections');<br>
+    analysis.push({<br>
+      constraint: 'room_capacity',<br>
+      type: 'resource_constraint',<br>
+      tension: 'high',<br>
+    });<br>
+  }</p><p>  if (causes.length === 0) {<br>
+    causes.push('Could not identify obvious cause');<br>
+    suggestions.push('Try relaxing soft constraints');<br>
+    suggestions.push('Check for conflicting hard constraints');<br>
+  }</p><p>  return {<br>
+    likely_causes: causes,<br>
+    suggestions,<br>
+    constraint_analysis: analysis,<br>
+  };<br>
+}</code></pre><h2>The Complete Schedule Service</h2><p>Orchestrate the entire solving process:</p><pre><code class="language-typescript">// src/services/schedule-service.ts</p><p>import { query, queryOne, execute } from '../db/client.js';<br>
+import { buildIndices } from './model-indexer.js';<br>
+import { CompleteModelBuilder } from './complete-model-builder.js';<br>
+import { highsSolver } from './highs-solver.js';<br>
+import { extractSchedule, validateSchedule } from './solution-extractor.js';<br>
+import { diagnoseInfeasibility } from './infeasibility-analyzer.js';<br>
+import type { Schedule, Assignment } from '../types/index.js';</p><p>export interface GenerateResult {<br>
+  success: boolean;<br>
+  scheduleId: string;<br>
+  status: string;<br>
+  objectiveValue: number | null;<br>
+  solveTimeMs: number;<br>
+  assignmentCount: number;<br>
+  errors: string[];<br>
+  warnings: string[];<br>
+}</p><p>export class ScheduleService {<br>
+  /**<br>
+   * Generate a new schedule<br>
+   */<br>
+  async generateSchedule(<br>
+    name: string,<br>
+    semester: string,<br>
+    options: {<br>
+      timeLimit?: number;<br>
+      mipGap?: number;<br>
+    } = {}<br>
+  ): Promise&lt;GenerateResult&gt; {<br>
+    const errors: string[] = [];<br>
+    const warnings: string[] = [];</p><p>    // Create schedule record<br>
+    const schedule = await queryOne&lt;Schedule&gt;(<br>
+      <code>INSERT INTO schedules (name, semester, status)<br>
+       VALUES ($1, $2, 'draft')<br>
+       RETURNING *</code>,<br>
+      [name, semester]<br>
+    );</p><p>    if (!schedule) {<br>
+      throw new Error('Failed to create schedule record');<br>
+    }</p><p>    try {<br>
+      // Load data<br>
+      const sections = await this.loadSections();<br>
+      const rooms = await this.loadRooms();<br>
+      const timeSlots = await this.loadTimeSlots();<br>
+      const teachers = await this.loadTeachers();<br>
+      const availability = await this.loadAvailability();</p><p>      // Build indices<br>
+      const indices = buildIndices({<br>
+        sections,<br>
+        rooms,<br>
+        timeSlots,<br>
+        teachers,<br>
+        availability,<br>
+      });</p><p>      // Build model<br>
+      const builder = new CompleteModelBuilder(indices);<br>
+      const model = builder.build();<br>
+      const lpFormat = builder.toLPFormat();</p><p>      console.log(<br>
+        <code>Model: ${model.variables.length} variables, </code> +<br>
+        <code>${model.constraints.length} constraints</code><br>
+      );</p><p>      // Solve<br>
+      const result = await highsSolver.solve(lpFormat, {<br>
+        timeLimit: options.timeLimit ?? 300,<br>
+        mipGap: options.mipGap ?? 0.01,<br>
+        presolve: 'on',<br>
+      });</p><p>      console.log(<code>Solver finished: ${result.status} in ${result.solveTimeMs}ms</code>);</p><p>      if (result.status === 'Infeasible') {<br>
+        const diagnosis = await diagnoseInfeasibility(indices);<br>
+        errors.push('Schedule is infeasible');<br>
+        errors.push(...diagnosis.likely_causes);<br>
+        warnings.push(...diagnosis.suggestions);</p><p>        await execute(<br>
+          <code>UPDATE schedules<br>
+           SET status = 'draft',<br>
+               generated_at = NOW(),<br>
+               solver_time = $1<br>
+           WHERE id = $2</code>,<br>
+          [result.solveTimeMs, schedule.id]<br>
+        );</p><p>        return {<br>
+          success: false,<br>
+          scheduleId: schedule.id,<br>
+          status: 'Infeasible',<br>
+          objectiveValue: null,<br>
+          solveTimeMs: result.solveTimeMs,<br>
+          assignmentCount: 0,<br>
+          errors,<br>
+          warnings,<br>
+        };<br>
+      }</p><p>      if (result.status !== 'Optimal' &amp;&amp; result.status !== 'TimeLimit') {<br>
+        errors.push(<code>Solver returned: ${result.status}</code>);</p><p>        return {<br>
+          success: false,<br>
+          scheduleId: schedule.id,<br>
+          status: result.status,<br>
+          objectiveValue: null,<br>
+          solveTimeMs: result.solveTimeMs,<br>
+          assignmentCount: 0,<br>
+          errors,<br>
+          warnings,<br>
+        };<br>
+      }</p><p>      // Extract and validate solution<br>
+      const extracted = extractSchedule(<br>
+        result,<br>
+        indices.sectionTeacher<br>
+      );</p><p>      const validation = validateSchedule(extracted, {<br>
+        sectionPeriods: indices.sectionPeriods,<br>
+        sectionTeacher: indices.sectionTeacher,<br>
+      });</p><p>      if (!validation.valid) {<br>
+        errors.push(...validation.errors);<br>
+      }</p><p>      // Save assignments<br>
+      for (const assignment of extracted.assignments) {<br>
+        await execute(<br>
+          <code>INSERT INTO assignments (schedule_id, section_id, room_id, time_slot_id)<br>
+           VALUES ($1, $2, $3, $4)</code>,<br>
+          [schedule.id, assignment.sectionId, assignment.roomId, assignment.timeSlotId]<br>
+        );<br>
+      }</p><p>      // Update schedule<br>
+      await execute(<br>
+        <code>UPDATE schedules<br>
+         SET status = 'draft',<br>
+             generated_at = NOW(),<br>
+             solver_time = $1,<br>
+             objective_value = $2<br>
+         WHERE id = $3</code>,<br>
+        [result.solveTimeMs, result.objectiveValue, schedule.id]<br>
+      );</p><p>      if (result.status === 'TimeLimit') {<br>
+        warnings.push('Time limit reached; solution may not be optimal');<br>
+      }</p><p>      return {<br>
+        success: true,<br>
+        scheduleId: schedule.id,<br>
+        status: result.status,<br>
+        objectiveValue: result.objectiveValue,<br>
+        solveTimeMs: result.solveTimeMs,<br>
+        assignmentCount: extracted.assignments.length,<br>
+        errors,<br>
+        warnings,<br>
+      };<br>
+    } catch (error) {<br>
+      errors.push(error instanceof Error ? error.message : 'Unknown error');</p><p>      return {<br>
+        success: false,<br>
+        scheduleId: schedule.id,<br>
+        status: 'Error',<br>
+        objectiveValue: null,<br>
+        solveTimeMs: 0,<br>
+        assignmentCount: 0,<br>
+        errors,<br>
+        warnings,<br>
+      };<br>
+    }<br>
+  }</p><p>  private async loadSections() {<br>
+    return query&lt;{<br>
+      id: string;<br>
+      teacherId: string;<br>
+      periodsPerWeek: number;<br>
+      maxStudents: number;<br>
+      requiresLab: boolean;<br>
+    }&gt;(<br>
+      <code>SELECT s.id, s.teacher_id as &quot;teacherId&quot;,<br>
+              c.periods_per_week as &quot;periodsPerWeek&quot;,<br>
+              COALESCE(s.max_students, c.max_students) as &quot;maxStudents&quot;,<br>
+              c.requires_lab as &quot;requiresLab&quot;<br>
+       FROM sections s<br>
+       JOIN classes c ON c.id = s.class_id</code><br>
+    );<br>
+  }</p><p>  private async loadRooms() {<br>
+    return query&lt;{ id: string; capacity: number; isLab: boolean }&gt;(<br>
+      <code>SELECT id, capacity, is_lab as &quot;isLab&quot; FROM rooms</code><br>
+    );<br>
+  }</p><p>  private async loadTimeSlots() {<br>
+    return query&lt;{<br>
+      id: string;<br>
+      dayOfWeek: number;<br>
+      periodNumber: number;<br>
+      isBreak: boolean;<br>
+    }&gt;(<br>
+      <code>SELECT id, day_of_week as &quot;dayOfWeek&quot;,<br>
+              period_number as &quot;periodNumber&quot;,<br>
+              is_break as &quot;isBreak&quot;<br>
+       FROM time_slots</code><br>
+    );<br>
+  }</p><p>  private async loadTeachers() {<br>
+    return query&lt;{ id: string }&gt;('SELECT id FROM teachers');<br>
+  }</p><p>  private async loadAvailability() {<br>
+    return query&lt;{<br>
+      teacherId: string;<br>
+      periodId: string;<br>
+      isAvailable: boolean;<br>
+      preference: number;<br>
+    }&gt;(<br>
+      <code>SELECT teacher_id as &quot;teacherId&quot;,<br>
+              period_id as &quot;periodId&quot;,<br>
+              is_available as &quot;isAvailable&quot;,<br>
+              preference<br>
+       FROM teacher_availability</code><br>
+    );<br>
+  }<br>
+}</p><p>export const scheduleService = new ScheduleService();</code></pre><h2>API Endpoint</h2><pre><code class="language-typescript">// src/api/routes/schedules.ts<br>
+import { Router } from 'express';<br>
+import { scheduleService } from '../../services/schedule-service.js';</p><p>export const schedulesRouter = Router();</p><p>// Generate new schedule<br>
+schedulesRouter.post('/generate', async (req, res, next) =&gt; {<br>
+  try {<br>
+    const { name, semester, timeLimit, mipGap } = req.body;</p><p>    if (!name || !semester) {<br>
+      res.status(400).json({ error: 'name and semester required' });<br>
+      return;<br>
+    }</p><p>    const result = await scheduleService.generateSchedule(name, semester, {<br>
+      timeLimit,<br>
+      mipGap,<br>
+    });</p><p>    if (result.success) {<br>
+      res.json(result);<br>
+    } else {<br>
+      res.status(422).json(result);<br>
+    }<br>
+  } catch (error) {<br>
+    next(error);<br>
+  }<br>
+});</code></pre><h2>Next Steps</h2><p>With the solver integrated, the next chapter builds the user interface for viewing and adjusting schedules.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-6" class="chapter">
+      <h2>Building the Schedule UI</h2>
+      <h2>The Schedule Grid</h2><p>The primary view is a grid showing assignments by teacher, room, or time:</p><pre><code class="language-">Monday      Tuesday     Wednesday   Thursday    Friday<br>
+       ──────────────────────────────────────────────────────────<br>
+8:00   │ Alg I    │ Alg II   │ Alg I     │           │ Alg II  │<br>
+       │ Rm 101   │ Rm 101   │ Rm 101    │           │ Rm 101  │<br>
+       ──────────────────────────────────────────────────────────<br>
+9:00   │ Geom     │ Alg I    │ Geom      │ Alg I     │ Geom    │<br>
+       │ Rm 102   │ Rm 101   │ Rm 102    │ Rm 101    │ Rm 102  │<br>
+       ──────────────────────────────────────────────────────────</code></pre><h2>Schedule Grid Component</h2><pre><code class="language-typescript">// web/src/components/ScheduleGrid.ts</p><p>interface TimeSlot {<br>
+  id: string;<br>
+  dayOfWeek: number;<br>
+  periodNumber: number;<br>
+  startTime: string;<br>
+  endTime: string;<br>
+}</p><p>interface Assignment {<br>
+  id: string;<br>
+  sectionId: string;<br>
+  roomId: string;<br>
+  timeSlotId: string;<br>
+  className: string;<br>
+  classCode: string;<br>
+  teacherName: string;<br>
+  roomName: string;<br>
+  sectionNumber: number;<br>
+}</p><p>interface GridCell {<br>
+  slot: TimeSlot;<br>
+  assignment: Assignment | null;<br>
+  conflict: boolean;<br>
+}</p><p>export class ScheduleGrid {<br>
+  private container: HTMLElement;<br>
+  private scheduleId: string;<br>
+  private viewMode: 'teacher' | 'room' | 'overview';<br>
+  private selectedEntity: string | null = null;</p><p>  private timeSlots: TimeSlot[] = [];<br>
+  private assignments: Assignment[] = [];<br>
+  private days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];</p><p>  constructor(containerId: string, scheduleId: string) {<br>
+    const container = document.getElementById(containerId);<br>
+    if (!container) throw new Error('Container not found');<br>
+    this.container = container;<br>
+    this.scheduleId = scheduleId;<br>
+    this.viewMode = 'overview';</p><p>    this.load();<br>
+  }</p><p>  private async load(): Promise&lt;void&gt; {<br>
+    this.container.innerHTML = '&lt;div class=&quot;loading&quot;&gt;Loading schedule...&lt;/div&gt;';</p><p>    try {<br>
+      const [slotsRes, assignmentsRes] = await Promise.all([<br>
+        fetch('/api/timeslots'),<br>
+        fetch(<code>/api/schedules/${this.scheduleId}/assignments</code>),<br>
+      ]);</p><p>      this.timeSlots = await slotsRes.json();<br>
+      this.assignments = await assignmentsRes.json();</p><p>      this.render();<br>
+    } catch (error) {<br>
+      this.container.innerHTML = '&lt;div class=&quot;error&quot;&gt;Failed to load schedule&lt;/div&gt;';<br>
+    }<br>
+  }</p><p>  private render(): void {<br>
+    // Get unique periods (sorted)<br>
+    const periods = [...new Set(this.timeSlots.map((s) =&gt; s.periodNumber))].sort(<br>
+      (a, b) =&gt; a - b<br>
+    );</p><p>    // Build grid data<br>
+    const grid: GridCell[][] = [];</p><p>    for (const periodNum of periods) {<br>
+      const row: GridCell[] = [];</p><p>      for (let day = 1; day &lt;= 5; day++) {<br>
+        const slot = this.timeSlots.find(<br>
+          (s) =&gt; s.dayOfWeek === day &amp;&amp; s.periodNumber === periodNum<br>
+        );</p><p>        if (!slot) {<br>
+          row.push({ slot: null as never, assignment: null, conflict: false });<br>
+          continue;<br>
+        }</p><p>        const assignment = this.getAssignment(slot.id);<br>
+        const conflict = this.hasConflict(slot.id);</p><p>        row.push({ slot, assignment, conflict });<br>
+      }</p><p>      grid.push(row);<br>
+    }</p><p>    this.container.innerHTML = <code><br>
+      &lt;div class=&quot;schedule-grid-container&quot;&gt;<br>
+        &lt;div class=&quot;grid-controls&quot;&gt;<br>
+          &lt;select class=&quot;view-mode-select&quot;&gt;<br>
+            &lt;option value=&quot;overview&quot; ${this.viewMode === 'overview' ? 'selected' : ''}&gt;<br>
+              Overview<br>
+            &lt;/option&gt;<br>
+            &lt;option value=&quot;teacher&quot; ${this.viewMode === 'teacher' ? 'selected' : ''}&gt;<br>
+              By Teacher<br>
+            &lt;/option&gt;<br>
+            &lt;option value=&quot;room&quot; ${this.viewMode === 'room' ? 'selected' : ''}&gt;<br>
+              By Room<br>
+            &lt;/option&gt;<br>
+          &lt;/select&gt;<br>
+          ${this.viewMode !== 'overview' ? this.renderEntitySelector() : ''}<br>
+        &lt;/div&gt;</p><p>        &lt;table class=&quot;schedule-grid&quot;&gt;<br>
+          &lt;thead&gt;<br>
+            &lt;tr&gt;<br>
+              &lt;th&gt;Time&lt;/th&gt;<br>
+              ${this.days.map((d) =&gt; </code>&lt;th&gt;${d}&lt;/th&gt;<code>).join('')}<br>
+            &lt;/tr&gt;<br>
+          &lt;/thead&gt;<br>
+          &lt;tbody&gt;<br>
+            ${grid.map((row, i) =&gt; this.renderRow(row, periods[i]!)).join('')}<br>
+          &lt;/tbody&gt;<br>
+        &lt;/table&gt;</p><p>        &lt;div class=&quot;grid-legend&quot;&gt;<br>
+          &lt;span class=&quot;legend-item&quot;&gt;<br>
+            &lt;span class=&quot;legend-color conflict&quot;&gt;&lt;/span&gt; Conflict<br>
+          &lt;/span&gt;<br>
+          &lt;span class=&quot;legend-item&quot;&gt;<br>
+            &lt;span class=&quot;legend-color manual&quot;&gt;&lt;/span&gt; Manual Override<br>
+          &lt;/span&gt;<br>
+        &lt;/div&gt;<br>
+      &lt;/div&gt;<br>
+    </code>;</p><p>    this.setupEventListeners();<br>
+  }</p><p>  private renderEntitySelector(): string {<br>
+    const entities =<br>
+      this.viewMode === 'teacher'<br>
+        ? this.getUniqueTeachers()<br>
+        : this.getUniqueRooms();</p><p>    return <code><br>
+      &lt;select class=&quot;entity-select&quot;&gt;<br>
+        &lt;option value=&quot;&quot;&gt;Select ${this.viewMode}...&lt;/option&gt;<br>
+        ${entities.map((e) =&gt; </code>&lt;option value=&quot;${e.id}&quot;&gt;${e.name}&lt;/option&gt;<code>).join('')}<br>
+      &lt;/select&gt;<br>
+    </code>;<br>
+  }</p><p>  private renderRow(row: GridCell[], periodNum: number): string {<br>
+    const firstSlot = row.find((c) =&gt; c.slot)?.slot;<br>
+    const timeLabel = firstSlot<br>
+      ? <code>${firstSlot.startTime}-${firstSlot.endTime}</code><br>
+      : <code>Period ${periodNum}</code>;</p><p>    return <code><br>
+      &lt;tr&gt;<br>
+        &lt;td class=&quot;time-cell&quot;&gt;${timeLabel}&lt;/td&gt;<br>
+        ${row.map((cell) =&gt; this.renderCell(cell)).join('')}<br>
+      &lt;/tr&gt;<br>
+    </code>;<br>
+  }</p><p>  private renderCell(cell: GridCell): string {<br>
+    if (!cell.slot) {<br>
+      return '&lt;td class=&quot;empty-cell&quot;&gt;&lt;/td&gt;';<br>
+    }</p><p>    if (!cell.assignment) {<br>
+      return <code><br>
+        &lt;td class=&quot;grid-cell empty&quot;<br>
+            data-slot-id=&quot;${cell.slot.id}&quot;<br>
+            draggable=&quot;false&quot;&gt;<br>
+        &lt;/td&gt;<br>
+      </code>;<br>
+    }</p><p>    const classes = ['grid-cell', 'assigned'];<br>
+    if (cell.conflict) classes.push('conflict');</p><p>    return <code><br>
+      &lt;td class=&quot;${classes.join(' ')}&quot;<br>
+          data-slot-id=&quot;${cell.slot.id}&quot;<br>
+          data-assignment-id=&quot;${cell.assignment.id}&quot;<br>
+          draggable=&quot;true&quot;&gt;<br>
+        &lt;div class=&quot;cell-content&quot;&gt;<br>
+          &lt;div class=&quot;class-name&quot;&gt;${cell.assignment.classCode}&lt;/div&gt;<br>
+          &lt;div class=&quot;room-name&quot;&gt;${cell.assignment.roomName}&lt;/div&gt;<br>
+          ${this.viewMode === 'overview' ? </code>&lt;div class=&quot;teacher-name&quot;&gt;${cell.assignment.teacherName}&lt;/div&gt;<code> : ''}<br>
+        &lt;/div&gt;<br>
+      &lt;/td&gt;<br>
+    </code>;<br>
+  }</p><p>  private getAssignment(slotId: string): Assignment | null {<br>
+    let filtered = this.assignments.filter((a) =&gt; a.timeSlotId === slotId);</p><p>    if (this.viewMode === 'teacher' &amp;&amp; this.selectedEntity) {<br>
+      filtered = filtered.filter(<br>
+        (a) =&gt; a.teacherName === this.selectedEntity // Simplified; use ID in real code<br>
+      );<br>
+    }</p><p>    if (this.viewMode === 'room' &amp;&amp; this.selectedEntity) {<br>
+      filtered = filtered.filter((a) =&gt; a.roomId === this.selectedEntity);<br>
+    }</p><p>    return filtered[0] ?? null;<br>
+  }</p><p>  private hasConflict(slotId: string): boolean {<br>
+    const slotAssignments = this.assignments.filter(<br>
+      (a) =&gt; a.timeSlotId === slotId<br>
+    );</p><p>    // Check for room conflicts<br>
+    const rooms = slotAssignments.map((a) =&gt; a.roomId);<br>
+    if (new Set(rooms).size !== rooms.length) return true;</p><p>    // Check for teacher conflicts (would need teacher ID on assignment)<br>
+    // Simplified here</p><p>    return false;<br>
+  }</p><p>  private getUniqueTeachers(): Array&lt;{ id: string; name: string }&gt; {<br>
+    const seen = new Set&lt;string&gt;();<br>
+    const teachers: Array&lt;{ id: string; name: string }&gt; = [];</p><p>    for (const a of this.assignments) {<br>
+      if (!seen.has(a.teacherName)) {<br>
+        seen.add(a.teacherName);<br>
+        teachers.push({ id: a.teacherName, name: a.teacherName });<br>
+      }<br>
+    }</p><p>    return teachers.sort((a, b) =&gt; a.name.localeCompare(b.name));<br>
+  }</p><p>  private getUniqueRooms(): Array&lt;{ id: string; name: string }&gt; {<br>
+    const seen = new Set&lt;string&gt;();<br>
+    const rooms: Array&lt;{ id: string; name: string }&gt; = [];</p><p>    for (const a of this.assignments) {<br>
+      if (!seen.has(a.roomId)) {<br>
+        seen.add(a.roomId);<br>
+        rooms.push({ id: a.roomId, name: a.roomName });<br>
+      }<br>
+    }</p><p>    return rooms.sort((a, b) =&gt; a.name.localeCompare(b.name));<br>
+  }</p><p>  private setupEventListeners(): void {<br>
+    // View mode change<br>
+    const viewSelect = this.container.querySelector('.view-mode-select');<br>
+    viewSelect?.addEventListener('change', (e) =&gt; {<br>
+      this.viewMode = (e.target as HTMLSelectElement).value as typeof this.viewMode;<br>
+      this.selectedEntity = null;<br>
+      this.render();<br>
+    });</p><p>    // Entity selection<br>
+    const entitySelect = this.container.querySelector('.entity-select');<br>
+    entitySelect?.addEventListener('change', (e) =&gt; {<br>
+      this.selectedEntity = (e.target as HTMLSelectElement).value || null;<br>
+      this.render();<br>
+    });</p><p>    // Cell click<br>
+    this.container.querySelectorAll('.grid-cell').forEach((cell) =&gt; {<br>
+      cell.addEventListener('click', () =&gt; {<br>
+        const assignmentId = cell.getAttribute('data-assignment-id');<br>
+        const slotId = cell.getAttribute('data-slot-id');<br>
+        if (assignmentId) {<br>
+          this.showAssignmentDetails(assignmentId);<br>
+        } else if (slotId) {<br>
+          this.showAddAssignmentDialog(slotId);<br>
+        }<br>
+      });<br>
+    });</p><p>    // Drag and drop for manual adjustments<br>
+    this.setupDragDrop();<br>
+  }</p><p>  private setupDragDrop(): void {<br>
+    const cells = this.container.querySelectorAll('.grid-cell[draggable=&quot;true&quot;]');</p><p>    cells.forEach((cell) =&gt; {<br>
+      cell.addEventListener('dragstart', (e) =&gt; {<br>
+        const event = e as DragEvent;<br>
+        const assignmentId = (event.target as HTMLElement).getAttribute(<br>
+          'data-assignment-id'<br>
+        );<br>
+        event.dataTransfer?.setData('text/plain', assignmentId ?? '');<br>
+      });<br>
+    });</p><p>    const allCells = this.container.querySelectorAll('.grid-cell');</p><p>    allCells.forEach((cell) =&gt; {<br>
+      cell.addEventListener('dragover', (e) =&gt; {<br>
+        e.preventDefault();<br>
+        cell.classList.add('drag-over');<br>
+      });</p><p>      cell.addEventListener('dragleave', () =&gt; {<br>
+        cell.classList.remove('drag-over');<br>
+      });</p><p>      cell.addEventListener('drop', async (e) =&gt; {<br>
+        e.preventDefault();<br>
+        cell.classList.remove('drag-over');</p><p>        const event = e as DragEvent;<br>
+        const assignmentId = event.dataTransfer?.getData('text/plain');<br>
+        const newSlotId = (event.target as HTMLElement)<br>
+          .closest('.grid-cell')<br>
+          ?.getAttribute('data-slot-id');</p><p>        if (assignmentId &amp;&amp; newSlotId) {<br>
+          await this.moveAssignment(assignmentId, newSlotId);<br>
+        }<br>
+      });<br>
+    });<br>
+  }</p><p>  private async moveAssignment(<br>
+    assignmentId: string,<br>
+    newSlotId: string<br>
+  ): Promise&lt;void&gt; {<br>
+    try {<br>
+      const response = await fetch(<br>
+        <code>/api/schedules/${this.scheduleId}/assignments/${assignmentId}/move</code>,<br>
+        {<br>
+          method: 'POST',<br>
+          headers: { 'Content-Type': 'application/json' },<br>
+          body: JSON.stringify({ timeSlotId: newSlotId }),<br>
+        }<br>
+      );</p><p>      if (response.ok) {<br>
+        await this.load(); // Reload the grid<br>
+      } else {<br>
+        const error = await response.json();<br>
+        alert(<code>Cannot move: ${error.message}</code>);<br>
+      }<br>
+    } catch (error) {<br>
+      alert('Failed to move assignment');<br>
+    }<br>
+  }</p><p>  private showAssignmentDetails(assignmentId: string): void {<br>
+    const assignment = this.assignments.find((a) =&gt; a.id === assignmentId);<br>
+    if (!assignment) return;</p><p>    // Show modal with details and edit/delete options<br>
+    // Implementation depends on your UI framework<br>
+    console.log('Show details for:', assignment);<br>
+  }</p><p>  private showAddAssignmentDialog(slotId: string): void {<br>
+    // Show dialog to manually add an assignment<br>
+    // Implementation depends on your UI framework<br>
+    console.log('Add assignment at slot:', slotId);<br>
+  }<br>
+}</code></pre><h2>Schedule Grid Styles</h2><pre><code class="language-css">/<em> styles/schedule-grid.css </em>/</p><p>.schedule-grid-container {<br>
+  padding: var(--space-4);<br>
+}</p><p>.grid-controls {<br>
+  display: flex;<br>
+  gap: var(--space-4);<br>
+  margin-bottom: var(--space-4);<br>
+}</p><p>.grid-controls select {<br>
+  padding: var(--space-2) var(--space-3);<br>
+  border: 1px solid var(--color-border);<br>
+  border-radius: 4px;<br>
+  font-size: 0.875rem;<br>
+}</p><p>.schedule-grid {<br>
+  width: 100%;<br>
+  border-collapse: collapse;<br>
+  table-layout: fixed;<br>
+}</p><p>.schedule-grid th,<br>
+.schedule-grid td {<br>
+  border: 1px solid var(--color-border);<br>
+  padding: var(--space-2);<br>
+  text-align: center;<br>
+  vertical-align: top;<br>
+}</p><p>.schedule-grid th {<br>
+  background: var(--color-bg-secondary);<br>
+  font-weight: 600;<br>
+  padding: var(--space-3);<br>
+}</p><p>.time-cell {<br>
+  background: var(--color-bg-secondary);<br>
+  font-size: 0.75rem;<br>
+  white-space: nowrap;<br>
+  width: 80px;<br>
+}</p><p>.grid-cell {<br>
+  min-height: 80px;<br>
+  cursor: pointer;<br>
+  transition: background 0.15s;<br>
+}</p><p>.grid-cell:hover {<br>
+  background: var(--color-bg-secondary);<br>
+}</p><p>.grid-cell.empty {<br>
+  background: transparent;<br>
+}</p><p>.grid-cell.assigned {<br>
+  background: #e3f2fd;<br>
+}</p><p>.grid-cell.conflict {<br>
+  background: #ffebee;<br>
+  border-color: #ef5350;<br>
+}</p><p>.grid-cell.manual {<br>
+  background: #fff3e0;<br>
+}</p><p>.grid-cell.drag-over {<br>
+  background: #c8e6c9;<br>
+  outline: 2px dashed #4caf50;<br>
+}</p><p>.cell-content {<br>
+  display: flex;<br>
+  flex-direction: column;<br>
+  gap: 2px;<br>
+  font-size: 0.75rem;<br>
+}</p><p>.class-name {<br>
+  font-weight: 600;<br>
+  color: #1565c0;<br>
+}</p><p>.room-name {<br>
+  color: var(--color-text-secondary);<br>
+}</p><p>.teacher-name {<br>
+  color: var(--color-text-secondary);<br>
+  font-size: 0.7rem;<br>
+}</p><p>.grid-legend {<br>
+  display: flex;<br>
+  gap: var(--space-4);<br>
+  margin-top: var(--space-4);<br>
+  font-size: 0.75rem;<br>
+}</p><p>.legend-item {<br>
+  display: flex;<br>
+  align-items: center;<br>
+  gap: var(--space-2);<br>
+}</p><p>.legend-color {<br>
+  width: 16px;<br>
+  height: 16px;<br>
+  border-radius: 2px;<br>
+  border: 1px solid var(--color-border);<br>
+}</p><p>.legend-color.conflict {<br>
+  background: #ffebee;<br>
+  border-color: #ef5350;<br>
+}</p><p>.legend-color.manual {<br>
+  background: #fff3e0;<br>
+  border-color: #ff9800;<br>
+}</code></pre><h2>Conflict Detection</h2><p>Highlight conflicts in real-time:</p><pre><code class="language-typescript">// src/services/conflict-detector.ts</p><p>export interface Conflict {<br>
+  type: 'teacher' | 'room';<br>
+  entityId: string;<br>
+  entityName: string;<br>
+  timeSlotId: string;<br>
+  assignments: string[]; // assignment IDs<br>
+}</p><p>export function detectConflicts(<br>
+  assignments: Array&lt;{<br>
+    id: string;<br>
+    teacherId: string;<br>
+    roomId: string;<br>
+    timeSlotId: string;<br>
+  }&gt;<br>
+): Conflict[] {<br>
+  const conflicts: Conflict[] = [];</p><p>  // Group by time slot<br>
+  const bySlot = new Map&lt;string, typeof assignments&gt;();<br>
+  for (const a of assignments) {<br>
+    const list = bySlot.get(a.timeSlotId) ?? [];<br>
+    list.push(a);<br>
+    bySlot.set(a.timeSlotId, list);<br>
+  }</p><p>  for (const [slotId, slotAssignments] of bySlot) {<br>
+    // Check teacher conflicts<br>
+    const teacherCounts = new Map&lt;string, string[]&gt;();<br>
+    for (const a of slotAssignments) {<br>
+      const list = teacherCounts.get(a.teacherId) ?? [];<br>
+      list.push(a.id);<br>
+      teacherCounts.set(a.teacherId, list);<br>
+    }</p><p>    for (const [teacherId, assignmentIds] of teacherCounts) {<br>
+      if (assignmentIds.length &gt; 1) {<br>
+        conflicts.push({<br>
+          type: 'teacher',<br>
+          entityId: teacherId,<br>
+          entityName: teacherId, // Lookup name in real code<br>
+          timeSlotId: slotId,<br>
+          assignments: assignmentIds,<br>
+        });<br>
+      }<br>
+    }</p><p>    // Check room conflicts<br>
+    const roomCounts = new Map&lt;string, string[]&gt;();<br>
+    for (const a of slotAssignments) {<br>
+      const list = roomCounts.get(a.roomId) ?? [];<br>
+      list.push(a.id);<br>
+      roomCounts.set(a.roomId, list);<br>
+    }</p><p>    for (const [roomId, assignmentIds] of roomCounts) {<br>
+      if (assignmentIds.length &gt; 1) {<br>
+        conflicts.push({<br>
+          type: 'room',<br>
+          entityId: roomId,<br>
+          entityName: roomId, // Lookup name in real code<br>
+          timeSlotId: slotId,<br>
+          assignments: assignmentIds,<br>
+        });<br>
+      }<br>
+    }<br>
+  }</p><p>  return conflicts;<br>
+}</code></pre><h2>Manual Override API</h2><p>Allow manual adjustments:</p><pre><code class="language-typescript">// src/api/routes/schedules.ts (continued)</p><p>// Move assignment to different slot<br>
+schedulesRouter.post(<br>
+  '/:scheduleId/assignments/:assignmentId/move',<br>
+  async (req, res, next) =&gt; {<br>
+    try {<br>
+      const { scheduleId, assignmentId } = req.params;<br>
+      const { timeSlotId, roomId } = req.body;</p><p>      // Validate no conflicts<br>
+      const conflicts = await checkMoveConflicts(<br>
+        scheduleId,<br>
+        assignmentId,<br>
+        timeSlotId,<br>
+        roomId<br>
+      );</p><p>      if (conflicts.length &gt; 0) {<br>
+        res.status(422).json({<br>
+          error: 'Move would create conflicts',<br>
+          conflicts,<br>
+        });<br>
+        return;<br>
+      }</p><p>      // Update assignment<br>
+      await execute(<br>
+        <code>UPDATE assignments<br>
+         SET time_slot_id = COALESCE($1, time_slot_id),<br>
+             room_id = COALESCE($2, room_id),<br>
+             is_manual_override = true<br>
+         WHERE id = $3 AND schedule_id = $4</code>,<br>
+        [timeSlotId, roomId, assignmentId, scheduleId]<br>
+      );</p><p>      res.json({ success: true });<br>
+    } catch (error) {<br>
+      next(error);<br>
+    }<br>
+  }<br>
+);</p><p>async function checkMoveConflicts(<br>
+  scheduleId: string,<br>
+  assignmentId: string,<br>
+  newSlotId?: string,<br>
+  newRoomId?: string<br>
+): Promise&lt;Conflict[]&gt; {<br>
+  // Get the assignment being moved<br>
+  const assignment = await queryOne&lt;{<br>
+    sectionId: string;<br>
+    teacherId: string;<br>
+    roomId: string;<br>
+    timeSlotId: string;<br>
+  }&gt;(<br>
+    <code>SELECT a.section_id as &quot;sectionId&quot;,<br>
+            s.teacher_id as &quot;teacherId&quot;,<br>
+            a.room_id as &quot;roomId&quot;,<br>
+            a.time_slot_id as &quot;timeSlotId&quot;<br>
+     FROM assignments a<br>
+     JOIN sections s ON s.id = a.section_id<br>
+     WHERE a.id = $1</code>,<br>
+    [assignmentId]<br>
+  );</p><p>  if (!assignment) return [];</p><p>  const targetSlot = newSlotId ?? assignment.timeSlotId;<br>
+  const targetRoom = newRoomId ?? assignment.roomId;</p><p>  const conflicts: Conflict[] = [];</p><p>  // Check teacher conflict<br>
+  const teacherConflict = await queryOne&lt;{ id: string }&gt;(<br>
+    <code>SELECT a.id<br>
+     FROM assignments a<br>
+     JOIN sections s ON s.id = a.section_id<br>
+     WHERE a.schedule_id = $1<br>
+       AND a.time_slot_id = $2<br>
+       AND s.teacher_id = $3<br>
+       AND a.id != $4</code>,<br>
+    [scheduleId, targetSlot, assignment.teacherId, assignmentId]<br>
+  );</p><p>  if (teacherConflict) {<br>
+    conflicts.push({<br>
+      type: 'teacher',<br>
+      entityId: assignment.teacherId,<br>
+      entityName: 'Teacher',<br>
+      timeSlotId: targetSlot,<br>
+      assignments: [assignmentId, teacherConflict.id],<br>
+    });<br>
+  }</p><p>  // Check room conflict<br>
+  const roomConflict = await queryOne&lt;{ id: string }&gt;(<br>
+    <code>SELECT a.id<br>
+     FROM assignments a<br>
+     WHERE a.schedule_id = $1<br>
+       AND a.time_slot_id = $2<br>
+       AND a.room_id = $3<br>
+       AND a.id != $4</code>,<br>
+    [scheduleId, targetSlot, targetRoom, assignmentId]<br>
+  );</p><p>  if (roomConflict) {<br>
+    conflicts.push({<br>
+      type: 'room',<br>
+      entityId: targetRoom,<br>
+      entityName: 'Room',<br>
+      timeSlotId: targetSlot,<br>
+      assignments: [assignmentId, roomConflict.id],<br>
+    });<br>
+  }</p><p>  return conflicts;<br>
+}</code></pre><h2>Calendar Export</h2><p>Export to iCal format:</p><pre><code class="language-typescript">// src/services/export-service.ts</p><p>export function generateICal(<br>
+  schedule: {<br>
+    name: string;<br>
+    semester: string;<br>
+  },<br>
+  assignments: Array&lt;{<br>
+    className: string;<br>
+    roomName: string;<br>
+    teacherName: string;<br>
+    dayOfWeek: number;<br>
+    startTime: string;<br>
+    endTime: string;<br>
+  }&gt;,<br>
+  startDate: Date,<br>
+  endDate: Date<br>
+): string {<br>
+  const lines: string[] = [<br>
+    'BEGIN:VCALENDAR',<br>
+    'VERSION:2.0',<br>
+    'PRODID:-//School Scheduler//EN',<br>
+    <code>X-WR-CALNAME:${schedule.name}</code>,<br>
+  ];</p><p>  // Generate events for each assignment<br>
+  let uid = 1;</p><p>  for (const assignment of assignments) {<br>
+    // Find all dates matching the day of week<br>
+    const dates = getMatchingDates(<br>
+      assignment.dayOfWeek,<br>
+      startDate,<br>
+      endDate<br>
+    );</p><p>    for (const date of dates) {<br>
+      const startDateTime = combineDateAndTime(date, assignment.startTime);<br>
+      const endDateTime = combineDateAndTime(date, assignment.endTime);</p><p>      lines.push('BEGIN:VEVENT');<br>
+      lines.push(<code>UID:${uid++}@school-scheduler</code>);<br>
+      lines.push(<code>DTSTART:${formatICalDate(startDateTime)}</code>);<br>
+      lines.push(<code>DTEND:${formatICalDate(endDateTime)}</code>);<br>
+      lines.push(<code>SUMMARY:${assignment.className}</code>);<br>
+      lines.push(<code>LOCATION:${assignment.roomName}</code>);<br>
+      lines.push(<code>DESCRIPTION:Teacher: ${assignment.teacherName}</code>);<br>
+      lines.push('END:VEVENT');<br>
+    }<br>
+  }</p><p>  lines.push('END:VCALENDAR');</p><p>  return lines.join('\r\n');<br>
+}</p><p>function getMatchingDates(<br>
+  dayOfWeek: number,<br>
+  start: Date,<br>
+  end: Date<br>
+): Date[] {<br>
+  const dates: Date[] = [];<br>
+  const current = new Date(start);</p><p>  // Adjust to first occurrence of dayOfWeek<br>
+  while (current.getDay() !== dayOfWeek) {<br>
+    current.setDate(current.getDate() + 1);<br>
+  }</p><p>  while (current &lt;= end) {<br>
+    dates.push(new Date(current));<br>
+    current.setDate(current.getDate() + 7);<br>
+  }</p><p>  return dates;<br>
+}</p><p>function combineDateAndTime(date: Date, time: string): Date {<br>
+  const [hours, minutes] = time.split(':').map(Number);<br>
+  const result = new Date(date);<br>
+  result.setHours(hours!, minutes!, 0, 0);<br>
+  return result;<br>
+}</p><p>function formatICalDate(date: Date): string {<br>
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';<br>
+}</code></pre><h2>Next Steps</h2><p>The final chapter covers advanced optimization techniques for larger schools and real-world deployment considerations.<br>
+</p>
+    </section>
+  
+
+    <section id="chapter-7" class="chapter">
+      <h2>Advanced Optimization</h2>
+      <h2>Scaling to Larger Schools</h2><p>The basic ILP model works well for small to medium schools (up to ~200 sections). Larger schools need optimization techniques.</p><h2>Model Reduction</h2><h3>Variable Filtering</h3><p>Remove variables that can never be selected:</p><pre><code class="language-typescript">// src/services/model-reducer.ts</p><p>export function filterVariables(<br>
+  sections: Array&lt;{<br>
+    id: string;<br>
+    teacherId: string;<br>
+    requiresLab: boolean;<br>
+    maxStudents: number;<br>
+  }&gt;,<br>
+  rooms: Array&lt;{ id: string; capacity: number; isLab: boolean }&gt;,<br>
+  timeSlots: Array&lt;{ id: string; isBreak: boolean }&gt;,<br>
+  teacherUnavailable: Map&lt;string, Set&lt;string&gt;&gt;<br>
+): Array&lt;{ sectionId: string; roomId: string; slotId: string }&gt; {<br>
+  const variables: Array&lt;{ sectionId: string; roomId: string; slotId: string }&gt; = [];</p><p>  for (const section of sections) {<br>
+    const unavailable = teacherUnavailable.get(section.teacherId) ?? new Set();</p><p>    for (const room of rooms) {<br>
+      // Filter: Lab requirement<br>
+      if (section.requiresLab &amp;&amp; !room.isLab) continue;</p><p>      // Filter: Capacity<br>
+      if (room.capacity &lt; section.maxStudents) continue;</p><p>      for (const slot of timeSlots) {<br>
+        // Filter: Breaks<br>
+        if (slot.isBreak) continue;</p><p>        // Filter: Teacher availability<br>
+        if (unavailable.has(slot.id)) continue;</p><p>        variables.push({<br>
+          sectionId: section.id,<br>
+          roomId: room.id,<br>
+          slotId: slot.id,<br>
+        });<br>
+      }<br>
+    }<br>
+  }</p><p>  return variables;<br>
+}</code></pre><h3>Aggregation</h3><p>Combine similar constraints:</p><pre><code class="language-typescript">// Instead of one constraint per teacher-slot pair,<br>
+// aggregate where possible</p><p>function aggregateConstraints(constraints: Constraint[]): Constraint[] {<br>
+  // Group constraints by structure<br>
+  const groups = new Map&lt;string, Constraint[]&gt;();</p><p>  for (const c of constraints) {<br>
+    const key = <code>${c.sense}_${c.rhs}_${c.terms.length}</code>;<br>
+    const list = groups.get(key) ?? [];<br>
+    list.push(c);<br>
+    groups.set(key, list);<br>
+  }</p><p>  // For identical constraints, keep only one<br>
+  const unique: Constraint[] = [];</p><p>  for (const [, group] of groups) {<br>
+    const seen = new Set&lt;string&gt;();</p><p>    for (const c of group) {<br>
+      const signature = c.terms<br>
+        .map((t) =&gt; t.variable)<br>
+        .sort()<br>
+        .join(',');</p><p>      if (!seen.has(signature)) {<br>
+        seen.add(signature);<br>
+        unique.push(c);<br>
+      }<br>
+    }<br>
+  }</p><p>  return unique;<br>
+}</code></pre><h2>Iterative Solving</h2><p>For very large problems, solve in phases:</p><pre><code class="language-typescript">// src/services/iterative-solver.ts</p><p>export async function solveIteratively(<br>
+  fullModel: { variables: Variable[]; constraints: Constraint[] },<br>
+  options: {<br>
+    phaseTimeLimit: number;<br>
+    maxPhases: number;<br>
+  }<br>
+): Promise&lt;SolverResult&gt; {<br>
+  // Phase 1: Solve a relaxed version (fewer constraints)<br>
+  const relaxedModel = createRelaxedModel(fullModel);</p><p>  const phase1Result = await highsSolver.solve(<br>
+    toLPFormat(relaxedModel),<br>
+    { timeLimit: options.phaseTimeLimit }<br>
+  );</p><p>  if (phase1Result.status === 'Infeasible') {<br>
+    return phase1Result; // Problem is fundamentally infeasible<br>
+  }</p><p>  // Phase 2: Fix some variables based on phase 1 solution<br>
+  let currentModel = fullModel;<br>
+  let currentSolution = phase1Result.solution;</p><p>  for (let phase = 2; phase &lt;= options.maxPhases; phase++) {<br>
+    // Fix &quot;obvious&quot; assignments from previous solution<br>
+    const fixedModel = fixHighConfidenceVariables(<br>
+      currentModel,<br>
+      currentSolution,<br>
+      0.95 // Fix variables with value &gt; 0.95<br>
+    );</p><p>    const result = await highsSolver.solve(<br>
+      toLPFormat(fixedModel),<br>
+      { timeLimit: options.phaseTimeLimit }<br>
+    );</p><p>    if (result.status === 'Infeasible') {<br>
+      // Backtrack: some fixed variables were wrong<br>
+      // Unfix and try again with fewer fixed<br>
+      continue;<br>
+    }</p><p>    currentSolution = result.solution;</p><p>    if (result.status === 'Optimal') {<br>
+      return result;<br>
+    }<br>
+  }</p><p>  // Return best found solution<br>
+  return {<br>
+    status: 'Feasible',<br>
+    objectiveValue: computeObjective(fullModel, currentSolution),<br>
+    solution: currentSolution,<br>
+    solveTimeMs: 0, // Would track across phases<br>
+    iterations: 0,<br>
+    nodes: 0,<br>
+  };<br>
+}</p><p>function createRelaxedModel(full: {<br>
+  variables: Variable[];<br>
+  constraints: Constraint[];<br>
+}): { variables: Variable[]; constraints: Constraint[] } {<br>
+  // Remove soft constraint penalties from objective<br>
+  // Keep only hard constraints<br>
+  return {<br>
+    variables: full.variables.map((v) =&gt; ({<br>
+      ...v,<br>
+      objectiveCoeff: 0, // Ignore preferences in phase 1<br>
+    })),<br>
+    constraints: full.constraints.filter(<br>
+      (c) =&gt; !c.name.startsWith('soft_')<br>
+    ),<br>
+  };<br>
+}</p><p>function fixHighConfidenceVariables(<br>
+  model: { variables: Variable[]; constraints: Constraint[] },<br>
+  solution: Map&lt;string, number&gt;,<br>
+  threshold: number<br>
+): { variables: Variable[]; constraints: Constraint[] } {<br>
+  const fixedVariables = model.variables.map((v) =&gt; {<br>
+    const value = solution.get(v.name) ?? 0;</p><p>    if (value &gt;= threshold) {<br>
+      return { ...v, lowerBound: 1, upperBound: 1 }; // Fix to 1<br>
+    }<br>
+    if (value &lt;= 1 - threshold) {<br>
+      return { ...v, lowerBound: 0, upperBound: 0 }; // Fix to 0<br>
+    }</p><p>    return v; // Keep as variable<br>
+  });</p><p>  return { variables: fixedVariables, constraints: model.constraints };<br>
+}</code></pre><h2>Multi-Objective Optimization</h2><p>Real scheduling has competing goals:<br>
+- Minimize teacher conflicts (hard)<br>
+- Honor preferences (soft)<br>
+- Balance loads (soft)<br>
+- Keep classes in same room (soft)</p><h3>Weighted Sum Approach</h3><p>Combine objectives into one:</p><pre><code class="language-typescript">// Already used in basic model<br>
+const totalObjective =<br>
+  10 * conflictPenalties +<br>
+  5 * preferencePenalties +<br>
+  1 * roomChangePenalties;</code></pre><h3>Hierarchical Approach</h3><p>Solve in priority order:</p><pre><code class="language-typescript">async function solveHierarchically(<br>
+  model: ILPModel,<br>
+  objectives: Array&lt;{<br>
+    name: string;<br>
+    priority: number;<br>
+    coefficients: Map&lt;string, number&gt;;<br>
+    tolerance: number; // Allow degradation from optimal<br>
+  }&gt;<br>
+): Promise&lt;SolverResult&gt; {<br>
+  // Sort by priority<br>
+  objectives.sort((a, b) =&gt; b.priority - a.priority);</p><p>  let constrainedModel = model;</p><p>  for (const obj of objectives) {<br>
+    // Set this objective<br>
+    const modelWithObj = setObjective(constrainedModel, obj.coefficients);</p><p>    // Solve<br>
+    const result = await highsSolver.solve(toLPFormat(modelWithObj));</p><p>    if (result.status !== 'Optimal') {<br>
+      return result; // Infeasible for this objective<br>
+    }</p><p>    // Add constraint: this objective must be within tolerance of optimal<br>
+    constrainedModel = addObjectiveConstraint(<br>
+      constrainedModel,<br>
+      obj.coefficients,<br>
+      result.objectiveValue! * (1 + obj.tolerance)<br>
+    );<br>
+  }</p><p>  // Final solve with all constraints<br>
+  return highsSolver.solve(toLPFormat(constrainedModel));<br>
+}</code></pre><h2>Performance Tuning</h2><h3>Solver Options</h3><pre><code class="language-typescript">const performanceOptions: SolverOptions = {<br>
+  // Time limit prevents runaway solving<br>
+  timeLimit: 300, // 5 minutes</p><p>  // Accept solutions within 1% of optimal<br>
+  mipGap: 0.01,</p><p>  // Use all available threads<br>
+  threads: 0, // 0 = auto-detect</p><p>  // Presolve often helps dramatically<br>
+  presolve: 'on',<br>
+};</code></pre><h3>Model Statistics</h3><p>Monitor model size:</p><pre><code class="language-typescript">function logModelStats(model: {<br>
+  variables: Variable[];<br>
+  constraints: Constraint[];<br>
+}): void {<br>
+  const binaryVars = model.variables.filter(<br>
+    (v) =&gt; v.upperBound === 1 &amp;&amp; v.lowerBound === 0<br>
+  ).length;</p><p>  const nonZeros = model.constraints.reduce(<br>
+    (sum, c) =&gt; sum + c.terms.length,<br>
+    0<br>
+  );</p><p>  console.log(<code>Model Statistics:<br>
+  Variables: ${model.variables.length}<br>
+  Binary variables: ${binaryVars}<br>
+  Constraints: ${model.constraints.length}<br>
+  Non-zero coefficients: ${nonZeros}<br>
+  Density: ${(nonZeros / (model.variables.length <em> model.constraints.length) </em> 100).toFixed(2)}%</code>);<br>
+}</code></pre><h3>Warm Starting</h3><p>Reuse previous solutions:</p><pre><code class="language-typescript">async function solveWithWarmStart(<br>
+  model: ILPModel,<br>
+  previousSolution: Map&lt;string, number&gt;<br>
+): Promise&lt;SolverResult&gt; {<br>
+  // HiGHS supports warm starting via MIP start<br>
+  // Format the previous solution</p><p>  const mipStart = Array.from(previousSolution.entries())<br>
+    .filter(([name]) =&gt; name.startsWith('x_'))<br>
+    .map(([name, value]) =&gt; <code>${name} ${value}</code>)<br>
+    .join('\n');</p><p>  const lpWithStart = toLPFormat(model) + '\n' + mipStart;</p><p>  return highsSolver.solve(lpWithStart, {<br>
+    // Enable warm start<br>
+  });<br>
+}</code></pre><h2>Real-World Deployment</h2><h3>Database Optimization</h3><p>For large schools, optimize queries:</p><pre><code class="language-sql">-- Create indexes for common access patterns<br>
+CREATE INDEX idx_assignments_schedule_slot<br>
+  ON assignments(schedule_id, time_slot_id);</p><p>CREATE INDEX idx_sections_teacher_class<br>
+  ON sections(teacher_id, class_id);</p><p>-- Materialized view for schedule grid<br>
+CREATE MATERIALIZED VIEW schedule_grid AS<br>
+SELECT<br>
+  a.schedule_id,<br>
+  a.time_slot_id,<br>
+  t.day_of_week,<br>
+  t.period_number,<br>
+  t.start_time,<br>
+  t.end_time,<br>
+  a.room_id,<br>
+  r.name as room_name,<br>
+  a.section_id,<br>
+  c.code as class_code,<br>
+  c.name as class_name,<br>
+  s.teacher_id,<br>
+  te.name as teacher_name<br>
+FROM assignments a<br>
+JOIN time_slots t ON t.id = a.time_slot_id<br>
+JOIN rooms r ON r.id = a.room_id<br>
+JOIN sections s ON s.id = a.section_id<br>
+JOIN classes c ON c.id = s.class_id<br>
+JOIN teachers te ON te.id = s.teacher_id;</p><p>-- Refresh after schedule generation<br>
+REFRESH MATERIALIZED VIEW schedule_grid;</code></pre><h3>Background Job Processing</h3><p>Run solving asynchronously:</p><pre><code class="language-typescript">// src/services/job-queue.ts<br>
+import { scheduleService } from './schedule-service.js';</p><p>interface ScheduleJob {<br>
+  id: string;<br>
+  scheduleId: string;<br>
+  status: 'pending' | 'running' | 'completed' | 'failed';<br>
+  progress: number;<br>
+  result: GenerateResult | null;<br>
+  error: string | null;<br>
+}</p><p>const jobs = new Map&lt;string, ScheduleJob&gt;();</p><p>export async function queueScheduleGeneration(<br>
+  name: string,<br>
+  semester: string,<br>
+  options: { timeLimit?: number } = {}<br>
+): Promise&lt;string&gt; {<br>
+  const jobId = crypto.randomUUID();</p><p>  jobs.set(jobId, {<br>
+    id: jobId,<br>
+    scheduleId: '',<br>
+    status: 'pending',<br>
+    progress: 0,<br>
+    result: null,<br>
+    error: null,<br>
+  });</p><p>  // Run in background<br>
+  setImmediate(async () =&gt; {<br>
+    const job = jobs.get(jobId)!;<br>
+    job.status = 'running';</p><p>    try {<br>
+      const result = await scheduleService.generateSchedule(<br>
+        name,<br>
+        semester,<br>
+        options<br>
+      );</p><p>      job.status = 'completed';<br>
+      job.scheduleId = result.scheduleId;<br>
+      job.result = result;<br>
+      job.progress = 100;<br>
+    } catch (error) {<br>
+      job.status = 'failed';<br>
+      job.error = error instanceof Error ? error.message : 'Unknown error';<br>
+    }<br>
+  });</p><p>  return jobId;<br>
+}</p><p>export function getJobStatus(jobId: string): ScheduleJob | null {<br>
+  return jobs.get(jobId) ?? null;<br>
+}</code></pre><h3>API for Job Status</h3><pre><code class="language-typescript">// Start generation (returns job ID)<br>
+schedulesRouter.post('/generate/async', async (req, res) =&gt; {<br>
+  const { name, semester, timeLimit } = req.body;<br>
+  const jobId = await queueScheduleGeneration(name, semester, { timeLimit });<br>
+  res.json({ jobId });<br>
+});</p><p>// Check job status<br>
+schedulesRouter.get('/generate/status/:jobId', (req, res) =&gt; {<br>
+  const job = getJobStatus(req.params.jobId);<br>
+  if (!job) {<br>
+    res.status(404).json({ error: 'Job not found' });<br>
+    return;<br>
+  }<br>
+  res.json(job);<br>
+});</code></pre><h2>What You've Built</h2><p>A complete school scheduling system with:</p><p>- <strong>Data model</strong> for teachers, classes, rooms, and constraints<br>
+- <strong>ILP formulation</strong> expressing scheduling as optimization<br>
+- <strong>HiGHS integration</strong> for solving<br>
+- <strong>Web interface</strong> for viewing and adjusting schedules<br>
+- <strong>Export</strong> to calendar formats<br>
+- <strong>Performance optimization</strong> for large schools</p><h2>Going Further</h2><p>Ideas for extending:<br>
+- <strong>Student conflicts</strong> - Track which students take which sections<br>
+- <strong>Department grouping</strong> - Keep same department classes nearby<br>
+- <strong>Room preferences</strong> - Teachers prefer certain rooms<br>
+- <strong>Multi-week rotation</strong> - Different schedules for different weeks<br>
+- <strong>Substitute handling</strong> - Reschedule when teachers are absent<br>
+- <strong>What-if analysis</strong> - Preview impact of changes before committing</p><p>The ILP foundation supports all these extensions by adding variables and constraints.</p><h2>The Power of ILP</h2><p>School scheduling is one of many problems that ILP solves elegantly:<br>
+- Employee shift scheduling<br>
+- Sports league fixtures<br>
+- Exam timetabling<br>
+- Resource allocation<br>
+- Vehicle routing<br>
+- Production planning</p><p>The pattern is always the same:<br>
+1. Define decision variables<br>
+2. Express constraints as linear equations<br>
+3. Define an objective<br>
+4. Let the solver find the optimal solution</p><p>You've learned to think in constraints. Apply this to your next optimization challenge.<br>
+</p>
+    </section>
+  
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | <a href="https://github.com/bedwards/metavibe">View source</a></p>
+    </footer>
+  </div>
+</body>
+</html>

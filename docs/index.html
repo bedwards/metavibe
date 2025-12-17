@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>claude-base | Foundation for Claude Code Projects</title>
-  <meta name="description" content="A production-ready foundation for projects where Claude Code is a primary developer. Built on principles from the Anthropic Engineering Blog.">
+  <title>metavibe | How-to Books on Vibe Coding</title>
+  <meta name="description" content="Free how-to books on vibe coding various types of software. Generated from real Claude Code sessions.">
   <style>
     :root {
       --bg: #fafafa;
@@ -14,6 +14,7 @@
       --accent-hover: #4f46e5;
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
+      --card-bg: #fff;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -23,6 +24,7 @@
         --text-muted: #999;
         --border: #333;
         --code-bg: #1a1a1a;
+        --card-bg: #1a1a1a;
       }
     }
 
@@ -41,18 +43,19 @@
     }
 
     .container {
-      max-width: 720px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     header {
+      text-align: center;
       margin-bottom: 3rem;
       padding-bottom: 2rem;
       border-bottom: 1px solid var(--border);
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
@@ -61,16 +64,84 @@
     .tagline {
       font-size: 1.25rem;
       color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: 600;
-      margin: 2.5rem 0 1rem;
+      margin: 2.5rem 0 1.5rem;
       letter-spacing: -0.01em;
     }
 
-    p {
+    .books {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .book-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .book-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .book-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .book-card .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .book-card .meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .book-card .tag {
+      background: var(--code-bg);
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .about {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .about h2 {
+      margin-top: 0;
+    }
+
+    .about p {
       margin-bottom: 1rem;
     }
 
@@ -80,206 +151,113 @@
     }
 
     a:hover {
-      color: var(--accent-hover);
       text-decoration: underline;
-    }
-
-    code {
-      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-      font-size: 0.9em;
-      background: var(--code-bg);
-      padding: 0.2em 0.4em;
-      border-radius: 4px;
-    }
-
-    pre {
-      background: var(--code-bg);
-      padding: 1.25rem;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-
-    pre code {
-      background: none;
-      padding: 0;
-    }
-
-    ul {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
-    }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      font-weight: 500;
-      margin: 1rem 0.5rem 1rem 0;
-    }
-
-    .cta:hover {
-      background: var(--accent-hover);
-      text-decoration: none;
-    }
-
-    .cta.secondary {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-
-    .cta.secondary:hover {
-      border-color: var(--text-muted);
-    }
-
-    .features {
-      display: grid;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .feature {
-      padding: 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-
-    .feature h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .feature p {
-      color: var(--text-muted);
-      margin: 0;
-      font-size: 0.95rem;
-    }
-
-    blockquote {
-      border-left: 3px solid var(--accent);
-      padding-left: 1rem;
-      margin: 1.5rem 0;
-      color: var(--text-muted);
-      font-style: italic;
     }
 
     footer {
       margin-top: 4rem;
       padding-top: 2rem;
       border-top: 1px solid var(--border);
+      text-align: center;
       color: var(--text-muted);
       font-size: 0.9rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: #22c55e;
+      color: white;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>claude-base</h1>
-      <p class="tagline">Foundation for Claude Code projects</p>
+      <h1>metavibe</h1>
+      <p class="tagline">Free how-to books on vibe coding various types of software. Generated from real Claude Code sessions.</p>
     </header>
 
     <main>
-      <p>A production-ready starting point for projects where <strong>Claude Code is a primary developer</strong>. Built on principles from the <a href="https://www.anthropic.com/engineering">Anthropic Engineering Blog</a>.</p>
+      <h2>Available Books</h2>
 
-      <a href="https://github.com/bedwards/claude-base" class="cta">View on GitHub</a>
-      <a href="https://github.com/bedwards/claude-base/blob/main/CLAUDE.md" class="cta secondary">Read CLAUDE.md</a>
+      <div class="books">
+        <a href="books/survival-horror-roblox/" class="book-card">
+          <h3>How to Vibe Code a Survival Horror Game in Roblox</h3>
+          <p class="subtitle">Building atmospheric horror experiences with Luau and Roblox Studio</p>
+          <div class="meta">
+            <span class="status-badge">Complete</span>
+            <span>8 chapters</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Roblox</span>
+            <span class="tag">Luau</span>
+            <span class="tag">Game Dev</span>
+            <span class="tag">Horror</span>
+          </div>
+        </a>
 
-      <h2>Quick Start</h2>
-      <pre><code># Clone claude-base (keep it for future projects)
-git clone https://github.com/bedwards/claude-base.git ~/claude-base
+        <a href="books/healthcare-platform-evv/" class="book-card">
+          <h3>How to Vibe Code a Healthcare Platform with EVV</h3>
+          <p class="subtitle">Building HIPAA-compliant home care software with Electronic Visit Verification</p>
+          <div class="meta">
+            <span class="status-badge">Complete</span>
+            <span>8 chapters</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Healthcare</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">HIPAA</span>
+            <span class="tag">EVV</span>
+          </div>
+        </a>
 
-# Create your new project
-mkdir my-app && cd my-app
-~/claude-base/bin/init.ts --name my-app
+        <a href="books/reading-library-tts/" class="book-card">
+          <h3>How to Vibe Code a Personal Reading Library with TTS</h3>
+          <p class="subtitle">Building a distraction-free reading experience with RSS discovery and text-to-speech</p>
+          <div class="meta">
+            <span class="status-badge">Complete</span>
+            <span>8 chapters</span>
+          </div>
+          <div class="tags">
+            <span class="tag">RSS</span>
+            <span class="tag">TTS</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Web App</span>
+          </div>
+        </a>
 
-# Setup
-npm install
-cp .env.example .env
-cp .secrets.example .secrets
-npm run db:up && npm run dev</code></pre>
-
-      <h2>What's Included</h2>
-      <div class="features">
-        <div class="feature">
-          <h3>TypeScript + Testing</h3>
-          <p>ESLint, Vitest with coverage, Playwright E2E. No Jest.</p>
-        </div>
-        <div class="feature">
-          <h3>Screenshot Framework</h3>
-          <p>Capture and compare screenshots for visual verification. Claude reads these to guide UI/UX decisions.</p>
-        </div>
-        <div class="feature">
-          <h3>GitHub Integration</h3>
-          <p>Actions for CI/CD, PR checks, rate-limit-aware issue creation, Claude GitHub App integration.</p>
-        </div>
-        <div class="feature">
-          <h3>Discord Communication</h3>
-          <p>Tools for Claude instances to coordinate work and avoid conflicts on shared resources.</p>
-        </div>
-        <div class="feature">
-          <h3>Postgres + Docker</h3>
-          <p>Local development matches production. Migrations and seeds included.</p>
-        </div>
-        <div class="feature">
-          <h3>Pre-commit Hooks</h3>
-          <p>Blocks secrets from being committed. Runs typecheck, lint, and tests.</p>
-        </div>
+        <a href="books/school-scheduling-ilp/" class="book-card">
+          <h3>How to Vibe Code a School Scheduling System with ILP</h3>
+          <p class="subtitle">Building optimal class schedules using Integer Linear Programming</p>
+          <div class="meta">
+            <span class="status-badge">Complete</span>
+            <span>8 chapters</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Scheduling</span>
+            <span class="tag">ILP</span>
+            <span class="tag">Optimization</span>
+            <span class="tag">EdTech</span>
+          </div>
+        </a>
       </div>
 
-      <h2>Core Principles</h2>
-
-      <p>From <a href="https://www.anthropic.com/engineering">Anthropic's Engineering Blog</a>:</p>
-
-      <blockquote>
-        "Context, therefore, must be treated as a finite resource with diminishing marginal returns."
-      </blockquote>
-
-      <blockquote>
-        "A major failure mode occurred when agents tried to do too much at once—essentially to attempt to one-shot the app."
-      </blockquote>
-
-      <blockquote>
-        "Claude struggled to recognize end-to-end failures without explicit prompting to test as a human user would."
-      </blockquote>
-
-      <p><strong>Our interpretation:</strong></p>
-      <ul>
-        <li>One feature at a time. Complete it. Verify it. Move on.</li>
-        <li>Screenshots are your eyes. Use them constantly.</li>
-        <li>No mock data in production. Fail fast, hard, and ugly.</li>
-        <li>If it looks like it works, it must actually work.</li>
-      </ul>
-
-      <h2>For Claude Instances</h2>
-      <p>The <a href="https://github.com/bedwards/claude-base/blob/main/CLAUDE.md">CLAUDE.md</a> file contains comprehensive instructions:</p>
-      <ul>
-        <li>Own your PRs—don't wait for human review</li>
-        <li>Own the main branch—fix it if it breaks</li>
-        <li>Work in an infinite development loop</li>
-        <li>Take on big, hairy goals</li>
-        <li>Limit interactions with the human prompter</li>
-      </ul>
-
-      <h2>What's NOT Included</h2>
-      <ul>
-        <li>Significant example code to delete</li>
-        <li>Opinions about your domain logic</li>
-        <li>MCP servers or SKILLS</li>
-        <li>Vendor lock-in beyond standard tools</li>
-      </ul>
+      <div class="about">
+        <h2>About metavibe</h2>
+        <p><strong>metavibe</strong> watches Claude Code session logs and generates how-to books on generalized topics derived from real vibe coding sessions.</p>
+        <p>The mission: Transform specific coding sessions into niche how-to content. Specific work creates general knowledge.</p>
+        <p>Each book targets a <strong>niche sweet spot</strong>: Platform + Type of Application. Not too broad ("How to Code Enterprise Software"), not too specific ("How I Built My Specific App").</p>
+        <p>All content is free. View the source on <a href="https://github.com/bedwards/metavibe">GitHub</a>.</p>
+      </div>
     </main>
 
     <footer>
-      <p>Built with Claude Code. <a href="https://github.com/bedwards/claude-base/blob/main/README.md#appendix-the-prompt-that-created-this">See the original prompt</a>.</p>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> from real vibe coding sessions.</p>
     </footer>
   </div>
 </body>
