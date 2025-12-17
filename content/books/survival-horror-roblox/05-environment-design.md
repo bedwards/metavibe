@@ -1,707 +1,85 @@
-# Environment and Level Design
+# Spaces That Speak
 
-A horror game's environment is its most powerful tool. The creature stalks, mechanics create tension, but the space itself tells players what to fear. Every corridor, every room, every shadow is a design decision.
+The greatest horror environments require no creatures at all. Walk through an abandoned hospital wing. Notice the overturned wheelchair, the papers scattered across the floor, the light flickering at the end of the corridor. Something happened here. The space itself tells you to be afraid.
 
-This chapter covers building spaces that terrify.
+Environmental design in horror games works on principles that predate video games entirely. Haunted houses, Gothic architecture, the dark forests of fairy tales—humans have always understood that certain spaces feel dangerous. These feelings aren't random. They emerge from specific characteristics that designers can learn and apply.
 
-## The Psychology of Horror Spaces
+The first principle is occlusion—limiting what players can see. Fear thrives in uncertainty. When you can see an entire room from the doorway, you know immediately whether it's safe. When corners hide possibilities, when furniture blocks sightlines, when darkness pools between light sources, your imagination fills the gaps with threats. The monster you imagine is scarier than the monster you see.
 
-Horror environments work through specific principles:
+Traditional horror game design achieved occlusion through fixed camera angles and fog. Resident Evil's cameras often showed just part of a room; players couldn't see what was beside them. Silent Hill's fog meant you couldn't see more than a few meters in any direction. These weren't merely technical limitations—the developers understood that visibility reduction amplifies fear.
 
-### 1. Limited Visibility
-Players fear what they can't see. Design spaces that:
-- Limit sightlines (corners, columns, furniture)
-- Create pools of darkness between light sources
-- Use fog, dust, or particle effects to obscure distance
+In Roblox, you control sightlines through level geometry. Corridors should turn rather than extend endlessly. Rooms should contain furniture that breaks up space. Windows should be obscured or absent. Every place where a player might look, ask yourself: what can they see? What can they not see? What do they imagine might be in the spaces they can't see?
 
-### 2. Audio Ambiguity
-Sounds without clear sources create paranoia:
-- Vents and pipes that carry sound from other rooms
-- Distant thuds, scrapes, and groans
-- Footsteps that might be yours... or might not
+Lighting extends this principle. Pools of light separated by darkness create islands of certainty in a sea of possibility. Players naturally move toward light, but reaching that light requires crossing the dark. The creature could be anywhere in the dark. It probably isn't—but it could be.
 
-### 3. Spatial Disorientation
-When players can't trust their sense of space:
-- Hallways that seem too long
-- Rooms that feel larger inside than outside
-- Subtle asymmetry that feels "wrong"
-
-### 4. Environmental Storytelling
-The space itself tells a story:
-- Blood trails leading nowhere
-- Furniture arranged as barricades
-- Personal effects abandoned mid-action
-
-## Building with Roblox Parts
-
-Roblox offers multiple approaches to level design:
-
-### Modular Building Blocks
-
-Create reusable pieces that snap together:
-
-```lua
--- src/server/LevelBuilder.server.luau
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local LevelBuilder = {}
-
--- Grid size for snapping
-local GRID_SIZE = 8
-
-local function snapToGrid(position)
-    return Vector3.new(
-        math.round(position.X / GRID_SIZE) * GRID_SIZE,
-        math.round(position.Y / GRID_SIZE) * GRID_SIZE,
-        math.round(position.Z / GRID_SIZE) * GRID_SIZE
-    )
-end
-
-function LevelBuilder.placeModule(moduleName, position, rotation)
-    local modules = ReplicatedStorage:WaitForChild("Modules")
-    local module = modules:FindFirstChild(moduleName)
-
-    if not module then
-        warn("Module not found: " .. moduleName)
-        return nil
-    end
-
-    local clone = module:Clone()
-    local primaryPart = clone.PrimaryPart or clone:FindFirstChildWhichIsA("BasePart")
-
-    if primaryPart then
-        local snappedPos = snapToGrid(position)
-        local cf = CFrame.new(snappedPos) * CFrame.Angles(0, math.rad(rotation or 0), 0)
-        clone:SetPrimaryPartCFrame(cf)
-    end
-
-    clone.Parent = workspace.Level
-    return clone
-end
-
--- Common horror modules to create:
--- Corridor_Straight, Corridor_Corner, Corridor_T
--- Room_Small, Room_Medium, Room_Large
--- Door_Single, Door_Double, Door_Locked
--- Stairs_Up, Stairs_Down
-
-return LevelBuilder
-```
-
-### Procedural Placement
-
-For details that shouldn't be hand-placed:
-
-```lua
--- src/server/EnvironmentDetails.server.luau
-local function scatterDebris(room, density)
-    local bounds = room:GetBoundingBox()
-    local size = room:GetExtentsSize()
-
-    local debrisTypes = {
-        "Paper", "Bottle", "Can", "Box",
-    }
-
-    local count = math.floor(size.X * size.Z * density / 100)
-
-    for i = 1, count do
-        local randomX = (math.random() - 0.5) * size.X * 0.8
-        local randomZ = (math.random() - 0.5) * size.Z * 0.8
-        local position = bounds.Position + Vector3.new(randomX, 0, randomZ)
-
-        -- Raycast to find floor
-        local rayResult = workspace:Raycast(
-            position + Vector3.new(0, 10, 0),
-            Vector3.new(0, -20, 0)
-        )
-
-        if rayResult then
-            local debris = ReplicatedStorage.Debris[debrisTypes[math.random(#debrisTypes)]]:Clone()
-            debris.Position = rayResult.Position
-            debris.Orientation = Vector3.new(
-                math.random(-15, 15),
-                math.random(0, 360),
-                math.random(-15, 15)
-            )
-            debris.Parent = room
-        end
-    end
-end
-
-local function addBloodStains(room, count)
-    local decal = Instance.new("Decal")
-    decal.Texture = "rbxassetid://YOUR_BLOOD_TEXTURE"
-
-    for i = 1, count do
-        local surfaces = {}
-        for _, part in ipairs(room:GetDescendants()) do
-            if part:IsA("BasePart") then
-                table.insert(surfaces, part)
-            end
-        end
-
-        if #surfaces > 0 then
-            local surface = surfaces[math.random(#surfaces)]
-            local stain = decal:Clone()
-            stain.Face = Enum.NormalId.Top  -- Floor stains
-            stain.Parent = surface
-        end
-    end
-end
-```
-
-## Lighting Design
-
-Horror lighting follows specific rules:
-
-### The Three-Point Darkness Rule
-
-1. **Key light** - One strong light source players navigate toward
-2. **Fill darkness** - Large areas of shadow between lights
-3. **Accent lights** - Small, colored lights that create unease
-
-```lua
--- src/server/LightingSetup.server.luau
-local function createHorrorLight(position, config)
-    config = config or {}
-
-    local part = Instance.new("Part")
-    part.Name = "LightSource"
-    part.Anchored = true
-    part.CanCollide = false
-    part.Transparency = 1
-    part.Position = position
-    part.Parent = workspace.Lights
-
-    local light = Instance.new("PointLight")
-    light.Brightness = config.brightness or 1
-    light.Range = config.range or 30
-    light.Color = config.color or Color3.fromRGB(255, 200, 150)
-    light.Shadows = config.shadows ~= false
-    light.Parent = part
-
-    -- Add subtle flicker for atmosphere
-    if config.flicker then
-        task.spawn(function()
-            local baseBrightness = light.Brightness
-            while light.Parent do
-                local variance = (math.random() - 0.5) * config.flicker
-                light.Brightness = baseBrightness + variance
-                task.wait(0.05 + math.random() * 0.1)
-            end
-        end)
-    end
-
-    return light
-end
-
--- Example usage:
--- Emergency light (red, flickering)
-createHorrorLight(Vector3.new(0, 10, 0), {
-    brightness = 0.8,
-    range = 20,
-    color = Color3.fromRGB(255, 50, 50),
-    flicker = 0.3,
-})
-
--- Dying fluorescent (harsh, unstable)
-createHorrorLight(Vector3.new(20, 10, 0), {
-    brightness = 1.5,
-    range = 40,
-    color = Color3.fromRGB(200, 255, 200),
-    flicker = 0.5,
-})
-```
-
-### Dynamic Light Zones
-
-Different areas should have different lighting moods:
-
-```lua
--- src/server/LightZones.server.luau
-local Lighting = game:GetService("Lighting")
-local Players = game:GetService("Players")
-
-local LIGHT_ZONES = {
-    safe = {
-        Brightness = 0.8,
-        Ambient = Color3.fromRGB(40, 40, 50),
-        FogEnd = 300,
-    },
-    corridor = {
-        Brightness = 0.3,
-        Ambient = Color3.fromRGB(15, 15, 25),
-        FogEnd = 150,
-    },
-    danger = {
-        Brightness = 0.1,
-        Ambient = Color3.fromRGB(10, 5, 5),
-        FogEnd = 80,
-    },
-}
-
-local function getPlayerZone(player)
-    local character = player.Character
-    if not character then return "corridor" end
-
-    local rootPart = character:FindFirstChild("HumanoidRootPart")
-    if not rootPart then return "corridor" end
-
-    -- Check which zone the player is in
-    for _, zone in ipairs(workspace.Zones:GetChildren()) do
-        local zoneType = zone:GetAttribute("ZoneType")
-        if zoneType and isInsideZone(rootPart.Position, zone) then
-            return zoneType
-        end
-    end
-
-    return "corridor"
-end
-
-local function isInsideZone(position, zonePart)
-    local relativePos = zonePart.CFrame:PointToObjectSpace(position)
-    local halfSize = zonePart.Size / 2
-    return math.abs(relativePos.X) <= halfSize.X
-        and math.abs(relativePos.Y) <= halfSize.Y
-        and math.abs(relativePos.Z) <= halfSize.Z
-end
-
--- Per-player lighting would require post-processing effects
--- For simplicity, use the "most dangerous" zone among all players
-local function updateGlobalLighting()
-    local mostDangerous = "safe"
-    local dangerRank = { safe = 0, corridor = 1, danger = 2 }
-
-    for _, player in ipairs(Players:GetPlayers()) do
-        local zone = getPlayerZone(player)
-        if dangerRank[zone] > dangerRank[mostDangerous] then
-            mostDangerous = zone
-        end
-    end
-
-    local settings = LIGHT_ZONES[mostDangerous]
-    -- Tween to new settings
-    for property, value in pairs(settings) do
-        Lighting[property] = value
-    end
-end
-```
-
-## Door Systems
-
-Doors are pivotal in horror—they create anticipation:
-
-```lua
--- src/server/DoorSystem.server.luau
-local TweenService = game:GetService("TweenService")
-local SoundService = game:GetService("SoundService")
-
-local DoorSystem = {}
-
-local DOOR_SOUNDS = {
-    open = "rbxassetid://YOUR_DOOR_OPEN",
-    close = "rbxassetid://YOUR_DOOR_CLOSE",
-    locked = "rbxassetid://YOUR_DOOR_LOCKED",
-    unlock = "rbxassetid://YOUR_DOOR_UNLOCK",
-    creak = "rbxassetid://YOUR_DOOR_CREAK",
-}
-
-function DoorSystem.setupDoor(doorModel)
-    local hinge = doorModel:FindFirstChild("Hinge")
-    local doorPart = doorModel:FindFirstChild("Door")
-
-    if not hinge or not doorPart then
-        warn("Invalid door model: " .. doorModel:GetFullName())
-        return
-    end
-
-    local isOpen = false
-    local isLocked = doorModel:GetAttribute("Locked") or false
-    local requiredKey = doorModel:GetAttribute("RequiredKey")
-
-    local originalCFrame = hinge.CFrame
-    local openCFrame = originalCFrame * CFrame.Angles(0, math.rad(90), 0)
-
-    local prompt = Instance.new("ProximityPrompt")
-    prompt.ActionText = isLocked and "Locked" or "Open"
-    prompt.MaxActivationDistance = 6
-    prompt.HoldDuration = isLocked and 0.5 or 0
-    prompt.Parent = doorPart
-
-    local function playSound(soundType)
-        local soundId = DOOR_SOUNDS[soundType]
-        if not soundId then return end
-
-        local sound = Instance.new("Sound")
-        sound.SoundId = soundId
-        sound.RollOffMode = Enum.RollOffMode.Linear
-        sound.RollOffMaxDistance = 50
-        sound.Parent = doorPart
-        sound:Play()
-        sound.Ended:Connect(function() sound:Destroy() end)
-    end
-
-    local function toggleDoor(player)
-        if isLocked then
-            -- Check if player has key
-            if requiredKey then
-                local inventory = getPlayerInventory(player)
-                if inventory:hasItem(requiredKey) then
-                    -- Unlock
-                    isLocked = false
-                    playSound("unlock")
-                    prompt.ActionText = "Open"
-                    prompt.HoldDuration = 0
-
-                    -- Optionally consume key
-                    -- inventory:removeItem(requiredKey)
-                    return
-                end
-            end
-
-            playSound("locked")
-            return
-        end
-
-        isOpen = not isOpen
-
-        local targetCFrame = isOpen and openCFrame or originalCFrame
-        local tweenInfo = TweenInfo.new(0.8, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-        playSound(isOpen and "open" or "close")
-
-        -- Occasional creak
-        if math.random() < 0.3 then
-            task.delay(0.2, function() playSound("creak") end)
-        end
-
-        local tween = TweenService:Create(hinge, tweenInfo, {
-            CFrame = targetCFrame
-        })
-        tween:Play()
-
-        prompt.ActionText = isOpen and "Close" or "Open"
-    end
-
-    prompt.Triggered:Connect(toggleDoor)
-end
-
--- Creature can force doors
-function DoorSystem.forceDoor(doorModel, force)
-    local hinge = doorModel:FindFirstChild("Hinge")
-    if not hinge then return end
-
-    local originalCFrame = hinge.CFrame
-    local forcedCFrame = originalCFrame * CFrame.Angles(0, math.rad(110), 0)
-
-    -- Violent open
-    local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-    local tween = TweenService:Create(hinge, tweenInfo, {
-        CFrame = forcedCFrame
-    })
-
-    -- Play crash sound
-    local crash = Instance.new("Sound")
-    crash.SoundId = "rbxassetid://YOUR_DOOR_CRASH"
-    crash.Volume = 1.5
-    crash.Parent = doorModel
-    crash:Play()
-
-    tween:Play()
-end
-
-return DoorSystem
-```
-
-## Hiding Spots
-
-Players need places to hide from the creature:
-
-```lua
--- src/server/HidingSpots.server.luau
-local CollectionService = game:GetService("CollectionService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local HIDING_SPOTS = {}  -- Track occupied spots
-
-local function setupHidingSpot(part)
-    local spotId = part:GetFullName()
-    HIDING_SPOTS[spotId] = {
-        part = part,
-        occupied = false,
-        occupant = nil,
-    }
-
-    local prompt = Instance.new("ProximityPrompt")
-    prompt.ActionText = "Hide"
-    prompt.ObjectText = part:GetAttribute("SpotName") or "Hiding Spot"
-    prompt.MaxActivationDistance = 5
-    prompt.HoldDuration = 0.5
-    prompt.Parent = part
-
-    prompt.Triggered:Connect(function(player)
-        local spot = HIDING_SPOTS[spotId]
-
-        if spot.occupied then
-            -- Already occupied
-            return
-        end
-
-        -- Hide the player
-        enterHidingSpot(player, spot)
-    end)
-end
-
-local function enterHidingSpot(player, spot)
-    local character = player.Character
-    if not character then return end
-
-    spot.occupied = true
-    spot.occupant = player
-
-    -- Make player invisible
-    for _, part in ipairs(character:GetDescendants()) do
-        if part:IsA("BasePart") then
-            part.Transparency = 1
-        end
-    end
-
-    -- Disable movement
-    local humanoid = character:FindFirstChildOfClass("Humanoid")
-    if humanoid then
-        humanoid.WalkSpeed = 0
-        humanoid.JumpPower = 0
-    end
-
-    -- Position player at hiding spot
-    local rootPart = character:FindFirstChild("HumanoidRootPart")
-    if rootPart then
-        rootPart.CFrame = spot.part.CFrame
-        rootPart.Anchored = true
-    end
-
-    -- Notify client
-    ReplicatedStorage.Events.EnteredHiding:FireClient(player, spot.part)
-
-    -- Create exit prompt
-    local exitPrompt = Instance.new("ProximityPrompt")
-    exitPrompt.ActionText = "Exit"
-    exitPrompt.KeyboardKeyCode = Enum.KeyCode.E
-    exitPrompt.HoldDuration = 0.3
-    exitPrompt.Parent = spot.part
-
-    exitPrompt.Triggered:Connect(function(exitPlayer)
-        if exitPlayer == player then
-            exitHidingSpot(player, spot)
-            exitPrompt:Destroy()
-        end
-    end)
-end
-
-local function exitHidingSpot(player, spot)
-    local character = player.Character
-    if not character then return end
-
-    spot.occupied = false
-    spot.occupant = nil
-
-    -- Make player visible
-    for _, part in ipairs(character:GetDescendants()) do
-        if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
-            part.Transparency = 0
-        end
-    end
-
-    -- Re-enable movement
-    local humanoid = character:FindFirstChildOfClass("Humanoid")
-    if humanoid then
-        humanoid.WalkSpeed = 16
-        humanoid.JumpPower = 50
-    end
-
-    local rootPart = character:FindFirstChild("HumanoidRootPart")
-    if rootPart then
-        rootPart.Anchored = false
-        -- Move slightly out of hiding spot
-        rootPart.CFrame = rootPart.CFrame + rootPart.CFrame.LookVector * 3
-    end
-
-    ReplicatedStorage.Events.ExitedHiding:FireClient(player)
-end
-
--- Creature detection - hiding isn't perfect
-local function canCreatureDetectHiddenPlayer(creature, spot)
-    -- Creature can detect if:
-    -- 1. Very close (within 5 studs)
-    -- 2. Player entered recently (within 3 seconds)
-    -- 3. Player is making noise
-
-    local distance = (creature.rootPart.Position - spot.part.Position).Magnitude
-
-    if distance < 5 then
-        -- Close inspection - 50% chance to detect
-        return math.random() < 0.5
-    end
-
-    return false
-end
-
--- Setup existing spots
-for _, spot in ipairs(CollectionService:GetTagged("HidingSpot")) do
-    setupHidingSpot(spot)
-end
-
-CollectionService:GetInstanceAddedSignal("HidingSpot"):Connect(setupHidingSpot)
-```
-
-## Interactive Objects
-
-Objects that players can examine or interact with:
-
-```lua
--- src/server/InteractiveObjects.server.luau
-local CollectionService = game:GetService("CollectionService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local function setupInteractive(part)
-    local interactionType = part:GetAttribute("InteractionType")
-    local content = part:GetAttribute("Content")
-
-    local prompt = Instance.new("ProximityPrompt")
-    prompt.MaxActivationDistance = 6
-    prompt.HoldDuration = 0.3
-    prompt.Parent = part
-
-    if interactionType == "note" then
-        prompt.ActionText = "Read"
-        prompt.ObjectText = part:GetAttribute("Title") or "Note"
-
-        prompt.Triggered:Connect(function(player)
-            ReplicatedStorage.Events.ShowNote:FireClient(player, {
-                title = part:GetAttribute("Title"),
-                content = content,
-            })
-        end)
-
-    elseif interactionType == "examine" then
-        prompt.ActionText = "Examine"
-        prompt.ObjectText = part:GetAttribute("ObjectName") or "Object"
-
-        prompt.Triggered:Connect(function(player)
-            ReplicatedStorage.Events.ShowExamination:FireClient(player, {
-                name = part:GetAttribute("ObjectName"),
-                description = content,
-                image = part:GetAttribute("ImageId"),
-            })
-        end)
-
-    elseif interactionType == "switch" then
-        prompt.ActionText = "Use"
-        prompt.ObjectText = part:GetAttribute("SwitchName") or "Switch"
-
-        local isOn = part:GetAttribute("IsOn") or false
-
-        prompt.Triggered:Connect(function(player)
-            isOn = not isOn
-            part:SetAttribute("IsOn", isOn)
-
-            -- Fire linked events
-            local linkedId = part:GetAttribute("LinkedTo")
-            if linkedId then
-                ReplicatedStorage.Events.SwitchToggled:Fire(linkedId, isOn)
-            end
-
-            -- Play sound
-            local sound = Instance.new("Sound")
-            sound.SoundId = "rbxassetid://YOUR_SWITCH_SOUND"
-            sound.Parent = part
-            sound:Play()
-        end)
-    end
-end
-
-for _, obj in ipairs(CollectionService:GetTagged("Interactive")) do
-    setupInteractive(obj)
-end
-
-CollectionService:GetInstanceAddedSignal("Interactive"):Connect(setupInteractive)
-```
-
-## Room Templates
-
-Pre-designed room types for consistent horror feel:
-
-```lua
--- src/shared/RoomTemplates.luau
-local RoomTemplates = {}
-
-RoomTemplates.CORRIDOR = {
-    width = 8,
-    height = 12,
-    lightSpacing = 16,
-    debrisDensity = 0.3,
-    features = {"flickering_light", "pipe_sounds"},
-}
-
-RoomTemplates.STORAGE = {
-    minSize = Vector3.new(16, 12, 16),
-    maxSize = Vector3.new(32, 12, 32),
-    shelving = true,
-    debrisDensity = 0.5,
-    hidingSpots = {"locker", "behind_shelves"},
-    features = {"single_light", "dripping_water"},
-}
-
-RoomTemplates.OFFICE = {
-    size = Vector3.new(24, 12, 24),
-    furniture = {"desk", "chair", "filing_cabinet"},
-    interactives = {"computer", "phone", "notes"},
-    lightType = "fluorescent",
-    features = {"computer_hum", "flickering_monitor"},
-}
-
-RoomTemplates.MEDICAL = {
-    size = Vector3.new(32, 12, 24),
-    furniture = {"examination_table", "cabinet", "sink"},
-    loot = {"medkit", "bandage", "syringe"},
-    lightType = "harsh_white",
-    features = {"medical_equipment_beeps", "blood_stains"},
-}
-
-RoomTemplates.GENERATOR = {
-    size = Vector3.new(24, 16, 24),
-    machinery = true,
-    loudAmbient = true,
-    objective = "power_restore",
-    features = {"loud_hum", "steam_vents", "warning_lights"},
-}
-
-return RoomTemplates
-```
-
-## Vibe Coding Level Design
-
-When working with AI on environment design:
-
-> "Create a modular corridor system with 8-stud grid snapping and door connections"
-
-> "Add a hiding spot system where players become invisible but creatures can detect them if too close"
-
-> "Build a room template for an abandoned medical bay with examination tables, cabinets, and flickering lights"
-
-> "Implement an interactive note system that displays text overlays when players examine objects"
-
-The AI handles the Roblox specifics—CFrames, tweens, collision groups. You focus on the spatial experience.
-
-## Testing Environments
-
-Walk through your spaces as a player:
-
-1. **Sightline check** - Can you see too far? Too little?
-2. **Navigation check** - Can you find your way? Get lost in the right places?
-3. **Audio check** - Does sound tell a story? Create uncertainty?
-4. **Pacing check** - Are there moments of relief between tension?
-
-## Next Steps
-
-With environments built, we have all the pieces for a single-player horror experience. But horror is amplified with others. In the next chapter, we'll add multiplayer systems that let friends survive—or die—together.
+We discovered that light placement tells stories. A room lit from a single overhead source feels institutional, clinical. A room lit by a flashlight beam feels intimate and fragile. A room lit by flickering emergency lights feels chaotic, unsafe. Players read these lighting choices emotionally before they consciously analyze them.
+
+Sound design intersects with environment design in crucial ways.
+
+Every room should have its own acoustic character. Empty spaces echo differently than furnished spaces. Pipes running through walls create ambient noise. Dripping water establishes a baseline rhythm. These sounds make spaces feel real rather than abstract—and real spaces harbor real threats.
+
+We used what we called acoustic zones—areas with distinct ambient sound profiles. The main corridor might have distant mechanical humming. The flooded basement might have constant dripping and occasional groaning pipes. The generator room might be loud enough to mask footsteps. These zones create variety but also gameplay implications. In the loud generator room, players can't hear the creature approach but the creature also can't hear them.
+
+Positional audio makes these zones feel three-dimensional. A sound from your left encourages you to look left. A sound from behind encourages you to turn around. When that sound might be the creature, these simple audio cues become moments of intense decision-making.
+
+Environmental storytelling deserves extended discussion because it accomplishes multiple goals simultaneously.
+
+Objects arranged in space tell stories. A barricaded door suggests someone tried to keep something out—or in. A drag mark along the floor suggests someone was taken. A child's drawing on a wall suggests innocence lost. Players piece together narratives from these environmental details, and that narrative engagement keeps them interested even during quiet periods.
+
+The technique works particularly well in horror because implications are scarier than explanations. A monster that's fully explained becomes a known quantity. A monster suggested by claw marks, bloodstains, and terrified notes remains mysterious. What could make marks like that? What could scare someone into writing that note?
+
+We found that layered storytelling worked best. Surface-level details communicate immediate danger—the fresh bloodstain, the recently broken window. Deeper details reveal backstory—personnel files, research notes, personal diaries. Completionist players can reconstruct the full narrative, while casual players absorb enough to feel the horror.
+
+Doors deserve special attention because they're moments of maximum uncertainty.
+
+Every door represents a decision point. Open it or don't. What's on the other side? The creature? Resources? Nothing? The anticipation before a door opens is often more frightening than what actually lies beyond.
+
+Door design should support this anticipation. Heavy doors that swing slowly build tension during the reveal. Locked doors that require keys create objectives and force players to explore. Damaged doors—partially open, blocked by debris—suggest that something happened here. Audio cues from beyond doors hint at what awaits.
+
+We experimented with door behaviors that creatures could trigger. A creature slamming through a door you thought was safe creates genuine shock. A creature standing on the other side when you open a door creates jumpscares you can't blame on random spawning. These moments work because they subvert the player's assumption that they control when doors open.
+
+Hiding spots represent the flip side of door design—places where players can gain temporary safety.
+
+Classic horror games offered limited hiding options. Players hid in lockers, under beds, inside closets. These locations provide safety only while occupied and only if the creature doesn't search too thoroughly. The mechanic creates its own tension: you're hidden, but you're also trapped. If the creature finds you, there's no escape.
+
+The design question is how reliable hiding should be. Perfectly safe hiding trivializes the creature—players just hide whenever it appears. But hiding that never works eliminates an entire strategy. We found that probabilistic detection worked well: hiding usually works, but a creature that comes too close might discover you. This keeps hiding viable while maintaining tension during hide sequences.
+
+Sound matters enormously while hiding. Players hold their breath metaphorically; if your game has breathing sounds, players might hold their breath literally, triggering audio cues. Heavy breathing, heartbeat sounds, muffled external audio—these create the hiding experience even when the screen shows nothing but darkness inside a locker.
+
+Resource placement shapes how players move through environments.
+
+Where you place healing items, batteries, ammunition, and keys determines which routes players take and how much of your environment they explore. Central placement on main paths means players find resources easily; peripheral placement rewards exploration.
+
+For survival horror, peripheral placement usually serves better. Players should feel that they've earned their resources by taking risks—exploring a dark side room, checking a suspicious alcove. The resource itself becomes a reward for courage.
+
+Pacing emerges from the arrangement of dangerous and safe spaces.
+
+Horror can't be constant. Players need recovery periods or they become desensitized or exhausted. Safe rooms—areas where the creature never appears—provide these recovery periods. Players can catch their breath, manage inventory, read notes, and prepare for the next challenge.
+
+The rhythm should oscillate. Tension builds as players explore dangerous areas. They find a safe room and tension releases. They leave the safe room and tension begins building again. This oscillation keeps players engaged far longer than constant high tension.
+
+Visual landmarks help players navigate while maintaining horror atmosphere.
+
+Getting lost in a horror game can be frustrating rather than scary. Players need enough spatial information to form mental maps while still feeling uncertain about what lies ahead. Distinctive elements—a broken window in one corridor, a particular painting in another—help players orient without requiring obvious signage.
+
+We found that landmark placement affected pacing. Placing landmarks near decision points helps players remember where they've been and what they've tried. Placing landmarks near danger zones creates memorable associations—"the corridor with the red painting is where I almost died."
+
+When vibe coding environments, we communicated design intent rather than technical implementation.
+
+Rather than specifying exact Part positions and dimensions, we described the experience we wanted. "Create a medical wing with examination rooms branching off a main corridor. The corridor should have poor lighting with pools of darkness between fixtures. Each room should feel like it was abandoned quickly—equipment overturned, papers scattered. Place a hiding spot in at least one room and ensure there are multiple ways to navigate through the wing."
+
+This prompt lets the AI handle Roblox specifics—CFrame positioning, collision groups, lighting values—while producing spaces that serve our design goals. We could then iterate on the result: "The corridor feels too bright. Reduce the lighting and add more objects that break up sightlines." The conversation stays at the level of experience rather than dropping into technical details.
+
+Testing environments requires playing as a first-time player would.
+
+Once you've built and tested an area dozens of times, you know where everything is. The fear of the unknown evaporates. You need fresh perspectives—playtesters who haven't seen the space before. Watch where they look, where they hesitate, where they get lost, where they feel comfortable.
+
+We developed a testing protocol. First playthrough: observe without comment. Note where the player seems tense, relaxed, confused, or bored. Second playthrough: ask for verbal reactions. What did they expect behind that door? What made them hesitate in that corridor? Third playthrough: discuss specific design choices. Did the barricaded door communicate danger? Did the lighting feel appropriately scary?
+
+This feedback shapes iteration. Areas that felt tense to playtesters get preserved. Areas that felt boring get modified—more occlusion, different lighting, additional environmental details. Areas that felt frustrating get clarified—better landmarks, more consistent rules.
+
+Environment design connects everything we've discussed.
+
+The atmosphere systems create mood. The creature provides threat. The survival mechanics create stakes. But the environment is where these elements combine into experience. A perfectly coded creature feels threatening only in spaces designed to make encounters scary. Survival resources feel precious only when obtaining them requires navigating dangerous environments.
+
+The next chapter covers multiplayer—adding other humans to your carefully designed horror. This changes everything. Other players introduce chaos, provide emotional support, and create social dynamics that transform the experience. The environments you've built will host not just individual survival but shared terror.

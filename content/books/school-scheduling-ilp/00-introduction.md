@@ -1,129 +1,27 @@
-# Introduction
+# The Mathematics of Impossible Puzzles
 
-## The School Scheduling Problem
+Every fall, administrators at thousands of schools face the same impossible task. Teachers have preferences. Rooms have capacities. Students need courses. Time is finite. The combinations number in the millions. Yet by the first day of class, students sit in desks, teachers stand at boards, and the year begins. Someone solved the puzzle.
 
-Every semester, school administrators face the same nightmare: create a schedule that assigns teachers to classes, classes to rooms, and everything to time slots—without conflicts.
+For decades, that someone was a veteran administrator with institutional memory and a wall covered in sticky notes. They knew that Mrs. Patterson absolutely cannot teach first period because she drives from two towns over. They remembered that the physics lab is being renovated until October. They internalized years of informal negotiations about who gets the good rooms and who teaches the dreaded Friday afternoon slots.
 
-Sounds simple. It's not.
+This approach works until it doesn't. The veteran retires. The school grows. Requirements compound. What once took a week of shuffling takes a month. What once felt like mastery feels like drowning. The sticky notes fall off the wall.
 
-A typical high school has:
-- 50+ teachers with varying availability
-- 200+ class sections across subjects
-- 30+ rooms with different capacities and equipment
-- 6-8 periods per day
-- Hundreds of constraints (teacher preferences, room requirements, student conflicts)
+Computer-assisted scheduling emerged from operations research, a field that applies mathematics to complex logistical problems. The techniques developed during World War II to optimize supply chains and military operations found peacetime applications in airlines, factories, and eventually schools. The core insight was that many apparently impossible puzzles become tractable when expressed as mathematical models.
 
-The number of possible schedules is astronomical. A school with 50 teachers, 40 rooms, and 8 periods has over 10^100 possible assignments. Brute force doesn't work.
+Integer Linear Programming represents one of the most powerful approaches to scheduling problems. The technique expresses what you want as an objective to maximize or minimize, what you must have as constraints that cannot be violated, and what you'd prefer as soft constraints that carry penalties when violated. A solver—a sophisticated mathematical engine—explores the space of possible solutions and finds one that optimizes the objective while satisfying the constraints.
 
-This is a classic constraint satisfaction problem—and it's NP-hard. There's no polynomial-time algorithm to find the optimal solution. But we don't need optimal. We need good enough, fast enough.
+The scheduling problem is NP-hard, which means no algorithm can guarantee finding the optimal solution quickly for all cases. But practical instances usually aren't worst cases. Modern solvers incorporate decades of algorithmic improvements—branch and bound, cutting planes, preprocessing, parallel search—that make real-world problems tractable. A schedule that would take a human weeks to construct by trial and error can often be computed in minutes.
 
-## Why Integer Linear Programming?
+Building a school scheduling system with vibe coding proved to be an ideal match for several reasons. The mathematical formulation is well-documented in academic literature. The constraints are explicit and logical—no room can host two classes simultaneously, no teacher can be in two places at once. The objective function is a matter of policy decisions, not technical discovery. What remains is translating these requirements into working software, which is exactly what AI-assisted development excels at.
 
-Integer Linear Programming (ILP) is the industry-standard approach for scheduling problems. It works by:
+The system that emerged from my Claude Code sessions handles the complete workflow. Data entry captures teachers, classes, rooms, and time slots. Constraint specification lets administrators express both hard requirements and soft preferences. The solver generates schedules that satisfy requirements while optimizing preferences. The interface displays results, highlights conflicts, and enables manual adjustments. Export produces calendar files that integrate with other systems.
 
-1. **Modeling decisions as variables** - Each possible assignment (teacher X teaches class Y in room Z at time T) becomes a binary variable (0 or 1)
-2. **Expressing constraints as linear equations** - "No teacher can be in two places at once" becomes a sum constraint
-3. **Optimizing an objective function** - Minimize conflicts, maximize preference satisfaction
+Alternative approaches exist but fall short in various ways. Genetic algorithms are popular but unreliable—they get stuck in local optima and offer no guarantee of finding feasible solutions. Constraint programming works for small problems but struggles to scale. Manual scheduling is error-prone and exhausting. Commercial scheduling software costs tens of thousands of dollars annually, often runs as inflexible black boxes, and locks institutions into vendor relationships.
 
-ILP solvers have decades of research behind them. They use branch-and-bound, cutting planes, and other sophisticated techniques to find solutions quickly. A problem with millions of variables can often be solved in seconds.
+Integer Linear Programming gives you mathematical guarantees, scalability, transparency, and control. The model is visible and understandable. You can explain why an assignment was made by pointing to the constraints it satisfies. When the solver says no feasible schedule exists, you can analyze which constraints conflict. This transparency builds trust in a way that black-box solutions never can.
 
-## Why Not Other Approaches?
+Building this system revealed patterns that apply to any optimization problem. How to represent decision variables. How to express constraints that solvers understand. How to weight competing objectives. How to interpret solver results. How to handle infeasibility gracefully. These patterns transfer to employee scheduling, sports league fixtures, exam timetabling, and dozens of other domains where ILP shines.
 
-**Genetic algorithms** - Popular but unreliable. They often get stuck in local optima and provide no guarantee of finding feasible solutions. You might run for hours and still have conflicts.
+The book that follows documents this journey. Not as a tutorial to copy line by line, but as a guide to the concepts and techniques that make such systems possible. The specific implementations belong to your vibe coding sessions. The understanding of why those implementations work belongs here.
 
-**Constraint programming** - Good for small problems, but scaling is difficult. CP solvers enumerate possibilities, which becomes intractable for large instances.
-
-**Manual scheduling** - The traditional approach. Administrators spend weeks shuffling spreadsheets. Any change triggers cascading conflicts. It's error-prone and exhausting.
-
-**Commercial software** - Expensive ($10,000+ per year), often inflexible, and you don't own your data. Many are black boxes that don't explain why certain assignments were made.
-
-ILP gives you the best of all worlds: mathematical guarantees, scalability, transparency, and control.
-
-## Why Vibe Code It?
-
-Building a scheduling system from scratch sounds daunting:
-- Linear algebra and optimization theory
-- Complex constraint modeling
-- Solver integration
-- User interfaces for data entry and visualization
-
-With vibe coding, you describe what you want and iterate toward a working system. The AI handles the mathematical notation, the solver integration, the edge cases. You focus on the domain: what makes a good schedule?
-
-This book walks through building a complete school scheduling system:
-- Data model for teachers, classes, rooms, and constraints
-- ILP formulation for the scheduling problem
-- Integration with HiGHS (a high-performance open-source solver)
-- Web interface for data management and schedule visualization
-- Export to calendar formats
-
-By the end, you'll have a working system and understand how to apply ILP to other scheduling problems: employee shifts, conference sessions, sports leagues, manufacturing.
-
-## What We're Building
-
-A web application with:
-
-**Data Management**
-- Teacher profiles with availability windows
-- Class definitions with room requirements
-- Room inventory with capacity and equipment
-- Time slot configuration (periods, days)
-- Constraint definitions (hard and soft)
-
-**Schedule Generation**
-- ILP model construction
-- Solver execution with timeout
-- Solution extraction and validation
-- Infeasibility diagnosis
-
-**Schedule Visualization**
-- Grid view by teacher, room, or class
-- Conflict highlighting
-- Manual override interface
-- Preference satisfaction metrics
-
-**Export**
-- iCal format for calendars
-- CSV for spreadsheets
-- PDF for printing
-
-## The Technology Stack
-
-- **TypeScript** - Type safety for complex data structures
-- **Node.js + Express** - API server
-- **PostgreSQL** - Relational data storage
-- **HiGHS** - Open-source ILP solver (via highs-js)
-- **Vite + React** - Frontend (or vanilla TypeScript)
-
-Why HiGHS? It's:
-- Free and open-source (MIT license)
-- Fast (competitive with commercial solvers)
-- Available as WebAssembly (runs in browser)
-- Active development (part of COIN-OR project)
-
-## Prerequisites
-
-To follow along:
-- **TypeScript experience** - You'll write complex types
-- **Basic linear algebra** - Vectors, matrices, sums (helpful but we'll explain)
-- **An AI coding assistant** - Claude Code, Cursor, or similar
-
-You don't need prior experience with:
-- Optimization theory (we'll cover it)
-- ILP solvers (we'll integrate step by step)
-- School administration (we'll model the domain)
-
-## A Note on Complexity
-
-School scheduling is genuinely hard. Real schools have bizarre constraints:
-- "Mr. Smith can only teach periods 1-4 because he coaches after school"
-- "The chemistry lab can't be used during lunch because of fume ventilation"
-- "These two teachers can't be scheduled in adjacent rooms because they're too loud"
-- "The band needs the auditorium every Thursday 3rd period"
-
-No software handles every edge case out of the box. But ILP is flexible. Any constraint you can express as a linear equation can be added to the model. This book teaches you to think in constraints.
-
-## Let's Build
-
-School scheduling touches lives. A good schedule means teachers can balance work and life, students can take the classes they need, and administrators can stop dreading September.
-
-Let's build something that makes schedules better.
+By the end, you'll grasp how to model a scheduling problem as ILP, how to build a solver integration that produces real schedules, how to present those schedules through a usable interface, and how to handle the edge cases that make production systems robust. More importantly, you'll understand a category of problems that mathematical optimization solves elegantly—problems that appear impossible until you learn to think in constraints.

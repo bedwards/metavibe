@@ -1,131 +1,29 @@
-# Introduction
+# The Library That Reads to You
 
-## Why Build a Personal Reading Library?
+There's a particular kind of guilt that accumulates in browser tabs. Each one represents an article someone recommended, a newsletter that looked interesting, a long-form piece that demands more attention than a quick scroll can provide. The tabs multiply. Some stay open for weeks. Most eventually close, unread, when the browser crashes or the shame becomes unbearable.
 
-The modern internet drowns us in content. RSS feeds, newsletters, Substack posts, blog articles—the firehose never stops. Yet the tools we have for reading this content are designed for skimming, not understanding.
+This pattern has repeated itself for as long as the web has existed. The solutions that emerged—bookmarks, read-it-later apps, RSS readers—all promised to solve the problem. Some did, for a while. But they all shared a fundamental assumption: that reading happens when you're sitting in front of a screen with time and attention to spare. That assumption has become increasingly divorced from how most people actually live.
 
-Browser tabs accumulate. Bookmarks rot. Read-it-later apps become guilt-inducing graveyards of good intentions. The content we actually want to consume—thoughtful long-form writing—gets lost in the noise.
+The secret that changed everything for me was simple: most of my potential reading time isn't reading time at all. It's commuting time, cooking time, walking the dog time, doing laundry time. My eyes are occupied, but my ears are free. The twenty-minute newsletter becomes a companion during the morning run. The backlog of Substack posts becomes a podcast feed during the evening commute.
 
-A personal reading library solves this differently. Instead of yet another inbox to manage, you build a curated collection. Content you've actively chosen to save, cleaned of ads and distractions, available offline, readable or listenable whenever you want.
+Text-to-speech has crossed a threshold that makes this possible. The robotic voices of a decade ago have given way to neural networks trained on thousands of hours of human speech. ElevenLabs, founded in 2022, reached a billion-dollar valuation by 2024 because they cracked the problem of making synthesized speech sound genuinely human. Speechify built an empire on the same insight applied to accessibility and education. Even browser-native speech synthesis has improved dramatically, especially on Apple devices with premium voices that sound startlingly natural.
 
-## Why Text-to-Speech?
+But getting content into a TTS-friendly format remains harder than it should be. Web pages are polluted with navigation menus, newsletter signup forms, related article links, and the endless detritus of engagement optimization. Feed that to a text-to-speech engine and you get garbage audio—your relaxing article interrupted by someone reading aloud a cookie consent banner.
 
-Here's a secret: most "reading" time isn't reading time. It's commuting, exercising, cooking, cleaning. Time when your eyes are occupied but your ears are free.
+A personal reading library solves this problem by extracting just the content you care about, cleaning it thoroughly, and presenting it in formats optimized for both reading and listening. The same article that exists as a cluttered web page becomes clean text flowing through your earbuds.
 
-Text-to-speech transforms your reading library into an audio library. That 20-minute article becomes a podcast-length listen during your morning run. That newsletter backlog becomes your driving companion.
+The death of Google Reader in 2013 marked a turning point for how we think about personal content management. Google's shutdown wasn't driven by declining usage—internal sources suggest the product was successful and growing. It was sacrificed to push users toward Google Plus, and when it died, it took much of the RSS ecosystem with it. Mozilla removed RSS support from Firefox in 2018. Apple stopped providing RSS for Apple News in 2019. The open web gave way to algorithmic feeds owned by platforms.
 
-Modern TTS has crossed the uncanny valley. Services like Speechify, ElevenLabs, and even browser-native speech synthesis produce natural-sounding audio. The bottleneck isn't the technology—it's getting your content into a TTS-friendly format.
+But RSS never actually died. It persisted in the background, stubbornly refusing to disappear despite every obituary written for it. Substack, the platform that revitalized long-form newsletters, exposes RSS feeds for every publication. WordPress sites have had RSS for decades. The feeds still work, even if they're no longer advertised. And a new generation of tools—Feedly, NewsBlur, Readwise Reader—has emerged to serve people who want to control their information diet rather than surrender it to algorithms.
 
-This is harder than it sounds. Web content is polluted with:
+Pocket, one of the original read-it-later services, announced it would shut down in July 2025. Another reminder that building on platforms means accepting their timeline. When you build your own reading library, you own it. No subscription fees. No service shutdown announcements. No pivot to AI that deprecates the features you actually use.
 
-- Navigation menus and footers
-- Subscription prompts and paywalls
-- Social sharing widgets
-- Related article links
-- Inline ads and sponsored content
+Vibe coding makes building such a tool feasible for anyone with a clear vision of what they want. The components are well-documented: RSS parsing libraries, content extraction algorithms, database patterns for content storage, web APIs for text-to-speech integration. What previously required weeks of development compresses into sessions measured in hours. You describe the feature you want, see it materialize, refine it until it works.
 
-Feed all that to a TTS engine and you get garbage audio. Your personal reading library needs to extract the actual article content, clean it, and present it in a format that sounds good when spoken.
+The techniques that emerged from building a personal reading library with AI assistance reveal patterns that apply far beyond this specific project. There's something clarifying about building tools for yourself—you know exactly what success looks like because you're the user. The feedback loop tightens to nothing. You save an article, read it, notice something that annoys you, fix it immediately, and move on.
 
-## Why RSS for Discovery?
+This book documents that process. Not as a tutorial to copy step by step, but as a map of the territory. The specific technologies matter less than the patterns: how to approach content extraction, what makes typography readable, how offline synchronization actually works, why certain TTS approaches succeed where others fail. The implementation details belong to your sessions with Claude. The concepts belong here.
 
-RSS is the cockroach of the internet—it refuses to die. Despite Google Reader's shutdown, despite the social media pivot, despite everyone declaring it dead—RSS persists.
+By the end, you'll understand how to build a complete personal reading library: content discovery through RSS feeds, article extraction and cleaning, a reader interface with proper typography, text-to-speech integration that actually sounds good, organization through tags and reading lists, and deployment patterns that let you access your library from anywhere. More importantly, you'll understand the vibe coding techniques that make building such systems practical—the prompts that work, the patterns that emerge, the approach to iteration that turns vague ideas into working software.
 
-And it persists for good reason:
-
-1. **No algorithm** - You see everything you subscribe to, in chronological order
-2. **No account required** - Most feeds are public URLs
-3. **Universal format** - Works with any content source that supports it
-4. **Decentralized** - No single company controls the ecosystem
-
-Substack, the newsletter platform that's revitalized long-form writing, exposes RSS feeds for every publication. WordPress sites have had RSS for decades. Many blogs still syndicate via RSS even if they don't advertise it.
-
-Building on RSS means you're building on a stable foundation. The feeds will still work in five years. You can't say that about platform APIs.
-
-## Why Vibe Code It?
-
-You could use existing tools. Pocket, Instapaper, Feedly, Readwise—they all exist. Some even have TTS features. So why build your own?
-
-**Control**. You control the reading experience. Typography, colors, spacing—tuned exactly to your preferences. No corporate design committee decided what's "best" for millions of users.
-
-**Ownership**. Your library lives on your hardware. No subscription fees. No service shutdown. No "we're pivoting to AI" announcement that deprecates your workflow.
-
-**Integration**. Connect to any TTS service. Export to any format. Build exactly the workflow you want, not the workflow someone's product team prioritized.
-
-**Learning**. Building a reading library touches full-stack development: RSS parsing, web scraping, database design, clean typography, audio integration, API design. It's a complete education in practical software development.
-
-And with vibe coding, you can build it in days, not months. Describe what you want. See it materialize. Iterate until it's right.
-
-## What We're Building
-
-By the end of this book, you'll have a complete personal reading library with:
-
-**Content Discovery**
-- RSS feed management
-- Automatic feed fetching on schedule
-- Support for Substack, blogs, and any RSS source
-
-**Content Ingestion**
-- Full article extraction from URLs
-- HTML cleaning and sanitization
-- Metadata extraction (author, date, reading time)
-- Deduplication to avoid storing the same article twice
-
-**Reader Interface**
-- Clean, distraction-free reading view
-- Customizable typography and themes
-- Dark mode for night reading
-- Reading progress tracking
-
-**Text-to-Speech**
-- Browser-native speech synthesis
-- Integration with premium TTS services
-- Audio playback controls
-- Progress tracking for audio
-
-**Organization**
-- Tagging and categorization
-- Full-text search
-- Reading lists and queues
-- Archive for completed articles
-
-**Deployment**
-- Self-hosting on your own hardware
-- Cross-device sync
-- Offline support
-- Backup strategies
-
-## The Technology Stack
-
-We'll build with:
-
-- **TypeScript** - Type safety for a robust application
-- **Node.js + Express** - Simple, proven backend
-- **PostgreSQL** - Reliable database for content storage
-- **Vite** - Fast frontend tooling
-- **RSS Parser** - Library for parsing RSS/Atom feeds
-- **Readability** - Mozilla's algorithm for extracting article content
-- **Web Speech API** - Browser-native TTS
-
-This stack prioritizes simplicity and reliability over trendiness. Every component is battle-tested and well-documented.
-
-## Prerequisites
-
-To follow along, you should have:
-
-- **TypeScript proficiency** - We won't explain basic syntax
-- **Node.js experience** - Comfortable with npm and async/await
-- **Basic database knowledge** - SQL fundamentals
-- **An AI coding assistant** - Claude Code, Cursor, or similar
-
-You don't need prior experience with:
-
-- RSS parsing (we'll cover it)
-- Web scraping (we'll cover it)
-- TTS APIs (we'll cover it)
-- Typography (we'll cover it)
-
-## Let's Build
-
-The best software solves your own problems first. A personal reading library scratches an itch we all have: too much content, too little time, and tools that don't respect how we actually consume information.
-
-Let's build something better.
+The browser tabs will still accumulate. But now they'll have somewhere to go.

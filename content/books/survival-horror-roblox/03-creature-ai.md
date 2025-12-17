@@ -1,426 +1,83 @@
-# Creature AI and Threats
+# The Thing That Hunts
 
-A horror game without threats is just a walking simulator with mood lighting. The creature—whatever form it takes—must feel intelligent, relentless, and terrifying.
+Every horror story needs an antagonist. In survival horror games, that antagonist typically takes physical form—something that exists in the game space, that moves through corridors you're exploring, that might be around any corner. The creature.
 
-This chapter covers the AI systems that make players genuinely afraid.
+Building effective creature AI sits at the intersection of technical programming and psychological manipulation. You need systems that work reliably—pathfinding that doesn't break, detection that behaves consistently, state management that doesn't produce bizarre behaviors. But technical correctness is table stakes. The creature must also feel intelligent, feel threatening, feel like a genuine presence rather than a script executing.
 
-## The Core Loop
+This distinction matters for vibe coding because AI assistants can produce technically correct creature behavior almost instantly. Ask for a state machine with patrol, investigate, and chase states, and you'll get working code. The challenge lies in tuning that behavior until it creates fear rather than merely creating challenge.
 
-Every creature AI follows a basic loop:
+The traditional game development approach to creature AI starts with what designers call a behavior tree or state machine—a formal structure describing what the creature does under various conditions. When no player is detected, patrol between waypoints. When a sound is heard, move toward the sound and search. When a player is seen, give chase. When close enough, attack.
 
-1. **Perceive** - Detect players through sight, sound, or other senses
-2. **Decide** - Choose a behavior based on current state
-3. **Act** - Execute movement, attacks, or other actions
-4. **Update** - Adjust state based on results
+This structure works, and AI assistants generate it easily. But pure state machines produce predictable behavior. Players quickly learn the patterns. After three encounters, they know exactly how long the creature searches before giving up, exactly how far they need to run before it loses interest. The creature becomes a puzzle to solve rather than a threat to fear.
 
-```lua
--- src/server/Creature.server.luau
-local PathfindingService = game:GetService("PathfindingService")
-local Players = game:GetService("Players")
+The first technique we discovered was what we called intentional imperfection.
 
-local CreatureAI = {}
-CreatureAI.__index = CreatureAI
+Real predators aren't optimally efficient. They get distracted. They miss obvious cues. They double back on paths they just traveled. These inefficiencies actually make them scarier because they're unpredictable. You can't count on the creature taking the optimal route, so any route might be the one it takes.
 
-function CreatureAI.new(model)
-    local self = setmetatable({}, CreatureAI)
+When communicating this to AI assistants, we found that describing the intended player experience worked better than describing implementation. Rather than "add random delays to the chase behavior," we prompted: "The creature should feel believable rather than optimal. Sometimes it should pause as if listening. Sometimes it should search areas the player already left. The player should never feel completely certain about where the creature will go next."
 
-    self.model = model
-    self.humanoid = model:FindFirstChildOfClass("Humanoid")
-    self.rootPart = model:FindFirstChild("HumanoidRootPart")
+This prompt produces behavior variations that serve the horror goal rather than arbitrary randomness. The AI understands that uncertainty creates tension and generates appropriate variation.
 
-    self.state = "idle"
-    self.target = nil
-    self.lastKnownPosition = nil
-    self.alertLevel = 0  -- 0 = unaware, 1 = suspicious, 2 = hunting
+Detection systems deserve careful attention because they define the core loop of gameplay.
 
-    self.config = {
-        detectionRadius = 50,
-        chaseSpeed = 18,
-        patrolSpeed = 8,
-        attackRange = 5,
-        loseTargetTime = 10,
-    }
+In most horror games, players alternate between two modes: exploring when safe, avoiding when threatened. The transition between modes—the moment the creature detects you—carries enormous emotional weight. If detection feels unfair, players become frustrated. If detection feels too avoidable, tension dissipates.
 
-    return self
-end
+We found that layered detection created the best player experience. Sight detection works as you'd expect—if the creature can see you, it knows where you are. But sight alone means safety exists anywhere out of view, which undercuts horror's fundamental uncertainty about what lurks unseen.
 
-function CreatureAI:update(dt)
-    self:perceive()
-    self:decide()
-    self:act(dt)
-end
-
-return CreatureAI
-```
-
-## Detection Systems
-
-Players should be detectable through multiple senses. This creates interesting gameplay—they can hide from sight but still be heard.
-
-### Line of Sight
+Sound detection adds the crucial dimension. Players making noise—running, opening doors, interacting with objects—create detection opportunities even when hidden from sight. This creates meaningful choices. You can move faster but risk detection, or move slowly and carefully but spend more time in dangerous areas.
 
-```lua
-function CreatureAI:canSee(target)
-    local targetRoot = target.Character and target.Character:FindFirstChild("HumanoidRootPart")
-    if not targetRoot then return false end
-
-    local origin = self.rootPart.Position + Vector3.new(0, 2, 0)  -- Eye height
-    local direction = (targetRoot.Position - origin)
-    local distance = direction.Magnitude
-
-    -- Too far?
-    if distance > self.config.detectionRadius then
-        return false
-    end
-
-    -- Raycast for obstacles
-    local rayParams = RaycastParams.new()
-    rayParams.FilterDescendantsInstances = {self.model}
-    rayParams.FilterType = Enum.RaycastFilterType.Exclude
-
-    local result = workspace:Raycast(origin, direction, rayParams)
-
-    if result then
-        -- Hit something - is it the target?
-        local hitPart = result.Instance
-        return hitPart:IsDescendantOf(target.Character)
-    end
-
-    return true  -- Nothing in the way
-end
-```
-
-### Sound Detection
-
-Players making noise should attract attention:
-
-```lua
-function CreatureAI:canHear(target)
-    local targetRoot = target.Character and target.Character:FindFirstChild("HumanoidRootPart")
-    if not targetRoot then return false end
-
-    local distance = (targetRoot.Position - self.rootPart.Position).Magnitude
-    local humanoid = target.Character:FindFirstChildOfClass("Humanoid")
-
-    if not humanoid then return false end
-
-    -- Calculate noise level based on movement
-    local noiseLevel = 0
-    local velocity = targetRoot.AssemblyLinearVelocity.Magnitude
-
-    if velocity > 20 then
-        noiseLevel = 3  -- Running
-    elseif velocity > 5 then
-        noiseLevel = 1  -- Walking
-    else
-        noiseLevel = 0  -- Standing still
-    end
-
-    -- Noise travels further in quiet environments
-    local hearingRange = noiseLevel * 30
-
-    return distance <= hearingRange
-end
-```
-
-### Combined Perception
-
-```lua
-function CreatureAI:perceive()
-    local closestTarget = nil
-    local closestDistance = math.huge
-
-    for _, player in ipairs(Players:GetPlayers()) do
-        if self:canSee(player) or self:canHear(player) then
-            local distance = self:getDistanceToPlayer(player)
-            if distance < closestDistance then
-                closestTarget = player
-                closestDistance = distance
-            end
-        end
-    end
-
-    if closestTarget then
-        self.target = closestTarget
-        self.lastKnownPosition = closestTarget.Character.HumanoidRootPart.Position
-        self.alertLevel = 2
-        self.lastSeenTime = tick()
-    elseif self.target and (tick() - self.lastSeenTime) > self.config.loseTargetTime then
-        -- Lost target for too long
-        self.target = nil
-        self.alertLevel = 1  -- Still suspicious
-    end
-end
-```
-
-## Behavior States
-
-Use a state machine to organize creature behaviors:
-
-```lua
-local STATES = {
-    idle = "idle",
-    patrol = "patrol",
-    investigate = "investigate",
-    chase = "chase",
-    attack = "attack",
-    search = "search",
-}
-
-function CreatureAI:decide()
-    if self.alertLevel == 0 then
-        self.state = STATES.patrol
-    elseif self.alertLevel == 1 then
-        self.state = STATES.investigate
-    elseif self.alertLevel == 2 then
-        if self:getDistanceToTarget() < self.config.attackRange then
-            self.state = STATES.attack
-        else
-            self.state = STATES.chase
-        end
-    end
-end
-
-function CreatureAI:act(dt)
-    if self.state == STATES.idle then
-        self:doIdle()
-    elseif self.state == STATES.patrol then
-        self:doPatrol()
-    elseif self.state == STATES.investigate then
-        self:doInvestigate()
-    elseif self.state == STATES.chase then
-        self:doChase()
-    elseif self.state == STATES.attack then
-        self:doAttack()
-    elseif self.state == STATES.search then
-        self:doSearch()
-    end
-end
-```
-
-## Pathfinding
-
-Roblox provides PathfindingService for navigation:
-
-```lua
-function CreatureAI:moveToPosition(targetPosition)
-    local path = PathfindingService:CreatePath({
-        AgentRadius = 2,
-        AgentHeight = 5,
-        AgentCanJump = true,
-        AgentCanClimb = false,
-    })
-
-    local success, errorMessage = pcall(function()
-        path:ComputeAsync(self.rootPart.Position, targetPosition)
-    end)
-
-    if success and path.Status == Enum.PathStatus.Success then
-        local waypoints = path:GetWaypoints()
-
-        for _, waypoint in ipairs(waypoints) do
-            self.humanoid:MoveTo(waypoint.Position)
-            self.humanoid.MoveToFinished:Wait()
-
-            -- Check if we should stop (target moved, etc.)
-            if self:shouldAbortPath() then
-                break
-            end
-        end
-    else
-        -- Pathfinding failed - move directly (may get stuck)
-        self.humanoid:MoveTo(targetPosition)
-    end
-end
-
-function CreatureAI:doChase()
-    if not self.target then return end
-
-    local targetPosition = self.target.Character and
-        self.target.Character:FindFirstChild("HumanoidRootPart") and
-        self.target.Character.HumanoidRootPart.Position
-
-    if targetPosition then
-        self.humanoid.WalkSpeed = self.config.chaseSpeed
-        self:moveToPosition(targetPosition)
-    end
-end
-```
-
-## Patrol Behavior
-
-When not hunting, creatures should patrol to seem alive:
-
-```lua
-function CreatureAI:setupPatrolPoints(points)
-    self.patrolPoints = points
-    self.currentPatrolIndex = 1
-end
-
-function CreatureAI:doPatrol()
-    if not self.patrolPoints or #self.patrolPoints == 0 then
-        self:doIdle()
-        return
-    end
-
-    self.humanoid.WalkSpeed = self.config.patrolSpeed
-    local targetPoint = self.patrolPoints[self.currentPatrolIndex]
-
-    self:moveToPosition(targetPoint)
-
-    -- Check if we reached the point
-    local distance = (self.rootPart.Position - targetPoint).Magnitude
-    if distance < 3 then
-        -- Wait at patrol point
-        task.wait(2 + math.random() * 3)
-
-        -- Move to next point
-        self.currentPatrolIndex = (self.currentPatrolIndex % #self.patrolPoints) + 1
-    end
-end
-```
-
-## Investigation Behavior
-
-When suspicious but not certain, creatures should investigate:
-
-```lua
-function CreatureAI:doInvestigate()
-    if not self.lastKnownPosition then
-        self.alertLevel = 0
-        return
-    end
-
-    self.humanoid.WalkSpeed = self.config.patrolSpeed * 1.2
-
-    self:moveToPosition(self.lastKnownPosition)
-
-    local distance = (self.rootPart.Position - self.lastKnownPosition).Magnitude
-    if distance < 5 then
-        -- Reached investigation point, look around
-        self:lookAround()
-
-        -- If nothing found, decrease alert level
-        if not self.target then
-            self.alertLevel = 0
-            self.lastKnownPosition = nil
-        end
-    end
-end
-
-function CreatureAI:lookAround()
-    -- Turn in place to scan area
-    for i = 1, 4 do
-        self.rootPart.CFrame = self.rootPart.CFrame * CFrame.Angles(0, math.rad(90), 0)
-        task.wait(1)
-
-        -- Check for players during each turn
-        self:perceive()
-        if self.alertLevel == 2 then
-            return  -- Found someone!
-        end
-    end
-end
-```
-
-## Making It Scary
-
-Technical AI is necessary but not sufficient. The creature must *feel* dangerous:
-
-### Telegraphing Presence
-
-Let players know danger is near before they see it:
-
-```lua
-function CreatureAI:emitPresence()
-    -- Play ambient sounds when creature is nearby
-    local nearbyPlayers = self:getPlayersInRadius(100)
-
-    for _, player in ipairs(nearbyPlayers) do
-        local distance = self:getDistanceToPlayer(player)
-        local intensity = 1 - (distance / 100)
-
-        -- Fire client event to play sounds/effects
-        game.ReplicatedStorage.Events.CreatureNearby:FireClient(player, intensity)
-    end
-end
-```
-
-### Unpredictability
-
-Don't be perfectly optimal—that's boring:
-
-```lua
-function CreatureAI:doChase()
-    if not self.target then return end
-
-    -- Occasionally lose track
-    if math.random() < 0.1 then
-        self.alertLevel = 1
-        task.wait(2 + math.random() * 3)
-        return
-    end
-
-    -- Sometimes take suboptimal routes
-    local targetPosition = self.lastKnownPosition
-    if math.random() < 0.3 then
-        -- Add randomness to target
-        targetPosition = targetPosition + Vector3.new(
-            (math.random() - 0.5) * 20,
-            0,
-            (math.random() - 0.5) * 20
-        )
-    end
-
-    self.humanoid.WalkSpeed = self.config.chaseSpeed
-    self:moveToPosition(targetPosition)
-end
-```
-
-### The Peek
-
-One of horror's most effective tools—let players see the creature watching them:
-
-```lua
-function CreatureAI:tryPeek(targetPlayer)
-    -- Find a corner or doorway near the player
-    local peekSpots = self:findPeekSpots(targetPlayer)
-
-    if #peekSpots > 0 then
-        local spot = peekSpots[math.random(#peekSpots)]
-        self:moveToPosition(spot)
-        self:lookAt(targetPlayer.Character.HumanoidRootPart.Position)
-
-        -- Stand there ominously
-        task.wait(3 + math.random() * 5)
-
-        -- Then disappear
-        self:moveToPosition(self:findHidingSpot())
-    end
-end
-```
-
-## Vibe Coding Creature AI
-
-When working with AI on creature behavior:
-
-> "Create a creature that patrols between waypoints but investigates loud sounds within 50 studs"
-
-> "Add a behavior where the creature sometimes stops and listens, scanning the area"
-
-> "Make the chase feel tense—the creature should be fast but occasionally lose the player"
-
-Let AI handle the boilerplate (pathfinding setup, state machine structure) while you focus on the behaviors that make your creature unique.
-
-## Balancing Challenge
-
-Horror requires helplessness, but not hopelessness:
-
-- **The creature should catch you sometimes** - Near misses lose tension if they always work
-- **Give tells before attacks** - Sound cues, visual warnings
-- **Provide escape options** - Hiding spots, diversions, sprint
-- **Vary the threat** - Sometimes the creature is close, sometimes it's background dread
-
-## Next Steps
-
-We have atmosphere and a threat. Now players need ways to survive. In the next chapter, we'll build the resource management and survival mechanics that give players agency in our horror world.
+The technical implementation of sound detection involves calculating player noise levels based on actions and checking whether those noises exceed thresholds at the creature's location. AI assistants handle this calculation easily. The design question is how generous or punishing to make the system.
+
+We discovered that transparency helped significantly. When players understand how detection works, they feel agency over their fate. When a creature hears them, they know why—they chose to run. When detection feels random or inexplicable, horror becomes frustration.
+
+One prompt that produced excellent results: "Create a detection system where players can intuit the rules through play. Running should clearly be louder than walking. Environmental sounds should mask player sounds when present. Give visual or audio feedback when the creature is listening or suspicious, so players can adjust their behavior."
+
+This prompt generates detection with clarity. Players learn through experience what actions are safe and what risks detection. The horror comes from choosing to take risks, not from arbitrary punishment.
+
+The creature's response to detection matters as much as detection itself.
+
+Immediate chase upon any detection produces exhausting gameplay. Players spend entire sessions running, which quickly loses tension. But slow response to detection makes the creature feel stupid, which undercuts fear.
+
+The technique we settled on uses what we called alert escalation. The creature has multiple awareness states—unaware, suspicious, alert, hunting. Detection triggers transition between states rather than immediately starting chase. A single noise makes the creature suspicious. It pauses, perhaps turns toward the sound, but doesn't immediately pursue. Continued noise or visual contact escalates to alert, where the creature actively investigates. Confirmed player detection escalates to hunting, the full chase state.
+
+This escalation creates narrative moments. Players hear the creature pause. They freeze, hoping it didn't notice. The creature moves toward their position. They have seconds to decide—hide or flee? These moments are horror gold, and they emerge from the structure of the detection system rather than scripted sequences.
+
+Communicating alert escalation to AI assistants requires describing the pacing intent. "The creature shouldn't immediately chase upon detecting the player. There should be a progression: first suspicion, where it pauses and looks around; then investigation, where it moves toward the last known location; then pursuit if it confirms player presence. Each stage should give players a brief window to respond."
+
+Pathfinding presents its own challenges in horror contexts.
+
+Roblox provides PathfindingService, which calculates routes through navigable spaces. AI assistants integrate this service readily. But raw pathfinding optimizes for shortest routes, which again creates predictability. Players learn which paths the creature never takes and feel safe there.
+
+We experimented with what we called territorial awareness—the creature develops familiarity with its environment and preferences about where to patrol. Certain rooms feel more like "its space." Its presence there feels natural in a way that feels like hunting elsewhere. This creates geography of danger that players can learn and use strategically.
+
+Implementation involves giving the creature preferred patrol routes and having it gravitate toward those routes between active pursuits. When searching for a lost player, it might check its familiar areas first. This produces creature behavior that feels like a presence rather than an algorithm.
+
+The most effective horror technique we discovered was presence without pursuit.
+
+Game designers call this the "glimpse"—the moment when players see the creature but the creature doesn't see them. Or the moment when players realize the creature is close but facing away, and they might sneak past. These moments create intense tension because they give players time to feel afraid without immediately forcing action.
+
+Building glimpse moments requires the creature to sometimes move through spaces without detecting players who are carefully hidden or lucky. It requires the creature to occasionally stand still, letting players observe it. It requires moments where the creature is present but not hunting.
+
+We prompted for this directly: "The creature should sometimes stand at the end of a hallway, not moving, as if waiting. It should sometimes move through an area while players hide nearby, passing without detecting them if they remain still and silent. Players should have opportunities to watch the creature without being watched back."
+
+The AI generates behavior that includes pause states and detection thresholds that allow careful players to observe. These moments become the horror memories players share—the time they saw it standing at the end of the corridor, the time they hid under a desk while it walked past.
+
+Balancing creature lethality requires understanding what you want death to mean.
+
+If the creature kills instantly upon contact, encounters are binary—escape or die. This can work but creates a particular pacing where most gameplay involves avoiding encounters entirely. Doom becomes background noise because any encounter ends the same way.
+
+If the creature damages but doesn't instantly kill, encounters become more complex. Players might fight back, might survive wounded, might make desperate decisions. Health becomes another resource to manage.
+
+The choice depends on your horror goals. We found that for first-time players, forgiving encounters help them learn systems without constant restarts. For experienced players, punishing encounters maintain tension that familiarity otherwise erodes. Some games adjust difficulty dynamically, becoming more forgiving when players are struggling and more punishing when players are succeeding.
+
+Vibe coding creature AI benefits from iterative conversation.
+
+The first implementation will be functional but probably not scary. It will chase effectively but predictably. The prompts that follow tune toward fear: "The creature feels too easy to predict—what variations would make it less readable?" Or: "Players are escaping too consistently—what changes would increase catch rate without feeling unfair?" Or: "The creature never feels truly present—what behaviors would make it feel like it inhabits this space?"
+
+These iterative prompts refine behavior toward horror rather than just functionality. Each adjustment based on playtesting brings the creature closer to genuinely threatening.
+
+We discovered that creature AI connects to everything else we'd built. The atmosphere systems respond to creature proximity, so the lighting darkens and sounds shift when it's near—reinforcing the creature's presence before players see it. The survival mechanics create stakes for encounters—wounded players move slower, running drains stamina needed for escape. The environment provides hiding spots and escape routes that make the creature's detection meaningful.
+
+Horror games work as integrated systems. The creature gains menace from its context. A creature that hunts through brightly lit, safe-feeling spaces seems almost silly. A creature that emerges from fog, that causes lights to flicker as it approaches, that appears suddenly in spaces you thought were safe—that creature terrifies.
+
+The next chapter covers survival mechanics—the systems that give players agency within the horror. Health, stamina, resources. These mechanics determine what players can do when the creature appears, which determines how encounters feel. The creature matters because avoiding it matters. Survival mechanics are what make avoidance meaningful.
