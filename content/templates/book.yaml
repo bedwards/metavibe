@@ -1,0 +1,75 @@
+# Book Template
+# Copy to content/books/{slug}/book.yaml and fill in
+
+title: "How to Vibe Code a [Type of System]"
+slug: your-book-slug
+subtitle: "A practical guide to building [X] with AI-assisted development"
+status: draft  # draft | review | published
+version: "0.1.0"
+
+author:
+  name: "metavibe"
+  url: "https://github.com/bedwards/metavibe"
+
+description: |
+  [2-3 sentence description of what the reader will learn
+  and what they'll be able to build after reading]
+
+tags:
+  - tag1
+  - tag2
+  - tag3
+
+audience:
+  - "[Primary audience - who is this for?]"
+  - "[Secondary audience]"
+
+prerequisites:
+  - "Basic TypeScript/JavaScript knowledge"
+  - "[Other prerequisites]"
+
+outline:
+  - id: introduction
+    title: "Introduction"
+    file: "00-introduction.md"
+    status: draft
+    summary: "Why vibe code this type of system? What makes it different?"
+
+  - id: chapter-1
+    title: "[Chapter 1 Title]"
+    file: "01-chapter-slug.md"
+    status: draft
+    sections:
+      - "[Section 1.1]"
+      - "[Section 1.2]"
+      - "[Section 1.3]"
+
+  - id: chapter-2
+    title: "[Chapter 2 Title]"
+    file: "02-chapter-slug.md"
+    status: draft
+    sections:
+      - "[Section 2.1]"
+      - "[Section 2.2]"
+
+  - id: conclusion
+    title: "Conclusion and Next Steps"
+    file: "99-conclusion.md"
+    status: draft
+    summary: "Recap and where to go from here"
+
+publishing:
+  github_pages: true
+  gumroad:
+    enabled: false
+    price: 0  # 0 for free, otherwise price in cents (e.g., 999 = $9.99)
+    product_id: null
+  kobo:
+    enabled: false
+    isbn: null
+
+# Track which vibe coding sessions contributed to this book
+sources: []
+  # - session_id: "abc123"
+  #   project: "/path/to/project"
+  #   topics: ["topic1", "topic2"]

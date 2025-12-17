@@ -1,0 +1,130 @@
+title: "How to Vibe Code a Survival Horror Game in Roblox"
+slug: survival-horror-roblox
+subtitle: "Building atmospheric horror experiences with AI-assisted Luau development"
+status: draft
+version: "0.1.0"
+
+author:
+  name: "metavibe"
+  url: "https://github.com/bedwards/metavibe"
+
+description: |
+  A practical guide to building survival horror games in Roblox using
+  vibe coding techniques. Learn how to create tense atmospheres, creature AI,
+  survival mechanics, and multiplayer horror experiences with AI assistance.
+
+tags:
+  - roblox
+  - game-development
+  - survival-horror
+  - luau
+  - rojo
+
+audience:
+  - Roblox developers wanting to build horror games
+  - Game designers exploring AI-assisted development
+  - Lua/Luau programmers new to Roblox
+
+prerequisites:
+  - Basic Luau/Lua programming knowledge
+  - Roblox Studio installed
+  - Rojo CLI for project management
+  - An AI coding assistant (Claude Code, Cursor, etc.)
+
+outline:
+  - id: introduction
+    title: "Introduction"
+    file: "00-introduction.md"
+    status: draft
+    summary: "Why survival horror? Why Roblox? Why vibe code it?"
+
+  - id: project-setup
+    title: "Project Setup with Rojo"
+    file: "01-project-setup.md"
+    status: draft
+    sections:
+      - "Installing Rojo and dependencies"
+      - "Project structure for games"
+      - "Client-server architecture in Roblox"
+      - "Source control with Git"
+
+  - id: atmosphere
+    title: "Creating Atmosphere"
+    file: "02-atmosphere.md"
+    status: draft
+    sections:
+      - "Lighting for horror (fog, darkness, ambient)"
+      - "Day/night cycles"
+      - "Sound design and music systems"
+      - "Environmental storytelling"
+
+  - id: creature-ai
+    title: "Creature AI and Threats"
+    file: "03-creature-ai.md"
+    status: draft
+    sections:
+      - "Pathfinding and chase behavior"
+      - "Detection systems (sight, sound)"
+      - "Creature states and behavior trees"
+      - "Balancing challenge and fairness"
+
+  - id: survival-mechanics
+    title: "Survival Mechanics"
+    file: "04-survival-mechanics.md"
+    status: draft
+    sections:
+      - "Health and stamina systems"
+      - "Resource gathering and inventory"
+      - "Crafting and alchemy"
+      - "Save points and respawning"
+
+  - id: world-building
+    title: "World Building"
+    file: "05-world-building.md"
+    status: draft
+    sections:
+      - "Terrain generation"
+      - "Level design for horror"
+      - "Hidden areas and secrets"
+      - "Procedural elements"
+
+  - id: multiplayer
+    title: "Multiplayer Horror"
+    file: "06-multiplayer.md"
+    status: draft
+    sections:
+      - "Co-op survival mechanics"
+      - "Shared vs individual scares"
+      - "Network optimization"
+      - "Anti-cheat considerations"
+
+  - id: polish
+    title: "Polish and Release"
+    file: "07-polish.md"
+    status: draft
+    sections:
+      - "Testing and playtesting"
+      - "Performance optimization"
+      - "Monetization strategies"
+      - "Community building"
+
+  - id: conclusion
+    title: "Conclusion"
+    file: "99-conclusion.md"
+    status: draft
+    summary: "What we built and where to go next"
+
+publishing:
+  github_pages: true
+  gumroad:
+    enabled: true
+    price: 0
+    product_id: null
+  kobo:
+    enabled: false
+    isbn: null
+
+sources:
+  - session_id: "4dadcb47-b370-4d0c-80e6-f5885f02dde2"
+    project: "/Users/bedwards/smash-showdown"
+    topics: ["roblox", "game", "survival", "horror", "luau"]

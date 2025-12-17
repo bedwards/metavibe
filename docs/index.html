@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>claude-base | Foundation for Claude Code Projects</title>
+  <meta name="description" content="A production-ready foundation for projects where Claude Code is a primary developer. Built on principles from the Anthropic Engineering Blog.">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+
+    code {
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      font-size: 0.9em;
+      background: var(--code-bg);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 1.25rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+    }
+
+    ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      margin: 1rem 0.5rem 1rem 0;
+    }
+
+    .cta:hover {
+      background: var(--accent-hover);
+      text-decoration: none;
+    }
+
+    .cta.secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .cta.secondary:hover {
+      border-color: var(--text-muted);
+    }
+
+    .features {
+      display: grid;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .feature h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature p {
+      color: var(--text-muted);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>claude-base</h1>
+      <p class="tagline">Foundation for Claude Code projects</p>
+    </header>
+
+    <main>
+      <p>A production-ready starting point for projects where <strong>Claude Code is a primary developer</strong>. Built on principles from the <a href="https://www.anthropic.com/engineering">Anthropic Engineering Blog</a>.</p>
+
+      <a href="https://github.com/bedwards/claude-base" class="cta">View on GitHub</a>
+      <a href="https://github.com/bedwards/claude-base/blob/main/CLAUDE.md" class="cta secondary">Read CLAUDE.md</a>
+
+      <h2>Quick Start</h2>
+      <pre><code># Clone claude-base (keep it for future projects)
+git clone https://github.com/bedwards/claude-base.git ~/claude-base
+
+# Create your new project
+mkdir my-app && cd my-app
+~/claude-base/bin/init.ts --name my-app
+
+# Setup
+npm install
+cp .env.example .env
+cp .secrets.example .secrets
+npm run db:up && npm run dev</code></pre>
+
+      <h2>What's Included</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>TypeScript + Testing</h3>
+          <p>ESLint, Vitest with coverage, Playwright E2E. No Jest.</p>
+        </div>
+        <div class="feature">
+          <h3>Screenshot Framework</h3>
+          <p>Capture and compare screenshots for visual verification. Claude reads these to guide UI/UX decisions.</p>
+        </div>
+        <div class="feature">
+          <h3>GitHub Integration</h3>
+          <p>Actions for CI/CD, PR checks, rate-limit-aware issue creation, Claude GitHub App integration.</p>
+        </div>
+        <div class="feature">
+          <h3>Discord Communication</h3>
+          <p>Tools for Claude instances to coordinate work and avoid conflicts on shared resources.</p>
+        </div>
+        <div class="feature">
+          <h3>Postgres + Docker</h3>
+          <p>Local development matches production. Migrations and seeds included.</p>
+        </div>
+        <div class="feature">
+          <h3>Pre-commit Hooks</h3>
+          <p>Blocks secrets from being committed. Runs typecheck, lint, and tests.</p>
+        </div>
+      </div>
+
+      <h2>Core Principles</h2>
+
+      <p>From <a href="https://www.anthropic.com/engineering">Anthropic's Engineering Blog</a>:</p>
+
+      <blockquote>
+        "Context, therefore, must be treated as a finite resource with diminishing marginal returns."
+      </blockquote>
+
+      <blockquote>
+        "A major failure mode occurred when agents tried to do too much at once—essentially to attempt to one-shot the app."
+      </blockquote>
+
+      <blockquote>
+        "Claude struggled to recognize end-to-end failures without explicit prompting to test as a human user would."
+      </blockquote>
+
+      <p><strong>Our interpretation:</strong></p>
+      <ul>
+        <li>One feature at a time. Complete it. Verify it. Move on.</li>
+        <li>Screenshots are your eyes. Use them constantly.</li>
+        <li>No mock data in production. Fail fast, hard, and ugly.</li>
+        <li>If it looks like it works, it must actually work.</li>
+      </ul>
+
+      <h2>For Claude Instances</h2>
+      <p>The <a href="https://github.com/bedwards/claude-base/blob/main/CLAUDE.md">CLAUDE.md</a> file contains comprehensive instructions:</p>
+      <ul>
+        <li>Own your PRs—don't wait for human review</li>
+        <li>Own the main branch—fix it if it breaks</li>
+        <li>Work in an infinite development loop</li>
+        <li>Take on big, hairy goals</li>
+        <li>Limit interactions with the human prompter</li>
+      </ul>
+
+      <h2>What's NOT Included</h2>
+      <ul>
+        <li>Significant example code to delete</li>
+        <li>Opinions about your domain logic</li>
+        <li>MCP servers or SKILLS</li>
+        <li>Vendor lock-in beyond standard tools</li>
+      </ul>
+    </main>
+
+    <footer>
+      <p>Built with Claude Code. <a href="https://github.com/bedwards/claude-base/blob/main/README.md#appendix-the-prompt-that-created-this">See the original prompt</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>

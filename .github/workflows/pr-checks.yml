@@ -1,0 +1,46 @@
+name: PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  pr-validation:
+    name: PR Validation
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Check PR title format
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          # Allow common prefixes: fix:, feat:, docs:, refactor:, test:, chore:
+          if ! echo "$PR_TITLE" | grep -qE '^(fix|feat|docs|refactor|test|chore|build|ci|perf|style)(\(.+\))?: .+'; then
+            echo "PR title should follow conventional commits format:"
+            echo "  type(scope): description"
+            echo "  e.g., 'feat(auth): add login page'"
+            echo ""
+            echo "Types: fix, feat, docs, refactor, test, chore, build, ci, perf, style"
+            exit 1
+          fi
+
+      - name: Check for secrets in diff
+        run: |
+          SECRETS_PATTERNS='(ANTHROPIC_API_KEY|sk-[a-zA-Z0-9]+|DATABASE_URL=postgres|JWT_SECRET|BOT_TOKEN|PRIVATE_KEY)'
+          if git diff origin/main...HEAD | grep -E "$SECRETS_PATTERNS"; then
+            echo "❌ Possible secrets detected in PR diff!"
+            exit 1
+          fi
+
+      - name: Check branch is up to date
+        run: |
+          git fetch origin main
+          BEHIND=$(git rev-list --count HEAD..origin/main)
+          if [ "$BEHIND" -gt 10 ]; then
+            echo "Branch is $BEHIND commits behind main. Please rebase."
+            exit 1
+          fi
+

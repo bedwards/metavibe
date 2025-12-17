@@ -1,0 +1,103 @@
+title: "How to Vibe Code How-to Books"
+slug: vibe-coding-how-to-books
+subtitle: "Using AI to transform coding sessions into technical content"
+status: draft
+version: "0.1.0"
+
+author:
+  name: "metavibe"
+  url: "https://github.com/bedwards/metavibe"
+
+description: |
+  A meta-guide to creating technical how-to content using vibe coding.
+  Learn how to capture knowledge from AI-assisted development sessions
+  and transform it into books, essays, and tutorials that help others.
+
+tags:
+  - writing
+  - content-generation
+  - meta
+  - documentation
+
+audience:
+  - Developers who want to share their knowledge
+  - Technical writers exploring AI-assisted workflows
+  - Teams building internal documentation
+
+prerequisites:
+  - Familiarity with vibe coding / AI-assisted development
+  - Basic understanding of markdown
+  - A Claude Code setup (or similar AI coding tool)
+
+outline:
+  - id: introduction
+    title: "Introduction"
+    file: "00-introduction.md"
+    status: draft
+    summary: "Why write how-to content? Why use AI to do it?"
+
+  - id: capturing-sessions
+    title: "Capturing Knowledge from Coding Sessions"
+    file: "01-capturing-sessions.md"
+    status: draft
+    sections:
+      - "Understanding session logs"
+      - "Identifying generalizable patterns"
+      - "From specific to general"
+
+  - id: content-structure
+    title: "Structuring Technical Content"
+    file: "02-content-structure.md"
+    status: draft
+    sections:
+      - "Books vs essays vs tutorials"
+      - "Outlining before writing"
+      - "The YAML metadata system"
+
+  - id: writing-with-ai
+    title: "Writing with AI Assistance"
+    file: "03-writing-with-ai.md"
+    status: draft
+    sections:
+      - "Prompting for technical writing"
+      - "Iterating on drafts"
+      - "Maintaining voice and accuracy"
+
+  - id: publishing
+    title: "Publishing to Multiple Platforms"
+    file: "04-publishing.md"
+    status: draft
+    sections:
+      - "GitHub Pages for free distribution"
+      - "Gumroad for paid content"
+      - "Kobo Writing Life for ebooks"
+
+  - id: automation
+    title: "Automating the Pipeline"
+    file: "05-automation.md"
+    status: draft
+    sections:
+      - "Watching session logs"
+      - "Auto-generating drafts"
+      - "CI/CD for content"
+
+  - id: conclusion
+    title: "Conclusion"
+    file: "99-conclusion.md"
+    status: draft
+    summary: "Building a sustainable content practice"
+
+publishing:
+  github_pages: true
+  gumroad:
+    enabled: true
+    price: 0
+    product_id: null
+  kobo:
+    enabled: false
+    isbn: null
+
+sources:
+  - session_id: "d3d3d613-5be5-42c6-a9bf-67b06435ef53"
+    project: "/Users/bedwards/metavibe"
+    topics: ["content-generation", "automation", "typescript"]

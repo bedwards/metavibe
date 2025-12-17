@@ -1,0 +1,4 @@
+# This directory stores screenshots
+# baseline/ - Reference screenshots for comparison
+# current/ - Latest captured screenshots
+# diff/ - Visual diff outputs
