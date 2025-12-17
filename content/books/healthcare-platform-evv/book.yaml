@@ -1,0 +1,126 @@
+title: "How to Vibe Code a Healthcare Platform with EVV"
+slug: healthcare-platform-evv
+subtitle: "Building home healthcare coordination software with AI-assisted TypeScript development"
+status: complete
+version: "1.0.0"
+
+author:
+  name: "metavibe"
+  url: "https://github.com/bedwards/metavibe"
+
+description: |
+  A practical guide to building home healthcare coordination software using
+  vibe coding techniques. Learn how to create care plans, schedule caregivers,
+  implement Electronic Visit Verification (EVV), manage billing, and ensure
+  compliance with healthcare regulations using AI assistance.
+
+tags:
+  - healthcare
+  - evv
+  - typescript
+  - home-care
+  - compliance
+  - ai-powered
+
+audience:
+  - Healthcare software developers
+  - Home care agency operators building custom software
+  - TypeScript developers entering healthcare tech
+  - Entrepreneurs building healthcare startups
+
+prerequisites:
+  - TypeScript and Node.js proficiency
+  - Basic understanding of REST APIs
+  - Familiarity with relational databases
+  - An AI coding assistant (Claude Code, Cursor, etc.)
+
+outline:
+  - id: introduction
+    title: "Introduction"
+    file: "00-introduction.md"
+    status: complete
+    summary: "Why healthcare software? Why EVV? Why vibe code it?"
+
+  - id: project-setup
+    title: "Project Setup and Architecture"
+    file: "01-project-setup.md"
+    status: complete
+    sections:
+      - "Monorepo structure for healthcare apps"
+      - "TypeScript configuration for safety"
+      - "Database design for healthcare data"
+      - "HIPAA considerations from day one"
+
+  - id: care-plans
+    title: "Care Plans and Tasks"
+    file: "02-care-plans.md"
+    status: complete
+    sections:
+      - "Modeling care plans in a database"
+      - "Task management and scheduling"
+      - "Goal tracking and outcomes"
+      - "AI-powered care plan generation"
+
+  - id: caregiver-management
+    title: "Caregiver Management and Matching"
+    file: "03-caregiver-management.md"
+    status: complete
+    sections:
+      - "Caregiver profiles and credentials"
+      - "Availability and scheduling"
+      - "AI-powered caregiver-patient matching"
+      - "Shift management and open shifts"
+
+  - id: evv
+    title: "Electronic Visit Verification"
+    file: "04-evv.md"
+    status: complete
+    sections:
+      - "EVV compliance requirements"
+      - "Clock-in/clock-out systems"
+      - "GPS verification"
+      - "Visit documentation and signatures"
+
+  - id: billing
+    title: "Billing and Invoicing"
+    file: "05-billing.md"
+    status: complete
+    sections:
+      - "Healthcare billing models"
+      - "Invoice generation"
+      - "Payment tracking"
+      - "Payer integrations"
+
+  - id: compliance
+    title: "Compliance and Reporting"
+    file: "06-compliance.md"
+    status: complete
+    sections:
+      - "Regulatory requirements"
+      - "Automated compliance checking"
+      - "Report generation"
+      - "Audit trails"
+
+  - id: ai-features
+    title: "AI-Powered Features"
+    file: "07-ai-features.md"
+    status: complete
+    sections:
+      - "Natural language care plan generation"
+      - "Churn prediction"
+      - "Revenue forecasting"
+      - "Smart alerts and recommendations"
+
+publishing:
+  github_pages: true
+  gumroad:
+    enabled: true
+    price: 0
+    product_id: null
+  kobo:
+    enabled: false
+    isbn: null
+
+sources:
+  - project: "/Users/bedwards/folk-care-0"
+    topics: ["healthcare", "evv", "care-plans", "caregivers", "billing", "compliance"]
