@@ -108,6 +108,21 @@ outline:
       - "Performance optimization"
       - "Publishing to Roblox"
 
+  - id: advanced-patterns
+    title: "Lessons Written in Blood"
+    file: "08-advanced-patterns.md"
+    status: complete
+    sections:
+      - "Rojo path structure traps"
+      - "Luau is not .NET"
+      - "Ambiguous syntax and semicolons"
+      - "Region3 grid alignment"
+      - "RemoteEvent throttling"
+      - "Roblox audio privacy"
+      - "VehicleSeat for mounts"
+      - "Single source of truth for terrain"
+      - "Heightmap architecture"
+
 publishing:
   github_pages: true
   gumroad:
