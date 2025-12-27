@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>End Matter - Change Without Notice</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --link: #0066cc;
+      --border: #e0e0e0;
+      --subtle: #666;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --text: #e0e0e0;
+        --link: #6db3f2;
+        --border: #333;
+        --subtle: #999;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 38rem;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    h1 { font-size: 1.75rem; margin: 2rem 0 1rem; font-weight: normal; }
+    h2 { font-size: 1.25rem; margin: 2rem 0 1rem; font-weight: normal; }
+    h3 { font-size: 1rem; margin: 1.5rem 0 0.75rem; font-weight: normal; }
+    p { margin-bottom: 1rem; text-align: justify; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .chapter-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .chapter-nav a { color: var(--link); text-decoration: none; }
+    .chapter-nav a:hover { text-decoration: underline; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--subtle); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  
+  <nav class="chapter-nav">
+    <a href="chapter-14.html" class="prev">&larr; Previous</a>
+    <a href="index.html">Contents</a>
+    <span></span>
+  </nav>
+
+  <article>
+    <h1>End Matter</h1>
+
+<hr>
+
+<h2>About the Author</h2>
+
+<p>Brian Edwards is a software engineer and writer based in Waco, Texas. He builds things with generative AI agents.
+</p>
+
+<hr>
+
+<h2>How This Book Was Made</h2>
+
+<p>This novel was written in a single session with Claude Opus 4.5, Anthropic's generative AI model, on December 27, 2025. The following describes the exact process.
+</p>
+
+<h3>The Planning Phase</h3>
+
+<p>The human provided three planning documents:
+</p>
+
+<p><strong>taste.md</strong> - A research document defining the prose style. Two authors were studied: Franz Kafka for structural method, Karl Ove Knausgaard for sentence-level technique. The document contained specific, actionable instructions. For Kafka: climax in the opening sentence, limited perspective, world-building through exclusion, unresolvable conflict, bureaucracy as antagonist. For Knausgaard: flatness over elegance, embrace of cliche, loping sentences, mundane detail, speed through density, anti-Proust forward motion.
+</p>
+
+<p><strong>rough_ideas.md</strong> - A list of 326 page concepts. Each page required a distinct scenario. The human generated these ideas and provided them to the agent.
+</p>
+
+<p><strong>outline.md</strong> - An execution plan organizing the 326 pages into 14 chapters across 7 acts. Tables specified page ranges, themes, and writing instructions. The document included rules: transformation already complete at opening, establish world through what the protagonist doesn't know, present unresolvable demand, end incomplete.
+</p>
+
+<h3>The Writing Phase</h3>
+
+<p>The agent wrote one chapter at a time. Each chapter contained 15-26 pages. Each page ran 500-800 words. The agent followed the outline exactly, writing page by page, applying the style constraints from taste.md.
+</p>
+
+<p>The agent used a todo list to track progress. Items marked: "Write Chapter 1 (Pages 1-15)" then "Write Chapter 2 (Pages 16-30)" and so on through Chapter 14.
+</p>
+
+<p>Each page followed a structure:
+- Open with the situation already transformed
+- Establish the world through dialogue and description
+- Show the protagonist attempting to navigate the situation
+- End before resolution
+</p>
+
+<p>The agent did not deviate from the outline. The agent did not add commentary or meta-text. The agent wrote the pages in order, from 1 to 326.
+</p>
+
+<h3>The Editing Phase</h3>
+
+<p>After completing the 326 pages, the agent made a second pass. The editing focused on:
+</p>
+
+<p>- Tightening prose by 15-20%
+- Converting flowing sentences to fragments where appropriate
+- Removing redundant dialogue attributions
+- Strengthening opening lines to place the climax first
+- Varying sentence structure to reduce repetitive patterns
+- Adding references to the protagonist's accumulated memory across realities
+</p>
+
+<p>The agent read chapters from the beginning, middle, and end to identify patterns. Edits were made systematically: Chapter 1 first, then Chapters 2-4, then 5-7, then 8-10, then 11-14.
+</p>
+
+<h3>The Technical Details</h3>
+
+<p>- Model: Claude Opus 4.5 (claude-opus-4-5-20251101)
+- Interface: Claude Code CLI
+- Session length: Single continuous session
+- Output: 14 markdown files, approximately 180,000 words total
+- Time: Approximately 4 hours of agent execution
+</p>
+
+<h3>What the Human Did</h3>
+
+<p>The human:
+- Wrote the three planning documents
+- Provided the initial prompt
+- Monitored progress
+- Requested the editing pass
+- Requested this end matter and format conversion
+</p>
+
+<h3>What the Agent Did</h3>
+
+<p>The agent:
+- Read and interpreted the planning documents
+- Wrote 326 pages following the outline exactly
+- Tracked progress with a todo list
+- Made editing passes to tighten prose
+- Created front matter and end matter
+- Converted to multiple formats
+</p>
+
+<h3>Reproducibility</h3>
+
+<p>The same output would not be produced by running this process again. Generative AI produces different text on each run. However, the structure would be identical: 326 pages, 14 chapters, following the outline, applying the style constraints.
+</p>
+
+<p>The planning documents are available in the plan/ directory of this novel's source files.
+</p>
+
+<hr>
+
+<h2>Colophon</h2>
+
+<p>Set in the reader's default system font.
+</p>
+
+<p>Produced using Claude Code.
+</p>
+
+<p>First published December 27, 2025.
+</p>
+
+<hr>
+
+<p>Brian Edwards
+Waco, Texas
+December 2025
+</p>
+
+  </article>
+
+  
+  <nav class="chapter-nav">
+    <a href="chapter-14.html" class="prev">&larr; Previous</a>
+    <a href="index.html">Contents</a>
+    <span></span>
+  </nav>
+
+  <footer>
+    <p>Brian Edwards | Waco, Texas, USA | 2025-12-27</p>
+  </footer>
+</body>
+</html>

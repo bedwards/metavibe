@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>metavibe</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --link: #0066cc;
+      --border: #e0e0e0;
+      --subtle: #666;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --text: #e0e0e0;
+        --link: #6db3f2;
+        --border: #333;
+        --subtle: #999;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700; }
+    .tagline { color: var(--subtle); font-size: 1.125rem; margin-bottom: 3rem; }
+    .sections { display: grid; gap: 2rem; }
+    .section {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+    .section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .section h2 a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .section h2 a:hover {
+      color: var(--link);
+    }
+    .section p {
+      color: var(--subtle);
+      margin-bottom: 1rem;
+    }
+    .section .items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .section .items a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    .section .items a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--subtle);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>metavibe</h1>
+    <p class="tagline">Books, essays, and novels created with generative AI</p>
+  </header>
+
+  <main class="sections">
+    <section class="section">
+      <h2><a href="content/books/index.html">Available Books</a></h2>
+      <p>How-to guides for building software with AI assistance</p>
+      <div class="items">
+        <a href="content/books/survival-horror-roblox/index.html">How to Vibe Code a Survival Horror Game in Roblox</a>
+        <a href="content/books/healthcare-platform-evv/index.html">Healthcare Platform with EVV</a>
+        <a href="content/books/reading-library-tts/index.html">Reading Library with Text-to-Speech</a>
+        <a href="content/books/school-scheduling-ilp/index.html">School Scheduling with Integer Linear Programming</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><a href="content/essays/index.html">Essays</a></h2>
+      <p>Standalone pieces on vibe coding techniques and philosophy</p>
+      <div class="items">
+        <a href="content/essays/the-curators-manifesto.html">The Curator's Manifesto</a>
+        <a href="content/essays/luau-is-not-dotnet.html">Luau is Not .NET</a>
+        <a href="content/essays/fail-fast-hard-and-ugly.html">Fail Fast, Hard, and Ugly</a>
+        <a href="content/essays/owning-your-pull-requests.html">Owning Your Pull Requests</a>
+        <a href="content/essays/the-infinite-development-loop.html">The Infinite Development Loop</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><a href="novels/index.html">Novels</a></h2>
+      <p>Fiction created with generative AI agents</p>
+      <div class="items">
+        <a href="novels/Change_Without_Notice/website/index.html">Change Without Notice</a>
+        <span style="color: var(--subtle); font-size: 0.875rem;">326 pages | Brian Edwards | December 2025</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Brian Edwards | Waco, Texas | <a href="mailto:brian.mabry.edwards@gmail.com" style="color: var(--link);">brian.mabry.edwards@gmail.com</a></p>
+  </footer>
+</body>
+</html>

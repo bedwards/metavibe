@@ -1,0 +1,129 @@
+title: "Change Without Notice"
+slug: change-without-notice
+subtitle: "A Novel"
+status: complete
+version: "1.0.0"
+
+author:
+  name: "Brian Edwards"
+  email: "brian.mabry.edwards@gmail.com"
+  phone: "512-584-6841"
+  location: "Waco, Texas, USA"
+
+publication:
+  date: "2025-12-27"
+  edition: "First Edition"
+
+description: |
+  A novel in 326 pages. Each page is a complete world. The protagonist
+  retains memory across all of them.
+
+genre:
+  - literary fiction
+  - experimental
+
+tags:
+  - kafka
+  - knausgaard
+  - experimental-fiction
+  - bureaucracy
+  - memory
+
+structure:
+  pages: 326
+  chapters: 14
+  words_per_page: "500-800"
+
+chapters:
+  - id: front-matter
+    title: "Front Matter"
+    file: "front-matter.md"
+    type: front-matter
+
+  - id: chapter-01
+    title: "Chapter One"
+    file: "content/Chapter_0001.md"
+    pages: "1-15"
+
+  - id: chapter-02
+    title: "Chapter Two"
+    file: "content/Chapter_0002.md"
+    pages: "16-30"
+
+  - id: chapter-03
+    title: "Chapter Three"
+    file: "content/Chapter_0003.md"
+    pages: "31-50"
+
+  - id: chapter-04
+    title: "Chapter Four"
+    file: "content/Chapter_0004.md"
+    pages: "51-75"
+
+  - id: chapter-05
+    title: "Chapter Five"
+    file: "content/Chapter_0005.md"
+    pages: "76-100"
+
+  - id: chapter-06
+    title: "Chapter Six"
+    file: "content/Chapter_0006.md"
+    pages: "101-125"
+
+  - id: chapter-07
+    title: "Chapter Seven"
+    file: "content/Chapter_0007.md"
+    pages: "126-150"
+
+  - id: chapter-08
+    title: "Chapter Eight"
+    file: "content/Chapter_0008.md"
+    pages: "151-175"
+
+  - id: chapter-09
+    title: "Chapter Nine"
+    file: "content/Chapter_0009.md"
+    pages: "176-200"
+
+  - id: chapter-10
+    title: "Chapter Ten"
+    file: "content/Chapter_0010.md"
+    pages: "201-225"
+
+  - id: chapter-11
+    title: "Chapter Eleven"
+    file: "content/Chapter_0011.md"
+    pages: "226-250"
+
+  - id: chapter-12
+    title: "Chapter Twelve"
+    file: "content/Chapter_0012.md"
+    pages: "251-275"
+
+  - id: chapter-13
+    title: "Chapter Thirteen"
+    file: "content/Chapter_0013.md"
+    pages: "276-300"
+
+  - id: chapter-14
+    title: "Chapter Fourteen"
+    file: "content/Chapter_0014.md"
+    pages: "301-326"
+
+  - id: end-matter
+    title: "End Matter"
+    file: "end-matter.md"
+    type: end-matter
+
+publishing:
+  github_pages: true
+  formats:
+    - html_single_page
+    - html_by_chapter
+    - epub
+    - pdf
+
+creation:
+  method: "generative-ai-assisted"
+  agent: "Claude Opus 4.5"
+  session_date: "2025-12-27"

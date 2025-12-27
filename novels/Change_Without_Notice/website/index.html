@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Without Notice - Brian Edwards</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --link: #0066cc;
+      --border: #e0e0e0;
+      --subtle: #666;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --text: #e0e0e0;
+        --link: #6db3f2;
+        --border: #333;
+        --subtle: #999;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    h1 { font-size: 2rem; margin-bottom: 0.25rem; font-weight: normal; }
+    h2 { font-size: 1.25rem; font-weight: normal; color: var(--subtle); margin-bottom: 2rem; }
+    .author { margin-bottom: 2rem; color: var(--subtle); }
+    .formats { margin-bottom: 3rem; }
+    .formats h3 { font-size: 1rem; font-weight: normal; margin-bottom: 0.5rem; }
+    .formats ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .formats a {
+      color: var(--link);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .formats a:hover { border-color: var(--link); }
+    .chapters { margin-bottom: 3rem; }
+    .chapters h3 { font-size: 1rem; font-weight: normal; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    .chapters ul { list-style: none; }
+    .chapters li { margin-bottom: 0.75rem; }
+    .chapters a { color: var(--link); text-decoration: none; }
+    .chapters a:hover { text-decoration: underline; }
+    .pages { color: var(--subtle); font-size: 0.875rem; }
+    .back { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .back a { color: var(--link); text-decoration: none; }
+    footer { margin-top: 3rem; color: var(--subtle); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Change Without Notice</h1>
+    <h2>A Novel</h2>
+    <p class="author">Brian Edwards</p>
+  </header>
+
+  <section class="formats">
+    <h3>Read</h3>
+    <ul>
+      <li><a href="full.html">Full Novel (One Page)</a></li>
+      <li><a href="change-without-notice.epub">EPUB</a></li>
+      <li><a href="change-without-notice.pdf">PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="chapters">
+    <h3>By Chapter</h3>
+    <ul>
+      <li>
+        <a href="front-matter.html">Front Matter</a>
+        <span class="pages">Title, Copyright, Contents</span>
+      </li>
+      <li>
+        <a href="chapter-01.html">Chapter One</a>
+        <span class="pages">Pages 1-15</span>
+      </li>
+      <li>
+        <a href="chapter-02.html">Chapter Two</a>
+        <span class="pages">Pages 16-30</span>
+      </li>
+      <li>
+        <a href="chapter-03.html">Chapter Three</a>
+        <span class="pages">Pages 31-50</span>
+      </li>
+      <li>
+        <a href="chapter-04.html">Chapter Four</a>
+        <span class="pages">Pages 51-75</span>
+      </li>
+      <li>
+        <a href="chapter-05.html">Chapter Five</a>
+        <span class="pages">Pages 76-100</span>
+      </li>
+      <li>
+        <a href="chapter-06.html">Chapter Six</a>
+        <span class="pages">Pages 101-125</span>
+      </li>
+      <li>
+        <a href="chapter-07.html">Chapter Seven</a>
+        <span class="pages">Pages 126-150</span>
+      </li>
+      <li>
+        <a href="chapter-08.html">Chapter Eight</a>
+        <span class="pages">Pages 151-175</span>
+      </li>
+      <li>
+        <a href="chapter-09.html">Chapter Nine</a>
+        <span class="pages">Pages 176-200</span>
+      </li>
+      <li>
+        <a href="chapter-10.html">Chapter Ten</a>
+        <span class="pages">Pages 201-225</span>
+      </li>
+      <li>
+        <a href="chapter-11.html">Chapter Eleven</a>
+        <span class="pages">Pages 226-250</span>
+      </li>
+      <li>
+        <a href="chapter-12.html">Chapter Twelve</a>
+        <span class="pages">Pages 251-275</span>
+      </li>
+      <li>
+        <a href="chapter-13.html">Chapter Thirteen</a>
+        <span class="pages">Pages 276-300</span>
+      </li>
+      <li>
+        <a href="chapter-14.html">Chapter Fourteen</a>
+        <span class="pages">Pages 301-326</span>
+      </li>
+      <li>
+        <a href="end-matter.html">End Matter</a>
+        <span class="pages">About, How This Book Was Made</span>
+      </li>
+    </ul>
+  </section>
+
+  <nav class="back">
+    <a href="../../../index.html">&larr; Back to Novels</a>
+  </nav>
+
+  <footer>
+    <p>Brian Edwards | Waco, Texas | December 2025</p>
+  </footer>
+</body>
+</html>

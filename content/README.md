@@ -1,6 +1,6 @@
 # Content Architecture
 
-This directory contains how-to books and essays on vibe coding various types of software systems.
+This directory contains how-to books and essays on vibe coding various types of software systems. Novels are stored separately in the `/novels` directory.
 
 ## Structure
 
@@ -24,6 +24,25 @@ content/
     ├── book.yaml
     ├── chapter.md
     └── essay.md
+
+novels/                             # Fiction (separate from content/)
+├── index.html                      # Novels listing page
+└── {Novel_Name}/
+    ├── novel.yaml                  # Novel metadata
+    ├── front-matter.md
+    ├── end-matter.md
+    ├── content/                    # Chapter files
+    │   └── Chapter_NNNN.md
+    ├── plan/                       # Planning documents
+    │   ├── taste.md
+    │   ├── outline.md
+    │   └── rough_ideas.md
+    └── website/                    # Generated output
+        ├── index.html              # Chapter listing
+        ├── full.html               # Single page version
+        ├── chapter-NN.html         # Individual chapters
+        ├── {slug}.epub
+        └── {slug}.pdf
 ```
 
 ## Book Metadata (book.yaml)
@@ -135,6 +154,71 @@ publishing:
   gumroad: false
   kobo: false
 ---
+```
+
+## Novel Metadata (novel.yaml)
+
+```yaml
+title: "Change Without Notice"
+slug: change-without-notice
+subtitle: "A Novel"
+status: complete
+version: "1.0.0"
+
+author:
+  name: "Brian Edwards"
+  email: "brian.mabry.edwards@gmail.com"
+  phone: "512-584-6841"
+  location: "Waco, Texas, USA"
+
+publication:
+  date: "2025-12-27"
+  edition: "First Edition"
+
+description: |
+  A novel in 326 pages. Each page is a complete world.
+
+genre:
+  - literary fiction
+  - experimental
+
+chapters:
+  - id: front-matter
+    title: "Front Matter"
+    file: "front-matter.md"
+    type: front-matter
+
+  - id: chapter-01
+    title: "Chapter One"
+    file: "content/Chapter_0001.md"
+    pages: "1-15"
+
+  # ... additional chapters
+
+  - id: end-matter
+    title: "End Matter"
+    file: "end-matter.md"
+    type: end-matter
+
+publishing:
+  github_pages: true
+  formats:
+    - html_single_page
+    - html_by_chapter
+    - epub
+    - pdf
+
+creation:
+  method: "generative-ai-assisted"
+  agent: "Claude Opus 4.5"
+  session_date: "2025-12-27"
+```
+
+### Building Novels
+
+```bash
+# Generate HTML, EPUB, and PDF
+npx tsx tools/novels/build-novel.ts --novel change-without-notice
 ```
 
 ## Content Categories

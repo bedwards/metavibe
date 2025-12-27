@@ -1,0 +1,445 @@
+# Chapter Two
+
+## Page 16
+
+He owed 3.2 million credits to someone named Aldrich Phen, and payment began today.
+
+The debt collector appeared at 7:45 AM, before K. had finished his coffee. Professionally dressed. Tablet. The calm of someone who had done this long enough that debtor panic no longer registered. Forms. Payment schedules. Documentation going back eighteen years, showing how a modest sum had accumulated into catastrophe.
+
+"For the record," K. said, "I have no memory of this loan."
+
+"That's common. Memory modification was included in the original service package."
+
+"Not to remember what?"
+
+"Cognitive enhancement services," she said, consulting her tablet. "Temporary intelligence boost, six weeks. Memory of the enhancement period removed upon completion—to prevent psychological dependency." She looked up. "You were apparently very productive. Many of your current career achievements date from that period."
+
+K. tried to remember six weeks of enhanced intelligence. He tried to remember any period when thinking had felt easier, when problems had solved themselves, when work had been something other than a daily grind of incremental effort. He couldn't. But then, there were many things he couldn't remember—or rather, too many things he could. Other debts, other collectors, other lives where he had owed things he couldn't name to people he didn't recognize. The memories layered like sediment, and this debt was just the latest stratum.
+
+"The debt remains. Interest compounds hourly."
+
+The payment schedule: monthly minimum more than he earned in two months. Options for payment in kind—services, organs, cognitive capacity—but all involved surrendering pieces of himself.
+
+"What happens if I don't pay?"
+
+"Enforcement protocols. Asset seizure, income garnishment, and eventually, temporal adjustment."
+
+"Temporal adjustment?"
+
+"We take time from your future. It's considered a last resort."
+
+3.2 million credits. For six weeks of intelligence he couldn't remember using.
+
+---
+
+## Page 17
+
+The exhibition opened at 8 PM, and K. still didn't know how to hold a gravity chisel.
+
+He was a renowned gravity sculptor. Documented fact: the catalog with his biography, the reviews praising his technique, the waiting list of collectors. Photographs of him in his studio, working with tools he didn't recognize, shaping forces he didn't understand.
+
+The chisel in his hand felt wrong. Too heavy, or too light, or oriented in some direction his grip couldn't accommodate. It was supposed to push and pull at gravitational fields, sculpt weight itself into aesthetic forms. He had no idea how.
+
+"Five minutes," the gallery assistant said. "Critics are already here."
+
+He stared at the chisel, willing it to reveal its secrets. Buttons on the handle. Display screen showing numbers and symbols that meant nothing. In his memory—the false memory, the implanted memory—he could feel the ghost of competence. Skills he had never developed. He knew gravity sculpting was possible, that he had done it, that the pieces in the gallery had emerged from his hands.
+
+But the knowledge was gone. Like reaching for a word that refused to come, except the word was an entire artistic practice.
+
+He set down the chisel. He would go out there, shake hands, accept compliments, nod knowingly when critics discussed technique. Perform the role of himself. Hope no one asked him to demonstrate.
+
+The gallery was full. Collectors, critics, journalists. Examining his work—pieces he didn't remember making, shapes he couldn't explain. A large abstract form dominated the center: a twist of compressed weight that pulled the eye inward.
+
+"Magnificent," someone said. "The way you've layered the gravitational gradients—I've never seen anything like it."
+
+"Thank you."
+
+"Can you walk me through your process?"
+
+K. smiled the smile of an artist protecting his mysteries. "I prefer to let the work speak for itself."
+
+---
+
+## Page 18
+
+Different spouse, different war, same words of sympathy.
+
+"She was a hero," his supervisor said. "They both were."
+
+How many spouses had he lost to how many wars? The faces didn't blur—they were absences shaped like people, gaps in his history that everyone else remembered more vividly than he did.
+
+"If you need time off, we completely understand. Losing two partners to the conflict—"
+
+Two. The number felt both too large and too small.
+
+"Work helps," K. said.
+
+Wrong answer. His supervisor's expression shifted, sympathy curdling into something complicated. K. had seen this expression before—on colleagues, neighbors, distant relatives at the memorial service.
+
+"Grief counseling is covered under our benefits. And there are support groups. For people who've lost multiple partners. People who seem to have... difficulty processing."
+
+His dry eyes. Composed demeanor. Failure to display the appropriate symptoms. He was supposed to be destroyed, doubled over by double loss. Instead: discussing work schedules.
+
+"I process differently," he said.
+
+"Of course." Too quick, too automatic. "Of course."
+
+The pattern was becoming visible. They were starting to wonder what he was hiding, what cold calculation lay beneath his controlled exterior.
+
+He was hiding nothing. He felt nothing because there was nothing to feel—no memory of love, no anchor for loss. That was worse than hiding something. That was the thing he couldn't explain.
+
+---
+
+## Page 19
+
+He was property of the Amazon Corporation, Lord-Holder of the Pacific Northwest Territories.
+
+The documents were clear: K. was not an employee, not a contractor. He was a serf, labor rights purchased at birth, registered in the asset database alongside warehouses and delivery vehicles.
+
+He needed permission to change apartments.
+
+The form: seventeen pages. Signatures required from immediate manager, regional overseer, housing allocation committee, lord-holder's representative. Documentation of current situation, proposed situation, justification, analysis of productivity impact.
+
+"Processing time is twelve to eighteen weeks," the bureaucrat said.
+
+"My building is being condemned."
+
+"I understand that's inconvenient. But if serfs could relocate at will, the housing allocation system would break down."
+
+Page one: serf identification number, corporate assignment history, lifetime productivity index. Page seventeen: certification that he understood penalties for unauthorized relocation—debt extension, position demotion, reassignment to the physical labor pool.
+
+"What if I just moved anyway?"
+
+The bureaucrat stiffened. "A violation of your serf contract. And frankly, Mr. K., with your file, I wouldn't recommend drawing attention."
+
+"My file?"
+
+"Notes. Several instances of autonomous behavior. Independent decision-making without authorization. Patterns that suggest you might not fully understand your role."
+
+K. signed page one. He would sign all seventeen, collect signatures, wait twelve to eighteen weeks. His building would be condemned around him, and he would fill out forms in the rubble, because that was what serfs did.
+
+---
+
+## Page 20
+
+Words had weight here, and K. had been talking too much.
+
+The apartment was cluttered with syllables. They piled in corners, accumulated on bookshelves, drifted against windows like linguistic snow. Every conversation left deposits.
+
+"Breakfast" sat on the kitchen counter, a solid blue block there since Tuesday. "I'm sorry" scattered throughout the bedroom—multiple iterations, evidence of an argument he couldn't remember. The living room: dominated by everything he had said during a phone call with his mother, a rambling construction of "how are you" and "I'm fine" and "yes I'm eating enough."
+
+Speaking created objects. Physics. Silence was the ultimate luxury—absence of verbal accumulation, the clean negative space of wealth or extreme discipline.
+
+K. had neither. He talked to himself, a habit from some previous life where speech didn't leave evidence. He talked on the phone too much. Talked to cashiers and neighbors and delivery drivers.
+
+"You've got a lot of discourse in here," the building inspector said, picking her way through the verbal debris. "When's the last time you had a language removal service?"
+
+"I'm not sure."
+
+The inspector made a note. "I'm seeing code violations. The load-bearing walls can't handle this much semantic weight. And this area here—" she pointed to the corner where his longest conversations had accumulated "—this is a fire hazard. Concentrated meaning like this, it can ignite under the right conditions."
+
+K. looked at the corner. The words from his last relationship were there, compressed into a dense mass of promises and apologies and the particular kind of tender garbage that accumulated between people who had loved each other, or tried to, or pretended to while they figured out what they actually felt.
+
+"I'll get it cleaned," he said.
+
+The words "I'll get it cleaned" dropped from his mouth and landed on the floor, a small gray disc that rolled under the couch to join the others.
+
+The inspector made another note. "Minimum fine is two hundred credits. Do better, Mr. K."
+
+---
+
+## Page 21
+
+Everyone knew about the affair except him.
+
+K. noticed it in the knowing glances exchanged when he walked into rooms, the way conversations paused and rerouted when he approached, the particular quality of sympathy that people directed at his spouse—a spouse he could not remember marrying but who evidently existed, who was evidently being wronged by his behavior.
+
+"You must be devastated," his coworker said, after a meeting where K. had felt the weight of unsaid things pressing against the walls.
+
+"About?"
+
+The coworker's expression went through several transitions. Surprise. Confusion. Something that might have been pity. "About—you know. The situation."
+
+K. did not know. He waited for more information, but his coworker just shook her head slightly and returned to her desk, and K. was left with the certainty that something was happening, that he was at the center of it, and that everyone understood the details except him.
+
+He started paying attention. The whispered conversations that stopped when he appeared. The way certain people avoided his eye contact while others sought it out with excessive intensity. The spouse—his spouse, apparently—who came home late with explanations that seemed rehearsed, with a kind of guilty brightness that suggested performance rather than honest communication.
+
+"How was your day?" K. asked one evening, testing.
+
+"Fine. Meetings. The usual."
+
+The usual. K. had no idea what the usual was. He had no baseline to compare against, no accumulated history that would let him detect deviations from normal behavior. For all he knew, his spouse always came home late, always had that particular tightness around the eyes, always deflected questions with practiced ease.
+
+But other people seemed to know. Other people had opinions. A neighbor stopped him in the hallway and said, "Hang in there," with a meaningful nod. A family member called to check in, asking pointed questions about "how things were going at home."
+
+Who was he sleeping with? When had it started? What had he done, or failed to do, that had opened the space for this betrayal that everyone could see except him?
+
+K. tried to feel jealous. He tried to feel betrayed. He felt nothing except the frustration of being the last to know the story of his own life.
+
+---
+
+## Page 22
+
+Reading was a dead skill, like Latin or cursive handwriting, something that historians studied and eccentrics preserved but that had no practical use in daily life.
+
+Information came through neural feed now, absorbed directly into consciousness without the intermediate step of decoding symbols on a page. You didn't need to read when the data could be streamed directly into your comprehension centers. You didn't need to write when your thoughts could be transcribed automatically into whatever format the recipient required.
+
+K. was functionally illiterate in both directions.
+
+He could not read the written word, because he had never learned—why would he have learned something as obsolete as reading? But he also could not receive the neural feeds that everyone else processed as naturally as breathing. His interface had failed years ago, some kind of hardware malfunction or biological incompatibility, and the replacements had never worked right. He existed in a gap between communication systems, too evolved for one, too broken for the other.
+
+The world was unreadable around him. Signs that meant nothing. Documents that were just patterns. His employment contract, which he had been asked to review and sign, might as well have been abstract art. The menu at restaurants, the instructions on packages, the urgent messages that appeared on public displays—all of it visual noise without semantic content.
+
+"You can dictate your signature," the legal clerk said, not unkindly. "The system will transcribe."
+
+"I don't know what I'm signing."
+
+"The summary is—" The clerk paused, trying to figure out how to communicate with someone who could neither read nor receive. "Do you have an authorized interpreter?"
+
+K. did not have an authorized interpreter. Authorized interpreters were expensive, and the waiting list was years long, and most people in his situation had family members who could help them navigate. K. had no family members. K. had no one who could translate the written world into something he could understand.
+
+"I'll just sign," he said.
+
+The clerk hesitated. "There are liability issues. If you don't understand the terms—"
+
+"I understand that I have no choice." K. pressed his thumb to the signature pad. Whatever he was agreeing to, whatever obligations he was assuming, it couldn't be worse than the paralysis of perpetual incomprehension.
+
+The clerk made a note, probably documenting his consent, probably covering the firm's legal exposure. K. walked out into a city plastered with messages he couldn't read, warnings he couldn't heed, information he couldn't access.
+
+---
+
+## Page 23
+
+He was married to seventeen people simultaneously, and tonight was his night with Spouse #8.
+
+The hive marriage system was standard here, had been standard for as long as anyone could remember. Individual pair bonding was considered primitive, a holdover from times when humans lived in smaller groups and didn't understand the efficiencies of shared domestic labor. Modern marriage was a collective arrangement—multiple partners, rotating schedules, distributed responsibilities. You might not see a particular spouse for weeks at a time, but that was fine, that was the point. No single relationship bore the weight that would have crushed it.
+
+K. didn't know which spouse was Spouse #8.
+
+The schedule on his refrigerator listed them by number, not by name. Tuesday: #3. Wednesday: #8. Thursday: #12. The numbers corresponded to something—a sequence of registration, perhaps, or a hierarchy he didn't understand—but the system assumed a level of familiarity he didn't possess.
+
+He had been studying photographs. The wedding portrait showed all eighteen of them—himself and seventeen spouses, arranged in the traditional formation, everyone smiling the smile of people embarking on a shared domestic project. But the faces blurred together. He couldn't match numbers to features, couldn't remember which spouse liked which meals, which one had which job, which one he was supposed to feel what kind of way about.
+
+The door chimed at 7 PM. Spouse #8 was punctual.
+
+"Hey," said the person at the door. Medium height. Brown hair. Unremarkable features that might have been any of the seventeen. "Traffic was murder. Did you start dinner?"
+
+K. had not started dinner. K. had been sitting in the kitchen, staring at the schedule, trying to prepare for an intimacy he couldn't remember earning.
+
+"I thought we'd order in," he said.
+
+Spouse #8's expression flickered. Wrong answer, apparently. Something about Wednesdays, something about tradition, something about the particular food preferences of this particular spouse that K. should have known after however many years of hive marriage.
+
+"Is everything okay?" Spouse #8 asked.
+
+"Long day," K. said. "I'm sorry. What do you feel like?"
+
+Spouse #8 sat down at the kitchen table, the table where seventeen other spouses sat on their designated nights, where eighteen people shared the duties of domestic partnership without any single person bearing too much weight. The system worked. The system had worked for generations. The system assumed only that you could remember who you were married to.
+
+K. couldn't. He went to order food, and he realized he didn't know what #8 was allergic to.
+
+---
+
+## Page 24
+
+The contact used a code phrase K. didn't recognize, and now there were people following him.
+
+"The blue door opens at midnight," the woman had said, in a crowded marketplace, passing close enough to speak but not close enough to be seen speaking. "The shepherd knows the way."
+
+K. had no idea what this meant. He had no idea who the woman was, though she had spoken as if they were old co-conspirators, as if these words carried a history of secret meetings and whispered plans. She had been gone before he could ask questions, melted into the crowd with the practiced ease of someone who had learned to disappear.
+
+He was apparently a key figure in an underground movement against something. The stakes were apparently life and death.
+
+He walked home through streets that felt different now, weighted with surveillance. Were those men in the gray coats following him, or just walking in the same direction? Was that camera on the corner pointed at him specifically, or was he developing the paranoia that came with being suddenly, incomprehensibly, at the center of something dangerous?
+
+At home, he searched his apartment for evidence of resistance activity. He found nothing—no documents, no weapons, no hidden communications equipment. His life looked ordinary. His life was ordinary, as far as he could tell. He went to work, came home, paid his bills, watched evening programming that was designed to be inoffensive and undemanding. Nothing in his routine suggested he was someone who knew about blue doors or shepherds or midnight.
+
+But the woman had known him. Had recognized him. Had trusted him with words that were clearly important, clearly dangerous, clearly part of something larger than a random encounter in a marketplace.
+
+The knock came at 3 AM. Two men in unmarked uniforms, with the particular kind of authority that came from representing forces that didn't have to explain themselves.
+
+"Mr. K.," one of them said. "We have some questions about your political associations."
+
+K. opened his mouth to say he had no political associations, that he had no idea what they were talking about, that there had been some kind of mistake. But he remembered the woman, remembered the code phrase, remembered that he was apparently part of something he didn't understand.
+
+"I want a lawyer," he said.
+
+The men exchanged glances. "That's not how this works," the first one said.
+
+---
+
+## Page 25
+
+His apartment was sick. The walls had a fever of 101.3 degrees, and the ceiling was showing early signs of infection, and the landlord had said that healthcare for housing was not covered under his lease agreement.
+
+Buildings were grown here, not built. They were cultivated from seeds that contained the genetic blueprint for rooms and corridors, watered with nutrient solutions, pruned and trained into the desired shapes. A mature building was a living thing, with circulatory systems and respiratory functions and immune responses that protected it from disease and decay.
+
+K.'s apartment was diseased. The symptoms had started two weeks ago with a slight warmth in the interior walls, a temperature elevation that he had initially attributed to a malfunction in the climate control. But the warmth had spread, had intensified, had developed into a full-blown fever that made the rooms uncomfortable and the air thick with biological distress.
+
+"She's fighting something," the building doctor said, running sensors along the baseboards. "Some kind of pathogen. Probably got it from the building next door—they had an outbreak last month."
+
+"Can you treat it?"
+
+"I can try. But the treatment is expensive, and without insurance..." The doctor shrugged. "Honestly, Mr. K., she might not make it. Buildings this age, with this kind of infection, the survival rate isn't great."
+
+Eviction began at 104 degrees. This was policy, designed to protect residents from the danger of living inside a dying structure. If the apartment's fever reached that threshold, K. would be removed, his belongings would be extracted, and the building would be left to whatever fate awaited it.
+
+"How long do I have?"
+
+"At this rate? A week, maybe two."
+
+K. sat on his couch, feeling the warmth of the cushions beneath him, the fever heat rising from the floor. The apartment had been his home for six years. He didn't remember moving in, but he remembered being here, the accumulated sense of belonging that came from sleeping in the same bedroom night after night.
+
+The walls were sweating now, a thin film of moisture that was the building's attempt to regulate its own temperature. The apartment was trying to heal itself. The apartment was trying to survive.
+
+K. put his hand on the wall, felt the heat, felt something else too—a vibration that might have been the building's heartbeat, slowing, struggling.
+
+"I'm sorry," he said to the walls. "I wish I could help."
+
+---
+
+## Page 26
+
+The families thanked him with unsettling sincerity. "You really captured him," they said, or "She would have been so moved," and K. accepted the gratitude the way he had learned to accept it, with modest deflection and appropriate solemnity.
+
+He was a professional mourner. It was his job to grieve at funerals for people he had never met.
+
+The skill was specific and valued. Authentic tears at the right moments. Appropriate body language in the receiving line. The capacity to project sorrow convincingly enough that it helped the genuinely grieving access their own emotions. Not everyone could do it. Not everyone wanted to do it. But there was a demand for manufactured grief, and K. apparently filled it well.
+
+He couldn't remember developing this skill. He couldn't remember the training, if there had been training, or the first funeral where he had practiced his art. He just knew that he was good at it, and that the checks deposited reliably, and that the families kept booking him for their dead.
+
+Today's funeral was for an elderly woman who had lived a full life and died surrounded by people who loved her. The chapel was crowded. The eulogies were long and heartfelt. K. sat in the section reserved for professional mourners—there were three of them at this service, a standard number for someone of the deceased's social standing—and wept.
+
+The tears came easily now. That was the strange part. In the beginning, he must have had to work at it, must have had to summon the emotion through technique and concentration. But now the grief flowed automatically, genuine-feeling sobs that rose from somewhere deep in his chest.
+
+He was crying for a woman he had never met. He was crying for all the funerals he had attended, all the dead he had mourned professionally, all the accumulated loss that had pooled in him like rainwater in a basement.
+
+"Remarkable work," the family's representative said afterward, pressing an envelope into his hand. "Truly remarkable. Where did you find such emotion?"
+
+K. wiped his eyes. The tears were still coming, wouldn't stop, had become something other than professional obligation.
+
+"I don't know," he said. And this was true. He didn't know where the emotion came from, only that there was more of it now than he could control, that somewhere along the way he had opened a door to something that wouldn't close again.
+
+---
+
+## Page 27
+
+The social worker's office was designed to be calming—soft colors, comfortable chairs, plants that were probably meant to suggest growth and renewal. K. sat in one of the comfortable chairs and tried to explain why he had been found napping alone.
+
+"Private sleeping is a serious concern," the social worker said. "I'm not saying it's criminal—not at this stage—but it suggests patterns of behavior that we need to explore."
+
+"I was tired," K. said. "I fell asleep."
+
+"You fell asleep alone. In your own apartment. During the designated public sleep period. When you were supposed to be in the communal hall with everyone else."
+
+K. had been in the communal hall. He had lain in his assigned sleeping pod, surrounded by hundreds of other sleepers, their breath rising and falling in the synchronized rhythm that was supposed to promote social cohesion and collective rest. But the rhythm had felt wrong. The closeness had felt suffocating. He had gotten up, gone home, and fallen asleep in his own bed, where the silence was like a drug, where the absence of other bodies was the most profound relief he had ever felt.
+
+"Tell me about your childhood," the social worker said.
+
+"I don't remember my childhood."
+
+"That's interesting." The social worker made a note. "Most people have fairly stable memories of early communal experiences. The shared nurseries. The group sleep training. The transition ceremonies."
+
+K. didn't remember any of this. His earliest memories were of being alone—which was impossible, which suggested that the memories themselves were false or fabricated, because no one was ever truly alone in a society organized around communal everything.
+
+"I think there might be something wrong with me," K. said.
+
+The social worker's expression softened. "There's nothing wrong with you. You're just struggling with adaptation. Many people do. The desire for solitude is a common phase—a regression, really, to pre-social patterns. With therapy and community support, most people work through it."
+
+"And if they don't?"
+
+"Then we explore other interventions. But let's not get ahead of ourselves." The social worker leaned forward, projecting the professional warmth that was part of her training. "Tell me more about what you were feeling when you left the communal hall. What made you want to be alone?"
+
+K. tried to explain. The words came out sounding like symptoms.
+
+---
+
+## Page 28
+
+The patent was worth billions, and three corporations were trying to kill him.
+
+K. had discovered this gradually, through the accumulation of small incidents that individually meant nothing but together formed a pattern. The car that had nearly hit him on a Tuesday morning. The food delivery that had arrived with tampered packaging. The message on his phone that wasn't quite threatening but carried the undertone of warning.
+
+"You own the licensing rights to QuantumStitch technology," his lawyer explained. They were meeting in a secure location, a café that swept for listening devices hourly. "It's the foundational patent for the next generation of data processing. Whoever controls it controls a significant portion of the emerging market."
+
+"I don't remember inventing anything."
+
+"You didn't invent it. You inherited the rights from a family member. A great-aunt, according to the documentation. She died eight years ago, and the patent passed to you as her closest living relative."
+
+K. didn't remember having a great-aunt. He didn't remember being anyone's closest living relative. But the documentation was clear, and the corporations were definitely trying to kill him, which suggested the documentation was accurate enough to make him valuable dead.
+
+"What are my options?"
+
+"Sell the patent. Take a fraction of what it's worth and buy yourself protection." The lawyer paused. "Or don't sell, and we spend the next several years in a legal and literal war with entities that have unlimited resources and no ethical constraints."
+
+The attempts weren't subtle. The corporations operated through subsidiaries and contractors, but the intent was clear. They wanted K. dead, his assets dispersed, the patent available for acquisition through the estate process that would follow his demise.
+
+"I don't understand the technology," K. said. "I can't even remember how I came to own it."
+
+"That's irrelevant. Ownership is ownership. The question is whether you want to be a living owner or a dead one."
+
+K. signed the papers that would transfer a significant portion of his life to a security firm that specialized in protecting high-value targets. He went home to an apartment that was now monitored, guarded, fortified against the kind of attacks that billionaire patent holders attracted.
+
+He still didn't understand what QuantumStitch did. He probably never would. But he was rich now, at least on paper, and people were trying to kill him, and both of these things seemed equally unreal.
+
+---
+
+## Page 29
+
+The organism in his chest was moving again, and K. pressed his hand against his sternum to feel it shift.
+
+His spouse was a symbiotic creature that had bonded with him on their wedding day, had taken up residence in the cavity beneath his ribs, had become part of his biology in a way that was both intimate and incomprehensible. The marriage was legal, recognized by the state, blessed by the religious authorities who oversaw such unions. The organism was his partner, his companion, his closest relationship made literal and physical.
+
+He didn't remember the wedding. He didn't remember falling in love with a creature that would eventually live inside him. He didn't remember anything before the organism was there, which suggested either that his memories had been modified, or that his entire consciousness had been reformatted around the presence of this thing inside him.
+
+"Good morning," he said to his chest, the way you would say good morning to someone you lived with.
+
+The organism pulsed in response. It couldn't speak—didn't have the apparatus for speech—but it communicated through pressure and temperature and the particular quality of its movements against his internal organs. K. had learned to interpret these signals the way you learned any language, through exposure and practice, though he couldn't remember the learning process itself.
+
+"I'm going to work today," he said. "I'll try to eat something you'll like for lunch."
+
+The organism had preferences. It preferred certain nutrients, disliked others, expressed its opinions through comfort or discomfort that K. experienced as his own sensations. When the organism was happy, K. felt a warmth in his core, a sense of wellbeing that might have been love or might have been symbiotic manipulation. When the organism was unhappy, the world took on a gray cast, and K. found himself reaching for foods he didn't normally want, making choices that served the thing inside him rather than himself.
+
+He had asked a doctor once whether it was possible to separate them. The doctor had looked at him with the particular expression reserved for people who asked disturbing questions.
+
+"That would kill you both," she said. "You're not two organisms anymore. You're one organism with two consciousnesses. The integration is complete."
+
+K. had nodded. He had gone home to his spouse, had felt the familiar stirring beneath his ribs, had tried to remember what it had felt like to be alone inside his own body.
+
+The organism loved him. He could feel that love, a constant presence, a warmth that never faded. He wished he could remember learning to love it back.
+
+---
+
+## Page 30
+
+All statements must contain precisely one falsehood, and K. kept accidentally telling the truth.
+
+The law was ancient here, older than the current government, older than the current form of society. It had been established in response to some crisis of honesty—K. couldn't remember the details, if he had ever known them—and it had persisted because it worked, because a society where every utterance was slightly unreliable had achieved a kind of stability that pure truth or pure fiction could not.
+
+You learned it in childhood, the art of the deliberate lie. You learned to insert one false element into every sentence, to balance your truths with a required untruth, to communicate through the gaps between what you said and what you meant. It was a skill like any other, and most people developed it so naturally that they didn't even notice themselves doing it.
+
+K. couldn't do it. Or rather, he could do it sometimes, when he was paying attention, when he consciously constructed his sentences to include the mandatory falsehood. But in moments of stress, moments of genuine emotion, moments when the truth pressed against his lips with urgency—he told it. The whole truth. Truth without the required fictional element.
+
+This was dangerous.
+
+"Mr. K.," the police officer said. "You stated, and I'm quoting from the record, 'I don't know anything about the missing supplies.'"
+
+"That's correct."
+
+"That statement contained no falsehood. Our linguistic analysis confirmed it. You told the pure truth, which is a Class C offense under the Communication Standards Act."
+
+K. had been stressed. There had been an investigation at work, missing supplies, accusations flying, and he had simply said what he knew—which was nothing. He had forgotten to include the lie. He had spoken the truth, naked and unadorned, like an animal or a child.
+
+"I understand that was a violation," K. said, carefully constructing this sentence to include a falsehood. He didn't understand at all. The whole thing seemed absurd.
+
+The police officer made a note. "First offense, so we're looking at mandatory truth therapy. You'll learn techniques for ensuring consistent falsehood insertion, even under stress."
+
+K. nodded. Truth therapy. He would learn to lie better, to never again speak without including the required distortion. He would become fluent in the language that everyone else already spoke.
+
+The police officer asked if he had any questions. K. said no, and the statement was pure truth again, slipping out before he could catch it.
+
+The officer sighed and made another note.
+
+---
+
+*The pages accumulated like sediment. K. adapted and adapted and adapted, and the worlds kept changing around him, and somewhere beneath all the transformations, he remained—unable to remember, unable to understand, unable to stop continuing.*
