@@ -1,6 +1,6 @@
 # Chapter One
 
-## Page 1
+## World 1
 
 The tribunal had been in session for three hours, and they were still waiting for him to explain why he had married outside his caste.
 
@@ -26,7 +26,7 @@ The tribunal members exchanged glances. His wife looked back down at her hands. 
 
 ---
 
-## Page 2
+## World 2
 
 His profession had been automated six months ago—not just his job, his entire profession—and now K. was learning to be a "Human Presence Consultant" for lonely algorithms.
 
@@ -50,7 +50,7 @@ Options A through D. All reasonable. All wrong.
 
 ---
 
-## Page 3
+## World 3
 
 Three happiness units short for the quarter, and the auditor arrived thirteen minutes early—a documented technique, catching people before they could compose themselves into the required positivity range.
 
@@ -78,7 +78,7 @@ The audit was in an hour. No—the audit was now. This was the audit. His confus
 
 ---
 
-## Page 4
+## World 4
 
 The pressure outside would kill a mammal. K. knew this the way he knew his own name—automatically, embedded so deep it felt like instinct. The surface world was myth. Air-breathers were stories told to children, like dragons or democracy.
 
@@ -102,7 +102,7 @@ He tried to remember what air had felt like. Couldn't. He could remember remembe
 
 ---
 
-## Page 5
+## World 5
 
 The timestamp on his wrist: 2 years, 3 months, 14 days, 7 hours, 22 minutes. Before he paid the rent, it had read 2 years, 11 months.
 
@@ -124,7 +124,7 @@ He looked at his wrist. 2 years, 3 months, 14 days, 7 hours, 21 minutes. The sec
 
 ---
 
-## Page 6
+## World 6
 
 The interviewer had been scrolling through her tablet for several minutes. K. sat in the ergonomic chair—designed, he suspected, to keep candidates slightly uncomfortable.
 
@@ -156,7 +156,7 @@ The interviewer made a note. The interview continued.
 
 ---
 
-## Page 7
+## World 7
 
 Everyone had offered condolences. That was the word for it—condolences—and K. had accepted them the way you accept unwanted gifts, with gratitude that was performed rather than felt, with thank-yous that were obligations rather than expressions.
 
@@ -186,7 +186,7 @@ He went back to his desk and tried to remember what Mira had looked like. He cou
 
 ---
 
-## Page 8
+## World 8
 
 Adults did not use words. K. knew this the way he knew his own name, the way he knew the smell of the office and the route to his apartment and all the other things that constituted the furniture of his life. Words were crude. Words were imprecise. Words were what you used with children, patiently, condescendingly, the way you used training wheels or picture books—helpful for beginners, embarrassing for anyone who had developed past the elementary stages.
 
@@ -216,7 +216,7 @@ He was speaking a language he couldn't hear. And apparently, based on everyone's
 
 ---
 
-## Page 9
+## World 9
 
 The teenager was standing in the kitchen when K. came home, and the teenager was making pasta, and the teenager looked up from the boiling water and said "Hey Dad" with the casual familiarity of someone who had said this thousands of times before.
 
@@ -246,7 +246,7 @@ The teenager talked. K. listened, or tried to listen, but mostly he watched this
 
 ---
 
-## Page 10
+## World 10
 
 The elderly were infants here, and the young were ancient, and K. was exactly middle-aged in both directions, which meant he belonged nowhere.
 
@@ -274,7 +274,7 @@ It didn't help. Shared loneliness was still loneliness.
 
 ---
 
-## Page 11
+## World 11
 
 Everyone could read minds. K. had known this forever, since before he could remember, the way he knew gravity pulled down and water was wet. Telepathy was as ordinary as breathing. You thought things, and other people heard them, and the whole of society was structured around this fundamental permeability of consciousness.
 
@@ -302,7 +302,7 @@ The platform was empty by the time his train came. Everyone had found somewhere 
 
 ---
 
-## Page 12
+## World 12
 
 The congratulations had started arriving before he got to the office. Text messages, voice mails, a card signed by the entire department. Someone had put balloons on his desk—silver and gold, the colors reserved for significant professional achievements. His supervisor had scheduled a meeting to discuss "the exciting new chapter."
 
@@ -330,7 +330,7 @@ He reports Monday. The board would want details. He had four days to become the 
 
 ---
 
-## Page 13
+## World 13
 
 His species had evolved as apex predators. He knew this from biology class, from documentaries, from the particular shape of his teeth and the placement of his eyes and all the other anatomical evidence that pointed to millions of years of hunting, killing, consuming. His ancestors had been carnivores, and their ancestors before them, and the entire arc of evolution had been shaped by the pursuit and capture of prey.
 
@@ -360,7 +360,7 @@ Treatment was mandatory. The first session was scheduled for Thursday. K. went h
 
 ---
 
-## Page 14
+## World 14
 
 The state owned memories over ten years old. K. knew this intellectually, had known it since the legislation passed during his childhood, had grown up in a world where memory was taxed and regulated and, eventually, confiscated. The logic was something about cognitive load and social efficiency—old memories cluttered the mind, took up processing power that could be better used for present concerns. By surrendering your past, you freed yourself to fully inhabit your present.
 
@@ -392,7 +392,7 @@ He would forget that he had ever known these things. He would forget that he had
 
 ---
 
-## Page 15
+## World 15
 
 He had four arms. He had always had four arms. The upper pair for ordinary manipulation—holding things, gesturing, the everyday business of interacting with physical objects. The lower pair for intimate gestures—the subtle touch vocabulary that expressed affection, comfort, desire, the wordless communication between beings who knew each other well.
 

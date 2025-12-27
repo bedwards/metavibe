@@ -1,6 +1,6 @@
 # Chapter Five: The Systems Multiply (Part II)
 
-## Page 76
+## World 76
 
 The storm arrived at the same time it always arrived—7:47 PM, every evening, without variation—and K. was setting the table for two when the thunder announced that his spouse was home.
 
@@ -30,7 +30,7 @@ He finished his dinner. The storm stayed. In the morning, it would be gone—it 
 
 ---
 
-## Page 77
+## World 77
 
 The family was waiting in the lobby of his office, and K.'s assistant was explaining that they had been waiting for three hours, that they were very upset, that their mother had died in a dream that K. had designed, and that the lawsuit was already being prepared.
 
@@ -64,7 +64,7 @@ It was not enough. Payment was never enough. The woman was still dead, still sle
 
 ---
 
-## Page 78
+## World 78
 
 The monastery was silent, which was the point, and K. was sitting in his cell, hands pressed against his mouth, trying not to scream, while the brother who had come to check on him watched with concern that he could not express in words.
 
@@ -96,7 +96,7 @@ Somewhere inside him, a sound was building. It had been building for forty years
 
 ---
 
-## Page 79
+## World 79
 
 The man across the table was identical to K., and K. was not surprised, and this lack of surprise was perhaps the most disturbing part.
 
@@ -144,7 +144,7 @@ They finished their coffee. They went separate ways. In the crowd, K. thought he
 
 ---
 
-## Page 80
+## World 80
 
 The customs officer was examining K.'s suitcase, which was full of emotions K. didn't remember packing, and her expression suggested that the contents were not merely illegal but somehow offensive.
 
@@ -178,7 +178,7 @@ Outside, the city was flat, calm, emotionally regulated. People moved with the s
 
 ---
 
-## Page 81
+## World 81
 
 The building was waiting for K. to bless it, and K. was standing in front of its foundations—bare concrete, rebar, the skeleton of a structure—holding a book of words he couldn't read.
 
@@ -216,7 +216,7 @@ K. closed the book. The building stood before him, born from words he didn't und
 
 ---
 
-## Page 82
+## World 82
 
 The organ registry showed that K. was composed of pieces from at least seven different decades, and the assessment technician was explaining that this was unusual, that most people maintained more temporal consistency, that his heart being thirty and his lungs being seventy was causing problems.
 
@@ -250,7 +250,7 @@ He was a collage of ages. He was a committee of decades. And somewhere inside hi
 
 ---
 
-## Page 83
+## World 83
 
 The researcher was very apologetic, and K. was lying on a medical table, and there was something living inside him that everyone wanted, and K. had no idea what it was.
 
@@ -296,7 +296,7 @@ He was bleeding for the world. He would keep bleeding. The cure inside him would
 
 ---
 
-## Page 84
+## World 84
 
 The shadow was missing, and K. had not noticed until the child pointed, and now everyone in the park was staring at the space on the ground where darkness should have been.
 
@@ -330,7 +330,7 @@ He walked home in the dark, a man without shadow, a body that light refused to a
 
 ---
 
-## Page 85
+## World 85
 
 The preserve was beautiful, in the way that museums are beautiful, and K. was sitting in his enclosure, and the visitors were tapping on the glass, and the sign outside explained that he was a living fossil, one of the last examples of a species that had otherwise been extinct for a hundred years.
 
@@ -368,7 +368,7 @@ K. watched the fish. He was the last of something, the final example of a config
 
 ---
 
-## Page 86
+## World 86
 
 The voting booth was designed for singing, and K. was standing inside it, looking at the ballot, trying to find a way to cast his vote without using his voice.
 
@@ -398,7 +398,7 @@ The election results came that evening. The corporation won. K. wondered, briefl
 
 ---
 
-## Page 87
+## World 87
 
 The memory palace was on fire, and K. was running through its burning corridors, trying to find his childhood, which had somehow been moved to the wrong wing.
 
@@ -436,7 +436,7 @@ The clerk said processing would take four to six weeks.
 
 ---
 
-## Page 88
+## World 88
 
 The client was nervous, and K. understood why, because lying professionally was harder than most people realized, and K. was very good at it, and that made people nervous even when they were paying for the service.
 
@@ -466,7 +466,7 @@ K. went home. He looked at his photographs, his records, his evidence of a life 
 
 ---
 
-## Page 89
+## World 89
 
 The society had liquefied centuries ago, and K. was solid, and this was a problem that was becoming increasingly difficult to ignore.
 
@@ -500,7 +500,7 @@ The friend flowed away, literally poured themselves around a corner and out of s
 
 ---
 
-## Page 90
+## World 90
 
 The garden was producing something, and K. had been growing it for years, and the harvest was finally approaching, and he had no idea what he would be harvesting.
 
@@ -530,7 +530,7 @@ He would harvest when the time came. He would discover what he had grown. And wh
 
 ---
 
-## Page 91
+## World 91
 
 The genealogist was very sorry to inform K. that his family history had been repossessed, and that the descendants of its original owners were demanding its return with interest.
 
@@ -560,7 +560,7 @@ The room didn't answer. The Kowalskis stared from their frames, strangers who we
 
 ---
 
-## Page 92
+## World 92
 
 The god was malfunctioning, and K. had been called to repair it, and he was standing in the temple with his toolkit, looking at the divine machinery, trying to understand what had gone wrong.
 
@@ -596,7 +596,7 @@ K. didn't respond. He had fixed a machine. Whether he had saved a faith, touched
 
 ---
 
-## Page 93
+## World 93
 
 The mark was visible to everyone but K., and the reactions ranged from pity to disgust to fear, and K. walked through the city with something written on him that he couldn't read.
 
@@ -630,7 +630,7 @@ The reactions continued. The mark remained. K. learned to ignore what he couldn'
 
 ---
 
-## Page 94
+## World 94
 
 The taste in his mouth was someone else's childhood, and K. had been experiencing it for three days, and the memory specialist was explaining that cross-contamination of this kind was rare but documented.
 
@@ -666,7 +666,7 @@ By the third week, K. had stopped trying to distinguish. The tastes were in him 
 
 ---
 
-## Page 95
+## World 95
 
 The timelines were failing, and K. was a probability farmer, and his fields—which grew not crops but potential futures—were dying for lack of certainty.
 
@@ -698,7 +698,7 @@ The harvest failed. The possibilities died. K. remained in his present, the only
 
 ---
 
-## Page 96
+## World 96
 
 The house was unhappy, and the marriage counselor was explaining that in cases of human-structure partnerships, unhappiness could be very difficult to resolve.
 
@@ -732,7 +732,7 @@ It wasn't love, exactly. But it was something. And the house seemed to settle ar
 
 ---
 
-## Page 97
+## World 97
 
 The deadline was end of day, and K. had to produce seventeen units of something, and no one would tell him what the units were or how to produce them.
 
@@ -774,7 +774,7 @@ K. went home. He didn't know what he had failed to produce or why he had failed 
 
 ---
 
-## Page 98
+## World 98
 
 The city had changed overnight, and K. was in the wrong one now, and the welcome center was explaining that he had aged into a different demographic.
 
@@ -806,7 +806,7 @@ He walked his new streets. He learned his new routes. He became, gradually, a ci
 
 ---
 
-## Page 99
+## World 99
 
 The excavation had uncovered something that should have stayed buried, and K. was part of the team trying to contain it, and the something—an emotion, apparently, an extinct emotion—was already spreading beyond the dig site.
 
@@ -840,7 +840,7 @@ In isolation, K. sat with his weltschmerz and found it was not unpleasant. The w
 
 ---
 
-## Page 100
+## World 100
 
 The seal was weakening, and K. was the one who had sealed it, and he stood in front of the vault door trying to remember what was on the other side.
 

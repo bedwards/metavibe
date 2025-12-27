@@ -1,6 +1,6 @@
 # Chapter Seven: The Complications Deepen (Part II)
 
-## Page 126
+## World 126
 
 The patient was dreaming, and the dream was spreading, and K. was the specialist who was supposed to wake them, but every attempt to intervene drew him deeper into the dream's architecture.
 
@@ -40,7 +40,7 @@ K. looked at the sleeping figures. They were dreaming, peacefully, together. Wha
 
 ---
 
-## Page 127
+## World 127
 
 The competition was in its third round, and K. was winning, and he was increasingly certain that winning was not the goal.
 
@@ -82,7 +82,7 @@ The round ended. The prize was revealed. K. accepted it, because there was no wa
 
 ---
 
-## Page 128
+## World 128
 
 The emotions were being repossessed, and K. was watching the collectors take them, one by one, while he tried to explain that he needed at least some feelings to continue functioning.
 
@@ -120,7 +120,7 @@ They would do. They would have to do.
 
 ---
 
-## Page 129
+## World 129
 
 The divinity had been revoked, and K. was standing in the Department of Celestial Affairs, trying to understand why his godhood had been administratively terminated.
 
@@ -154,7 +154,7 @@ But the weight of having been worshipped, even without remembering it, settled o
 
 ---
 
-## Page 130
+## World 130
 
 The secret was that K. had a secret, and in a world where memory was public, having any private thought was dangerous.
 
@@ -194,7 +194,7 @@ They couldn't take that. Not yet.
 
 ---
 
-## Page 131
+## World 131
 
 The harvest was scheduled for Tuesday, and K. was the crop, and the farmers were explaining that regrowth typically took six to eight weeks, depending on nutrition and rest.
 
@@ -228,7 +228,7 @@ He lay in his bed and regrew. The next harvest was in six to eight weeks. The on
 
 ---
 
-## Page 132
+## World 132
 
 The marriage was maintained at a distance of exactly 1,000 kilometers, and K. had never touched his spouse, and the rules said that proximity would void the contract.
 
@@ -264,7 +264,7 @@ He would never know. The 1,000 kilometers stretched between them, a guarantee of
 
 ---
 
-## Page 133
+## World 133
 
 The fiction was taxable, and K. was a novelist, and the auditor was examining his dreams to determine how much imaginary income he owed.
 
@@ -298,7 +298,7 @@ But even poverty, he learned later, was taxable. The absence of transactions was
 
 ---
 
-## Page 134
+## World 134
 
 The replacement was watching from the corner, and K. was going about his day, and they both knew that the handover was approaching but neither acknowledged it directly.
 
@@ -336,7 +336,7 @@ The replacement took notes. The handover approached. Neither of them could stop 
 
 ---
 
-## Page 135
+## World 135
 
 The disease was remembering, and K. had been diagnosed, and the treatment was aggressive because individual memory was contagious and potentially civilization-ending.
 
@@ -366,7 +366,7 @@ Eventually, even the relapses stopped. K. was cured. K. was everyone. K. was no 
 
 ---
 
-## Page 136
+## World 136
 
 The diplomatic crisis required a shape expert, and K. was the only qualified negotiator, and the circles and triangles were threatening war if K. couldn't find common ground.
 
@@ -404,7 +404,7 @@ His job was to delay the clash long enough for reconciliation to become possible
 
 ---
 
-## Page 137
+## World 137
 
 The favor was being called in, and K. owed it, and the request was impossible, and the debt was real.
 
@@ -438,7 +438,7 @@ He had been saved, once, and the price of that salvation was infinite: a promise
 
 ---
 
-## Page 138
+## World 138
 
 The rage farm was producing too much, and K. was responsible, and the anger was spreading beyond the field boundaries into the surrounding communities.
 
@@ -470,7 +470,7 @@ And he would continue to farm, carefully now, keeping his yields within limits, 
 
 ---
 
-## Page 139
+## World 139
 
 K. had been a color, once, but he had been demoted, and now he was a shape, and the color he had been still missed him.
 
@@ -506,7 +506,7 @@ But sometimes, late at night, he saw teal in his dreams—the wavelength he had 
 
 ---
 
-## Page 140
+## World 140
 
 The replacement was not as good as the original, and K. knew this, and everyone knew this, and they all continued to pretend otherwise because pretending was easier.
 
@@ -538,7 +538,7 @@ He would never be what the original was. But he didn't have to be. He only had t
 
 ---
 
-## Page 141
+## World 141
 
 The union was on strike, and K. was a dreamer, and without union dreamers, the city's dreams were being handled by scabs who didn't know the craft.
 
@@ -566,7 +566,7 @@ The citizen slept peacefully. The union had won. The work continued.
 
 ---
 
-## Page 142
+## World 142
 
 The excavation had unearthed joy, and it was still active, and the dig team was infected, and K. was the containment specialist called in to prevent the spread.
 
@@ -602,7 +602,7 @@ K. looked at the contained joy. It glowed softly, patiently, waiting to make peo
 
 ---
 
-## Page 143
+## World 143
 
 The museum was K.'s home, and he was the exhibit, and visitors came every day to observe how an authentic human lived in the twenty-first century.
 
@@ -636,7 +636,7 @@ The guard nodded, understanding. K. returned to his habitat, waiting for the mor
 
 ---
 
-## Page 144
+## World 144
 
 The garden was growing truths, and they were spreading, and K. was trying to control the invasive facts that threatened to overrun everything.
 
@@ -668,7 +668,7 @@ But truths, it turned out, were not simple. They were connected, interrelated, p
 
 ---
 
-## Page 145
+## World 145
 
 The marriage was accidental, and the divorce would take a lifetime, and K. and his spouse were sitting in the arbitration office, agreeing that they wanted out but couldn't afford the process.
 
@@ -704,7 +704,7 @@ They walked home together. They had no choice. The marriage zone had spoken.
 
 ---
 
-## Page 146
+## World 146
 
 The echo was still reverberating, and the original voice had stopped speaking centuries ago, and K. was part of the chain that kept the sound alive.
 
@@ -740,7 +740,7 @@ But the sound itself was real. The sound itself persisted.
 
 ---
 
-## Page 147
+## World 147
 
 The gravity class was written on K.'s certificate, and it was wrong, and he was floating above his designated station because his body didn't match his documentation.
 
@@ -772,7 +772,7 @@ From above, everything looked different. Maybe that was the point.
 
 ---
 
-## Page 148
+## World 148
 
 The families were renting K. as an ancestor, and he was learning that professional genealogy was more complicated than it appeared.
 
@@ -804,7 +804,7 @@ None of it was true. All of it was meaningful.
 
 ---
 
-## Page 149
+## World 149
 
 The rehearsal had been going on for thirty years, and the performance had never happened, and K. was beginning to suspect that rehearsing was the point.
 
@@ -836,7 +836,7 @@ Or maybe they would all grow old and die in this hall, still preparing for a per
 
 ---
 
-## Page 150
+## World 150
 
 The economy ran on exported emotion, and K. was hollow, and the hollowness was the point—he had been emptied so that others could feel.
 

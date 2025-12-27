@@ -1,6 +1,6 @@
 # Chapter Eleven: The Variations Continue (Part II)
 
-## Page 226
+## World 226
 
 The warranty was for emotions again, and K. had exceeded the terms, and the warranty office was explaining that his feelings were now out of coverage.
 
@@ -28,7 +28,7 @@ Now every feeling was finite, fragile, at risk of failing without recourse.
 
 ---
 
-## Page 227
+## World 227
 
 The therapy was for shapes, and K. was in group therapy with other geometric entities, and the facilitator was explaining that shape dysphoria was more common than anyone admitted.
 
@@ -56,7 +56,7 @@ He wasn't sure if incomprehensibility was better than dysphoria.
 
 ---
 
-## Page 228
+## World 228
 
 The times were wrong, and K. was living in an era that didn't fit him, and the temporal adjustment office was explaining that period reassignment was expensive.
 
@@ -82,7 +82,7 @@ He went home to his too-modern apartment and waited for the past to accept him.
 
 ---
 
-## Page 229
+## World 229
 
 The qualifications were undisclosed, and K. had been hired for something, and no one would tell him what qualifications had made him suitable.
 
@@ -114,7 +114,7 @@ He had a job. He was qualified. What the job was, what made him qualified—thes
 
 ---
 
-## Page 230
+## World 230
 
 The insurance was for dreams, and K. had purchased comprehensive coverage, and now a dream had been stolen, and the claims process was complex.
 
@@ -144,7 +144,7 @@ It wasn't enough. The stolen dream had been more than average. He could feel its
 
 ---
 
-## Page 231
+## World 231
 
 The therapy was for climate, and K. was in couples therapy with his weather system, and the therapist was explaining that meteorological relationships required constant maintenance.
 
@@ -176,7 +176,7 @@ The weather cleared slightly. Patches of sun emerged.
 
 ---
 
-## Page 232
+## World 232
 
 The colors were gone again, and K. had been stripped of chromatic perception, and the world was shades of gray.
 
@@ -202,7 +202,7 @@ But he had looked too much. He had consumed color irresponsibly. Now he lived in
 
 ---
 
-## Page 233
+## World 233
 
 The configuration was for emotions, and K. was being reconfigured, and the technicians were explaining that emotional layout was customizable.
 
@@ -230,7 +230,7 @@ He wasn't sure if this was better. He wasn't sure if this was worse. He was diff
 
 ---
 
-## Page 234
+## World 234
 
 The warranty was for weight, and K.'s body mass was no longer guaranteed, and the warranty office was explaining the implications.
 
@@ -260,7 +260,7 @@ The mass was his. The risk was his. The body that had once been guaranteed now e
 
 ---
 
-## Page 235
+## World 235
 
 The integration was mandatory, and K. was being integrated into something larger, and he didn't know what he would be part of.
 
@@ -286,7 +286,7 @@ It wasn't death. It wasn't life as he had known it. It was integration—the thi
 
 ---
 
-## Page 236
+## World 236
 
 The focus was warranted again, and K. had purchased attention coverage, and his ability to concentrate was protected once more.
 
@@ -316,7 +316,7 @@ Unwarranted attention was a luxury he couldn't risk.
 
 ---
 
-## Page 237
+## World 237
 
 The insurance was for shapes, and K. had filed a claim for his lost corners, and the adjuster was evaluating the geometric damage.
 
@@ -340,7 +340,7 @@ He would live with seven sides, waiting for the day when insurance might cover t
 
 ---
 
-## Page 238
+## World 238
 
 The gestures were gone, and K. had lost the ability to move meaningfully, and his body performed actions without expression.
 
@@ -368,7 +368,7 @@ He would manage. He would adapt. He would learn to communicate with less, even i
 
 ---
 
-## Page 239
+## World 239
 
 The output was demanded, and K. was required to produce, and no one would tell him what kind of production was expected.
 
@@ -400,7 +400,7 @@ He became a servant of the counter, working to make it rise, never understanding
 
 ---
 
-## Page 240
+## World 240
 
 The warranty was for dreams, and K.'s nocturnal content was finally protected, and he could sleep without fear of loss.
 
@@ -426,7 +426,7 @@ The warranty had given him something he hadn't known he wanted: ownership of his
 
 ---
 
-## Page 241
+## World 241
 
 The insurance was for climate, and K.'s personal weather was finally covered, and he could stop worrying about atmospheric catastrophe.
 
@@ -454,7 +454,7 @@ He started hoping for storms.
 
 ---
 
-## Page 242
+## World 242
 
 The therapy was for attention, and K. was in group therapy with other focus-impaired individuals, and the facilitator was explaining that attention was not a personal failing.
 
@@ -482,7 +482,7 @@ It wasn't enough. It was never enough. But it was what he had, and the therapy h
 
 ---
 
-## Page 243
+## World 243
 
 The restoration was for focus, and K. was undergoing treatment to recover the attention he had lost, and the procedure was invasive.
 
@@ -514,7 +514,7 @@ The cost was what didn't matter anymore—the distractions, the wanderings, the 
 
 ---
 
-## Page 244
+## World 244
 
 The normalization was for shapes, and K. was being normalized, and the process would make him average in ways he didn't fully understand.
 
@@ -542,7 +542,7 @@ But the K. who had been unusual—the K. whose shape had been specific and stran
 
 ---
 
-## Page 245
+## World 245
 
 The transition was to something else, and K. was in the process of becoming what he was not, and the destination was unclear.
 
@@ -568,7 +568,7 @@ He was becoming. He would become. What he would be was arriving, regardless of h
 
 ---
 
-## Page 246
+## World 246
 
 The restoration was for dreams, and K. was recovering the dreams that had been stolen, and the recovery process was bringing back things he wasn't sure he wanted.
 
@@ -596,7 +596,7 @@ They were his again, legally and technically. But the theft had done something�
 
 ---
 
-## Page 247
+## World 247
 
 The insurance was for weather, and K. had filed a claim for emotional damage from a storm, and the adjuster was evaluating the psychological impact of precipitation.
 
@@ -630,7 +630,7 @@ Fear became an investment. Weather became opportunity.
 
 ---
 
-## Page 248
+## World 248
 
 The normalization was for feelings, and K. was having his emotions standardized, and the process would make him feel what everyone felt.
 
@@ -658,7 +658,7 @@ K. felt what the world felt, and the world felt what K. felt, and the distinctio
 
 ---
 
-## Page 249
+## World 249
 
 The termination was approaching, and K. was being phased out, and the termination office was explaining the process.
 
@@ -692,7 +692,7 @@ K. accepted this. He had existed. He was ending. The between was all he had ever
 
 ---
 
-## Page 250
+## World 250
 
 The restoration was for weather, and K.'s personal climate was being recovered after damage, and the world was regaining its atmosphere.
 

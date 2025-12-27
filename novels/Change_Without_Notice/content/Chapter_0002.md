@@ -1,6 +1,6 @@
 # Chapter Two
 
-## Page 16
+## World 16
 
 He owed 3.2 million credits to someone named Aldrich Phen, and payment began today.
 
@@ -32,7 +32,7 @@ The payment schedule: monthly minimum more than he earned in two months. Options
 
 ---
 
-## Page 17
+## World 17
 
 The exhibition opened at 8 PM, and K. still didn't know how to hold a gravity chisel.
 
@@ -60,7 +60,7 @@ K. smiled the smile of an artist protecting his mysteries. "I prefer to let the 
 
 ---
 
-## Page 18
+## World 18
 
 Different spouse, different war, same words of sympathy.
 
@@ -90,7 +90,7 @@ He was hiding nothing. He felt nothing because there was nothing to feel—no me
 
 ---
 
-## Page 19
+## World 19
 
 He was property of the Amazon Corporation, Lord-Holder of the Pacific Northwest Territories.
 
@@ -120,7 +120,7 @@ K. signed page one. He would sign all seventeen, collect signatures, wait twelve
 
 ---
 
-## Page 20
+## World 20
 
 Words had weight here, and K. had been talking too much.
 
@@ -148,7 +148,7 @@ The inspector made another note. "Minimum fine is two hundred credits. Do better
 
 ---
 
-## Page 21
+## World 21
 
 Everyone knew about the affair except him.
 
@@ -178,7 +178,7 @@ K. tried to feel jealous. He tried to feel betrayed. He felt nothing except the 
 
 ---
 
-## Page 22
+## World 22
 
 Reading was a dead skill, like Latin or cursive handwriting, something that historians studied and eccentrics preserved but that had no practical use in daily life.
 
@@ -208,7 +208,7 @@ The clerk made a note, probably documenting his consent, probably covering the f
 
 ---
 
-## Page 23
+## World 23
 
 He was married to seventeen people simultaneously, and tonight was his night with Spouse #8.
 
@@ -240,7 +240,7 @@ K. couldn't. He went to order food, and he realized he didn't know what #8 was a
 
 ---
 
-## Page 24
+## World 24
 
 The contact used a code phrase K. didn't recognize, and now there were people following him.
 
@@ -268,7 +268,7 @@ The men exchanged glances. "That's not how this works," the first one said.
 
 ---
 
-## Page 25
+## World 25
 
 His apartment was sick. The walls had a fever of 101.3 degrees, and the ceiling was showing early signs of infection, and the landlord had said that healthcare for housing was not covered under his lease agreement.
 
@@ -298,7 +298,7 @@ K. put his hand on the wall, felt the heat, felt something else too—a vibratio
 
 ---
 
-## Page 26
+## World 26
 
 The families thanked him with unsettling sincerity. "You really captured him," they said, or "She would have been so moved," and K. accepted the gratitude the way he had learned to accept it, with modest deflection and appropriate solemnity.
 
@@ -322,7 +322,7 @@ K. wiped his eyes. The tears were still coming, wouldn't stop, had become someth
 
 ---
 
-## Page 27
+## World 27
 
 The social worker's office was designed to be calming—soft colors, comfortable chairs, plants that were probably meant to suggest growth and renewal. K. sat in one of the comfortable chairs and tried to explain why he had been found napping alone.
 
@@ -354,7 +354,7 @@ K. tried to explain. The words came out sounding like symptoms.
 
 ---
 
-## Page 28
+## World 28
 
 The patent was worth billions, and three corporations were trying to kill him.
 
@@ -384,7 +384,7 @@ He still didn't understand what QuantumStitch did. He probably never would. But 
 
 ---
 
-## Page 29
+## World 29
 
 The organism in his chest was moving again, and K. pressed his hand against his sternum to feel it shift.
 
@@ -410,7 +410,7 @@ The organism loved him. He could feel that love, a constant presence, a warmth t
 
 ---
 
-## Page 30
+## World 30
 
 All statements must contain precisely one falsehood, and K. kept accidentally telling the truth.
 

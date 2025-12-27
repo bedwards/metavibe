@@ -1,6 +1,6 @@
 # Chapter Twelve: The Systems Persist (Part I)
 
-## Page 251
+## World 251
 
 The setup was for dreams, and K. was being configured for sleep, and the technicians were explaining that proper dream initialization required careful calibration.
 
@@ -30,7 +30,7 @@ His sleep was pleasant, predictable, and somehow empty—the managed dreams lack
 
 ---
 
-## Page 252
+## World 252
 
 The densities were changing, and K. was denser than he had been, and the density authority was explaining that the shift was within normal parameters.
 
@@ -58,7 +58,7 @@ He didn't know if this was good. He only knew it was happening, and would contin
 
 ---
 
-## Page 253
+## World 253
 
 The verification had failed, and K. was unverified, and the verification office was explaining that unverified status had significant consequences.
 
@@ -84,7 +84,7 @@ The world continued around him, full of verified persons who knew who they were 
 
 ---
 
-## Page 254
+## World 254
 
 The settings were for weather, and K. was adjusting his personal atmospheric preferences, and the climate interface was offering options he didn't understand.
 
@@ -112,7 +112,7 @@ He had optimized his climate and lost something in the optimization.
 
 ---
 
-## Page 255
+## World 255
 
 The warranties were void, and K. had exceeded the terms on everything, and nothing about him was covered anymore.
 
@@ -140,7 +140,7 @@ He was his own responsibility now. He would maintain himself, or he wouldn't. Th
 
 ---
 
-## Page 256
+## World 256
 
 The rhythms were changing, and K. was out of sync with the world, and the synchronization office was explaining that rhythm misalignment was correctable.
 
@@ -168,7 +168,7 @@ But sometimes, late at night, he felt his original 23.7-hour self stirring—the
 
 ---
 
-## Page 257
+## World 257
 
 The allocation was for resources, and K. was receiving his monthly distribution, and the distribution center was explaining that this month's allocation was reduced.
 
@@ -196,7 +196,7 @@ K. learned to need less. He became smaller in his needs, in his expectations, in
 
 ---
 
-## Page 258
+## World 258
 
 The synchronization was for emotions, and K. was being synced with the collective feeling, and the process would align his inner life with everyone else's.
 
@@ -222,7 +222,7 @@ He felt with everyone, which meant he felt like no one in particular. He was par
 
 ---
 
-## Page 259
+## World 259
 
 The passwords were for weight, and K. had forgotten the codes that allowed his body to maintain its mass, and the gravity office was explaining that password recovery was a lengthy process.
 
@@ -250,7 +250,7 @@ Stability was better, probably. Stability was normal. But the instability had be
 
 ---
 
-## Page 260
+## World 260
 
 The assessment was constant, and K. was being evaluated continuously, and the assessors were explaining that permanent monitoring was for his own benefit.
 
@@ -276,7 +276,7 @@ But the life wasn't his—it was a performance for the assessors. The person he 
 
 ---
 
-## Page 261
+## World 261
 
 The configuration was for focus, and K. was being optimized for attention, and the process would determine what he could notice and what he couldn't.
 
@@ -302,7 +302,7 @@ The efficiency was real. The loss was also real. He had traded peripheral awaren
 
 ---
 
-## Page 262
+## World 262
 
 The calibration was for shapes, and K. was being adjusted to standard geometric specifications, and the process would correct any deviations from the norm.
 
@@ -328,7 +328,7 @@ The deviation had been him—the 0.3 degrees, the 2.1%. Now he was everyone's sh
 
 ---
 
-## Page 263
+## World 263
 
 The pressures were changing, and K. was experiencing force fluctuations, and the pressure authority was explaining that atmospheric density was in flux.
 
@@ -356,7 +356,7 @@ He endured. He waited. The pressure continued to fluctuate, and K. continued to 
 
 ---
 
-## Page 264
+## World 264
 
 The loops were for documentation, and K. was trapped in a cycle of paperwork, and the administrative office was explaining that the cycle was necessary for records integrity.
 
@@ -380,7 +380,7 @@ He was documenting his existence in a loop that had no exit—a permanent record
 
 ---
 
-## Page 265
+## World 265
 
 The tuning was for dreams, and K. was having his sleep adjusted, and the technicians were explaining that fine-tuning improved nocturnal efficiency.
 
@@ -410,7 +410,7 @@ But they were no longer explorations. They were no longer his.
 
 ---
 
-## Page 266
+## World 266
 
 The interference was with weather, and K.'s climate was being disrupted, and the meteorological authority was explaining that the disruption was external.
 
@@ -436,7 +436,7 @@ He lived in shared weather, affected by forces he couldn't control, experiencing
 
 ---
 
-## Page 267
+## World 267
 
 The vibrations were changing, and K. was resonating at different frequencies, and the resonance authority was explaining that vibrational drift was normal with age.
 
@@ -462,7 +462,7 @@ The drift was slow. The change was constant. The music of his existence was modu
 
 ---
 
-## Page 268
+## World 268
 
 The normalization was for emotions, and K. was being brought into standard feeling ranges, and the process would eliminate his emotional outliers.
 
@@ -490,7 +490,7 @@ He felt what was normal to feel, which was less than he had felt before, which w
 
 ---
 
-## Page 269
+## World 269
 
 The tuning was for emotions, and K. was having his feelings adjusted, and the technicians were explaining that emotional precision required regular calibration.
 
@@ -516,7 +516,7 @@ He could communicate perfectly. He could no longer be understood personally.
 
 ---
 
-## Page 270
+## World 270
 
 The sync was for gravity, and K. was being aligned with standard gravitational pull, and the process would make his weight consistent across all locations.
 
@@ -542,7 +542,7 @@ The world had become flat—not geometrically, but experientially. There were no
 
 ---
 
-## Page 271
+## World 271
 
 The remediation was for attention, and K. was being corrected for focus deficiencies, and the process would bring his concentration to acceptable levels.
 
@@ -572,7 +572,7 @@ K. focused on everything, because he couldn't do otherwise. The remediation had 
 
 ---
 
-## Page 272
+## World 272
 
 The sync was for attention, and K. was being aligned with collective awareness, and the process would connect his focus to everyone else's.
 
@@ -600,7 +600,7 @@ What he saw, everyone saw. What everyone ignored, he ignored too.
 
 ---
 
-## Page 273
+## World 273
 
 The approval was for shapes, and K. had submitted his current geometry for review, and the approval board was deliberating.
 
@@ -628,7 +628,7 @@ The condition would never lift. The review would never end. His shape was his ow
 
 ---
 
-## Page 274
+## World 274
 
 The correction was coming, and K. was scheduled for adjustment, and he didn't know what needed correcting.
 
@@ -660,7 +660,7 @@ He would never know what had changed. He would only know that he was, somehow, m
 
 ---
 
-## Page 275
+## World 275
 
 The scheduling was for dreams, and K.'s sleep was being organized, and the schedule would determine when and what he dreamed.
 

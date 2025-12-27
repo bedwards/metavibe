@@ -1,6 +1,6 @@
 # Chapter Six: The Complications Deepen (Part I)
 
-## Page 101
+## World 101
 
 The campaign had been running for forty years, and K. was still a candidate, and the election that would determine his future had never arrived and showed no signs of arriving.
 
@@ -34,7 +34,7 @@ It was not a lie, exactly. He couldn't let her down because there would never be
 
 ---
 
-## Page 102
+## World 102
 
 The name was crushing him, and K. stood in the Office of Nomenclature, asking for relief, but the clerk was explaining that name changes required the approval of the dead, and the dead had opinions.
 
@@ -64,7 +64,7 @@ He walked home more slowly. The name pressed down. Fifteen years minimum, possib
 
 ---
 
-## Page 103
+## World 103
 
 The nightmare had followed K. into the waking world, and now it was standing in his apartment, looking confused, and he was explaining to the authorities that he had not intentionally harbored a fugitive, that he had simply woken up and it was there.
 
@@ -104,7 +104,7 @@ K. looked at his nightmare. His fear, made manifest. His responsibility.
 
 ---
 
-## Page 104
+## World 104
 
 The contract had been signed with a handshake, and K. was learning that handshake contracts were binding in ways that written contracts were not, and that he owed a kidney to someone he couldn't remember meeting.
 
@@ -130,7 +130,7 @@ His hand had signed his life away, one grip at a time. And there was no way to v
 
 ---
 
-## Page 105
+## World 105
 
 The collection was famous, and K. was receiving offers daily—museums, billionaires, governments—all wanting to acquire or view or study the thing that he possessed, the thing that he couldn't find anywhere in his apartment or his memories.
 
@@ -166,7 +166,7 @@ K. looked around his apartment with new eyes. Everything was in relationship to 
 
 ---
 
-## Page 106
+## World 106
 
 The midnight transformation was approaching, and K. was standing in the Rotation Center, waiting to discover what species he would become, and the technician was explaining that the randomization was truly random, that there was no way to predict or influence the outcome.
 
@@ -200,7 +200,7 @@ K. flew toward the light. He had thirty days as a moth, and then he would be som
 
 ---
 
-## Page 107
+## World 107
 
 The court required K.'s testimony, and the prosecutor was asking him to identify the defendant, and K. looked at the person in the dock and had no idea who they were or what they had allegedly done.
 
@@ -240,7 +240,7 @@ K. looked at the defendant again. Whatever they had done, whatever he had seen, 
 
 ---
 
-## Page 108
+## World 108
 
 K. was an echo, and the original had stopped speaking years ago, and he continued to reverberate through a world that expected the original's voice to return.
 
@@ -270,7 +270,7 @@ At night, alone, he tried to find his original voice—the voice that might have
 
 ---
 
-## Page 109
+## World 109
 
 The prescription was K.'s life, and he took it as directed: two tablets of existence in the morning, one tablet of purpose at noon, and a capsule of meaning before bed.
 
@@ -300,7 +300,7 @@ He slept. In the morning, he would take his tablets again, and the cycle would c
 
 ---
 
-## Page 110
+## World 110
 
 The exchange was tomorrow, and K. was nervous, and his current spouse was reminding him to polish his paperwork and present his best qualities.
 
@@ -340,7 +340,7 @@ They walked home together, beginning the season, knowing it would end, knowing n
 
 ---
 
-## Page 111
+## World 111
 
 The crimes had been committed by someone else, but K. had inherited them, and the victims were standing in his living room, demanding answers he didn't have.
 
@@ -372,7 +372,7 @@ He carried a dead man's crimes now. He would carry them until he died, and then,
 
 ---
 
-## Page 112
+## World 112
 
 The weather was wrong because K. was wrong, and the city was demanding that he fix his emotions before they all drowned.
 
@@ -408,7 +408,7 @@ K. nodded. Inside the filters, behind the barriers, the sadness continued. It ha
 
 ---
 
-## Page 113
+## World 113
 
 The message was urgent, and K. was running to deliver it, and the recipient was dying, and K. couldn't remember what the message said.
 
@@ -452,7 +452,7 @@ The message was gone. The messenger continued.
 
 ---
 
-## Page 114
+## World 114
 
 The sculpture was playing, and the entire city could hear it, and K. was trying to remember creating a work of art that was now audible for miles in every direction.
 
@@ -486,7 +486,7 @@ And now, whoever he had become, he had to live with who he had been: an artist w
 
 ---
 
-## Page 115
+## World 115
 
 The home was excellent, and K. was well cared for, and the sign above the entrance read "Home for Obsolete Humans" in letters that were kind but clear.
 
@@ -518,7 +518,7 @@ K. attended the bingo. He attended the reminiscence sessions. He lived among his
 
 ---
 
-## Page 116
+## World 116
 
 The mirror world was reflected in the mirror, and K. was standing in it, and everyone knew that he was the reflection, not the original, and that the original was somewhere else, living the real version of this moment.
 
@@ -548,7 +548,7 @@ He walked away from the mirror. He continued to exist. That seemed to prove some
 
 ---
 
-## Page 117
+## World 117
 
 The blood was valuable, and K. was bleeding, and the collectors were waiting with their sterile containers while K. tried to understand why his veins contained an antidote the world needed.
 
@@ -584,7 +584,7 @@ And he would continue to provide it, not because he chose to, but because the ch
 
 ---
 
-## Page 118
+## World 118
 
 The funeral was tomorrow, and K. had used his entire emotional allocation for the month, and the rationing authority was explaining that grief would have to be deferred or purchased on credit.
 
@@ -614,7 +614,7 @@ Next month, he would have to be less emotional. Next month, the credit would com
 
 ---
 
-## Page 119
+## World 119
 
 The owner was kind, and the collar was comfortable, and K. was trying to accept that he was, in this world, someone's pet.
 
@@ -648,7 +648,7 @@ But freedom was difficult, and his cushion was soft, and his owner was kind, and
 
 ---
 
-## Page 120
+## World 120
 
 The history had been revised, and K. was the only one who remembered the old version, and the authorities were interested in whether his memory was valuable or dangerous.
 
@@ -688,7 +688,7 @@ He walked home through a peaceful city that had never known war, remembering bom
 
 ---
 
-## Page 121
+## World 121
 
 The letter had arrived from the future, and the message was simple—"Don't"—and K. had no idea what he wasn't supposed to do.
 
@@ -728,7 +728,7 @@ He threw away the letter. The future would arrive eventually, warned or not.
 
 ---
 
-## Page 122
+## World 122
 
 The company had been his family, and now the company was bankrupt, and K. was standing in the liquidation office, realizing that he had no other family to fall back on.
 
@@ -760,7 +760,7 @@ But even as he said it, he knew it was not entirely true. You could not replace 
 
 ---
 
-## Page 123
+## World 123
 
 The skills had arrived overnight, and K. was examining his hands—which now knew how to do things they had never known before—while the Guild inspector tried to understand how this was possible.
 
@@ -790,7 +790,7 @@ The hands didn't answer. They only worked, producing mastery without memory, exc
 
 ---
 
-## Page 124
+## World 124
 
 The memory was criminal, and K. was being prosecuted for nostalgia, and the court was examining the specific nature of his illegal reminiscence.
 
@@ -828,7 +828,7 @@ But sometimes, in dreams, he saw a color that had no name, a color that was wron
 
 ---
 
-## Page 125
+## World 125
 
 The planets were arguing over custody, and K. was the child in question, and Earth was presenting its case while Mars and Venus waited their turns.
 

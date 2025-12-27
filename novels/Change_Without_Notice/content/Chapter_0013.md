@@ -1,6 +1,6 @@
 # Chapter Thirteen: The Systems Persist (Part II)
 
-## Page 276
+## World 276
 
 The tuning was for weather, and K.'s climate was being fine-adjusted, and the meteorological technician was explaining that atmospheric precision was essential.
 
@@ -26,7 +26,7 @@ Never delighted him either.
 
 ---
 
-## Page 277
+## World 277
 
 The echoes were returning, and K. was hearing reverberations of things he had said years ago, and the echo authority was explaining that sound persistence was a normal phenomenon.
 
@@ -52,7 +52,7 @@ Each day: new echoes. Fragments of old conversations. His past arriving audibly,
 
 ---
 
-## Page 278
+## World 278
 
 The updates were mandatory, and K. was being updated, and the update center was explaining that regular revisions were necessary for optimal functioning.
 
@@ -86,7 +86,7 @@ Next update already scheduled.
 
 ---
 
-## Page 279
+## World 279
 
 The standardization was for emotions, and K. was being made standard, and the process would align his feelings with the universal template.
 
@@ -114,7 +114,7 @@ He felt like everyone. He was no one in particular.
 
 ---
 
-## Page 280
+## World 280
 
 The calibration was for weight, and K. was being precisely measured, and the calibration office was explaining that mass accuracy was essential.
 
@@ -144,7 +144,7 @@ He was exactly what he should be.
 
 ---
 
-## Page 281
+## World 281
 
 The restoration was for focus, and K. was having his attention repaired, and the process would fix the damage from years of distraction.
 
@@ -172,7 +172,7 @@ The fragmentation had been a kind of richness. The wholeness was a kind of pover
 
 ---
 
-## Page 282
+## World 282
 
 The normalization was for focus, and K. was being brought into standard attentional range, and the process would make his concentration average.
 
@@ -200,7 +200,7 @@ He noticed what everyone noticed, with the depth that everyone achieved.
 
 ---
 
-## Page 283
+## World 283
 
 The normalization was for shapes, and K. was being geometrically averaged, and the process would make his form unremarkable.
 
@@ -228,7 +228,7 @@ The distinction had been him. The average was everyone.
 
 ---
 
-## Page 284
+## World 284
 
 The speeds were changing, and K. was moving at different rates, and the velocity authority was explaining that speed variance was being corrected.
 
@@ -254,7 +254,7 @@ He moved like everyone else now. His body had lost its rhythm.
 
 ---
 
-## Page 285
+## World 285
 
 The transition was continuing, and K. was still becoming, and the becoming had no apparent destination.
 
@@ -284,7 +284,7 @@ He never arrived. He never stopped. He was perpetual motion, permanent change, a
 
 ---
 
-## Page 286
+## World 286
 
 The normalization was for dreams, and K. was having his sleep standardized, and the process would make his nights predictable.
 
@@ -312,7 +312,7 @@ He dreamed what everyone dreamed. He was no longer alone in his nights.
 
 ---
 
-## Page 287
+## World 287
 
 The normalization was for weather, and K.'s climate was being standardized, and the process would make his atmospheric experience uniform.
 
@@ -338,7 +338,7 @@ He shared weather with everyone, which meant the weather was no one's.
 
 ---
 
-## Page 288
+## World 288
 
 The silences were returning, and K. was hearing the absences of things he had never said, and the silence authority was explaining that unsaid things had presence too.
 
@@ -364,7 +364,7 @@ He had been silent so often. The silences were many.
 
 ---
 
-## Page 289
+## World 289
 
 The migration was for emotions, and K.'s feelings were relocating, and the process would move them to more efficient locations.
 
@@ -392,7 +392,7 @@ He felt efficiently. He wasn't sure he felt authentically.
 
 ---
 
-## Page 290
+## World 290
 
 The rotation was for roles, and K. was cycling through identities, and the rotation office was explaining that regular role changes prevented stagnation.
 
@@ -426,7 +426,7 @@ He was what he was rotated into being.
 
 ---
 
-## Page 291
+## World 291
 
 The restoration was for focus, and K. was being repaired again, and the technicians were explaining that attention required ongoing maintenance.
 
@@ -458,7 +458,7 @@ K. functioned. For now.
 
 ---
 
-## Page 292
+## World 292
 
 The restoration was for shapes, and K.'s geometry was being repaired, and the process would fix the deformations that time had caused.
 
@@ -488,7 +488,7 @@ The restoration was physical. The experience of aging was still inside, pressing
 
 ---
 
-## Page 293
+## World 293
 
 The temperatures were changing, and K. was experiencing thermal flux, and the temperature authority was explaining that heat stability was no longer guaranteed.
 
@@ -518,7 +518,7 @@ He adapted. He had no choice.
 
 ---
 
-## Page 294
+## World 294
 
 The termination was postponed, and K. was still existing, and the termination office was explaining that his ending had been delayed for administrative reasons.
 
@@ -546,7 +546,7 @@ The uncertainty was its own kind of ending—an existence suspended, neither liv
 
 ---
 
-## Page 295
+## World 295
 
 The restoration was for dreams, and K. was having his nights repaired, and the technicians were explaining that dream restoration was delicate work.
 
@@ -574,7 +574,7 @@ His dreams were working. Whether they were truly his was a different question.
 
 ---
 
-## Page 296
+## World 296
 
 The restoration was for weather, and K.'s climate was being repaired, and the meteorological technicians were explaining that atmospheric damage was reversible.
 
@@ -604,7 +604,7 @@ The weather would fade again, and he would return for restoration again, in an e
 
 ---
 
-## Page 297
+## World 297
 
 The illumination was changing, and K. was experiencing different light, and the light authority was explaining that visual conditions were being adjusted.
 
@@ -632,7 +632,7 @@ The new light was reality now. The old light was memory, fading, becoming harder
 
 ---
 
-## Page 298
+## World 298
 
 The normalization was for everything, and K. was being comprehensively standardized, and the process would make him completely average.
 
@@ -662,7 +662,7 @@ What remained was no one in particular.
 
 ---
 
-## Page 299
+## World 299
 
 The weights were normalizing, and K. was becoming average mass, and the process was bringing him to the universal mean.
 
@@ -692,7 +692,7 @@ He was average, entirely.
 
 ---
 
-## Page 300
+## World 300
 
 The focus was on restoration, and K. was being repaired one final time, and the technician was explaining that this restoration would be permanent.
 

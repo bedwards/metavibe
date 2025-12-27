@@ -1,6 +1,6 @@
 # Chapter Fourteen: The Continuation
 
-## Page 301
+## World 301
 
 The initialization was happening again, and K. was being started over, and the previous versions of himself were visible in his memory like photographs of strangers.
 
@@ -26,7 +26,7 @@ The initialization was complete. The continuation was just beginning.
 
 ---
 
-## Page 302
+## World 302
 
 The emotions were migrating, and K. was watching them leave, and he couldn't stop the departure.
 
@@ -52,7 +52,7 @@ The absence remained. The absence was what he had.
 
 ---
 
-## Page 303
+## World 303
 
 The birth weight was restored, and K. was suddenly seven pounds again, and he couldn't fit into the world that had grown around him.
 
@@ -78,7 +78,7 @@ The mismatch was permanent.
 
 ---
 
-## Page 304
+## World 304
 
 The spreading was beginning, and K. was becoming multiple, and his consciousness was distributing itself across bodies he couldn't control.
 
@@ -104,7 +104,7 @@ The concentration was gone. The single K. was becoming a population.
 
 ---
 
-## Page 305
+## World 305
 
 The focus was migrating, and K. was losing interest in himself, and the attention he had always directed inward was flowing elsewhere.
 
@@ -130,7 +130,7 @@ He couldn't tell the difference.
 
 ---
 
-## Page 306
+## World 306
 
 The shape was leaving, and K. was becoming shapeless, and his geometry was dissolving into formlessness.
 
@@ -156,7 +156,7 @@ The shape had been his identity. Now identity was something else—something wit
 
 ---
 
-## Page 307
+## World 307
 
 The dimension was changing, and K. was feeling depths that no longer existed, and his experience of space was contracting.
 
@@ -182,7 +182,7 @@ The dimension was gone. The memory of depth was fading too.
 
 ---
 
-## Page 308
+## World 308
 
 The version was different, and K. was unrecognizable through the incremental changes, and he wondered if he was still the original.
 
@@ -212,7 +212,7 @@ The updating would continue. The original would recede further.
 
 ---
 
-## Page 309
+## World 309
 
 The dreams were migrating, and K. was receiving secondhand sleep, and the visions that visited him belonged to others.
 
@@ -238,7 +238,7 @@ He slept in borrowed visions, wearing dreams that had been worn before.
 
 ---
 
-## Page 310
+## World 310
 
 The weather was leaving, and K. was experiencing atmospheric departure, and the forecast was for nothing.
 
@@ -264,7 +264,7 @@ He was alone now. Weather-free. Atmospherically abandoned.
 
 ---
 
-## Page 311
+## World 311
 
 The gravity was loosening, and K. was feeling the pull of things that no longer existed, and the world was becoming less connected.
 
@@ -290,7 +290,7 @@ But it was weakening. Soon he would float entirely. Soon nothing would hold him 
 
 ---
 
-## Page 312
+## World 312
 
 The something was dissolving, and K. could feel it happening, and the dissolution was structural—some fundamental part of him was coming apart.
 
@@ -316,7 +316,7 @@ The structure was going. Something else would remain.
 
 ---
 
-## Page 313
+## World 313
 
 The emotions were spreading, and K. was infecting strangers, and his feelings were becoming contagious in ways he couldn't control.
 
@@ -344,7 +344,7 @@ He continued to infect. The strangers continued to catch.
 
 ---
 
-## Page 314
+## World 314
 
 The weight was migrating, and K. was becoming incorrectly light, and the pounds that had been his were relocating to unknown destinations.
 
@@ -370,7 +370,7 @@ He was becoming lighter. He was becoming less.
 
 ---
 
-## Page 315
+## World 315
 
 The recursion was happening, and K. was seeing himself seeing himself, and the loops were multiplying.
 
@@ -398,7 +398,7 @@ The recursion was permanent.
 
 ---
 
-## Page 316
+## World 316
 
 The focus was spreading, and K. was seeing everything and nothing, and his attention was distributed across all possible objects.
 
@@ -424,7 +424,7 @@ What remained was awareness without direction, attention without intention.
 
 ---
 
-## Page 317
+## World 317
 
 The shape was dissolving, and K. was becoming nothing specific, and his geometry was reverting to potentiality.
 
@@ -450,7 +450,7 @@ The shape was gone. The shapelessness remained.
 
 ---
 
-## Page 318
+## World 318
 
 The space was changing, and K. was feeling capacities that no longer had content, and his interior was becoming empty of everything but emptiness.
 
@@ -476,7 +476,7 @@ The space remained. The emptiness continued.
 
 ---
 
-## Page 319
+## World 319
 
 The suspension was total, and K. was frozen in a pause that extended indefinitely, and time had stopped without ending.
 
@@ -504,7 +504,7 @@ Time moved around him. He remained suspended.
 
 ---
 
-## Page 320
+## World 320
 
 The dreams were dissolving, and K. was experiencing collective dreaming, and his nights were merging with everyone else's.
 
@@ -530,7 +530,7 @@ There was no longer any separation between his sleeping mind and the sleeping mi
 
 ---
 
-## Page 321
+## World 321
 
 The weather was dissolving, and K. was experiencing shared sky, and the climate belonged to everyone and no one.
 
@@ -556,7 +556,7 @@ He shared the sky. The sky shared him.
 
 ---
 
-## Page 322
+## World 322
 
 The emptiness was filling, and K. was exhausted by presence, and the absence he had known was becoming something else.
 
@@ -582,7 +582,7 @@ He was present. He was exhausted. He was full of things that didn't belong to hi
 
 ---
 
-## Page 323
+## World 323
 
 The convergence was imminent, and K. was approaching a point where everything came together, and the approach was extending indefinitely.
 
@@ -610,7 +610,7 @@ The convergence extended. The approach continued.
 
 ---
 
-## Page 324
+## World 324
 
 The persistence was unexplained, and K. didn't know why he continued, and the continuation required no justification.
 
@@ -638,7 +638,7 @@ He persisted. He would persist.
 
 ---
 
-## Page 325
+## World 325
 
 The continuation was constant, and K. continued, and the continuing was all there was.
 
@@ -662,7 +662,7 @@ K. continued.
 
 ---
 
-## Page 326
+## World 326
 
 He was already different, and K. was already adapting, and the page turned, and the next world began.
 

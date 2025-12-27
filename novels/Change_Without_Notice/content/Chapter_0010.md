@@ -1,6 +1,6 @@
 # Chapter Ten: The Variations Continue (Part I)
 
-## Page 201
+## World 201
 
 The documentation was required for sleep, and K. had not filed his sleep intention forms, and the sleep bureau was explaining that unauthorized unconsciousness was a civil violation.
 
@@ -28,7 +28,7 @@ In the morning, a citation was waiting.
 
 ---
 
-## Page 202
+## World 202
 
 The marriage was to temperature, and K. was married to 72 degrees Fahrenheit, and the relationship had been stable for years, but lately the temperature had been distant.
 
@@ -56,7 +56,7 @@ K. sat in his 72-degree apartment, married to a sensation he could no longer per
 
 ---
 
-## Page 203
+## World 203
 
 The deposits were forgotten, and K. was owed something by a bank that had lost all records, and the recovery process had become his full-time occupation.
 
@@ -82,7 +82,7 @@ But the search continued, because somewhere, something that had belonged to him 
 
 ---
 
-## Page 204
+## World 204
 
 The famine was emotional again, and K. was standing in the ration line, and the aid workers were explaining that this season's feelings were particularly scarce.
 
@@ -108,7 +108,7 @@ The famine continued. K. survived on rations, on scraps of feeling, on the emoti
 
 ---
 
-## Page 205
+## World 205
 
 The weight was taken, and K. was lighter now, and the lightness was not freedom but loss.
 
@@ -134,7 +134,7 @@ The heaviness was gone. The lightness remained. K. floated through his days, tet
 
 ---
 
-## Page 206
+## World 206
 
 The census was wrong again, and K. was counted as two people, and the government was demanding he pay double taxes for his doubled existence.
 
@@ -160,7 +160,7 @@ He was one person, living two civic lives, paying twice for a single existence.
 
 ---
 
-## Page 207
+## World 207
 
 The taxes were on attention, and K. had been noticed too frequently, and the attention revenue service was conducting an audit.
 
@@ -186,7 +186,7 @@ K. paid what he could. The rest went on a payment plan. His existence—his simp
 
 ---
 
-## Page 208
+## World 208
 
 The infidelity was shape-based, and K. had been square for too long, and his rounded edges were appearing in places they shouldn't.
 
@@ -212,7 +212,7 @@ He mourned his angles even as he grew new curves.
 
 ---
 
-## Page 209
+## World 209
 
 The list was classified, and K. was removed from it, and the removal felt worse than being listed.
 
@@ -238,7 +238,7 @@ He was just K. now. Not K.-on-the-list, not K.-of-significance. Just K., removed
 
 ---
 
-## Page 210
+## World 210
 
 The quota was for dreams again, and K. had overdreamed, and the dream regulation board was discussing penalties.
 
@@ -266,7 +266,7 @@ He slept his compliant sleep and dreamed his rationed dreams and woke to a world
 
 ---
 
-## Page 211
+## World 211
 
 The custody was over climate, and the weather patterns of K.'s region were being reassigned, and he had no legal standing to protest.
 
@@ -292,7 +292,7 @@ K. sometimes remembered the old weather—the specific quality of light, the par
 
 ---
 
-## Page 212
+## World 212
 
 The odors had returned, and K. could smell again, and the world was overwhelming with scents he had forgotten existed.
 
@@ -318,7 +318,7 @@ He was grateful. He was exhausted. He was awash in a sensory channel he had lost
 
 ---
 
-## Page 213
+## World 213
 
 The nominations continued, and K. was nominated again, and once again no one would explain what the nomination was for.
 
@@ -352,7 +352,7 @@ He had achieved. He had been recognized. What he had achieved, and why it matter
 
 ---
 
-## Page 214
+## World 214
 
 The floods were emotional, and K. was drowning in feelings from an unknown source, and the emergency services were explaining that emotional drainage was backed up across the entire district.
 
@@ -380,7 +380,7 @@ He would never be quite the same. The flood had changed him, contaminated him, m
 
 ---
 
-## Page 215
+## World 215
 
 The custody was over K.'s weight again, and this time the dispute was between historical versions of himself, and the court was trying to determine which K. had the right to weigh.
 
@@ -402,7 +402,7 @@ K. left the courtroom, 195 pounds of accumulated life, weighted by a legal ackno
 
 ---
 
-## Page 216
+## World 216
 
 The schedules were still incomprehensible, and K. had given up trying to understand them, and he simply followed where they led.
 
@@ -428,7 +428,7 @@ He would comply. He would perform. He would continue.
 
 ---
 
-## Page 217
+## World 217
 
 The bankruptcy was attentional again, and K. had been through this before, and the recovery was even slower this time.
 
@@ -454,7 +454,7 @@ He was patient. He had to be patient. Impatience required attention, and attenti
 
 ---
 
-## Page 218
+## World 218
 
 The divorce was between K.'s shapes again, but this time it was his cube-self divorcing his sphere-self, and the three-dimensional separation was more complex than his previous two-dimensional split.
 
@@ -482,7 +482,7 @@ K. accepted the division. He would be cube some days, sphere other days, never b
 
 ---
 
-## Page 219
+## World 219
 
 The smell-marriage was ending, and K. was divorcing the scent of pine that had been his spouse for seventeen years, and the separation was more painful than he had anticipated.
 
@@ -510,7 +510,7 @@ He was single again. Scentless again. Free, in a way that felt more like loss th
 
 ---
 
-## Page 220
+## World 220
 
 The processing continued, and K. had been processed so many times he couldn't remember who he had been before processing, and the facility was explaining that reprocessing was necessary for optimization.
 
@@ -536,7 +536,7 @@ The processing would continue. He would continue. Whatever he was becoming would
 
 ---
 
-## Page 221
+## World 221
 
 The subsidies were for dreams again, and K. had learned to dream what he was paid to dream, and the government was pleased with his productivity.
 
@@ -562,7 +562,7 @@ K. let it stay hidden. He didn't report it. He kept it for himself—a small, us
 
 ---
 
-## Page 222
+## World 222
 
 The infidelity was climatic again, and K.'s weather system had been intimate with another region's atmosphere, and the meteorological betrayal felt even worse than the first time.
 
@@ -592,7 +592,7 @@ K. and his weather system continued together, damaged but not divorced. The trus
 
 ---
 
-## Page 223
+## World 223
 
 The textures were still gone, and K. had adapted to the world of uniform sensation, and he had almost forgotten what distinct touch felt like.
 
@@ -618,7 +618,7 @@ He lived in his texture-free world, perceiving surfaces as concepts, touching ev
 
 ---
 
-## Page 224
+## World 224
 
 The mandatory reconciliation was scheduled, and K. was required to reconcile with someone he had wronged, and he couldn't remember the wrong.
 
@@ -654,7 +654,7 @@ K. left Room 7, reconciled to a wrong he didn't remember, forgiven for a harm he
 
 ---
 
-## Page 225
+## World 225
 
 The insurance was for emotions, and K. had filed a claim for lost joy, and the adjuster was explaining the coverage limitations.
 

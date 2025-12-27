@@ -1,6 +1,6 @@
 # Chapter Three
 
-## Page 31
+## World 31
 
 The apprentice was better than him already, and the final exam was next week.
 
@@ -34,7 +34,7 @@ She was ready. That was true. Whether K. could claim any credit for her readines
 
 ---
 
-## Page 32
+## World 32
 
 Men were property here, and K.'s owner was waiting for him when he got home.
 
@@ -64,7 +64,7 @@ Director Chen decided when he ate. But at least, for now, she decided that he co
 
 ---
 
-## Page 33
+## World 33
 
 Political power derived from musical ability, and K. was a senator, and his instrument was the theremin.
 
@@ -92,7 +92,7 @@ His district expected him to perform. His constituents had elected him based on 
 
 ---
 
-## Page 34
+## World 34
 
 Everyone spoke in soft voices around him, the way you speak around someone who doesn't have much time left.
 
@@ -120,7 +120,7 @@ He called the hospital again. The results remained sealed.
 
 ---
 
-## Page 35
+## World 35
 
 Every breath was taxed, and K. was three weeks behind on his respiratory payments.
 
@@ -146,7 +146,7 @@ Breathing is a luxury. He hadn't believed it before, had thought it was just rhe
 
 ---
 
-## Page 36
+## World 36
 
 The fame had curdled, and K. didn't know why.
 
@@ -172,7 +172,7 @@ Some days he wished the fame would fade. Other days he wished he could remember 
 
 ---
 
-## Page 37
+## World 37
 
 The insects had named him Comfortable, which was their highest form of pet classification.
 
@@ -204,7 +204,7 @@ The insects were kind, in their way. They just weren't human.
 
 ---
 
-## Page 38
+## World 38
 
 The vow had been sacred, and breaking it meant death, and K. didn't know what the vow was.
 
@@ -232,7 +232,7 @@ K. almost told her. But telling might be a violation. Seeking help from outsider
 
 ---
 
-## Page 39
+## World 39
 
 Personal weather was a status symbol, and K. walked in his own small raincloud of poverty.
 
@@ -260,7 +260,7 @@ Being poor was wet work.
 
 ---
 
-## Page 40
+## World 40
 
 There were fourteen of them, identical, and the original had died, and no one knew which one any of them were.
 
@@ -286,7 +286,7 @@ The inheritance remained unresolved. The lawyers scheduled another meeting. K. w
 
 ---
 
-## Page 41
+## World 41
 
 Dreams were currency, and K. was an accountant specializing in dream taxation, and a client's nightmare portfolio didn't add up.
 
@@ -316,7 +316,7 @@ But the numbers didn't add up. Someone had been embezzling terror. And it was K.
 
 ---
 
-## Page 42
+## World 42
 
 His best friend wouldn't speak to him, and K. didn't know what he had done.
 
@@ -340,7 +340,7 @@ He kept apologizing anyway. Eventually, maybe, David would tell him what for.
 
 ---
 
-## Page 43
+## World 43
 
 His authentic liver was worth more than his house, and K. was being approached by buyers.
 
@@ -368,7 +368,7 @@ Surgeons had been asking about his health. Now he understood why.
 
 ---
 
-## Page 44
+## World 44
 
 The official language had changed last month, again, and K. was still thinking in the previous one.
 
@@ -396,7 +396,7 @@ The session began. K. closed his eyes and tried to let the new language in.
 
 ---
 
-## Page 45
+## World 45
 
 Water was sacred, and K. had just spilled some.
 
@@ -426,7 +426,7 @@ Water was sacred. He had committed sacrilege.
 
 ---
 
-## Page 46
+## World 46
 
 The lawyers were waiting, and K. didn't understand the documents they had brought.
 
@@ -454,7 +454,7 @@ K. signed the preliminary acknowledgment, which committed him to nothing except 
 
 ---
 
-## Page 47
+## World 47
 
 His social credit score was visible above his head, floating in augmented reality for anyone whose devices were set to display it. The number was low. The number kept dropping. K. didn't know why.
 
@@ -482,7 +482,7 @@ K. went home. The number above his head followed him, visible to everyone he pas
 
 ---
 
-## Page 48
+## World 48
 
 He had designed this prison, and now he was living in it.
 
@@ -508,7 +508,7 @@ The features were concerning, the guards said. But they wouldn't tell him which 
 
 ---
 
-## Page 49
+## World 49
 
 Humans hibernated, and K. had woken up early.
 
@@ -538,7 +538,7 @@ He sat in his apartment and watched the darkness that would last for six more mo
 
 ---
 
-## Page 50
+## World 50
 
 The exam was today. The subject was "Applied Metaphysics." K.'s notes were in a language he couldn't read.
 

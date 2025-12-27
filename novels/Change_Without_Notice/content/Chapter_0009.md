@@ -1,6 +1,6 @@
 # Chapter Nine: The Variations Accumulate (Part II)
 
-## Page 176
+## World 176
 
 The license had expired, and K. was no longer authorized to feel, and the emotion regulation office was explaining that continued feeling without a license was a civil violation.
 
@@ -34,7 +34,7 @@ But for now, he was a person without permission to feel, living in a world that 
 
 ---
 
-## Page 177
+## World 177
 
 The roster was unknown, and K. was on it, and he had no idea what he had been selected for or what would be required of him.
 
@@ -68,7 +68,7 @@ The uncertainty was its own kind of purpose. The waiting was its own kind of wor
 
 ---
 
-## Page 178
+## World 178
 
 The sleep had to be documented, and K. was behind on his sleep reports, and the somnography department was threatening penalties for incomplete nocturnal records.
 
@@ -94,7 +94,7 @@ The equipment didn't answer. It only recorded, only documented, only created the
 
 ---
 
-## Page 179
+## World 179
 
 The temperature marriage was ending, and K. was divorcing a climate system that had been his spouse for twelve years, and the weather was making the proceedings difficult.
 
@@ -120,7 +120,7 @@ He would need to marry again, eventually. No one could live without climate. But
 
 ---
 
-## Page 180
+## World 180
 
 The deposits had been forgotten, and K. was owed something by an institution that no longer remembered the debt, and the recovery process required proving that the forgotten thing had ever existed.
 
@@ -148,7 +148,7 @@ The institution didn't remember. K. barely remembered. But the receipt remained,
 
 ---
 
-## Page 181
+## World 181
 
 The famine was emotional, and K. was starving for feelings, and the relief agencies were explaining that emotional aid was limited and subject to prioritization.
 
@@ -176,7 +176,7 @@ That day seemed very far away.
 
 ---
 
-## Page 182
+## World 182
 
 The weights were redistributed, and K. was now heavier in some ways and lighter in others, and the gravity technician was explaining that mass was no longer a fixed property.
 
@@ -202,7 +202,7 @@ He was no longer balanced. He was adjusted.
 
 ---
 
-## Page 183
+## World 183
 
 The census was wrong, and K. didn't exist according to official records, and the bureaucrat was explaining that non-existence was, unfortunately, his problem to solve.
 
@@ -232,7 +232,7 @@ He didn't exist. He continued anyway.
 
 ---
 
-## Page 184
+## World 184
 
 The attention was taxed, and K. owed a significant sum for all the times he had been noticed, and the attention revenue service was threatening collection.
 
@@ -258,7 +258,7 @@ K. paid his taxes. He couldn't afford to be noticed, but he couldn't afford not 
 
 ---
 
-## Page 185
+## World 185
 
 The infidelity was geometric, and K.'s spouse—a pentagon—had been seeing a hexagon, and the marriage counselor was explaining that shape betrayal was particularly devastating.
 
@@ -290,7 +290,7 @@ The marriage survived, barely. K. and the pentagon continued together, knowing t
 
 ---
 
-## Page 186
+## World 186
 
 The list was classified, and K. was on it, and no one would tell him what the list was for or why his name had been added.
 
@@ -324,7 +324,7 @@ He was listed. That was all he knew. That was all he would ever know.
 
 ---
 
-## Page 187
+## World 187
 
 The quota was for dreams, and K. had underdreamed this month, and the somnography department was explaining that his dream production was below the required minimum.
 
@@ -354,7 +354,7 @@ He was never rested again. Rest was not the point. The dreams were the point, an
 
 ---
 
-## Page 188
+## World 188
 
 The custody of the climate was disputed, and K. was the mediator, and neither party was willing to concede the weather to the other.
 
@@ -386,7 +386,7 @@ But it was weather, and weather mattered, and someone had to decide who got to c
 
 ---
 
-## Page 189
+## World 189
 
 The odors were gone, and K. had lost his sense of smell in a previous reality, and this reality required olfactory participation that he could not provide.
 
@@ -412,7 +412,7 @@ K. went home to his odorless apartment, his odorless life, his existence in a sc
 
 ---
 
-## Page 190
+## World 190
 
 The nomination was for something, and K. had been nominated, and the ceremony was approaching, and no one would tell him what he was being recognized for.
 
@@ -446,7 +446,7 @@ Being nominated felt like something. What something, he couldn't say.
 
 ---
 
-## Page 191
+## World 191
 
 The flood was emotional, and K. was drowning in feelings that weren't his, and the emergency services were explaining that containment was impossible once someone started leaking.
 
@@ -474,7 +474,7 @@ The nothing was, at least, entirely his.
 
 ---
 
-## Page 192
+## World 192
 
 The custody was over K.'s weight, and both parties claimed the right to determine how much he should weigh, and K. himself had no say in the matter.
 
@@ -500,7 +500,7 @@ His body was no longer his. It was a court-ordered compromise, a negotiated sett
 
 ---
 
-## Page 193
+## World 193
 
 The schedule was incomprehensible, and K. was supposed to follow it, and the time management office was explaining that comprehension was not required.
 
@@ -526,7 +526,7 @@ The schedule continued. K. continued within it.
 
 ---
 
-## Page 194
+## World 194
 
 The bankruptcy was attentional, and K. had run out of the ability to focus, and the attention receivers were closing his accounts.
 
@@ -552,7 +552,7 @@ The world continued around him, rich with detail, full of things worth noticing.
 
 ---
 
-## Page 195
+## World 195
 
 The divorce was between K.'s shapes, and his square self was leaving his circular self, and the mediator was explaining that identity integration was no longer viable.
 
@@ -582,7 +582,7 @@ They looked at each other with recognition and estrangement—familiar strangers
 
 ---
 
-## Page 196
+## World 196
 
 The marriage was to smell, and K. was married to the scent of pine, and the marriage had lasted seventeen years, and K. was beginning to wonder if olfactory love was enough.
 
@@ -612,7 +612,7 @@ K. breathed deeply and accepted what he had.
 
 ---
 
-## Page 197
+## World 197
 
 The processing was for K., and he was being processed, and the officers were explaining that processing was standard and would continue until complete.
 
@@ -644,7 +644,7 @@ K. continued, processed, waiting for the reprocessing that would inevitably come
 
 ---
 
-## Page 198
+## World 198
 
 The subsidies were for dreams, and K. was receiving government support to dream in certain approved directions, and the dream regulators were evaluating his nocturnal output.
 
@@ -666,7 +666,7 @@ K. took his subsidy and dreamed his approved dreams. Night after night, the gove
 
 ---
 
-## Page 199
+## World 199
 
 The infidelity was climatic, and K.'s spouse—a weather system—had been intimate with another person's atmospheric conditions, and K. didn't know how to feel about meteorological betrayal.
 
@@ -696,7 +696,7 @@ The marriage continued, damaged but not destroyed. K. and his weather system wor
 
 ---
 
-## Page 200
+## World 200
 
 The textures were no longer his, and K. had been stripped of the physical sensations that made touch meaningful, and the world had become smooth and identical under his fingers.
 

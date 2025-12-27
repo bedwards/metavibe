@@ -1,6 +1,6 @@
 # Chapter Eight: The Variations Accumulate (Part I)
 
-## Page 151
+## World 151
 
 The guest obligations were extensive, and K. had been a guest for seventeen years, and the host was explaining that departure was not permitted until all debts were settled.
 
@@ -34,7 +34,7 @@ The bed was just as comfortable. Nothing had changed except everything.
 
 ---
 
-## Page 152
+## World 152
 
 K. had divorced himself, and now the two halves were arguing over custody of the memories, and the mediator was explaining that self-division required careful asset distribution.
 
@@ -68,7 +68,7 @@ They went separate ways. Two K.s, formerly one, each carrying fragments of a sha
 
 ---
 
-## Page 153
+## World 153
 
 The craft was dying, and K. was its last practitioner, and the scarcity of his skill was now so extreme that his work was simultaneously priceless and worthless.
 
@@ -96,7 +96,7 @@ He placed it on the shelf with the others. Life's work: perfect, purposeless obj
 
 ---
 
-## Page 154
+## World 154
 
 The dream treaty was fragile, and K. was the ambassador, and the negotiations between waking and sleeping factions had reached a critical impasse.
 
@@ -126,7 +126,7 @@ He existed in both worlds now, a diplomat without a home, a bridge between reali
 
 ---
 
-## Page 155
+## World 155
 
 The marriage was between a square and a circle, and K. was the marriage counselor, and the fundamental incompatibility was geometric.
 
@@ -164,7 +164,7 @@ They left together, rolling and walking, a marriage of forms that could never me
 
 ---
 
-## Page 156
+## World 156
 
 The forgery was discovered, and K. was the forger, and the thing he had counterfeited was himself—a version so convincing that no one could tell which K. was original.
 
@@ -204,7 +204,7 @@ The original was lost. Both remained.
 
 ---
 
-## Page 157
+## World 157
 
 The citizenship was assigned by frequency, and K. was vibrating at the wrong rate, and the border patrol was explaining that his resonance didn't match any recognized nation.
 
@@ -234,7 +234,7 @@ In the null zone, he was neither citizen nor exile. He was simply present, vibra
 
 ---
 
-## Page 158
+## World 158
 
 The custody battle was over K., and both parties wanted him, and K. couldn't figure out why he was worth fighting for.
 
@@ -268,7 +268,7 @@ K. reported for his first day of shared service. He was valuable. He was fought 
 
 ---
 
-## Page 159
+## World 159
 
 The forgiveness was mandatory, and K. had to forgive the people who had wronged him, and the forgiveness officers were waiting to verify that his pardon was genuine.
 
@@ -304,7 +304,7 @@ But somewhere inside, in a place the monitors couldn't reach, something refused 
 
 ---
 
-## Page 160
+## World 160
 
 The neighborhood had been emotionally gentrified, and K.'s feelings no longer fit, and the other residents were complaining that his mood brought down property values.
 
@@ -336,7 +336,7 @@ That time was gone. But K. remained, paying his fines, feeling his feelings, a r
 
 ---
 
-## Page 161
+## World 161
 
 The audition was for K.'s life, and the judges were evaluating whether he deserved to continue living the existence he had been living.
 
@@ -370,7 +370,7 @@ The judges left. K. sat in his living room, his stage, wondering how to perform 
 
 ---
 
-## Page 162
+## World 162
 
 The feelings were seasonal, and K. had been issued his winter allocation, and the cold emotions were settling into his chest like frost.
 
@@ -396,7 +396,7 @@ That time was gone, if it had ever existed. K. sat in his winter and felt his wi
 
 ---
 
-## Page 163
+## World 163
 
 The profession had been abolished, and K. was its last practitioner, and no one could tell him what to do now that the thing he did was no longer recognized as existing.
 
@@ -426,7 +426,7 @@ It wasn't legal. It wasn't recognized. But it was the only thing K. knew how to 
 
 ---
 
-## Page 164
+## World 164
 
 The dream bankruptcy was official, and K. had lost everything he had dreamed, and the receivers were cataloguing his nocturnal assets for redistribution.
 
@@ -456,7 +456,7 @@ He dreamed his generic dreams and waited for the creativity to return.
 
 ---
 
-## Page 165
+## World 165
 
 The emotions were contagious, and K. had caught something from a stranger on the subway, and now he was experiencing feelings that didn't belong to him.
 
@@ -490,7 +490,7 @@ There were worse things to be, he supposed. The ennui suggested that even this o
 
 ---
 
-## Page 166
+## World 166
 
 The future had been cancelled, and K. was one of the affected parties, and the compensation office was explaining what he was entitled to receive.
 
@@ -522,7 +522,7 @@ It was terrifying. It was exhilarating. It was the only future he had left.
 
 ---
 
-## Page 167
+## World 167
 
 The attention was rationed, and K. had exceeded his allocation, and the attention enforcement officers were explaining that he had been noticed too much.
 
@@ -550,7 +550,7 @@ K. moved through the city, invisible now, rationed into anonymity. People's gaze
 
 ---
 
-## Page 168
+## World 168
 
 The shape pension was insufficient, and K.—who had been a triangle for sixty years—was being informed that his geometric retirement benefits didn't cover the cost of maintaining angles in old age.
 
@@ -576,7 +576,7 @@ The angles ached. The maintenance was costly. But the shape held, and holding wa
 
 ---
 
-## Page 169
+## World 169
 
 The building had emotions, and the building was depressed, and K. was the architect who had designed feelings into a structure that now wished it had never been built.
 
@@ -606,7 +606,7 @@ The building wept. The architect sat in his weeping creation. Outside, the tenan
 
 ---
 
-## Page 170
+## World 170
 
 The warranty had expired, and K. was outside coverage, and the things he had been guaranteed were starting to fail.
 
@@ -634,7 +634,7 @@ No one answered. No one was obligated to answer. He was outside coverage now, re
 
 ---
 
-## Page 171
+## World 171
 
 The dream litigation was extensive, and K. was being sued for what he had done to someone in their dream, and the court was trying to determine jurisdiction over sleeping actions.
 
@@ -666,7 +666,7 @@ In the end, K. was found partially liable. He was required to undergo dream modi
 
 ---
 
-## Page 172
+## World 172
 
 The climate was wrong for K., and he had been assigned to a temperature zone that didn't match his physiology, and the climate authority was explaining that reassignment was not available.
 
@@ -696,7 +696,7 @@ He would never live there. He would never feel comfortable. The assignment was p
 
 ---
 
-## Page 173
+## World 173
 
 The feelings were vintage, and K. had inherited them from his grandmother, and the emotional antique dealer was trying to determine their value.
 
@@ -726,7 +726,7 @@ The dealer shrugged and left. K. sat with his containers of vintage feeling, hol
 
 ---
 
-## Page 174
+## World 174
 
 The attention had fossilized, and K. was examining the petrified notice that had been directed at him decades ago, and the paleontologist was explaining what the fossil revealed.
 
@@ -754,7 +754,7 @@ Someone had loved him. The love had become stone. The stone remained.
 
 ---
 
-## Page 175
+## World 175
 
 The geometry was in dispute, and K. was responsible for deciding custody between two shapes who each claimed to have created the other, and neither shape would concede priority.
 
