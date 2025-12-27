@@ -133,6 +133,29 @@ content/
 
 See `content/README.md` for full documentation.
 
+### GitHub Pages Deployment
+
+The site deploys to `https://bedwards.github.io/metavibe/` via `.github/workflows/pages.yml`.
+
+**Important**: The `docs/` folder contains the main site. The workflow copies directories in this order:
+1. `public/*` → `_site/`
+2. `docs/*` → `_site/` (overwrites public/)
+3. `novels/` → `_site/novels/`
+4. `content/` → `_site/content/`
+
+**`docs/index.html` is the actual deployed homepage.** If you update `public/index.html`, the change won't appear because `docs/index.html` overwrites it. Always edit `docs/index.html` for main page changes.
+
+```
+docs/
+├── index.html              # Main homepage (edit this one!)
+├── books/                  # Book content
+└── essays/                 # Essay content
+
+novels/
+└── {Novel_Name}/
+    └── website/            # Generated novel pages
+```
+
 Path aliases: `@/*` → `src/*`, `@tools/*` → `tools/*`
 
 ## Core Philosophy
