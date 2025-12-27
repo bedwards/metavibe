@@ -54,12 +54,14 @@
     .chapters a { color: var(--accent); text-decoration: none; }
     .chapters a:hover { text-decoration: underline; }
     .pages { color: var(--text-muted); font-size: 0.875rem; }
-    .back { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-    .back a { color: var(--accent); text-decoration: none; }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
     footer { margin-top: 3rem; color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
 <body>
+  <a href="../../" class="back">&larr; Back to Novels</a>
+
   <header>
     <h1>Change Without Notice</h1>
     <h2>A Novel</h2>
@@ -144,10 +146,6 @@
       </li>
     </ul>
   </section>
-
-  <nav class="back">
-    <a href="../../../index.html">&larr; Back to Novels</a>
-  </nav>
 
   <footer>
     <p>Brian Edwards | Waco, Texas | December 2025</p>
