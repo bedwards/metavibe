@@ -3,82 +3,210 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Novels - metavibe</title>
+  <title>Novels | metavibe</title>
+  <meta name="description" content="Fiction created with generative AI agents">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #fafafa;
       --text: #1a1a1a;
-      --link: #0066cc;
-      --border: #e0e0e0;
-      --subtle: #666;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+      --card-bg: #fff;
     }
+
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #1a1a1a;
-        --text: #e0e0e0;
-        --link: #6db3f2;
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
         --border: #333;
-        --subtle: #999;
+        --code-bg: #1a1a1a;
+        --card-bg: #1a1a1a;
       }
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
       line-height: 1.6;
-      max-width: 48rem;
+      color: var(--text);
+      background: var(--bg);
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
       margin: 0 auto;
-      padding: 2rem 1rem;
     }
-    h1 { font-size: 2rem; margin-bottom: 0.5rem; font-weight: 600; }
-    .subtitle { color: var(--subtle); margin-bottom: 2rem; }
-    .novels { display: grid; gap: 1.5rem; }
-    .novel {
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 2.5rem 0 1.5rem;
+    }
+
+    .novels {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .novel-card {
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .novel h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .novel h2 a { color: var(--text); text-decoration: none; }
-    .novel h2 a:hover { color: var(--link); }
-    .novel .author { color: var(--subtle); font-size: 0.875rem; margin-bottom: 0.75rem; }
-    .novel .description { margin-bottom: 1rem; }
-    .novel .meta { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.875rem; color: var(--subtle); }
-    .nav { margin-bottom: 2rem; }
-    .nav a { color: var(--link); text-decoration: none; margin-right: 1.5rem; }
-    .nav a:hover { text-decoration: underline; }
-    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--subtle); font-size: 0.875rem; }
+
+    .novel-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-decoration: none;
+    }
+
+    .novel-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .novel-card:hover h3 {
+      text-decoration: underline;
+    }
+
+    .novel-card .author {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .novel-card .description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .novel-card .meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .novel-card .tag {
+      background: var(--code-bg);
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: #22c55e;
+      color: white;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <a href="../public/index.html">Home</a>
-    <a href="../content/books/index.html">Books</a>
-    <a href="../content/essays/index.html">Essays</a>
-    <a href="index.html" aria-current="page"><strong>Novels</strong></a>
-  </nav>
+  <div class="container">
+    <header>
+      <h1>metavibe</h1>
+      <p class="tagline">Fiction created with generative AI agents</p>
+    </header>
 
-  <header>
-    <h1>Novels</h1>
-    <p class="subtitle">Fiction created with generative AI agents</p>
-  </header>
-
-  <section class="novels">
-    <article class="novel">
-      <h2><a href="Change_Without_Notice/website/index.html">Change Without Notice</a></h2>
-      <p class="author">Brian Edwards</p>
-      <p class="description">A novel in 326 pages. Each page is a complete world. The protagonist retains memory across all of them.</p>
-      <div class="meta">
-        <span>326 pages</span>
-        <span>14 chapters</span>
-        <span>December 2025</span>
+    <main>
+      <div class="section-header" style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem;">
+        <h2 style="margin: 0;">Novels</h2>
+        <span style="color: var(--text-muted);">or browse <a href="../">books</a> or <a href="../essays/">essays</a></span>
       </div>
-    </article>
-  </section>
 
-  <footer>
-    <p>metavibe | Brian Edwards | Waco, Texas</p>
-  </footer>
+      <div class="novels">
+        <a href="Change_Without_Notice/website/index.html" class="novel-card">
+          <h3>Change Without Notice</h3>
+          <p class="author">Brian Edwards</p>
+          <p class="description">A novel in 326 pages. Each page is a complete world. The protagonist retains memory across all of them.</p>
+          <div class="meta">
+            <span class="status-badge">Complete</span>
+            <span>14 chapters</span>
+            <span>326 pages</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Fiction</span>
+            <span class="tag">Surreal</span>
+            <span class="tag">AI-Assisted</span>
+          </div>
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <p>Generated with <a href="https://claude.ai/code">Claude Code</a> | Brian Edwards | Waco, Texas</p>
+    </footer>
+  </div>
 </body>
 </html>
