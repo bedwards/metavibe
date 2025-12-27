@@ -4,57 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Change Without Notice - Brian Edwards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fafafa;
+      --bg: #fdfcfa;
       --text: #1a1a1a;
-      --link: #0066cc;
-      --border: #e0e0e0;
-      --subtle: #666;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #1a1a1a;
-        --text: #e0e0e0;
-        --link: #6db3f2;
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
         --border: #333;
-        --subtle: #999;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Georgia, 'Times New Roman', serif;
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      max-width: 42rem;
+      line-height: 1.7;
+      max-width: 720px;
       margin: 0 auto;
       padding: 2rem 1rem;
     }
-    h1 { font-size: 2rem; margin-bottom: 0.25rem; font-weight: normal; }
-    h2 { font-size: 1.25rem; font-weight: normal; color: var(--subtle); margin-bottom: 2rem; }
-    .author { margin-bottom: 2rem; color: var(--subtle); }
+    h1 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.25rem; font-weight: 500; color: var(--text-muted); margin-bottom: 2rem; }
+    .author { margin-bottom: 2rem; color: var(--text-muted); }
     .formats { margin-bottom: 3rem; }
-    .formats h3 { font-size: 1rem; font-weight: normal; margin-bottom: 0.5rem; }
+    .formats h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.5rem; }
     .formats ul { list-style: none; display: flex; gap: 1rem; flex-wrap: wrap; }
     .formats a {
-      color: var(--link);
+      color: var(--accent);
       text-decoration: none;
       padding: 0.5rem 1rem;
       border: 1px solid var(--border);
       border-radius: 4px;
     }
-    .formats a:hover { border-color: var(--link); }
+    .formats a:hover { border-color: var(--accent); }
     .chapters { margin-bottom: 3rem; }
-    .chapters h3 { font-size: 1rem; font-weight: normal; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    .chapters h3 { font-size: 1rem; font-weight: 500; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
     .chapters ul { list-style: none; }
     .chapters li { margin-bottom: 0.75rem; }
-    .chapters a { color: var(--link); text-decoration: none; }
+    .chapters a { color: var(--accent); text-decoration: none; }
     .chapters a:hover { text-decoration: underline; }
-    .pages { color: var(--subtle); font-size: 0.875rem; }
+    .pages { color: var(--text-muted); font-size: 0.875rem; }
     .back { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-    .back a { color: var(--link); text-decoration: none; }
-    footer { margin-top: 3rem; color: var(--subtle); font-size: 0.875rem; }
+    .back a { color: var(--accent); text-decoration: none; }
+    footer { margin-top: 3rem; color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
 <body>

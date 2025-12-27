@@ -4,37 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chapter Twelve - Change Without Notice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fafafa;
+      --bg: #fdfcfa;
       --text: #1a1a1a;
-      --link: #0066cc;
-      --border: #e0e0e0;
-      --subtle: #666;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #1a1a1a;
-        --text: #e0e0e0;
-        --link: #6db3f2;
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
         --border: #333;
-        --subtle: #999;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Georgia, 'Times New Roman', serif;
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.8;
-      max-width: 38rem;
+      line-height: 1.7;
+      max-width: 720px;
       margin: 0 auto;
       padding: 2rem 1rem;
     }
-    h1 { font-size: 1.75rem; margin: 2rem 0 1rem; font-weight: normal; }
-    h2 { font-size: 1.25rem; margin: 2rem 0 1rem; font-weight: normal; }
-    h3 { font-size: 1rem; margin: 1.5rem 0 0.75rem; font-weight: normal; }
-    p { margin-bottom: 1rem; text-align: justify; }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
     hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
     .chapter-nav {
       display: flex;
@@ -43,9 +45,11 @@
       border-bottom: 1px solid var(--border);
       margin-bottom: 2rem;
     }
-    .chapter-nav a { color: var(--link); text-decoration: none; }
+    .chapter-nav a { color: var(--accent); text-decoration: none; }
     .chapter-nav a:hover { text-decoration: underline; }
-    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--subtle); font-size: 0.875rem; }
+    strong { font-weight: 600; }
+    a { color: var(--accent); }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
 <body>
