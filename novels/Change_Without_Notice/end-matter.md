@@ -18,27 +18,27 @@ The human provided three planning documents:
 
 **taste.md** - A research document defining the prose style. Two authors were studied: Franz Kafka for structural method, Karl Ove Knausgaard for sentence-level technique. The document contained specific, actionable instructions. For Kafka: climax in the opening sentence, limited perspective, world-building through exclusion, unresolvable conflict, bureaucracy as antagonist. For Knausgaard: flatness over elegance, embrace of cliche, loping sentences, mundane detail, speed through density, anti-Proust forward motion.
 
-**rough_ideas.md** - A list of 326 page concepts. Each page required a distinct scenario. The human generated these ideas and provided them to the agent.
+**rough_ideas.md** - A list of 326 world concepts. Each world required a distinct scenario. The human generated these ideas and provided them to the agent.
 
-**outline.md** - An execution plan organizing the 326 pages into 14 chapters across 7 acts. Tables specified page ranges, themes, and writing instructions. The document included rules: transformation already complete at opening, establish world through what the protagonist doesn't know, present unresolvable demand, end incomplete.
+**outline.md** - An execution plan organizing the 326 worlds into 14 chapters across 7 acts. Tables specified world ranges, themes, and writing instructions. The document included rules: transformation already complete at opening, establish world through what the protagonist doesn't know, present unresolvable demand, end incomplete.
 
 ### The Writing Phase
 
-The agent wrote one chapter at a time. Each chapter contained 15-26 pages. Each page ran 500-800 words. The agent followed the outline exactly, writing page by page, applying the style constraints from taste.md.
+The agent wrote one chapter at a time. Each chapter contained 15-26 worlds. Each world ran 500-800 words. The agent followed the outline exactly, writing world by world, applying the style constraints from taste.md.
 
-The agent used a todo list to track progress. Items marked: "Write Chapter 1 (Pages 1-15)" then "Write Chapter 2 (Pages 16-30)" and so on through Chapter 14.
+The agent used a todo list to track progress. Items marked: "Write Chapter 1 (Worlds 1-15)" then "Write Chapter 2 (Worlds 16-30)" and so on through Chapter 14.
 
-Each page followed a structure:
+Each world followed a structure:
 - Open with the situation already transformed
 - Establish the world through dialogue and description
 - Show the protagonist attempting to navigate the situation
 - End before resolution
 
-The agent did not deviate from the outline. The agent did not add commentary or meta-text. The agent wrote the pages in order, from 1 to 326.
+The agent did not deviate from the outline. The agent did not add commentary or meta-text. The agent wrote the worlds in order, from 1 to 326.
 
 ### The Editing Phase
 
-After completing the 326 pages, the agent made a second pass. The editing focused on:
+After completing the 326 worlds, the agent made a second pass. The editing focused on:
 
 - Tightening prose by 15-20%
 - Converting flowing sentences to fragments where appropriate
@@ -70,7 +70,7 @@ The human:
 
 The agent:
 - Read and interpreted the planning documents
-- Wrote 326 pages following the outline exactly
+- Wrote 326 worlds following the outline exactly
 - Tracked progress with a todo list
 - Made editing passes to tighten prose
 - Created front matter and end matter
@@ -78,7 +78,7 @@ The agent:
 
 ### Reproducibility
 
-The same output would not be produced by running this process again. Generative AI produces different text on each run. However, the structure would be identical: 326 pages, 14 chapters, following the outline, applying the style constraints.
+The same output would not be produced by running this process again. Generative AI produces different text on each run. However, the structure would be identical: 326 worlds, 14 chapters, following the outline, applying the style constraints.
 
 The planning documents are available in the plan/ directory of this novel's source files.
 

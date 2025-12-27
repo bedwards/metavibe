@@ -37,19 +37,19 @@ Waco, Texas, USA
 
 ## Contents
 
-1. Chapter One (Pages 1-15)
-2. Chapter Two (Pages 16-30)
-3. Chapter Three (Pages 31-50)
-4. Chapter Four (Pages 51-75)
-5. Chapter Five (Pages 76-100)
-6. Chapter Six (Pages 101-125)
-7. Chapter Seven (Pages 126-150)
-8. Chapter Eight (Pages 151-175)
-9. Chapter Nine (Pages 176-200)
-10. Chapter Ten (Pages 201-225)
-11. Chapter Eleven (Pages 226-250)
-12. Chapter Twelve (Pages 251-275)
-13. Chapter Thirteen (Pages 276-300)
-14. Chapter Fourteen (Pages 301-326)
+1. Chapter One (Worlds 1-15)
+2. Chapter Two (Worlds 16-30)
+3. Chapter Three (Worlds 31-50)
+4. Chapter Four (Worlds 51-75)
+5. Chapter Five (Worlds 76-100)
+6. Chapter Six (Worlds 101-125)
+7. Chapter Seven (Worlds 126-150)
+8. Chapter Eight (Worlds 151-175)
+9. Chapter Nine (Worlds 176-200)
+10. Chapter Ten (Worlds 201-225)
+11. Chapter Eleven (Worlds 226-250)
+12. Chapter Twelve (Worlds 251-275)
+13. Chapter Thirteen (Worlds 276-300)
+14. Chapter Fourteen (Worlds 301-326)
 
 ---
