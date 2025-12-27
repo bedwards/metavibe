@@ -33,6 +33,8 @@
     }
     h1 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700; }
     .tagline { color: var(--subtle); font-size: 1.125rem; margin-bottom: 3rem; }
+    .tagline a { color: var(--link); text-decoration: none; }
+    .tagline a:hover { text-decoration: underline; }
     .sections { display: grid; gap: 2rem; }
     .section {
       border: 1px solid var(--border);
@@ -79,7 +81,7 @@
 <body>
   <header>
     <h1>metavibe</h1>
-    <p class="tagline">Books, essays, and novels created with generative AI</p>
+    <p class="tagline"><a href="content/books/index.html">Available Books</a> or read our <a href="content/essays/index.html">essays</a> or our <a href="novels/index.html">novels</a></p>
   </header>
 
   <main class="sections">
