@@ -46,7 +46,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); }
+    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -55,66 +55,94 @@
 
   <article>
     <h1>Robotics</h1>
-    <p class="meta">Open Source Machines | December 2025</p>
+    <p class="meta">The Humanoid Moment | December 2025</p>
 
-    <p>Robotics presents unique challenges for open research. Software can be shared instantly; hardware cannot. Yet the field has developed remarkable open-source infrastructure, from the Robot Operating System that runs on thousands of platforms to open hardware designs that anyone can build.</p>
+    <p>On October 7, 2025, <a href="https://interestingengineering.com/culture/can-optimus-make-america-win">Tesla unveiled Optimus Gen 3</a> performing Kung Fu, cooking, and cleaning—all learned through observation, not coding. <a href="https://humanoidroboticstechnology.com/articles/top-12-humanoid-robots-of-2025/">Figure 02 completed a 20-hour continuous shift</a>. Boston Dynamics began testing Atlas at Hyundai's Georgia facility. 2025 became the breakthrough year for humanoid robots.</p>
 
-    <p>The <a href="https://www.ros.org/">Robot Operating System (ROS)</a> is the backbone of this ecosystem. Kilted Kaiju is the latest ROS 2 short-term release (targeting Ubuntu 24.04 and Windows 10), while Jazzy Jalisco is the current LTS release. Recordings from ROSCon 2025 are now available, documenting the state of the art.</p>
+    <p>The investment tells the story: Figure AI raised $1 billion in 2025. Apptronik raised $403 million. Agility Robotics raised $400 million. After decades of research demonstrations, humanoid robots are transitioning to commercial deployment.</p>
 
-    <h2>2025 Research Highlights</h2>
+    <h2>The Humanoid Race</h2>
 
-    <h3>HyperGraph ROS</h3>
-    <p><a href="https://arxiv.org/abs/2503.05117">HyperGraph ROS</a>, published in March 2025, presents an open-source robot operating system that unifies intra-process, inter-process, and cross-device computation into a computational hypergraph for efficient message passing and parallel execution.</p>
+    <h3>Tesla Optimus</h3>
+    <p><a href="https://standardbots.com/blog/tesla-robot">Tesla plans to produce 5,000-10,000 Optimus units in 2025</a>, with parts procurement for up to 12,000. The robot stands 1.73m tall, weighs 57kg, and can carry 20kg while walking or lift 68kg. Target price: $20,000-$30,000—"less than a car."</p>
 
-    <p>The system dynamically selects optimal communication mechanisms while maintaining a consistent API. For intra-process messages, it uses Intel-TBB Flow Graph with C++ pointer passing (zero memory copying). Inter-process and cross-device communication seamlessly switches to ZeroMQ. Evaluation in diverse robotic scenarios demonstrates significantly higher transmission and throughput efficiency compared to ROS 2.</p>
+    <p>Unlike research-focused robots, Optimus is designed for mass manufacturing. Tesla applies its expertise in electric powertrains, AI development (inherited from Full Self-Driving), and production scale.</p>
 
-    <h3>ARK Framework</h3>
-    <p><a href="https://arxiv.org/abs/2506.21628">ARK</a>, published in June 2025, is an open-source, Python-first robotics framework designed to address the gap where current robot stacks demand steep learning curves, low-level C/C++ expertise, and fragmented tooling.</p>
+    <h3>Boston Dynamics Atlas</h3>
+    <p><a href="https://interestingengineering.com/innovation/comparing-boston-dynamics-atlas-optimus-humanoid-robots">Boston Dynamics repositioned Atlas</a> in April 2024 as an all-electric machine, retiring the hydraulic version. The new Atlas stands 1.5m tall, weighs 89kg, and features about 28 degrees of freedom designed for mobility, dexterity, and agility.</p>
 
-    <p>ARK ships with reusable modules for control, SLAM, motion planning, system identification, and visualization, along with native ROS interoperability. It presents a Gym-style environment interface that allows users to collect data, preprocess it, and train policies using state-of-the-art imitation-learning algorithms like ACT and Diffusion Policy.</p>
+    <p>Atlas is currently in pilot testing at Hyundai's Georgia facility, with commercial launch planned for 2026-2028. Estimated pricing: $140,000-$150,000. Boston Dynamics is collaborating with Toyota Research Institute on AI-driven behavioral models for general-purpose manipulation.</p>
+
+    <h3>Figure AI</h3>
+    <p><a href="https://www.articsledge.com/post/ai-humanoid-robots">Figure 02</a> blends large language models with motor control for natural language tasking. The robot completed a 20-hour continuous shift—demonstrating the endurance needed for industrial deployment. Figure's Helix AI platform is set to debut in homes in 2025.</p>
+
+    <h2>Embodied AI: The Foundation Model Era</h2>
+
+    <p>Robotics has entered the foundation model era. Instead of custom perception stacks and task-specific controllers, robots are increasingly powered by large multimodal models that interpret scenes, understand instructions, and produce structured actions.</p>
+
+    <h3>RT-2 and Open X-Embodiment</h3>
+    <p><a href="https://robotics-transformer-x.github.io/">The Open X-Embodiment dataset</a> pools 60 robot datasets from 34 labs worldwide, covering diverse behaviors and household objects across different robot embodiments. RT-2-X, trained on this data, outperforms RT-2 by 3x on emergent skill evaluations.</p>
+
+    <p>RT-2's policy network achieves inference latency below 150ms at 92% accuracy—practical deployability for real-time control. The model demonstrates spatial understanding, affordance reasoning, and contact dynamics learned jointly through end-to-end training.</p>
+
+    <h3>GEN-0: Scaling with Physical Interaction</h3>
+    <p><a href="https://generalistai.com/blog/nov-04-2025-GEN-0">GEN-0</a> is pretrained on over 270,000 hours of real-world manipulation data, growing at 10,000 hours per week. The architecture works across different robots by design—tested on 6DoF, 7DoF, and 16+ DoF semi-humanoid systems.</p>
+
+    <p>GEN-0 marks "the beginning of a new era: embodied foundation models whose capabilities predictably scale with physical interaction data—not just from text, images, or simulation—but the real world."</p>
+
+    <h3>Vision-Language-Action Models</h3>
+    <p><a href="https://press.airstreet.com/p/embodied-ai-breakthroughs-2025">VLAMs have become the clearest expression</a> of how foundation models infuse new life into robotics. End-to-end approaches like GR-3 and Gemini Robotics enable models to internalize geometry, affordances, and contact dynamics through joint training of perception, semantics, and control.</p>
 
     <h2>The ROS Ecosystem</h2>
 
-    <p><a href="https://arxiv.org/abs/2211.07752">ROS 2</a> was redesigned from the ground up to meet challenges set forth by modern robotic systems. ROS 1 wasn't designed with many necessary production-grade features. ROS 2 addresses real-time requirements, security, and multi-robot coordination that production deployments demand.</p>
+    <p>The <a href="https://www.ros.org/">Robot Operating System (ROS)</a> remains the backbone of robotics research. ROS 2 addressed real-time requirements, security, and multi-robot coordination for production deployments.</p>
 
-    <h3>Key Components</h3>
-    <ul>
-      <li><strong>Navigation</strong> - Path planning and obstacle avoidance</li>
-      <li><strong>MoveIt</strong> - Motion planning for manipulation</li>
-      <li><strong>Gazebo</strong> - Physics simulation for testing</li>
-      <li><strong>RViz</strong> - 3D visualization</li>
-      <li><strong>tf2</strong> - Coordinate frame transforms</li>
-    </ul>
+    <h3>2025 Developments</h3>
+    <p>The <a href="https://discourse.ros.org/t/ros-news-for-the-week-of-june-23rd-2025/44508">RSS 2025 best paper award</a> went to CMU's DexWild, a ROS 2 package for dexterous human interaction policies. Medical robotics workshops at ISMR 2025 demonstrated interoperability between 3D Slicer, ROS2, Gazebo, and the da Vinci Research Kit.</p>
+
+    <h3>Open Source Dexterous Manipulation</h3>
+    <p><a href="https://www.dexhand.org/">DexHand</a> is a low-cost, open source dexterous hand for humanoid robot research, with ROS 2 drivers, gesture controllers, and even ChatGPT integration demos. <a href="https://www.unitree.com/mobile/opensource/">Unitree's open source framework</a> supports imitation learning algorithms (Diffusion Policy, ACT) adapted for their G1 humanoid, Z1 arm, and Dex3 dexterous hand.</p>
 
     <h2>Research Frameworks</h2>
 
-    <h3>PyRobot</h3>
-    <p><a href="https://arxiv.org/abs/1906.08236">PyRobot</a> is an open-source robotics framework for research and benchmarking—a lightweight, high-level interface on top of ROS that provides consistent, hardware-independent mid-level APIs to control different robots. It abstracts away details about low-level controllers and inter-process communication.</p>
-
     <h3>Open Hardware</h3>
-    <p><a href="https://arxiv.org/abs/2210.01627">ROMR</a> (ROS-based Open-source Mobile Robot) is a low-cost, modular mobile robot using off-the-shelf components, additive manufacturing, aluminum profiles, and consumer hoverboard motors. Fully compatible with ROS, with a 90kg payload capacity and under $1500 cost.</p>
+    <ul>
+      <li><strong>Shadow Robot Hand</strong> - Fully dexterous humanoid hand with ROS support</li>
+      <li><strong>Allegro Hand</strong> - Low-cost, highly adaptive robotic hand</li>
+      <li><strong>Trifinger</strong> - Google Research's three-finger robot for precise manipulation</li>
+    </ul>
 
-    <p>Open hardware designs like ROMR lower barriers to robotics research. Labs that couldn't afford commercial platforms can build their own, then share improvements back to the community.</p>
+    <h3>Simulation and Tools</h3>
+    <ul>
+      <li><a href="https://robots.ros.org/">robots.ros.org</a> - Registry of ROS-enabled robots</li>
+      <li><strong>Gazebo</strong> - Physics simulation for testing</li>
+      <li><strong>MoveIt</strong> - Motion planning for manipulation</li>
+    </ul>
+
+    <h2>Where to Find Robotics Research</h2>
+
+    <h3>Preprints and Papers</h3>
+    <ul>
+      <li><a href="https://arxiv.org/list/cs.RO/current">cs.RO on arXiv</a> - Robotics preprints</li>
+      <li><a href="https://openreview.net/">OpenReview</a> - CoRL, RSS, ICRA submissions</li>
+    </ul>
+
+    <h3>Open Source</h3>
+    <ul>
+      <li><a href="https://www.ros.org/">ROS</a> - Robot Operating System</li>
+      <li><a href="https://robotics-transformer-x.github.io/">Open X-Embodiment</a> - Cross-robot datasets and RT-X models</li>
+      <li><a href="https://github.com/huggingface/lerobot">LeRobot</a> - Hugging Face's robot learning framework</li>
+    </ul>
 
     <h2>Why Robotics Shares</h2>
 
-    <p>Several factors push robotics toward openness:</p>
-
     <p><strong>Complexity.</strong> No one lab can build everything. Robots need perception, planning, control, simulation, and hardware. Open source lets labs specialize while sharing infrastructure.</p>
 
-    <p><strong>Reproducibility.</strong> Claims about robot performance are hard to verify without access to the same software. Open code enables reproduction.</p>
+    <p><strong>Data hunger.</strong> Foundation models need massive datasets. The Open X-Embodiment dataset exists because 34 labs pooled their data. No single organization could collect 270,000 hours of manipulation data alone.</p>
 
-    <p><strong>Standards.</strong> ROS became a de facto standard precisely because it was open. Proprietary alternatives couldn't achieve the same network effects.</p>
+    <p><strong>Standards.</strong> ROS became the de facto standard precisely because it was open. Proprietary alternatives couldn't achieve the same network effects.</p>
 
-    <p><strong>Industry adoption.</strong> Companies like Amazon, Boston Dynamics, and NVIDIA build on ROS. Open source proved more reliable than proprietary middleware.</p>
-
-    <h2>The Hardware Gap</h2>
-
-    <p>Software sharing is easier than hardware sharing. A robot costs thousands or millions to build; code costs nothing to copy. This creates asymmetry—well-funded labs can test on real robots while others rely on simulation.</p>
-
-    <p>The field addresses this through better simulation (Gazebo, Isaac Sim), open hardware designs (ROMR, Open Manipulator), and cloud robotics that provide remote access to physical platforms. The gap remains, but it's narrowing.</p>
-
-    <p>The result is a field where the fundamental software infrastructure is free, where research papers typically include code, and where a student with a laptop can develop algorithms that later run on million-dollar robots.</p>
+    <p>The result: a field where the fundamental software infrastructure is free, where research papers include code, and where startups building $20,000 humanoids can leverage the same algorithms as billion-dollar research labs. The humanoid moment arrives on open source rails.</p>
   </article>
 
   <footer>

@@ -46,7 +46,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); }
+    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -57,66 +57,96 @@
     <h1>AI/ML Research</h1>
     <p class="meta">The Fastest-Moving Field in Science | December 2025</p>
 
-    <p>No field publishes more openly or more rapidly than artificial intelligence and machine learning. The 18-month journal cycle that governs traditional science is irrelevant here. Papers appear on arXiv within days of completion. Major conferences review thousands of submissions through OpenReview, where the entire process unfolds in public view. The major labs—Anthropic, DeepMind, OpenAI, Meta AI—publish their research directly, often alongside code and datasets.</p>
+    <p>In the span of eight weeks—from November 17 to December 11, 2025—four major AI companies launched their most powerful models ever. xAI released Grok 4.1. Google unveiled Gemini 3. Anthropic shipped Claude Opus 4.5. OpenAI fired back with GPT-5.2 after an internal "code red" memo about losing market share. This is the pace of AI research now: breakthroughs measured in weeks, not years.</p>
 
-    <p>This open culture emerged from necessity. The field moves too fast for traditional gatekeeping. A technique published in January may be obsolete by June. Researchers who waited for journal acceptance would find themselves citing outdated work. So the community built its own infrastructure: preprint servers, open review platforms, and direct publication channels that bypass the legacy system entirely.</p>
+    <p>The field publishes openly out of necessity. Papers appear on <a href="https://arxiv.org/list/cs.AI/current">arXiv</a> within days of completion. Conferences review thousands of submissions through <a href="https://openreview.net/">OpenReview</a>, where the entire process unfolds in public view. NeurIPS 2025 received 21,575 submissions and accepted 5,200 papers—a 24.5% acceptance rate—with every review, rebuttal, and decision visible to anyone.</p>
+
+    <h2>The Model Race: December 2025</h2>
+
+    <h3>GPT-5.2</h3>
+    <p>OpenAI launched <a href="https://techcrunch.com/2025/12/11/openai-fires-back-at-google-with-gpt-5-2-after-code-red-memo/">GPT-5.2 on December 11, 2025</a>, calling it "the most capable model series yet for professional knowledge work." It arrived in three variants: Instant (optimized for speed), Thinking (for complex structured work), and Pro (for maximum accuracy). This followed GPT-5.1's August release, which introduced adaptive reasoning that dynamically adjusts "thinking time" based on task complexity.</p>
+
+    <h3>Gemini 3</h3>
+    <p><a href="https://www.vellum.ai/blog/flagship-model-report">Gemini 3 Pro</a> leads overall reasoning benchmarks with an unprecedented 1501 LMArena Elo—the first model to break the 1500 barrier. It achieved 91.9% on GPQA Diamond, surpassing human expert performance (~89.8%). Its Deep Think mode pushes Humanity's Last Exam to 41%, the highest published score. The million-token context window enables processing entire codebases in a single prompt.</p>
+
+    <h3>Claude Opus 4.5</h3>
+    <p><a href="https://blog.getbind.co/2025/12/12/gpt-5-2-vs-claude-opus-4-5-vs-gemini-3-0-pro-which-one-is-best-for-coding/">Claude 4.5 Sonnet</a> leads SWE-bench Verified at 77.2%, resolving real GitHub issues with the highest success rate. Anthropic positions it as "the best coding model in the world" with demonstrated 30+ hour autonomous operation capability. Claude Opus 4.5 operates under Anthropic's AI Safety Level 3 (ASL-3) standard.</p>
+
+    <h2>Reasoning Models: The 2025 Breakthrough</h2>
+
+    <p>Reasoning models represent a fundamental evolution in LLM design. Unlike traditional models that generate outputs based on pattern matching, these systems simulate human-like deliberation using chain-of-thought prompting, working backwards from solutions, and self-critique.</p>
+
+    <h3>OpenAI o1 and o3</h3>
+    <p>OpenAI's <a href="https://openai.com/index/learning-to-reason-with-llms/">o1 model</a> introduced true multi-step reasoning at its core. Think of o1 as having an internal scratchpad: it can jot down sub-calculations and work through them before producing a final answer. Through reinforcement learning, o1 learns to recognize and correct its mistakes, break down tricky steps into simpler ones, and try different approaches when the current one isn't working.</p>
+
+    <p><a href="https://www.datacamp.com/blog/o3-openai">o3</a> introduced "simulated reasoning"—the ability to pause and reflect on its internal thought process before finalizing answers. o3 can evaluate its own intermediate outputs and decide whether to refine its approach. It scored 91.6% on AIME 2024 (compared to o1's 74.3%) and 88.9% on AIME 2025.</p>
+
+    <h3>DeepSeek-R1</h3>
+    <p>In early 2025, China's DeepSeek released DeepSeek-R1, democratizing reasoning capabilities by open-sourcing methods to train such systems affordably. The model performs as well as top OpenAI models while costing roughly $6 million to train—versus over $100 million for GPT-4. This shook the industry and pressured OpenAI to make chain-of-thought reasoning more visible.</p>
+
+    <h2>NeurIPS 2025 Best Papers</h2>
+
+    <p><a href="https://blog.neurips.cc/2025/11/26/announcing-the-neurips-2025-best-paper-awards/">NeurIPS 2025</a> (December 2-7, San Diego) recognized seven groundbreaking papers:</p>
+
+    <h3>Gated Attention for Large Language Models</h3>
+    <p>The <a href="https://www.alizila.com/alibaba-qwen-wins-neurips-2025-best-paper-award-for-breakthrough-in-attention-mechanisms/">Alibaba Qwen team</a> won for research on gating mechanisms in Transformer attention. Experiments on 15B MoE models trained on up to 3.5T tokens showed that gating introduces extra nonlinearity and allows each attention head to dynamically decide whether to contribute, alleviating "attention sink" where some activations become excessively large.</p>
+
+    <h3>1000-Layer Networks for Self-Supervised RL</h3>
+    <p>In sharp contrast to shallow architectures (2-5 layers) used in most RL studies, this work proves that <a href="https://howaiworks.ai/blog/neurips-2025-best-paper-awards-announcement">increasing network depth to 1,024 layers</a> brings significant performance breakthroughs—2-50x better performance for robots learning to reach goals without human guidance.</p>
+
+    <h3>INFINITY-CHAT</h3>
+    <p>This dataset evaluates output diversity across 70+ state-of-the-art LLMs, revealing a phenomenon called the "Artificial Hivemind"—how various models tend to converge on similar outputs.</p>
+
+    <h3>Neural Scaling Laws and Superposition</h3>
+    <p>This paper finally explained why bigger models work better. The secret is "superposition"—the ability of models to represent more features than they have dimensions by packing information cleverly.</p>
+
+    <h2>ICLR 2025 Highlights</h2>
+
+    <p><a href="https://iclr.cc/virtual/2025/papers.html">ICLR 2025</a> (April 24-28, Singapore) accepted over 3,700 papers. Key research areas included:</p>
+
+    <ul>
+      <li><strong>Speculative Cascading</strong> - New techniques implementing deferral rules through speculative execution, showing better cost-quality trade-offs with Gemma and T5 models</li>
+      <li><strong>Shallow Safety Alignment</strong> - Explaining how shallow safety alignment contributes to LLM vulnerabilities including adversarial suffix attacks, prefilling attacks, and fine-tuning attacks</li>
+      <li><strong>In-Run Data Shapley</strong> - A novel concept eliminating the need for model retraining when assessing data contribution, scaling efficiently to foundation model sizes</li>
+    </ul>
+
+    <h2>Chain-of-Thought Monitorability</h2>
+
+    <p>A critical 2025 research direction involves understanding whether we can trust AI reasoning. <a href="https://openai.com/index/evaluating-chain-of-thought-monitorability/">OpenAI's monitorability research</a> asks: when AI systems make decisions that are difficult to supervise directly, can we monitor their internal reasoning?</p>
+
+    <p>Modern reasoning models like GPT-5 Thinking generate explicit chains-of-thought before producing answers. Monitoring these for misbehavior can be far more effective than monitoring outputs alone. However, researchers worry this "monitorability" may be fragile as models scale.</p>
 
     <h2>Where to Find the Research</h2>
 
-    <h3>arXiv</h3>
-    <p>The <a href="https://arxiv.org/list/cs.AI/recent">cs.AI</a> and <a href="https://arxiv.org/list/cs.LG/current">cs.LG</a> (machine learning) sections of arXiv receive hundreds of submissions daily. As of December 2025, the cs.AI section alone contains over 2,400 active entries. The <a href="https://arxiv.org/list/cs.CL/recent">cs.CL</a> section covers computational linguistics and natural language processing—the home of large language model research.</p>
-
-    <p>Tools like <a href="https://www.alphaxiv.org/">alphaXiv</a> and <a href="https://huggingface.co/papers/trending">Hugging Face Papers</a> help surface trending work. <a href="https://www.paperdigest.org/2025/03/most-influential-arxiv-artificial-intelligence-papers-2025-03-version/">Paper Digest</a> tracks citation influence across the corpus.</p>
-
-    <h3>OpenReview</h3>
-    <p><a href="https://openreview.net/">OpenReview</a> hosts the submission and review process for the major ML conferences. The <a href="https://openreview.net/group?id=ICML.cc/2025/Conference">ICML 2025</a> and <a href="https://openreview.net/group?id=NeurIPS.cc/2025/Conference">NeurIPS 2025</a> portals contain thousands of papers with their complete review histories. This transparency is radical by academic standards—every reviewer comment, every author response, visible to anyone.</p>
-
-    <h3>Lab Publications</h3>
-    <p>The major labs maintain their own research portals:</p>
+    <h3>Preprint Servers</h3>
     <ul>
-      <li><a href="https://www.anthropic.com/research">Anthropic Research</a> and the <a href="https://alignment.anthropic.com/">Alignment Science Blog</a></li>
-      <li><a href="https://deepmind.google/research/publications/">Google DeepMind Publications</a></li>
-      <li><a href="https://openai.com/research/index/">OpenAI Research</a></li>
-      <li><a href="https://ai.google/research/">Google AI Research</a></li>
+      <li><a href="https://arxiv.org/list/cs.AI/current">cs.AI</a> - Over 2,400 active entries in artificial intelligence</li>
+      <li><a href="https://arxiv.org/list/cs.LG/current">cs.LG</a> - Machine learning papers</li>
+      <li><a href="https://arxiv.org/list/cs.CL/recent">cs.CL</a> - Computational linguistics and NLP</li>
+      <li><a href="https://huggingface.co/papers/trending">Hugging Face Papers</a> - Trending ML research</li>
     </ul>
 
-    <h2>Current Research Directions (2025)</h2>
+    <h3>Conference Portals</h3>
+    <ul>
+      <li><a href="https://openreview.net/group?id=NeurIPS.cc/2025/Conference">NeurIPS 2025</a> - 5,200 accepted papers with full review histories</li>
+      <li><a href="https://openreview.net/group?id=ICML.cc/2025/Conference">ICML 2025</a> - Vancouver, July 13-19</li>
+      <li><a href="https://openreview.net/group?id=ICLR.cc/2025/Conference">ICLR 2025</a> - 3,700+ papers on representation learning</li>
+    </ul>
 
-    <h3>Reasoning Models</h3>
-    <p>The dominant trend in late 2025 is reasoning-focused models. Research subdivides into training methods (reinforcement learning with verifiable rewards), inference-time scaling (thinking longer to solve harder problems), and evaluation frameworks for measuring genuine reasoning versus pattern matching.</p>
-
-    <h3>Agentic AI</h3>
-    <p>The field is rapidly rebranding from "Generative AI" to "Agentic AI"—systems that take actions rather than just generate text. Research like "Small Language Models are the Future of Agentic AI" argues that sub-10B parameter models are sufficient for most agent subtasks, which tend to be repetitive, well-defined, and non-conversational. The full capabilities of massive models are overkill for executing tool calls or parsing structured data.</p>
-
-    <h3>Interpretability</h3>
-    <p>Anthropic's circuit tracing work allows researchers to track decision-making processes inside large language models step by step. They've mapped how Claude 3.5 Haiku processes various tasks, revealing connections between individual components. This builds on earlier work from DeepMind and others.</p>
-
-    <p>A July 2025 paper co-authored by 40 researchers from OpenAI, DeepMind, Meta, and Anthropic—endorsed by Ilya Sutskever and Geoffrey Hinton—warned that "chain-of-thought" reasoning processes may be the last window into how these systems make decisions. As models grow more capable, our ability to understand them may shrink.</p>
-
-    <h3>Self-Supervised Vision</h3>
-    <p>While language processing has converged on universal foundation models, computer vision is still climbing that ladder. Models like DINOv3 represent the push toward self-supervised image models that can serve as the foundation for vision tasks, analogous to what GPT achieved for language.</p>
-
-    <h2>Major Conferences</h2>
-
-    <p><a href="https://neurips.cc/Conferences/2025/CallForPapers">NeurIPS 2025</a> awarded seven best paper recognitions covering diffusion model theory, self-supervised reinforcement learning, attention mechanisms, reasoning capabilities, online learning theory, neural scaling laws, and benchmarking methodologies.</p>
-
-    <p><a href="https://icml.cc/Conferences/2025/CallForPapers">ICML 2025</a> takes place in Vancouver, July 13-19, covering general machine learning, deep learning, evaluation, theory, systems, optimization, probabilistic methods, reinforcement learning, and trustworthy ML. Papers submitted through OpenReview undergo double-blind review.</p>
-
-    <p><a href="https://iclr.cc/Conferences/2025/CallForPapers">ICLR 2025</a> focuses on representation learning—how systems learn useful features from raw data.</p>
+    <h3>Lab Publications</h3>
+    <ul>
+      <li><a href="https://www.anthropic.com/research">Anthropic Research</a> and <a href="https://alignment.anthropic.com/">Alignment Science Blog</a></li>
+      <li><a href="https://deepmind.google/research/publications/">Google DeepMind Publications</a></li>
+      <li><a href="https://openai.com/research/index/">OpenAI Research</a></li>
+    </ul>
 
     <h2>Why It's Open</h2>
 
-    <p>Several forces push AI research toward openness:</p>
+    <p>The field moves too fast for traditional gatekeeping. A technique published in January may be obsolete by June. Researchers who wait for journal acceptance find themselves citing outdated work. The community built its own infrastructure: preprint servers, open review platforms, and direct publication channels.</p>
 
-    <p><strong>Speed.</strong> The field moves too fast for slow publication. Waiting for peer review means being scooped. Preprints establish priority.</p>
+    <p>Competition also drives openness. Labs compete for talent by demonstrating research quality. Published work attracts researchers. DeepSeek's open-source approach forced even OpenAI to become more transparent about chain-of-thought reasoning.</p>
 
-    <p><strong>Reproducibility.</strong> ML research depends on code and compute. Papers without implementations are increasingly seen as incomplete. Sharing code and datasets is becoming the norm.</p>
-
-    <p><strong>Competition.</strong> Labs compete for talent by demonstrating research quality. Published work attracts researchers. Open publication is a recruiting tool.</p>
-
-    <p><strong>Norm-setting.</strong> Early leaders in the field—LeCun, Hinton, Bengio—established open culture before it was commercially significant. Those norms persist even as the stakes have grown.</p>
-
-    <p>The result is a field where cutting-edge research is available to anyone with an internet connection. A graduate student in Lagos has the same access to GPT-4's technical report as a researcher at Stanford. This democratization of knowledge is unusual in science and may not last—but for now, AI research remains remarkably open.</p>
+    <p>The result: cutting-edge research available to anyone with an internet connection. A graduate student anywhere has the same access to technical reports as researchers at major labs. This democratization is unusual in science—and may not last as commercial stakes grow—but for now, AI research remains remarkably open.</p>
   </article>
 
   <footer>

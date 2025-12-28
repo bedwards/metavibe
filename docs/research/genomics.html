@@ -46,7 +46,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); }
+    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -55,56 +55,91 @@
 
   <article>
     <h1>Genomics & Bioinformatics</h1>
-    <p class="meta">Where Open Data Became the Norm | December 2025</p>
+    <p class="meta">From Nobel Prize to Clinical Reality | December 2025</p>
 
-    <p>The Human Genome Project established a precedent that still defines biological research: data should be free. When the project released its draft sequence in 2000, it set in motion an expectation that genomic data belongs to everyone. That norm persists. Today, the major preprint servers and databases in biology operate on the assumption that research should be accessible within days of completion, not months or years.</p>
+    <p>In October 2024, Demis Hassabis and John Jumper received the Nobel Prize in Chemistry for <a href="https://deepmind.google/science/alphafold/">AlphaFold</a>. By December, CRISPR gene therapy had treated its first patients with prime editing. The field of genomics has crossed from theoretical breakthrough to clinical reality with unprecedented speed.</p>
 
-    <p>The biological sciences came late to preprints compared to physics, but they've made up for lost time. <a href="https://www.biorxiv.org/">bioRxiv</a> and <a href="https://www.medrxiv.org/">medRxiv</a> together receive millions of visitors monthly. The COVID-19 pandemic accelerated adoption—when speed mattered for public health, researchers couldn't wait for traditional journals.</p>
+    <p>The Human Genome Project established a precedent that still defines biological research: data should be free. Today, over 3 million researchers in 190 countries use AlphaFold. Preprint servers process thousands of papers monthly. The gap between discovery and application has collapsed from decades to months.</p>
 
-    <h2>A New Chapter: openRxiv</h2>
+    <h2>AlphaFold 3: Predicting All of Life's Molecules</h2>
 
-    <p>On March 11, 2025, bioRxiv and medRxiv entered a new era. After operating under Cold Spring Harbor Laboratory since their founding, the platforms <a href="https://www.nature.com/articles/d41586-025-00762-4">transferred to openRxiv</a>, a newly formed nonprofit dedicated to preprint infrastructure. This organizational independence signals the maturation of preprints from experimental alternative to essential infrastructure.</p>
+    <p><a href="https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/">AlphaFold 3</a>, released May 8, 2024, represents a quantum leap beyond its predecessor. While AlphaFold 2 predicted protein structures, AlphaFold 3 predicts the structures and interactions of proteins, DNA, RNA, and ligands—essentially all of life's molecules.</p>
 
-    <p>Starting December 1, 2025, new papers carry the DOI prefix 10.64898 (openRxiv), replacing the 10.1101 prefix from the CSHL era. The platforms now view approximately 10 million people monthly, processing thousands of submissions with a 2-3 day turnaround—two orders of magnitude faster than traditional journals, at costs two orders of magnitude lower.</p>
+    <p>The accuracy improvements are dramatic. For interactions between proteins and other molecules, AlphaFold 3 shows <a href="https://www.isomorphiclabs.com/articles/rational-drug-design-with-alphafold-3">at least 50% improvement</a> over existing methods. For some interaction categories, accuracy has doubled. On the PoseBusters benchmark for drug-like interactions, it surpasses physics-based tools without requiring any structural input—the first AI system to achieve this.</p>
 
-    <h2>The Numbers</h2>
+    <p>What took human researchers years—determining protein structures and how they interact with receptors—AlphaFold 3 predicts in seconds. <a href="https://deepmind.google/blog/alphafold-five-years-of-impact/">Isomorphic Labs</a> has deployed their frontier version in partnerships with pharmaceutical companies, demonstrating it can accurately characterize the progression of drug molecule design for targets like TIM-3, an immune checkpoint protein for cancer immunotherapy.</p>
 
-    <p>bioRxiv's <a href="https://www.biorxiv.org/collection/bioinformatics">bioinformatics collection</a> contains over 38,700 preprints. Genomics has 21,100+. Genetics adds another 14,800+. These aren't obscure papers—roughly two-thirds eventually appear in peer-reviewed journals. The preprint establishes priority and enables immediate community feedback.</p>
+    <p>In November 2024, Google DeepMind <a href="https://academic.oup.com/pcm/article/8/3/pbaf015/8180385">released the AlphaFold 3 model code and weights</a> for academic use, democratizing access to structure prediction that would have been impossible just three years ago.</p>
+
+    <h2>CRISPR Comes to Patients</h2>
+
+    <p>The FDA approved <a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease">Casgevy on December 8, 2023</a>—the first CRISPR/Cas9 gene therapy ever approved. It treats sickle cell disease by editing patients' blood stem cells to produce fetal hemoglobin, preventing red blood cells from sickling.</p>
+
+    <p>The clinical results are striking. Of 31 patients monitored for adequate follow-up, 29 achieved relief from vaso-occlusive crises lasting at least 12 consecutive months. No instances of graft failure or rejection occurred. By spring 2025, Casgevy had been <a href="https://innovativegenomics.org/news/crispr-clinical-trials-2025/">approved in the US, UK, EU, Switzerland, Canada, Bahrain, Saudi Arabia, and the UAE</a>. Over 50 patients have begun treatment across 50 active centers globally.</p>
+
+    <h3>Beyond Cas9: Base and Prime Editing</h3>
+
+    <p><a href="https://www.the-scientist.com/david-liu-wins-2025-breakthrough-prize-for-base-editing-and-prime-editing-72888">David Liu won the 2025 Breakthrough Prize in Life Sciences</a> for developing base editing and prime editing—technologies that correct genetic mutations without creating double-stranded DNA breaks.</p>
+
+    <p>Base editing changes single DNA letters. <a href="https://innovativegenomics.org/news/crispr-clinical-trials-2025/">Beam Therapeutics</a> has dosed at least 17 adult patients with their base editing therapy for sickle cell disease, showing effectiveness comparable to Casgevy. The FDA cleared them to treat adolescents as well. Preliminary Phase 1 results show promise for familial hypercholesterolemia and alpha-1 antitrypsin deficiency.</p>
+
+    <p>Prime editing rewrites DNA sequences more precisely. In <a href="https://pubmed.ncbi.nlm.nih.gov/41038616/">May 2025, Prime Medicine announced</a> positive results from treating a patient with chronic granulomatous disease—the first clinical data showing efficacy and safety of prime editing in humans. The participant had robust restoration of protein function, potentially curative levels, with no serious adverse events.</p>
+
+    <p>Researchers have also developed <a href="https://www.broadinstitute.org/news/single-prime-editing-system-could-potentially-treat-multiple-genetic-diseases">a prime editing strategy targeting nonsense mutations</a>, which cause about one-third of rare genetic diseases by halting protein production early. The system restored protein function in cell and animal models of four different diseases.</p>
+
+    <h2>Spatial Transcriptomics: Mapping Genes in 3D</h2>
+
+    <p>Traditional single-cell sequencing destroys tissue structure. Spatial transcriptomics preserves it—showing not just what genes cells express, but where those cells sit within tissue architecture.</p>
+
+    <h3>RAEFISH: Whole Transcriptome Imaging</h3>
+    <p><a href="https://www.cell.com/cell/fulltext/S0092-8674(25)01037-2">RAEFISH</a>, published in Cell in October 2025, delivers whole-transcriptome imaging (over 20,000 genes) at single-molecule resolution. It enables high-content CRISPR screens through direct gRNA detection—addressing fundamental limitations in transcriptomic coverage that plagued earlier spatial methods.</p>
+
+    <h3>Deep-STARmap: Thick Tissue Analysis</h3>
+    <p><a href="https://www.nature.com/articles/s41592-025-02867-0">Deep-STARmap and Deep-RIBOmap</a>, published in Nature Methods in November 2025, enable 3D quantification of thousands of gene transcripts within 60–200 micrometer thick tissue blocks. Most spatial techniques are limited to 5–20 micrometer thin sections. This breakthrough allows characterization of gene expression patterns in their full three-dimensional tissue context.</p>
+
+    <h3>Stereo-cell Platform</h3>
+    <p><a href="https://www.science.org/doi/10.1126/science.adr0475">Stereo-cell</a>, published in Science, provides spatial single-cell sequencing with high-density DNA nanoball-patterned arrays. It enables scalable, unbiased cell capture and integrates with imaging modalities and multiomics strategies—including profiling of extracellular vesicles and microstructures.</p>
+
+    <h2>The Single-Cell Revolution</h2>
+
+    <p>The single-cell sequencing market reached $1.95 billion in 2025, projected to hit <a href="https://www.globenewswire.com/news-release/2025/08/21/3137124/0/en/Global-Single-Cell-Sequencing-Market-to-Reach-USD-3-46-Billion-by-2030-MarketsandMarkets.html">$3.46 billion by 2030</a>. The technology has moved from research novelty to essential infrastructure.</p>
+
+    <p>Industry developments in 2025 include Parse Bioscience's Evercode WT Penta enabling 5-million-cell sequencing (February), BD's FACSDiscover A8 Cell Analyzer (May), and CS Genetics' 96-sample SimpleCell Kit (July). In January 2025, <a href="https://blog.crownbio.com/2025-and-beyond-the-future-of-genomic-data-analysis-and-innovations-in-genomics-services">Nvidia partnered with Illumina</a> to apply AI to multi-omics data in drug discovery.</p>
+
+    <p><a href="https://www.the-scientist.com/the-biggest-breakthroughs-in-cell-biology-in-2025-73835">A breakthrough in 2025</a> showed that AI can differentiate diseases based on T cell receptor repertoires from bulk sequencing data—proving that even without single-cell resolution, bulk data contains discriminative information when analyzed with modern machine learning.</p>
+
+    <h2>The openRxiv Transition</h2>
+
+    <p>On March 11, 2025, bioRxiv and medRxiv <a href="https://www.nature.com/articles/d41586-025-00762-4">transferred to openRxiv</a>, a newly formed nonprofit dedicated to preprint infrastructure. After operating under Cold Spring Harbor Laboratory since their founding, the platforms gained organizational independence—signaling maturation from experimental alternative to essential infrastructure.</p>
+
+    <p>The platforms now view approximately 10 million people monthly. bioRxiv's bioinformatics collection contains over 38,700 preprints. Genomics has 21,100+. These aren't obscure papers—roughly two-thirds eventually appear in peer-reviewed journals. The preprint establishes priority and enables immediate community feedback, with 2-3 day turnaround versus months for traditional journals.</p>
 
     <h2>Where to Find Genomics Research</h2>
 
     <h3>Preprint Servers</h3>
     <ul>
-      <li><a href="https://www.biorxiv.org/">bioRxiv</a> - The primary preprint server for biology, founded 2013</li>
-      <li><a href="https://www.medrxiv.org/">medRxiv</a> - Health sciences preprints, founded 2019</li>
+      <li><a href="https://www.biorxiv.org/">bioRxiv</a> - Primary preprint server for biology</li>
+      <li><a href="https://www.medrxiv.org/">medRxiv</a> - Health sciences preprints</li>
     </ul>
 
-    <h3>Data Repositories</h3>
+    <h3>Data and Tools</h3>
     <ul>
-      <li><strong>GenBank</strong> - The NIH genetic sequence database, containing all publicly available nucleotide sequences</li>
-      <li><strong>PubMed Central</strong> - Free archive of biomedical and life sciences literature</li>
-      <li><strong>NCBI databases</strong> - Comprehensive collection of molecular biology resources</li>
+      <li><a href="https://alphafold.ebi.ac.uk/">AlphaFold Protein Structure Database</a> - 200+ million predicted structures</li>
+      <li><a href="https://www.ncbi.nlm.nih.gov/genbank/">GenBank</a> - NIH genetic sequence database</li>
+      <li><a href="https://usegalaxy.org/">Galaxy</a> - Open-source bioinformatics platform</li>
     </ul>
 
-    <h2>Quality Without Traditional Peer Review</h2>
+    <h3>Clinical Trials</h3>
+    <ul>
+      <li><a href="https://crisprmedicinenews.com/clinical-trials/">CRISPR Medicine News</a> - Tracks ~250 gene editing trials</li>
+      <li><a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a> - NIH registry</li>
+    </ul>
 
-    <p>Preprints aren't peer-reviewed in the traditional sense, but they're not unfiltered either. bioRxiv screens for plagiarism, checks that work falls within scope, and applies basic acceptance criteria. The community provides rapid informal review through social media, blog posts, and direct author contact. Errors get caught quickly—often faster than in journal peer review, where months pass before anyone sees the work.</p>
+    <h2>Why Genomics Shares</h2>
 
-    <p>This model works because the biological sciences community has accepted that preprints are preliminary. Readers understand they're seeing work in progress. The stigma that once attached to "unpublished" work has largely dissolved.</p>
+    <p>The Human Genome Project precedent proved decisive. When the most ambitious biology project in history committed to immediate data release, it established a norm that proved hard to reverse. The reproducibility crisis reinforced it—open data helps verify results. COVID-19 cemented it—preprints proved essential infrastructure when speed saved lives.</p>
 
-    <h2>Why Biology Went Open</h2>
-
-    <p>Several factors pushed biological research toward openness:</p>
-
-    <p><strong>The Human Genome Project precedent.</strong> When the most ambitious biology project in history committed to immediate data release, it established a norm that proved hard to reverse.</p>
-
-    <p><strong>Data-intensive science.</strong> Modern genomics produces terabytes of sequence data. Sharing data isn't just ethical—it's practical. No single lab can analyze everything it generates.</p>
-
-    <p><strong>Reproducibility concerns.</strong> The replication crisis hit biology hard. Open data and methods help other researchers verify results.</p>
-
-    <p><strong>Public health urgency.</strong> COVID-19 proved that preprints could be essential infrastructure. Research that took months to publish traditionally appeared in days on bioRxiv and medRxiv. Speed saved lives.</p>
-
-    <p>The result is a field where major discoveries appear online within days of completion, where datasets that once took years to access are freely downloadable, and where the gap between research and public knowledge has narrowed dramatically.</p>
+    <p>Modern genomics produces datasets too large for any single lab to analyze. Sharing isn't just ethical—it's practical. AlphaFold predictions would be useless locked in Google's servers. CRISPR protocols shared openly have enabled a global explosion of gene editing research. The result is a field where Nobel Prize-winning discoveries become freely available tools within months.</p>
   </article>
 
   <footer>
