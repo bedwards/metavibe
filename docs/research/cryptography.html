@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptography & Security | metavibe</title>
+  <meta name="description" content="Open access cryptography and security research in 2025">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <a href="./" class="back">&larr; Back to Research</a>
+
+  <article>
+    <h1>Cryptography & Security</h1>
+    <p class="meta">Open Research in a Secretive Field | December 2025</p>
+
+    <p>Cryptography presents a paradox: a field devoted to secrets that publishes openly. The resolution is simple—security through obscurity doesn't work. Cryptographic algorithms must be public so they can be attacked. Only schemes that survive sustained assault from the research community deserve trust. This makes cryptography unusually open for a field with such high-stakes applications.</p>
+
+    <p>The <a href="https://www.iacr.org/">International Association for Cryptologic Research (IACR)</a> has maintained the <a href="https://eprint.iacr.org/">Cryptology ePrint Archive</a> for over 20 years. Papers appear without peer review, verified only for scope and basic quality. The community provides scrutiny—sometimes brutally so. A flawed scheme attracts attacks within days. This adversarial review process, while informal, proves remarkably effective.</p>
+
+    <h2>The Post-Quantum Transition</h2>
+
+    <p>The dominant theme in 2025 cryptography is the transition to post-quantum algorithms. Quantum computers threaten RSA and elliptic curve cryptography—the foundations of current internet security. Adversaries pursuing "harvest now, decrypt later" strategies are already collecting encrypted traffic, betting that future quantum computers will break today's encryption.</p>
+
+    <p>In March 2025, NIST selected <a href="https://eprint.iacr.org/2025/1668.pdf">Hamming Quasi-Cyclic (HQC)</a> as a Key Encapsulation Mechanism for standardization, joining the algorithms selected in earlier rounds. Research on <a href="https://eprint.iacr.org/2025/2052">hybrid cryptographic strategies</a> examines how to integrate traditional mechanisms with post-quantum cryptography during the transition period.</p>
+
+    <h2>Where to Find Cryptography Research</h2>
+
+    <h3>IACR Resources</h3>
+    <ul>
+      <li><a href="https://eprint.iacr.org/">Cryptology ePrint Archive</a> - Preprints on all cryptology topics</li>
+      <li><a href="https://www.iacr.org/publications/">IACR Publications</a> - Diamond open access journals</li>
+      <li><strong>Transactions on Symmetric Cryptology (ToSC)</strong> - Timely research on symmetric cryptography</li>
+      <li><strong>Transactions on Cryptographic Hardware and Embedded Systems (TCHES)</strong> - Hardware security research</li>
+    </ul>
+
+    <h3>Security Conferences</h3>
+    <ul>
+      <li><strong>USENIX Security</strong> - Systems security research</li>
+      <li><strong>IEEE S&P (Oakland)</strong> - Security and privacy</li>
+      <li><strong>CCS</strong> - ACM Conference on Computer and Communications Security</li>
+      <li><strong>NDSS</strong> - Network and Distributed System Security</li>
+    </ul>
+
+    <h2>Current Research Directions</h2>
+
+    <h3>Quantum-Safe Protocols</h3>
+    <p>Research on <a href="https://eprint.iacr.org/2025/2280">"Security Models and Cryptographic Protocols in a Quantum World"</a> by Chevalier, Hermouet, and Vu addresses how classical security models must adapt to quantum adversaries. The question isn't just which algorithms are safe, but how protocols composed of multiple primitives behave when some components face quantum attacks.</p>
+
+    <h3>Side-Channel Analysis</h3>
+    <p><a href="https://eprint.iacr.org/2025/2302">Recent research</a> presents the first power side-channel analysis of Hybrid Homomorphic Encryption schemes, specifically analyzing HERA. Results demonstrate successful key recovery from as few as 40 power traces using Correlation Power Analysis. As homomorphic encryption moves toward deployment, these hardware attacks become critical to understand.</p>
+
+    <h3>Lattice-Based Cryptography</h3>
+    <p>Most post-quantum candidates rely on the hardness of lattice problems. <a href="https://eprint.iacr.org/2025/304.pdf">Survey papers</a> systematize what's known about lattice-based security, examining both theoretical foundations and practical implementations. These schemes will protect internet traffic for decades—getting them right matters.</p>
+
+    <h2>Diamond Open Access</h2>
+
+    <p>IACR pioneered "diamond" open access: free for readers, free for authors. No article processing charges. No subscriptions. The organization funds publication through membership dues and conference fees, not by charging for access to research. This model proves that prestigious venues don't require paywalls.</p>
+
+    <p>The journals maintain rigorous peer review while remaining freely accessible from day one. This matters for cryptography especially—security research should be available to anyone implementing cryptographic systems, not just those with institutional library access.</p>
+
+    <h2>The Responsible Disclosure Culture</h2>
+
+    <p>Security research operates under norms of responsible disclosure. Researchers who find vulnerabilities typically notify affected parties before publishing, allowing time for patches. This isn't legally required—it's community ethics. The culture balances the public's right to know about vulnerabilities against the harm that premature disclosure could cause.</p>
+
+    <p>Open publication serves this balance. Once fixes deploy, public analysis helps others learn from the vulnerability. Papers describing attacks become teaching tools. The openness that seems counterintuitive for security turns out to be essential for it.</p>
+  </article>
+
+  <footer>
+    <p><a href="./">Research</a> | <a href="../">metavibe</a> | December 2025</p>
+  </footer>
+</body>
+</html>
