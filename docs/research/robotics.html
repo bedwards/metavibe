@@ -16,6 +16,7 @@
       --accent: #6366f1;
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
+      --tag-research: #059669;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -24,6 +25,7 @@
         --text-muted: #999;
         --border: #333;
         --code-bg: #1a1a1a;
+        --tag-research: #34d399;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +40,18 @@
     }
     .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
     .back:hover { text-decoration: underline; }
-    h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-research);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
     h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
     p { margin: 1rem 0; }
@@ -46,7 +59,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    blockquote { border-left: 3px solid var(--tag-research); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -54,69 +67,54 @@
   <a href="./" class="back">&larr; Back to Research</a>
 
   <article>
+    <span class="article-tag">Latest Research</span>
     <h1>Robotics</h1>
     <p class="meta">The Humanoid Moment | December 2025</p>
 
-    <p>On October 7, 2025, <a href="https://interestingengineering.com/culture/can-optimus-make-america-win">Tesla unveiled Optimus Gen 3</a> performing Kung Fu, cooking, and cleaning—all learned through observation, not coding. <a href="https://humanoidroboticstechnology.com/articles/top-12-humanoid-robots-of-2025/">Figure 02 completed a 20-hour continuous shift</a>. Boston Dynamics began testing Atlas at Hyundai's Georgia facility. 2025 became the breakthrough year for humanoid robots.</p>
-
-    <p>The investment tells the story: Figure AI raised $1 billion in 2025. Apptronik raised $403 million. Agility Robotics raised $400 million. After decades of research demonstrations, humanoid robots are transitioning to commercial deployment.</p>
+    <p>On October 7, 2025, Tesla unveiled Optimus Gen 3 performing Kung Fu, cooking, and cleaning—all learned through observation, not coding. Figure 02 completed a 20-hour continuous shift. Boston Dynamics began testing Atlas at Hyundai's Georgia facility. The investment tells the story: Figure AI raised $1 billion in 2025. Apptronik raised $403 million. Agility Robotics raised $400 million. 2025 became the breakthrough year for humanoid robots.</p>
 
     <h2>The Humanoid Race</h2>
 
     <h3>Tesla Optimus</h3>
-    <p><a href="https://standardbots.com/blog/tesla-robot">Tesla plans to produce 5,000-10,000 Optimus units in 2025</a>, with parts procurement for up to 12,000. The robot stands 1.73m tall, weighs 57kg, and can carry 20kg while walking or lift 68kg. Target price: $20,000-$30,000—"less than a car."</p>
+    <p>Tesla plans to produce 5,000-10,000 Optimus units in 2025, with parts procurement for up to 12,000. The robot stands 1.73m tall, weighs 57kg, and can carry 20kg while walking or lift 68kg. Target price: $20,000-$30,000—"less than a car."</p>
 
-    <p>Unlike research-focused robots, Optimus is designed for mass manufacturing. Tesla applies its expertise in electric powertrains, AI development (inherited from Full Self-Driving), and production scale.</p>
+    <p>Unlike research robots, Optimus is designed for mass manufacturing. Tesla applies its expertise in electric powertrains, AI development from Full Self-Driving, and production scale.</p>
 
     <h3>Boston Dynamics Atlas</h3>
-    <p><a href="https://interestingengineering.com/innovation/comparing-boston-dynamics-atlas-optimus-humanoid-robots">Boston Dynamics repositioned Atlas</a> in April 2024 as an all-electric machine, retiring the hydraulic version. The new Atlas stands 1.5m tall, weighs 89kg, and features about 28 degrees of freedom designed for mobility, dexterity, and agility.</p>
-
-    <p>Atlas is currently in pilot testing at Hyundai's Georgia facility, with commercial launch planned for 2026-2028. Estimated pricing: $140,000-$150,000. Boston Dynamics is collaborating with Toyota Research Institute on AI-driven behavioral models for general-purpose manipulation.</p>
+    <p>Boston Dynamics repositioned Atlas in April 2024 as all-electric, retiring the hydraulic version. New Atlas: 1.5m tall, 89kg, about 28 degrees of freedom. Pilot testing at Hyundai's Georgia facility; commercial launch 2026-2028. Estimated price: $140,000-$150,000. Collaboration with Toyota Research Institute on AI-driven behavioral models.</p>
 
     <h3>Figure AI</h3>
-    <p><a href="https://www.articsledge.com/post/ai-humanoid-robots">Figure 02</a> blends large language models with motor control for natural language tasking. The robot completed a 20-hour continuous shift—demonstrating the endurance needed for industrial deployment. Figure's Helix AI platform is set to debut in homes in 2025.</p>
+    <p>Figure 02 blends large language models with motor control for natural language tasking. The 20-hour continuous shift demonstrated industrial endurance. Figure's Helix AI platform set to debut in homes in 2025.</p>
 
     <h2>Embodied AI: The Foundation Model Era</h2>
 
     <p>Robotics has entered the foundation model era. Instead of custom perception stacks and task-specific controllers, robots are increasingly powered by large multimodal models that interpret scenes, understand instructions, and produce structured actions.</p>
 
-    <h3>RT-2 and Open X-Embodiment</h3>
-    <p><a href="https://robotics-transformer-x.github.io/">The Open X-Embodiment dataset</a> pools 60 robot datasets from 34 labs worldwide, covering diverse behaviors and household objects across different robot embodiments. RT-2-X, trained on this data, outperforms RT-2 by 3x on emergent skill evaluations.</p>
+    <h3>Open X-Embodiment Dataset</h3>
+    <p>The Open X-Embodiment dataset pools 60 robot datasets from 34 labs worldwide, demonstrating 500+ skills and 150,000+ tasks across 1 million+ episodes. Developed with academic labs across 20+ institutions.</p>
 
-    <p>RT-2's policy network achieves inference latency below 150ms at 92% accuracy—practical deployability for real-time control. The model demonstrates spatial understanding, affordance reasoning, and contact dynamics learned jointly through end-to-end training.</p>
+    <p>RT-1-X showed 50% success rate improvement on average across five commonly used robots. Training RT-2 on multiple embodiments tripled its performance on real-world robotic skills. World-model pretraining with optic-flow action representations enables >50% policy improvement with minimal new-target data.</p>
 
-    <h3>GEN-0: Scaling with Physical Interaction</h3>
-    <p><a href="https://generalistai.com/blog/nov-04-2025-GEN-0">GEN-0</a> is pretrained on over 270,000 hours of real-world manipulation data, growing at 10,000 hours per week. The architecture works across different robots by design—tested on 6DoF, 7DoF, and 16+ DoF semi-humanoid systems.</p>
+    <blockquote>Expanding the number of training embodiments yields more effective generalization than increasing trajectory count for a fixed embodiment set.</blockquote>
 
-    <p>GEN-0 marks "the beginning of a new era: embodied foundation models whose capabilities predictably scale with physical interaction data—not just from text, images, or simulation—but the real world."</p>
+    <h3>GEN-0: Scaling Physical Interaction</h3>
+    <p>GEN-0 is pretrained on over 270,000 hours of real-world manipulation data, growing at 10,000 hours per week. Works across different robots by design—tested on 6DoF, 7DoF, and 16+ DoF semi-humanoid systems.</p>
+
+    <p>This marks "the beginning of a new era: embodied foundation models whose capabilities predictably scale with physical interaction data—not just from text, images, or simulation—but the real world."</p>
 
     <h3>Vision-Language-Action Models</h3>
-    <p><a href="https://press.airstreet.com/p/embodied-ai-breakthroughs-2025">VLAMs have become the clearest expression</a> of how foundation models infuse new life into robotics. End-to-end approaches like GR-3 and Gemini Robotics enable models to internalize geometry, affordances, and contact dynamics through joint training of perception, semantics, and control.</p>
+    <p>VLAMs have become the clearest expression of how foundation models infuse new life into robotics. End-to-end approaches like GR-3 and Gemini Robotics enable models to internalize geometry, affordances, and contact dynamics through joint training of perception, semantics, and control.</p>
 
     <h2>The ROS Ecosystem</h2>
 
-    <p>The <a href="https://www.ros.org/">Robot Operating System (ROS)</a> remains the backbone of robotics research. ROS 2 addressed real-time requirements, security, and multi-robot coordination for production deployments.</p>
+    <p>The Robot Operating System (ROS) remains the backbone of robotics research. ROS 2 addressed real-time requirements, security, and multi-robot coordination for production deployments.</p>
 
     <h3>2025 Developments</h3>
-    <p>The <a href="https://discourse.ros.org/t/ros-news-for-the-week-of-june-23rd-2025/44508">RSS 2025 best paper award</a> went to CMU's DexWild, a ROS 2 package for dexterous human interaction policies. Medical robotics workshops at ISMR 2025 demonstrated interoperability between 3D Slicer, ROS2, Gazebo, and the da Vinci Research Kit.</p>
-
-    <h3>Open Source Dexterous Manipulation</h3>
-    <p><a href="https://www.dexhand.org/">DexHand</a> is a low-cost, open source dexterous hand for humanoid robot research, with ROS 2 drivers, gesture controllers, and even ChatGPT integration demos. <a href="https://www.unitree.com/mobile/opensource/">Unitree's open source framework</a> supports imitation learning algorithms (Diffusion Policy, ACT) adapted for their G1 humanoid, Z1 arm, and Dex3 dexterous hand.</p>
-
-    <h2>Research Frameworks</h2>
-
-    <h3>Open Hardware</h3>
     <ul>
-      <li><strong>Shadow Robot Hand</strong> - Fully dexterous humanoid hand with ROS support</li>
-      <li><strong>Allegro Hand</strong> - Low-cost, highly adaptive robotic hand</li>
-      <li><strong>Trifinger</strong> - Google Research's three-finger robot for precise manipulation</li>
-    </ul>
-
-    <h3>Simulation and Tools</h3>
-    <ul>
-      <li><a href="https://robots.ros.org/">robots.ros.org</a> - Registry of ROS-enabled robots</li>
-      <li><strong>Gazebo</strong> - Physics simulation for testing</li>
-      <li><strong>MoveIt</strong> - Motion planning for manipulation</li>
+      <li><strong>RSS 2025 Best Paper</strong> - CMU's DexWild, a ROS 2 package for dexterous human interaction policies</li>
+      <li><strong>Medical Robotics</strong> - Interoperability between 3D Slicer, ROS2, Gazebo, and da Vinci Research Kit at ISMR 2025</li>
+      <li><strong>DexHand</strong> - Low-cost, open source dexterous hand with ROS 2 drivers and ChatGPT integration demos</li>
+      <li><strong>Unitree Open Source</strong> - Imitation learning (Diffusion Policy, ACT) for G1 humanoid, Z1 arm, and Dex3 hand</li>
     </ul>
 
     <h2>Where to Find Robotics Research</h2>

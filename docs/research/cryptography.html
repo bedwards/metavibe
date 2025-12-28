@@ -16,6 +16,7 @@
       --accent: #6366f1;
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
+      --tag-research: #059669;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -24,6 +25,7 @@
         --text-muted: #999;
         --border: #333;
         --code-bg: #1a1a1a;
+        --tag-research: #34d399;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +40,18 @@
     }
     .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
     .back:hover { text-decoration: underline; }
-    h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-research);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
     h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
     p { margin: 1rem 0; }
@@ -46,7 +59,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    blockquote { border-left: 3px solid var(--tag-research); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -54,79 +67,98 @@
   <a href="./" class="back">&larr; Back to Research</a>
 
   <article>
+    <span class="article-tag">Latest Research</span>
     <h1>Cryptography & Security</h1>
-    <p class="meta">The Post-Quantum Transition Begins | December 2025</p>
+    <p class="meta">The Post-Quantum Transition Accelerates | December 2025</p>
 
-    <p>On August 13, 2024, <a href="https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards">NIST released the first three post-quantum cryptography standards</a>—ready for immediate use. On March 11, 2025, they selected <a href="https://www.nist.gov/news-events/news/2025/03/nist-selects-hqc-fifth-algorithm-post-quantum-encryption">HQC as a backup algorithm</a>. Between these announcements, Chrome switched to ML-KEM, Apple announced quantum-resistant iMessage, and Signal became the first major messaging app with post-quantum key exchange. The quantum-safe transition has moved from theory to deployment.</p>
+    <p>On August 13, 2024, NIST released the first three post-quantum cryptography standards. On March 11, 2025, they selected HQC as a backup algorithm. Between these announcements, Chrome switched to ML-KEM, Apple announced quantum-resistant iMessage, Signal became the first major messaging app with post-quantum key exchange, and Zama became the first fully homomorphic encryption (FHE) unicorn at $1 billion valuation. The cryptographic infrastructure protecting the next century is being built in the open.</p>
 
-    <p>The <a href="https://www.iacr.org/">International Association for Cryptologic Research</a> maintains the <a href="https://eprint.iacr.org/">Cryptology ePrint Archive</a>, where these algorithms faced years of public scrutiny before standardization. Security through obscurity doesn't work. Only schemes that survive sustained attack from the research community deserve trust.</p>
-
-    <h2>The NIST Standards</h2>
-
-    <p>The August 2024 release <a href="https://csrc.nist.gov/news/2024/postquantum-cryptography-fips-approved">finalized three standards</a> after an eight-year process that began with a 2016 call for proposals:</p>
+    <h2>NIST Post-Quantum Standards</h2>
 
     <h3>FIPS 203: ML-KEM</h3>
-    <p><a href="https://csrc.nist.gov/pubs/fips/203/final">ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism)</a>, based on CRYSTALS-Kyber, is the primary standard for key exchange. Its security relies on the Module Learning with Errors problem, believed to resist both classical and quantum attacks. The standard specifies three parameter sets—ML-KEM-512, ML-KEM-768, and ML-KEM-1024—in order of increasing security and decreasing performance.</p>
+    <p>ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism), based on CRYSTALS-Kyber, is the primary standard for key exchange. Security relies on the Module Learning with Errors problem. Three parameter sets: ML-KEM-512 (NIST Level 1), ML-KEM-768 (Level 3), and ML-KEM-1024 (Level 5).</p>
 
     <h3>FIPS 204 and 205: Digital Signatures</h3>
-    <p><a href="https://cloudsecurityalliance.org/blog/2024/08/15/nist-fips-203-204-and-205-finalized-an-important-step-towards-a-quantum-safe-future">FIPS 204 (ML-DSA)</a> provides lattice-based digital signatures. FIPS 205 (SLH-DSA) offers hash-based signatures as a conservative alternative. Together with the earlier SP 800-208 (LMS/XMSS), organizations now have multiple quantum-resistant signature options.</p>
+    <p>FIPS 204 (ML-DSA) provides lattice-based digital signatures. FIPS 205 (SLH-DSA) offers hash-based signatures as a conservative alternative relying on minimal cryptographic assumptions.</p>
 
-    <h3>HQC: The Backup</h3>
-    <p>On March 11, 2025, NIST <a href="https://csrc.nist.gov/news/2025/hqc-announced-as-a-4th-round-selection">selected HQC (Hamming Quasi-Cyclic)</a> for standardization as a backup to ML-KEM. "We want a backup standard based on a different math approach than ML-KEM," NIST explained. "It's essential to have a fallback in case ML-KEM proves vulnerable." HQC uses code-based cryptography rather than lattices. The final standard is expected in 2027 after a 90-day comment period.</p>
+    <h3>HQC: The Backup (March 2025)</h3>
+    <p>NIST selected HQC (Hamming Quasi-Cyclic) for standardization as a backup to ML-KEM. "We want a backup standard based on a different math approach," NIST explained. HQC uses code-based cryptography rather than lattices—if lattice problems prove vulnerable, code-based alternatives survive. Final standard expected 2027.</p>
 
-    <h2>Real-World Deployment</h2>
+    <h2>Production Deployments</h2>
 
     <h3>Chrome and the Web</h3>
-    <p><a href="https://thehackernews.com/2024/09/google-chrome-switches-to-ml-kem-for.html">Chrome 131</a> (November 2024) switched from experimental Kyber to finalized ML-KEM for post-quantum key exchange. This wasn't a minor update—the two versions are incompatible, requiring a clean transition. <a href="https://blog.cloudflare.com/pq-2025/">Cloudflare reports</a> working with Chrome to test Merkle tree-based post-quantum authentication by end of 2025.</p>
+    <p>Chrome 131 (November 2024) switched from experimental Kyber to finalized ML-KEM. Cloudflare working with Chrome to test Merkle tree-based post-quantum authentication by end of 2025.</p>
 
-    <h3>Signal: First to Production</h3>
-    <p><a href="https://cloudsecurityalliance.org/blog/2024/05/17/apple-s-new-imessage-signal-and-post-quantum-cryptography">Signal implemented PQXDH</a>, becoming the first large-scale messaging app with post-quantum security in initial key establishment. Signal chats are now secured with post-quantum cryptography.</p>
-
-    <h3>Apple: Going Further</h3>
-    <p>Apple's <a href="https://security.apple.com/blog/imessage-pq3">PQ3 protocol for iMessage</a> goes beyond Signal's approach. While Signal uses post-quantum algorithms only during initialization, PQ3 incorporates them into the ongoing ratcheting process, using quantum-resistant algorithms repeatedly throughout the conversation. During WWDC25, Apple announced <a href="https://www.encryptionconsulting.com/microsoft-and-apple-advance-post-quantum-cryptography-support-in-upcoming-os-releases/">iOS 26, macOS Tahoe 26, and visionOS 26</a> will support quantum-secure TLS 1.3 key exchange.</p>
+    <h3>Signal and Apple</h3>
+    <p>Signal implemented PQXDH, becoming the first large-scale messaging app with post-quantum security in initial key establishment. Apple's PQ3 protocol for iMessage goes further—incorporating quantum-resistant algorithms into ongoing ratcheting, not just initialization. iOS 26, macOS Tahoe 26, and visionOS 26 will support quantum-secure TLS 1.3.</p>
 
     <h3>Cloud Infrastructure</h3>
-    <p>AWS provides ML-KEM through <a href="https://csrc.nist.gov/csrc/media/Presentations/2025/building-post-quantum-cloud-services/images-media/buillding-pw-cloud-services.pdf">AWS-LC</a>, their FIPS-validated cryptographic library. Cryptographic service endpoints support hybrid ML-KEM cipher suites, enabling organizations to migrate while maintaining backward compatibility.</p>
+    <p>AWS provides ML-KEM through AWS-LC, their FIPS-validated cryptographic library. Hybrid ML-KEM cipher suites enable migration while maintaining backward compatibility.</p>
+
+    <blockquote>The urgency: "harvest now, decrypt later" attacks. Adversaries collect encrypted traffic today, betting future quantum computers will break current encryption.</blockquote>
+
+    <h2>Fully Homomorphic Encryption Reaches Production</h2>
+
+    <p>In June 2025, Zama reached $1 billion valuation—the first FHE unicorn—with $57M funding led by Pantera and Blockchange. FHE enables computation on encrypted data: servers process information they never see in plaintext.</p>
+
+    <h3>Zama's Breakthroughs</h3>
+    <ul>
+      <li><strong>Performance</strong> - 100x faster than at launch, supporting most on-chain payment use cases</li>
+      <li><strong>Scalability</strong> - Hundreds of transactions per second on GPUs; dedicated chip targeting tens of thousands TPS</li>
+      <li><strong>Developer experience</strong> - Supports Solidity and existing blockchain environments</li>
+      <li><strong>Quantum-resistant</strong> - Underlying TFHE crypto-scheme resistant to quantum attacks</li>
+    </ul>
+
+    <p>Zama's Confidential Blockchain Protocol and public testnet launched alongside the funding, enabling developers to build confidential applications on Ethereum (via FHEVM) with Solana support in 2026.</p>
+
+    <h3>Apple's FHE Deployment</h3>
+    <p>Apple deployed homomorphic encryption at scale for Live Caller ID Lookup (March 2025)—the first major consumer FHE deployment. Users query a spam database without revealing their phone number; Apple never sees the numbers being checked.</p>
+
+    <h3>IACR FHE Research (2025)</h3>
+    <p>Recent presentations: "Apple's Deployment of Homomorphic Encryption at Scale" (March), "007: End-to-End Encrypted Audio Calls via Blind Audio Mixing" (March), "Practical TFHE Ciphertext Sanitization" (May). New FHE constructions for large integers achieve 2,000x better multiplication throughput than TFHE-rs for 256-bit arithmetic.</p>
+
+    <h2>Zero-Knowledge Proofs in Production</h2>
+
+    <h3>Ethereum ZK-Rollups</h3>
+    <p>ZK-rollups process transactions off-chain and generate cryptographic proofs verifiable on Ethereum mainnet. Major deployments:</p>
+    <ul>
+      <li><strong>zkSync Era</strong> - $100M+ TVL, general-purpose smart contracts</li>
+      <li><strong>StarkNet</strong> - Cairo language for ZK-native development</li>
+      <li><strong>Polygon zkEVM</strong> - EVM-equivalent execution with ZK proofs</li>
+    </ul>
+
+    <h3>ZK Applications Beyond Blockchain</h3>
+    <p>Zero-knowledge credentials prove facts without revealing underlying data. Applications: age verification without showing ID, credential verification without exposing history, KYC compliance as "Know This Fact About Your Customer."</p>
 
     <h2>Migration Timelines</h2>
 
-    <p>Governments worldwide have set PQC migration deadlines:</p>
     <ul>
-      <li><strong>United States</strong>: Full migration by 2035; NSA mandated quantum-resistant algorithms for certain applications as early as 2025</li>
+      <li><strong>United States</strong>: Full migration by 2035; NSA mandated quantum-resistant algorithms for certain applications starting 2025</li>
       <li><strong>Australia</strong>: Aggressive 2030 deadline set in 2024</li>
-      <li><strong>United Kingdom</strong>: Matched US 2035 timeline in early 2025</li>
+      <li><strong>United Kingdom</strong>: Matched US 2035 timeline early 2025</li>
       <li><strong>European Union</strong>: 2030-2035 depending on application category</li>
     </ul>
-
-    <p>The urgency comes from "harvest now, decrypt later" attacks—adversaries collecting encrypted traffic today, betting future quantum computers will break current encryption. Data with long-term sensitivity (medical records, classified documents, financial data) is already at risk.</p>
-
-    <h2>Hybrid Cryptography</h2>
-
-    <p><a href="https://www.paloaltonetworks.com/cyberpedia/pqc-standards">NIST permits hybrid key exchange</a>—combining ML-KEM with classical algorithms like X25519. This provides defense in depth: if either algorithm is broken, the other still protects the exchange. European authorities particularly recommend hybrid adoption as a practical interim step.</p>
-
-    <p>Hybrid signatures remain more complex. NIST doesn't yet support them officially, though some implementations combine classical and post-quantum signatures for added assurance.</p>
 
     <h2>Where to Find Cryptography Research</h2>
 
     <h3>IACR Resources</h3>
     <ul>
       <li><a href="https://eprint.iacr.org/">Cryptology ePrint Archive</a> - Preprints on all cryptology topics</li>
-      <li><a href="https://www.iacr.org/publications/">IACR Publications</a> - Diamond open access journals (free for readers and authors)</li>
-      <li><strong>ToSC</strong> - Transactions on Symmetric Cryptology</li>
+      <li><strong>ToSC</strong> - Transactions on Symmetric Cryptology (diamond open access)</li>
       <li><strong>TCHES</strong> - Transactions on Cryptographic Hardware and Embedded Systems</li>
     </ul>
 
     <h3>NIST Resources</h3>
     <ul>
-      <li><a href="https://csrc.nist.gov/Projects/post-quantum-cryptography">Post-Quantum Cryptography Project</a> - Standards and guidance</li>
-      <li><a href="https://csrc.nist.gov/pubs/ir/8545/final">NIST IR 8545</a> - Fourth round status report explaining algorithm selection</li>
+      <li><a href="https://csrc.nist.gov/Projects/post-quantum-cryptography">Post-Quantum Cryptography Project</a></li>
+      <li><a href="https://csrc.nist.gov/pubs/ir/8545/final">NIST IR 8545</a> - Fourth round status report</li>
     </ul>
 
     <h2>Why Cryptography Opens Its Research</h2>
 
-    <p>Cryptography presents a paradox: a field devoted to secrets that publishes openly. The resolution is simple—only algorithms that survive sustained attack deserve trust. Papers appear on ePrint without peer review; the community provides scrutiny. A flawed scheme attracts attacks within days.</p>
+    <p>Cryptography presents a paradox: a field devoted to secrets that publishes openly. Only algorithms that survive sustained attack deserve trust. Papers appear on ePrint without peer review; the community provides scrutiny. A flawed scheme attracts attacks within days.</p>
 
-    <p>This matters especially now. The algorithms protecting internet traffic for the next decades are being finalized. ML-KEM, HQC, and the signature schemes must be examined by every capable cryptographer. The open process that produced these standards—eight years of public competition, thousands of researcher-hours of analysis—is why we can trust them with our long-term secrets.</p>
+    <p>The algorithms protecting internet traffic for the next decades were finalized through eight years of public competition and thousands of researcher-hours of analysis. This open process—not secrecy—is why ML-KEM, HQC, and the signature schemes can be trusted with long-term secrets.</p>
   </article>
 
   <footer>

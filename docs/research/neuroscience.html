@@ -16,6 +16,7 @@
       --accent: #6366f1;
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
+      --tag-research: #059669;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -24,6 +25,7 @@
         --text-muted: #999;
         --border: #333;
         --code-bg: #1a1a1a;
+        --tag-research: #34d399;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +40,18 @@
     }
     .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
     .back:hover { text-decoration: underline; }
-    h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-research);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
     h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
     p { margin: 1rem 0; }
@@ -46,7 +59,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    blockquote { border-left: 3px solid var(--tag-research); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -54,45 +67,44 @@
   <a href="./" class="back">&larr; Back to Research</a>
 
   <article>
+    <span class="article-tag">Latest Research</span>
     <h1>Neuroscience</h1>
     <p class="meta">The Translation Era | December 2025</p>
 
-    <p>Brain-computer interfaces have entered what researchers call "the translation era." By October 2025, <a href="https://neuralink.com/updates/">13 people had received Neuralink implants</a>. <a href="https://www.statnews.com/2025/11/20/fda-approves-paradromics-bci-trial-for-speech-restoration/">Paradromics won FDA approval</a> for speech restoration trials. <a href="https://www.cnn.com/2025/04/15/science/3d-brain-map-mouse-mammal-breakthrough/index.html">Scientists mapped 84,000 neurons</a> in the first precise 3D connectome of a mammal's brain. The field is graduating from experimental status to clinical reality.</p>
-
-    <p>About <a href="https://andersenlab.com/blueprint/bci-challenges-and-opportunities">25 clinical trials of BCI implants</a> are currently underway. In the United States alone, 5.4 million people live with paralysis that impairs their ability to use computers or communicate. BCIs in 2025 stand roughly where gene therapies did in the 2010s—on the cusp of regulated clinical use.</p>
+    <p>Brain-computer interfaces have entered what researchers call "the translation era." By October 2025, 13 people had received Neuralink implants. Paradromics won FDA approval for speech restoration trials. In August 2025, Stanford researchers demonstrated that BCIs can decode inner speech—unuttered thoughts—with robust accuracy. Scientists mapped 84,000 neurons in the first precise 3D connectome of a mammal's brain. The field is graduating from experimental status to clinical reality.</p>
 
     <h2>Brain-Computer Interfaces in 2025</h2>
 
     <h3>Neuralink: 13 Patients and Counting</h3>
-    <p>Neuralink's <a href="https://www.clinicaltrials.gov/study/NCT06429735">PRIME Study</a> evaluates the N1 implant for adults with quadriplegia from spinal cord injury or ALS. The implant places 1,024 electrodes across 128 flexible threads into the motor cortex, enabling thought-based computer control.</p>
+    <p>Neuralink's PRIME Study evaluates the N1 implant for adults with quadriplegia from spinal cord injury or ALS. The implant places 1,024 electrodes across 128 flexible threads into the motor cortex.</p>
 
-    <p>Key milestones:</p>
     <ul>
-      <li><strong>Noland Arbaugh</strong> (January 2024) - First implant recipient, controlled laptop while lying in bed</li>
+      <li><strong>Noland Arbaugh</strong> (January 2024) - First recipient, controlled laptop while lying in bed</li>
       <li><strong>Alex</strong> (August 2024) - Played Counter-Strike 2, controlling mouse and keyboard simultaneously</li>
       <li><strong>Bradford Smith</strong> (January 2025) - First patient with ALS and first non-verbal patient</li>
     </ul>
 
-    <p><a href="https://fortune.com/2025/01/11/elon-musk-neuralink-third-patient-implanted-brain-device-fda-studies/">Neuralink plans 20-30 additional implants in 2025</a>, expanding trials to Canada, the UK, Germany, and the UAE. The company received <a href="https://www.medicaldevice-network.com/news/neuralink-wins-fda-breakthrough-tag-for-speech-restoration/">FDA Breakthrough Designation</a> for speech restoration and another for Blindsight (June 2025).</p>
+    <p>Neuralink plans 20-30 additional implants in 2025, expanding to Canada, UK, Germany, and UAE. FDA Breakthrough Designation for both speech restoration and Blindsight (vision restoration).</p>
 
-    <h3>Synchron: First Commercially Scalable BCI</h3>
-    <p><a href="https://www.technologyreview.com/2025/04/01/1114009/brain-computer-interfaces-10-breakthrough-technologies-2025/">Synchron's Stentrode</a> takes a different approach—implanting through blood vessels rather than open brain surgery. In a four-patient trial, participants with paralysis controlled computers, including texting, using thought alone. After 12 months, no serious adverse events or blood vessel blockages.</p>
-
-    <p>Synchron is partnering with Apple and NVIDIA and moving toward a pivotal trial that could make Stentrode the first commercially scalable implanted BCI.</p>
-
-    <h3>Paradromics and Speech Restoration</h3>
-    <p>In November 2025, <a href="https://www.biospace.com/press-releases/paradromics-announces-principal-investigators-for-the-connexus-brain-computer-interface-clinical-study">Paradromics announced FDA approval</a> for the Connexus clinical study—evaluating whether their BCI can safely restore communication for people with ALS or stroke through text or synthesized speech.</p>
-
-    <h3>China's Rapid Progress</h3>
-    <p><a href="https://www.euronews.com/next/2025/12/18/paralysed-man-controls-devices-with-his-mind-just-five-days-after-brain-implant-surgery-in">A paralyzed patient in Shanghai</a> named Mr. Zhang received a wireless BCI in June 2025 and was controlling devices within five days. He became the first known BCI trial participant to perform paid remote work using a brain-controlled cursor.</p>
+    <h3>Inner Speech Decoding (August 2025)</h3>
+    <p>Stanford Medicine scientists developed a BCI that detects inner speech from speech-impaired patients. Published in Cell, the study found that inner speech evokes clear patterns of neural activity similar to—but smaller than—attempted speech patterns. This suggests future systems could restore fluent, rapid communication via inner speech alone, without requiring patients to attempt to speak.</p>
 
     <h3>Record-Breaking Accuracy</h3>
-    <p><a href="https://health.ucdavis.edu/news/headlines/brain-computer-interface-study-wins-2025-top-ten-clinical-research-achievement-award-/2025/02">UC Davis researchers</a> developed a BCI that translates brain signals into speech with up to 97% accuracy—the most accurate system of its kind. <a href="https://med.stanford.edu/news/all-news/2025/08/brain-computer-interface.html">Stanford researchers</a> demonstrated that BCIs can translate attempted speaking or handwriting movements into words with high accuracy for people with paralysis.</p>
+    <p>UC Davis researchers developed a BCI that translates brain signals into speech with up to 97% accuracy—the most accurate system of its kind. On the first day of use, with only 30 minutes of training data, their system achieved 99.6% word accuracy on a 50-word vocabulary. By day two, with 1.4 hours of training, accuracy reached 90.2% on a 125,000-word vocabulary.</p>
+
+    <blockquote>The participant used the brain-to-text speech neuroprosthesis to converse with family, friends, healthcare professionals, and colleagues.</blockquote>
+
+    <h3>Synchron: First Commercially Scalable BCI</h3>
+    <p>Synchron's Stentrode implants through blood vessels rather than open brain surgery. In a four-patient trial, participants with paralysis controlled computers using thought alone. After 12 months: no serious adverse events, no blood vessel blockages. Partnership with Apple and NVIDIA; moving toward pivotal trial.</p>
+
+    <h3>Paradromics and China</h3>
+    <p>In November 2025, Paradromics announced FDA approval for the Connexus clinical study—evaluating speech restoration for people with ALS or stroke. In Shanghai, a paralyzed patient named Mr. Zhang received a wireless BCI in June 2025 and was controlling devices within five days—becoming the first known BCI trial participant to perform paid remote work using a brain-controlled cursor.</p>
 
     <h2>Mapping the Brain</h2>
 
     <h3>The Mouse Brain Connectome</h3>
-    <p>In a decade-long effort involving 150 scientists at 22 institutions, the <a href="https://alleninstitute.org/news/">Allen Institute for Brain Science</a> led the creation of the first precise 3D map of a mammal's brain. From a grain-of-sand-sized piece of mouse brain, they mapped:</p>
+    <p>In a decade-long effort involving 150 scientists at 22 institutions, the Allen Institute led creation of the first precise 3D map of a mammal's brain:</p>
+
     <ul>
       <li>84,000 neurons</li>
       <li>200,000 brain cells</li>
@@ -100,28 +112,10 @@
       <li>3.4 miles (5.4 km) of neuronal wiring</li>
     </ul>
 
-    <p>The team sliced the brain into 28,000 layers before Princeton researchers used AI to trace each neuron. Dr. Sebastian Seung of Princeton called it "the beginning of the digital transformation of brain science."</p>
+    <p>The team sliced the brain into 28,000 layers; Princeton researchers used AI to trace each neuron. Dr. Sebastian Seung called it "the beginning of the digital transformation of brain science."</p>
 
     <h3>Brain Knowledge Platform</h3>
-    <p>The Allen Institute released the <a href="https://www.geekwire.com/2025/allen-institute-unveils-brain-research-tool-that-aims-for-aha-moments-by-connecting-siloed-data-using-ai/">Brain Knowledge Platform</a>—the most comprehensive AI tool for neuroscience. AWS engineered the computing infrastructure while Google developed AI models. The platform unifies brain data from dozens of collaborators, multiple species, and samples spanning early development to old age.</p>
-
-    <h3>FlyWire Connectome</h3>
-    <p>Nine joint publications in Nature described the <a href="https://braininitiative.nih.gov/news-events/events/brain-multi-council-working-group-mcwg-meeting-may-2025">FlyWire connectome</a>—the largest and most complete connectome of an adult animal, mapping the adult fruit fly brain at high resolution.</p>
-
-    <h2>The Allen Brain Atlases</h2>
-
-    <p>The <a href="https://brain-map.org/">Allen Institute for Brain Science</a> pioneered open neuroscience data. Their resources include:</p>
-    <ul>
-      <li><strong>Allen Mouse Brain Atlas</strong> - Molecular map of gene expression across all brain regions</li>
-      <li><strong>Allen Human Brain Atlas</strong> - First anatomically and genomically comprehensive 3D human brain map</li>
-      <li><a href="https://alleninstitute.github.io/abc_atlas_access/">Allen Brain Cell Atlas</a> - Multiple whole-brain datasets with spatial gene expression</li>
-    </ul>
-
-    <h2>The Human Connectome Project</h2>
-
-    <p>The <a href="https://www.humanconnectomeproject.org/">Human Connectome Project</a> has tackled one of science's greatest challenges: mapping the human brain's connections. The project currently supports 20 human connectome studies with MRI data from over 1,000 participants.</p>
-
-    <p>Recent data releases include studies of anxiety and depression in adolescents, major depressive disorder in adults, and treatment-resistant depression with ECT, ketamine, or sleep deprivation interventions.</p>
+    <p>The Allen Institute released the Brain Knowledge Platform—the most comprehensive AI tool for neuroscience. AWS engineered the computing infrastructure; Google developed AI models. The platform unifies brain data from dozens of collaborators, multiple species, and samples spanning early development to old age.</p>
 
     <h2>Where to Find Neuroscience Research</h2>
 
@@ -129,7 +123,7 @@
     <ul>
       <li><a href="https://portal.brain-map.org/">Allen Brain Atlas Portal</a> - Gene expression, connectivity, cell types</li>
       <li><a href="https://www.humanconnectome.org/">ConnectomeDB</a> - Human brain connectivity data</li>
-      <li><a href="https://braininitiative.nih.gov/">NIH BRAIN Initiative</a> - Federal neuroscience research coordination</li>
+      <li><a href="https://braininitiative.nih.gov/">NIH BRAIN Initiative</a> - Federal neuroscience coordination</li>
     </ul>
 
     <h3>Clinical Trial Information</h3>
@@ -141,8 +135,6 @@
     <h2>Why Neuroscience Shares</h2>
 
     <p><strong>Data scale.</strong> Modern brain imaging produces massive datasets. The mouse connectome required slicing a brain into 28,000 layers. Sharing enables analyses no single lab could perform.</p>
-
-    <p><strong>Reproducibility.</strong> Neuroscience has faced replication challenges. Open data and methods help verify findings.</p>
 
     <p><strong>Mission-driven funding.</strong> Major funders like the Allen Institute, NIH, and Wellcome Trust require or encourage data sharing. The Allen Institute built its entire model on making brain data freely available.</p>
 

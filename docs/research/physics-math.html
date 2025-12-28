@@ -16,6 +16,7 @@
       --accent: #6366f1;
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
+      --tag-research: #059669;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -24,6 +25,7 @@
         --text-muted: #999;
         --border: #333;
         --code-bg: #1a1a1a;
+        --tag-research: #34d399;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +40,18 @@
     }
     .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
     .back:hover { text-decoration: underline; }
-    h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-research);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
     h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
     p { margin: 1rem 0; }
@@ -46,7 +59,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    blockquote { border-left: 3px solid var(--tag-research); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -54,60 +67,79 @@
   <a href="./" class="back">&larr; Back to Research</a>
 
   <article>
+    <span class="article-tag">Latest Research</span>
     <h1>Physics & Mathematics</h1>
     <p class="meta">Where Open Access Began | December 2025</p>
 
-    <p>In December 2024, Google's Willow chip performed a computation in under five minutes that would take the fastest supercomputer 10 septillion years. In January 2025, LIGO detected a gravitational wave so clear it confirmed predictions Stephen Hawking made in 1971. In mathematics, researchers solved the geometric Langlands conjecture, Hilbert's sixth problem, and the Kakeya conjecture—all in a single year.</p>
+    <p>In December 2024, Google's Willow chip performed a computation in under five minutes that would take the fastest supercomputer 10 septillion years. In January 2025, LIGO detected GW250114—a gravitational wave so clear it confirmed predictions Stephen Hawking made in 1971. By March, LIGO had recorded its 200th detection in O4 alone. In mathematics, researchers solved the geometric Langlands conjecture, Hilbert's sixth problem, and the Kakeya conjecture—all in a single year. The quantum computing industry reached an inflection point, transitioning from theoretical promise to commercial reality.</p>
 
-    <p>Physics pioneered open access in 1991 when Paul Ginsparg launched <a href="https://arxiv.org/">arXiv</a> at Los Alamos. Today, posting to arXiv before journal submission is standard practice. Fields Medal winners announce their work there. Nobel Prize research appears there first. The journal version, when it comes months later, is almost an afterthought.</p>
+    <h2>Quantum Error Correction: The 2025 Breakthrough</h2>
 
-    <h2>Quantum Error Correction: The Willow Breakthrough</h2>
-
-    <p><a href="https://blog.google/technology/research/google-willow-quantum-chip/">Google's Willow chip</a>, unveiled December 2024, achieved what quantum computing has pursued for nearly 30 years: exponential error suppression. The processor demonstrates that error-corrected qubits get exponentially better as they scale—each increase from a 3x3 to 5x5 to 7x7 lattice of physical qubits suppresses the encoded error rate by a factor of two.</p>
-
-    <p>The technical achievement is remarkable. Willow's <a href="https://www.nature.com/articles/s41586-024-08449-y">distance-7 surface code</a> with 101 qubits achieved 0.143% error per cycle. Qubit lifetimes (T1) improved from 20 microseconds on the previous Sycamore architecture to 68 microseconds. Google built a dedicated fabrication lab to achieve this precision.</p>
-
-    <p>In 2025, Google announced the <a href="https://blog.google/technology/research/quantum-echoes-willow-verifiable-quantum-advantage/">Quantum Echoes algorithm</a>—the first verifiable quantum advantage on hardware. It computes molecular structures 13,000 times faster than the best classical algorithm on a leading supercomputer, opening paths to real-world applications in materials science and drug discovery.</p>
+    <p>Google's Willow chip, unveiled December 2024, achieved exponential error suppression—errors cut in half with each scale-up from 3x3 to 5x5 to 7x7 qubit grids. The distance-7 surface code with 101 qubits achieved 0.143% error per cycle. In 2025, Google announced Quantum Echoes—the first verifiable quantum advantage on hardware, computing molecular structures 13,000 times faster than the best classical algorithm.</p>
 
     <h3>The Quantum Computing Race</h3>
 
-    <p><a href="https://newsroom.ibm.com/2025-11-12-ibm-delivers-new-quantum-processors,-software,-and-algorithm-breakthroughs-on-path-to-advantage-and-fault-tolerance">IBM unveiled Quantum Nighthawk</a> in November 2025—120 qubits linked with 218 tunable couplers, enabling circuits 30% more complex than previous processors. IBM expects to deliver quantum advantage by end of 2026 and fault-tolerant quantum computing by the end of the decade. They've committed $30 billion to quantum research over five years.</p>
+    <p><strong>IBM Quantum Nighthawk</strong> (November 2025): 120 qubits with 218 tunable couplers. IBM targets quantum advantage by end of 2026, 200 logical qubits on 100 million gates by 2029 (IBM Quantum Starling), 1,000 logical qubits by early 2030s, and quantum-centric supercomputers with 100,000 qubits by 2033. They achieved real-time error decoding under 480 nanoseconds—a full year ahead of schedule.</p>
 
-    <p><a href="https://www.cnn.com/2025/11/12/tech/quantum-computing-ibm-microsoft-google">Microsoft introduced Majorana 1</a> in February 2025, designed to scale to a million qubits using topological qubits. Working with Atom Computing, they demonstrated 28 logical qubits encoded onto 112 atoms and entangled 24 logical qubits—the highest number of entangled logical qubits on record.</p>
+    <p><strong>Microsoft Majorana 1</strong> (February 2025): Topological qubit architecture with novel four-dimensional geometric codes achieving 1,000-fold reduction in error rates. With Atom Computing, demonstrated 28 logical qubits encoded onto 112 atoms and entangled 24 logical qubits—the highest on record.</p>
 
-    <p>In March 2025, <a href="https://www.networkworld.com/article/4088709/top-quantum-breakthroughs-of-2025.html">D-Wave claimed</a> the first quantum computational supremacy on a useful real-world problem, solving a magnetic materials simulation faster than leading supercomputers.</p>
+    <p><strong>Other breakthroughs:</strong></p>
+    <ul>
+      <li><strong>Caltech</strong> - Created 6,100-qubit array with 13-second coherence time—ten times longer than previous arrays</li>
+      <li><strong>IonQ</strong> - Roadmap: 1,600 logical qubits (2028), 8,000 (2029), 80,000 (2030)</li>
+      <li><strong>Oxford Ionics</strong> - 99.99% fidelity for two-qubit gates</li>
+      <li>Industry-wide: Error rates as low as 0.000015% per operation</li>
+    </ul>
 
-    <h2>LIGO: 290 Black Hole Mergers and Counting</h2>
+    <blockquote>Quantum Error Correction emerged as the universal priority—the crucial competitive differentiator to scale and succeed.</blockquote>
 
-    <p>The fourth observing run (O4) concluded November 18, 2025, after detecting <a href="https://www.ligo.caltech.edu/news/ligo20250320">200 gravitational wave events</a>—bringing the total to 290 since the first detection in 2015. The <a href="https://www.ligo.caltech.edu/news/ligo20250826">GWTC-4.0 catalog</a> doubles the number of known gravitational wave signals.</p>
+    <h2>LIGO: 290 Detections and Counting</h2>
+
+    <p>On March 19, 2025, the international LIGO-Virgo-KAGRA network recorded its 200th gravitational wave candidate in O4—more than double the 90 detections from the three previous observing runs combined over the same timeframe. Total detections since 2015: 290.</p>
 
     <h3>GW250114: The Clearest Signal Yet</h3>
 
-    <p>On January 14, 2025, LIGO detected <a href="https://en.wikipedia.org/wiki/GW250114">GW250114</a>—a black hole merger producing the clearest gravitational wave signal ever recorded. With a signal-to-noise ratio of 77-80 (compared to 42 for the previous best), two black holes of 33.6 and 32.2 solar masses merged 1.3 billion light-years away.</p>
+    <p>On January 14, 2025, LIGO detected GW250114—a black hole merger producing the clearest gravitational wave signal ever. Signal-to-noise ratio: 77-80 (compared to 42 for the previous best). Two black holes of 33.6 and 32.2 solar masses merged 1.3 billion light-years away to form a 62.7 solar mass black hole.</p>
 
-    <p>The signal was so clean that researchers could, for the first time, confidently extract two distinct gravitational-wave modes in the ringdown phase—like picking out characteristic tones from a struck bell. This <a href="https://www.birmingham.ac.uk/news/2025/hawking-and-kerr-black-hole-theories-confirmed-by-gravitational-wave">confirmed Stephen Hawking's 1971 prediction</a> that when black holes merge, the total event horizon area cannot shrink. It also verified the Kerr equations Roy Kerr developed in 1963 describing spacetime near a spinning black hole.</p>
+    <p>The signal was so clean that researchers extracted two distinct gravitational-wave modes in the ringdown phase with 4.1σ significance—like picking out overtones from a struck bell. This confirmed Stephen Hawking's 1971 area theorem and verified Roy Kerr's 1963 equations for rotating black holes.</p>
 
-    <h3>Mass Gap Objects and New Physics</h3>
+    <h3>Detector Evolution</h3>
 
-    <p>O4 discovered several "mass gap" objects—compact bodies between 2 and 5 solar masses, a range where few black holes or neutron stars have been found. <a href="https://www.ligo.caltech.edu/news/ligo20240405">In May 2023</a>, LIGO observed a neutron star colliding with an object 2.5 to 4.5 solar masses—the first gravitational-wave detection of a mass-gap object paired with a neutron star.</p>
+    <p>LIGO's binary neutron star range has more than doubled since O1: from 250 million to 550 million light-years. O4 ran from May 2023 through January 2025. O5 is planned for late 2027, with an intermediate run in 2026.</p>
 
-    <p>LIGO's sensitivity has more than doubled since O1. The binary neutron star detection range expanded from 250 million to 550 million light-years. <a href="https://observing.docs.ligo.org/plan/">O5 is planned for late 2027</a>, with an intermediate run in 2026.</p>
+    <h2>Fusion Energy Progress</h2>
+
+    <p>NIF has achieved ignition seven times. The highest gain as of 2025: Q = 4.13, yielding 8.6 MJ from 2.08 MJ of laser energy. February 2024 reached 136% energy surplus (5.2 MJ from 2.2 MJ input).</p>
+
+    <p><strong>Commonwealth Fusion Systems (SPARC):</strong> Compact tokamak using high-temperature superconducting magnets. Less than 5 meters diameter (vs ITER's 16.4m) but designed for similar performance. Completion expected 2026, with 2027 target to replicate NIF's net-energy gain in a repeatable, commercially translatable design.</p>
+
+    <p><strong>Helion Energy:</strong> Successfully tested seventh-generation prototype (Polaris) in mid-2025, claiming direct electricity production from fusion reactions.</p>
+
+    <p><strong>ITER:</strong> Construction 90% complete on first-phase milestones. Vacuum vessel manufacturing completed March 2025. Full operation delayed to ~2034 due to equipment issues discovered in 2022.</p>
+
+    <p>Global private investment in fusion exceeds $10 billion across 40+ startups.</p>
 
     <h2>Mathematics: A Historic Year</h2>
 
-    <p><a href="https://www.quantamagazine.org/the-year-in-mathematics-20251218/">2025 marked a historic year in mathematics.</a> Researchers solved major open problems that had resisted decades of effort.</p>
+    <p>2025 marked a historic year in mathematics. Problems that resisted decades of effort fell in rapid succession.</p>
 
     <h3>The Geometric Langlands Conjecture</h3>
 
-    <p>Nine mathematicians produced five papers spanning nearly 1,000 pages to prove the geometric Langlands conjecture—connecting properties of different Riemann surfaces. <a href="https://www.mpg.de/24476145/breakthrough-prize-mathematics-2025">Dennis Gaitsgory received the 2025 Breakthrough Prize in Mathematics</a> ($3 million) for foundational contributions to this program.</p>
+    <p>Nine mathematicians produced five papers spanning nearly 1,000 pages to prove the geometric Langlands conjecture—connecting properties of different Riemann surfaces. Dennis Gaitsgory received the 2025 Breakthrough Prize in Mathematics ($3 million).</p>
 
     <h3>More Major Proofs</h3>
 
-    <p>Researchers <a href="https://www.scientificamerican.com/article/the-top-10-math-discoveries-of-2025/">solved a major case of Hilbert's sixth problem</a>, proved a sweeping theorem about hyperbolic surfaces, and settled the longstanding three-dimensional Kakeya conjecture. The "moving sofa problem"—formalized 60 years ago—finally received a solution. A 17-year-old named Hannah Cairo solved an important problem in harmonic analysis.</p>
+    <ul>
+      <li><strong>Hilbert's Sixth Problem</strong> - Major case solved</li>
+      <li><strong>Three-dimensional Kakeya conjecture</strong> - Settled</li>
+      <li><strong>Hyperbolic surfaces</strong> - Sweeping new theorem proved</li>
+      <li><strong>Moving sofa problem</strong> - Solved 60 years after formalization</li>
+      <li><strong>Hannah Cairo</strong> - 17-year-old solved important problem in harmonic analysis</li>
+    </ul>
 
     <h3>AI Meets Mathematics</h3>
 
-    <p>Google DeepMind's <a href="https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/">AlphaProof and AlphaGeometry 2</a> solved four of six problems from the 2024 International Mathematical Olympiad, achieving silver medal level. The systems use reinforcement learning for formal mathematical reasoning, suggesting AI may accelerate mathematical discovery.</p>
+    <p>Google DeepMind's AlphaProof and AlphaGeometry 2 solved four of six problems from the 2024 International Mathematical Olympiad, achieving silver medal level. DeepSeek-V3.2 achieved IMO 2025 Gold Medal (35/42) and 99.2% on HMMT 2025. AI is no longer just checking proofs—it's discovering them.</p>
 
     <h2>Where to Find Research</h2>
 
@@ -116,7 +148,6 @@
       <li><a href="https://arxiv.org/list/quant-ph/current">quant-ph</a> - Quantum Physics</li>
       <li><a href="https://arxiv.org/list/gr-qc/current">gr-qc</a> - General Relativity and Quantum Cosmology</li>
       <li><a href="https://arxiv.org/list/hep-th/current">hep-th</a> - High Energy Physics - Theory</li>
-      <li><a href="https://arxiv.org/list/astro-ph/current">astro-ph</a> - Astrophysics</li>
       <li><a href="https://arxiv.org/list/math/current">math</a> - Mathematics (all subcategories)</li>
     </ul>
 
@@ -128,9 +159,7 @@
 
     <h2>Why Physics Led the Way</h2>
 
-    <p>Physicists had shared paper preprints by mail for decades before the internet. arXiv formalized what was already culture. The competition dynamics reinforced it—establishing priority matters when you might be scooped. Waiting for journal publication was unacceptable.</p>
-
-    <p>Three decades later, the most important research appears freely online within days. Students anywhere access the same literature as researchers at CERN. The journal system persists mainly as a credentialing mechanism. The actual distribution happens on arXiv, where GW250114's analysis and Willow's error correction results appeared long before any journal printed them.</p>
+    <p>Physicists had shared paper preprints by mail for decades before the internet. arXiv formalized what was already culture. The competition dynamics reinforced it—establishing priority matters when you might be scooped. Three decades later, GW250114's analysis and Willow's error correction results appeared on arXiv long before any journal printed them. The journal system persists mainly as a credentialing mechanism. The actual distribution happens in the open.</p>
   </article>
 
   <footer>

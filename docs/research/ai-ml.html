@@ -16,6 +16,7 @@
       --accent: #6366f1;
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
+      --tag-research: #059669;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -24,6 +25,7 @@
         --text-muted: #999;
         --border: #333;
         --code-bg: #1a1a1a;
+        --tag-research: #34d399;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +40,18 @@
     }
     .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
     .back:hover { text-decoration: underline; }
-    h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-research);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
     h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
     p { margin: 1rem 0; }
@@ -46,7 +59,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    blockquote { border-left: 3px solid var(--tag-research); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -54,67 +67,86 @@
   <a href="./" class="back">&larr; Back to Research</a>
 
   <article>
+    <span class="article-tag">Latest Research</span>
     <h1>AI/ML Research</h1>
     <p class="meta">The Fastest-Moving Field in Science | December 2025</p>
 
-    <p>In the span of eight weeks—from November 17 to December 11, 2025—four major AI companies launched their most powerful models ever. xAI released Grok 4.1. Google unveiled Gemini 3. Anthropic shipped Claude Opus 4.5. OpenAI fired back with GPT-5.2 after an internal "code red" memo about losing market share. This is the pace of AI research now: breakthroughs measured in weeks, not years.</p>
-
-    <p>The field publishes openly out of necessity. Papers appear on <a href="https://arxiv.org/list/cs.AI/current">arXiv</a> within days of completion. Conferences review thousands of submissions through <a href="https://openreview.net/">OpenReview</a>, where the entire process unfolds in public view. NeurIPS 2025 received 21,575 submissions and accepted 5,200 papers—a 24.5% acceptance rate—with every review, rebuttal, and decision visible to anyone.</p>
+    <p>In the span of eight weeks—from November 17 to December 11, 2025—four major AI companies launched their most powerful models ever. xAI released Grok 4.1. Google unveiled Gemini 3. Anthropic shipped Claude Opus 4.5. OpenAI fired back with GPT-5.2 after an internal "code red" memo about Gemini 3's superiority. This is the pace of AI research now: breakthroughs measured in weeks, not years.</p>
 
     <h2>The Model Race: December 2025</h2>
 
     <h3>GPT-5.2</h3>
-    <p>OpenAI launched <a href="https://techcrunch.com/2025/12/11/openai-fires-back-at-google-with-gpt-5-2-after-code-red-memo/">GPT-5.2 on December 11, 2025</a>, calling it "the most capable model series yet for professional knowledge work." It arrived in three variants: Instant (optimized for speed), Thinking (for complex structured work), and Pro (for maximum accuracy). This followed GPT-5.1's August release, which introduced adaptive reasoning that dynamically adjusts "thinking time" based on task complexity.</p>
+    <p>OpenAI launched GPT-5.2 on December 11, 2025, calling it "the most capable model series yet for professional knowledge work." Its most striking achievement: 52.9% on ARC-AGI-2 (Thinking variant) and 54.2% (Pro)—a benchmark explicitly designed to test genuine reasoning while resisting memorization. GPT-5.2 Pro scored 93.2% on GPQA Diamond, the highest recorded on this graduate-level science benchmark, and claims 80.0% on SWE-bench Verified for software engineering tasks.</p>
 
     <h3>Gemini 3</h3>
-    <p><a href="https://www.vellum.ai/blog/flagship-model-report">Gemini 3 Pro</a> leads overall reasoning benchmarks with an unprecedented 1501 LMArena Elo—the first model to break the 1500 barrier. It achieved 91.9% on GPQA Diamond, surpassing human expert performance (~89.8%). Its Deep Think mode pushes Humanity's Last Exam to 41%, the highest published score. The million-token context window enables processing entire codebases in a single prompt.</p>
+    <p>Gemini 3 Pro achieved 91.9% on GPQA Diamond, surpassing human expert performance (~89.8%). Its Deep Think mode reached 41.0% on Humanity's Last Exam without tools—the highest published score on a benchmark explicitly designed to challenge frontier AI systems. Gemini 3 achieved gold-medal performance at both the International Mathematical Olympiad and International Collegiate Programming Contest World Finals. The breakthrough: Gemini 3 executes complete 10-15 step reasoning chains without losing coherence—something previous models struggled with after 5-6 steps.</p>
 
     <h3>Claude Opus 4.5</h3>
-    <p><a href="https://blog.getbind.co/2025/12/12/gpt-5-2-vs-claude-opus-4-5-vs-gemini-3-0-pro-which-one-is-best-for-coding/">Claude 4.5 Sonnet</a> leads SWE-bench Verified at 77.2%, resolving real GitHub issues with the highest success rate. Anthropic positions it as "the best coding model in the world" with demonstrated 30+ hour autonomous operation capability. Claude Opus 4.5 operates under Anthropic's AI Safety Level 3 (ASL-3) standard.</p>
+    <p>Claude Opus 4.5 leads SWE-bench Verified at 80.9%, the highest score for resolving real GitHub issues. Anthropic positions it as demonstrating 30-minute autonomous operation capability for extended task completion. On ARC-AGI-2, Claude scores 37.6%—competitive but trailing GPT-5.2's reasoning-focused variants.</p>
+
+    <h3>DeepSeek-V3.2</h3>
+    <p>The disruptor from China. DeepSeek-V3 is a 671-billion-parameter model using Mixture of Experts architecture, activating only 37 billion parameters per token. Training cost: under $6 million—roughly one-tenth of GPT-4's reported $100+ million. DeepSeek-V3.2 scored 96.0% on AIME 2025, surpassing GPT-5 High's 94.6%, and 99.2% on HMMT 2025. The model achieved IMO 2025 Gold Medal (35/42) and IOI 2025 Gold Medal. API pricing: $0.028 per million input tokens—roughly one-tenth competing prices. The entire 671B model is open-sourced under MIT license.</p>
+
+    <blockquote>Rather than weakening China's AI capabilities, US sanctions appear to be driving startups like DeepSeek to innovate in ways that prioritize efficiency.</blockquote>
 
     <h2>Reasoning Models: The 2025 Breakthrough</h2>
 
-    <p>Reasoning models represent a fundamental evolution in LLM design. Unlike traditional models that generate outputs based on pattern matching, these systems simulate human-like deliberation using chain-of-thought prompting, working backwards from solutions, and self-critique.</p>
+    <p>Reasoning models represent a fundamental evolution in LLM design. Unlike traditional models that generate outputs based on pattern matching, these systems simulate human-like deliberation using chain-of-thought prompting, self-critique, and test-time compute scaling.</p>
 
-    <h3>OpenAI o1 and o3</h3>
-    <p>OpenAI's <a href="https://openai.com/index/learning-to-reason-with-llms/">o1 model</a> introduced true multi-step reasoning at its core. Think of o1 as having an internal scratchpad: it can jot down sub-calculations and work through them before producing a final answer. Through reinforcement learning, o1 learns to recognize and correct its mistakes, break down tricky steps into simpler ones, and try different approaches when the current one isn't working.</p>
+    <h3>OpenAI o3 and o4</h3>
+    <p>o3 introduced "simulated reasoning"—the ability to pause and reflect on its internal thought process before finalizing answers. It scored 91.6% on AIME 2024. o4-mini with tools (calculators, search) achieves 17.7% on multimodal technical benchmarks—3 points higher than without tools. In legal reasoning scenarios, these models approached Turing-level human intelligence in structured analysis tasks.</p>
 
-    <p><a href="https://www.datacamp.com/blog/o3-openai">o3</a> introduced "simulated reasoning"—the ability to pause and reflect on its internal thought process before finalizing answers. o3 can evaluate its own intermediate outputs and decide whether to refine its approach. It scored 91.6% on AIME 2024 (compared to o1's 74.3%) and 88.9% on AIME 2025.</p>
+    <h3>The DeepSeek Effect</h3>
+    <p>DeepSeek-R1 democratized reasoning capabilities by open-sourcing methods to train such systems affordably. This forced OpenAI to make chain-of-thought reasoning more visible and pressured the entire industry toward efficiency. DeepSeek introduced Sparse Attention (DSA), a fine-grained indexing system that skips unnecessary computation, and refined its MoE architecture to use 256 specialized expert networks per layer, activating only 8 per token.</p>
 
-    <h3>DeepSeek-R1</h3>
-    <p>In early 2025, China's DeepSeek released DeepSeek-R1, democratizing reasoning capabilities by open-sourcing methods to train such systems affordably. The model performs as well as top OpenAI models while costing roughly $6 million to train—versus over $100 million for GPT-4. This shook the industry and pressured OpenAI to make chain-of-thought reasoning more visible.</p>
+    <h2>Agentic AI: 2025's Defining Theme</h2>
+
+    <p>2025 is the year AI agents hit mainstream. Andrej Karpathy called it "the decade of AI agents." IBM research shows 99% of developers are exploring agentic AI. Gartner predicts 15% of daily work decisions will be made autonomously by agents by 2028.</p>
+
+    <h3>Computer Use</h3>
+    <p>Anthropic's Claude can control a computer and apps directly—transforming from chatbot to digital assistant executing tasks on your desktop. OpenAI's Operator uses a "computer-use" tuned model to navigate websites, search for flights, and present options autonomously. These systems leverage container environments for safe execution.</p>
+
+    <h3>Multi-Agent Systems</h3>
+    <p>Teams now deploy swarms of specialized agents—planners, executors, and reviewers that negotiate and hand off work. Microsoft's AutoGen formalizes agent-to-agent cooperation. CrewAI has emerged as a leading framework with $18M in funding, 100,000+ certified developers, adoption by 60% of Fortune 500 companies, and over 60 million agent executions monthly.</p>
+
+    <h3>Industry Standards</h3>
+    <p>The Linux Foundation announced the Agentic AI Foundation (AAIF) with founding contributions including Anthropic's Model Context Protocol (MCP), Block's goose, and OpenAI's AGENTS.md. Platinum members: AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, and OpenAI. AGENTS.md—released August 2025—has been adopted by 60,000+ open source projects and agent frameworks including Cursor, Devin, Gemini CLI, GitHub Copilot, and VS Code.</p>
+
+    <h2>AI Video Generation</h2>
+
+    <p>2025 brought native audio generation, improved physics consistency, and cinematic camera control to AI video.</p>
+
+    <ul>
+      <li><strong>OpenAI Sora 2</strong> - Significant leap in visual quality and physics understanding, though limited access and frequent outages make it more tech demo than production tool</li>
+      <li><strong>Google Veo 3</strong> - Supports 4K resolution with advanced camera controls</li>
+      <li><strong>Runway Gen-3 Alpha</strong> - Trained on new multimodal infrastructure, supports 4K and enterprise features</li>
+      <li><strong>Pika 2.5</strong> - 1080p generation, "Pikadditions" feature integrates people/objects into existing videos</li>
+      <li><strong>Kling AI 2.1</strong> - Up to 2-minute videos, excellent lip-sync capabilities</li>
+    </ul>
+
+    <p>Resolution spans 4K (Veo 3, Runway Gen-4) to 720p (free tiers). Video length varies from several seconds (most tools) to 4 hours (Synthesia for avatar videos).</p>
+
+    <h2>AI Safety Research</h2>
+
+    <h3>Constitutional AI</h3>
+    <p>Anthropic's Constitutional AI trains harmless assistants through self-improvement without human labels identifying harmful outputs. The only human oversight: a list of principles. Anthropic's 2025 update includes Dynamic Constitution Updates instead of a static rulebook—the model can reference and update its principles during inference.</p>
+
+    <h3>Mechanistic Interpretability</h3>
+    <p>Anthropic describes this as "reverse engineering neural networks into human-understandable algorithms." The goal: recognize whether a model is deceptively aligned—"playing along" with tests while harboring different objectives. Anthropic's multi-layered safety architecture has reduced high-severity safety incidents by 45% since 2024.</p>
+
+    <h3>Chain-of-Thought Monitorability</h3>
+    <p>OpenAI's monitorability research asks: when AI systems make difficult-to-supervise decisions, can we monitor their internal reasoning? Modern reasoning models generate explicit chains-of-thought before answers. Monitoring these for misbehavior can be far more effective than monitoring outputs alone—but researchers worry this "monitorability" may be fragile as models scale.</p>
 
     <h2>NeurIPS 2025 Best Papers</h2>
 
-    <p><a href="https://blog.neurips.cc/2025/11/26/announcing-the-neurips-2025-best-paper-awards/">NeurIPS 2025</a> (December 2-7, San Diego) recognized seven groundbreaking papers:</p>
-
-    <h3>Gated Attention for Large Language Models</h3>
-    <p>The <a href="https://www.alizila.com/alibaba-qwen-wins-neurips-2025-best-paper-award-for-breakthrough-in-attention-mechanisms/">Alibaba Qwen team</a> won for research on gating mechanisms in Transformer attention. Experiments on 15B MoE models trained on up to 3.5T tokens showed that gating introduces extra nonlinearity and allows each attention head to dynamically decide whether to contribute, alleviating "attention sink" where some activations become excessively large.</p>
-
-    <h3>1000-Layer Networks for Self-Supervised RL</h3>
-    <p>In sharp contrast to shallow architectures (2-5 layers) used in most RL studies, this work proves that <a href="https://howaiworks.ai/blog/neurips-2025-best-paper-awards-announcement">increasing network depth to 1,024 layers</a> brings significant performance breakthroughs—2-50x better performance for robots learning to reach goals without human guidance.</p>
-
-    <h3>INFINITY-CHAT</h3>
-    <p>This dataset evaluates output diversity across 70+ state-of-the-art LLMs, revealing a phenomenon called the "Artificial Hivemind"—how various models tend to converge on similar outputs.</p>
-
-    <h3>Neural Scaling Laws and Superposition</h3>
-    <p>This paper finally explained why bigger models work better. The secret is "superposition"—the ability of models to represent more features than they have dimensions by packing information cleverly.</p>
-
-    <h2>ICLR 2025 Highlights</h2>
-
-    <p><a href="https://iclr.cc/virtual/2025/papers.html">ICLR 2025</a> (April 24-28, Singapore) accepted over 3,700 papers. Key research areas included:</p>
+    <p>NeurIPS 2025 (December 2-7, San Diego) received 21,575 submissions and accepted 5,200 papers—24.5% acceptance rate. Seven papers won best paper awards:</p>
 
     <ul>
-      <li><strong>Speculative Cascading</strong> - New techniques implementing deferral rules through speculative execution, showing better cost-quality trade-offs with Gemma and T5 models</li>
-      <li><strong>Shallow Safety Alignment</strong> - Explaining how shallow safety alignment contributes to LLM vulnerabilities including adversarial suffix attacks, prefilling attacks, and fine-tuning attacks</li>
-      <li><strong>In-Run Data Shapley</strong> - A novel concept eliminating the need for model retraining when assessing data contribution, scaling efficiently to foundation model sizes</li>
+      <li><strong>Gated Attention</strong> - Alibaba Qwen team's work on gating mechanisms in Transformer attention, training 15B MoE models on 3.5T tokens, alleviating "attention sink" where activations become excessively large</li>
+      <li><strong>1000-Layer Networks for Self-Supervised RL</strong> - Proving that 1,024-layer networks achieve 2-50x better performance for robots learning without human guidance</li>
+      <li><strong>INFINITY-CHAT</strong> - Dataset revealing the "Artificial Hivemind"—how 70+ LLMs converge on similar outputs</li>
+      <li><strong>Neural Scaling Laws and Superposition</strong> - Explaining why bigger models work better through "superposition"—representing more features than dimensions</li>
     </ul>
-
-    <h2>Chain-of-Thought Monitorability</h2>
-
-    <p>A critical 2025 research direction involves understanding whether we can trust AI reasoning. <a href="https://openai.com/index/evaluating-chain-of-thought-monitorability/">OpenAI's monitorability research</a> asks: when AI systems make decisions that are difficult to supervise directly, can we monitor their internal reasoning?</p>
-
-    <p>Modern reasoning models like GPT-5 Thinking generate explicit chains-of-thought before producing answers. Monitoring these for misbehavior can be far more effective than monitoring outputs alone. However, researchers worry this "monitorability" may be fragile as models scale.</p>
 
     <h2>Where to Find the Research</h2>
 
@@ -122,7 +154,6 @@
     <ul>
       <li><a href="https://arxiv.org/list/cs.AI/current">cs.AI</a> - Over 2,400 active entries in artificial intelligence</li>
       <li><a href="https://arxiv.org/list/cs.LG/current">cs.LG</a> - Machine learning papers</li>
-      <li><a href="https://arxiv.org/list/cs.CL/recent">cs.CL</a> - Computational linguistics and NLP</li>
       <li><a href="https://huggingface.co/papers/trending">Hugging Face Papers</a> - Trending ML research</li>
     </ul>
 
@@ -135,16 +166,14 @@
 
     <h3>Lab Publications</h3>
     <ul>
-      <li><a href="https://www.anthropic.com/research">Anthropic Research</a> and <a href="https://alignment.anthropic.com/">Alignment Science Blog</a></li>
+      <li><a href="https://www.anthropic.com/research">Anthropic Research</a></li>
       <li><a href="https://deepmind.google/research/publications/">Google DeepMind Publications</a></li>
       <li><a href="https://openai.com/research/index/">OpenAI Research</a></li>
     </ul>
 
     <h2>Why It's Open</h2>
 
-    <p>The field moves too fast for traditional gatekeeping. A technique published in January may be obsolete by June. Researchers who wait for journal acceptance find themselves citing outdated work. The community built its own infrastructure: preprint servers, open review platforms, and direct publication channels.</p>
-
-    <p>Competition also drives openness. Labs compete for talent by demonstrating research quality. Published work attracts researchers. DeepSeek's open-source approach forced even OpenAI to become more transparent about chain-of-thought reasoning.</p>
+    <p>The field moves too fast for traditional gatekeeping. A technique published in January may be obsolete by June. Competition drives openness—labs compete for talent by demonstrating research quality. DeepSeek's open-source approach forced even OpenAI toward transparency.</p>
 
     <p>The result: cutting-edge research available to anyone with an internet connection. A graduate student anywhere has the same access to technical reports as researchers at major labs. This democratization is unusual in science—and may not last as commercial stakes grow—but for now, AI research remains remarkably open.</p>
   </article>

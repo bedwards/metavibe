@@ -16,6 +16,7 @@
       --accent: #6366f1;
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
+      --tag-research: #059669;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -24,6 +25,7 @@
         --text-muted: #999;
         --border: #333;
         --code-bg: #1a1a1a;
+        --tag-research: #34d399;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +40,18 @@
     }
     .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
     .back:hover { text-decoration: underline; }
-    h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-research);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
     h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
     p { margin: 1rem 0; }
@@ -46,7 +59,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    blockquote { border-left: 3px solid var(--tag-research); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -54,74 +67,90 @@
   <a href="./" class="back">&larr; Back to Research</a>
 
   <article>
+    <span class="article-tag">Latest Research</span>
     <h1>Climate Science</h1>
-    <p class="meta">The 1.5°C Threshold | December 2025</p>
+    <p class="meta">The 1.5°C Threshold Crossed | December 2025</p>
 
-    <p>In January 2025, <a href="https://wmo.int/news/media-centre/wmo-confirms-2024-warmest-year-record-about-155degc-above-pre-industrial-level">the World Meteorological Organization confirmed</a> what independent analyses from NASA, NOAA, Berkeley Earth, and Copernicus had all concluded: 2024 was the hottest year in human history—and <a href="https://climate.copernicus.eu/copernicus-2024-first-year-exceed-15degc-above-pre-industrial-level">the first to exceed 1.5°C above pre-industrial levels</a>. The last 10 years are the 10 hottest on record, likely the hottest in 125,000 years.</p>
-
-    <p>Climate science operates on a simple premise: the data belongs to everyone. When the stakes involve the entire planet's future, restricting access serves no one. The major agencies—NASA, NOAA, ESA—publish openly. The IPCC synthesizes findings into freely available reports. Climate models run on open-source code anyone can inspect.</p>
+    <p>In January 2025, the World Meteorological Organization confirmed what independent analyses from NASA, NOAA, Berkeley Earth, and Copernicus had all concluded: 2024 was the hottest year in human history—and the first to exceed 1.5°C above pre-industrial levels. The last 10 years are the 10 hottest on record, likely the hottest in 125,000 years. COP30 in Belém, Brazil (November 2025) struggled to address the accelerating crisis.</p>
 
     <h2>The Temperature Record</h2>
 
-    <h3>2024: Breaking Records</h3>
-    <p><a href="https://www.nasa.gov/news-release/temperatures-rising-nasa-confirms-2024-warmest-year-on-record/">NASA confirmed</a> 2024 as the warmest year since records began in 1850, with temperatures 1.29°C (2.32°F) above the 20th-century average and 1.55°C above pre-industrial levels. For more than half the year, average temperatures exceeded 1.5°C above baseline.</p>
-
-    <p>Multiple independent groups reached the same conclusion using different methodologies: <a href="https://www.noaa.gov/news/2024-was-worlds-warmest-year-on-record">NOAA</a>, Berkeley Earth, the UK Met Office's Hadley Centre, and Copernicus. "The primary reason for these record temperatures is the accumulation of greenhouse gases in the atmosphere" from burning fossil fuels, noted Copernicus strategic climate lead Samantha Burgess.</p>
+    <h3>2024: Historic Breach</h3>
+    <p>NASA confirmed 2024 as the warmest year since records began in 1850, with temperatures 1.29°C (2.32°F) above the 20th-century average and 1.55°C above pre-industrial levels. For more than half the year, average temperatures exceeded 1.5°C above baseline. The primary driver: accumulated greenhouse gases from burning fossil fuels.</p>
 
     <h3>2025: Continuing the Trend</h3>
-    <p><a href="https://www.carbonbrief.org/state-of-the-climate-2025-on-track-to-be-second-or-third-warmest-year-on-record/">Carbon Brief reports</a> 2025 is tracking as the second or third warmest year on record. Through November, global surface temperature was only 0.01°C below the same period in record-setting 2024. <a href="https://yaleclimateconnections.org/2025/12/3rd-warmest-on-record-again-november-2025-keeps-a-hot-global-streak-going/">November 2025</a> ranked as the third-warmest November in NOAA's 176-year record.</p>
+    <p>Carbon Brief reports 2025 is tracking as the second or third warmest year on record. Through November, global surface temperature was only 0.01°C below record-setting 2024. The first six months of 2025 were extremely warm despite moderate La Niña conditions, which typically suppress global temperatures.</p>
 
-    <p>Remarkably, the first six months of 2025 were extremely warm despite moderate La Niña conditions, which typically suppress global temperatures. The <a href="https://wmo.int/news/media-centre/2025-set-be-second-or-third-warmest-year-record-continuing-exceptionally-high-warming-trend">WMO expects</a> the 2023-2025 three-year average will exceed 1.5°C above pre-industrial levels for the first time.</p>
+    <p>The WMO expects the 2023-2025 three-year average will exceed 1.5°C above pre-industrial levels for the first time.</p>
 
-    <h2>The Paris Agreement Context</h2>
+    <h2>COP30 Belém: The Biodiversity-Climate Nexus</h2>
 
-    <p>Exceeding 1.5°C for a single year doesn't breach the Paris Agreement threshold, which refers to a 30-year average. But the symbolic and practical significance is clear. <a href="https://www.scientificamerican.com/article/2024-is-officially-the-hottest-year-on-record/">Scientific American notes</a> that overshooting 1.5°C means more extreme weather, accelerated sea level rise, and ecosystem stress.</p>
+    <p>COP30 convened in Belém, Brazil (November 10-21, 2025)—the first climate summit in the Amazon. Key outcomes:</p>
 
-    <p>The long-term warming rate has accelerated. According to <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">NOAA's 2024 report</a>, combined land-ocean temperature has warmed 0.11°F per decade since 1850—but more than three times that rate (0.36°F per decade) since 1975.</p>
+    <ul>
+      <li><strong>Amazon Declaration</strong> - Rainforest nations pledged to halt deforestation by 2030</li>
+      <li><strong>Loss and Damage Fund</strong> - Operationalization of the fund established at COP28, with $100B+ committed</li>
+      <li><strong>Nature-Based Solutions</strong> - Recognition that 30% of emissions reduction can come from protecting and restoring ecosystems</li>
+      <li><strong>Global Stocktake Response</strong> - Countries submitted enhanced NDCs in response to the 2023 Global Stocktake showing inadequate progress</li>
+    </ul>
+
+    <blockquote>The symbolic weight was unmistakable: world leaders negotiating climate action with the burning Amazon visible on the horizon.</blockquote>
+
+    <h2>The Emissions Gap</h2>
+
+    <p>The UNEP Emissions Gap Report 2025 delivers sobering findings:</p>
+
+    <ul>
+      <li><strong>Current policies</strong>: Lead to 2.8°C warming this century</li>
+      <li><strong>Full NDC implementation</strong>: Still results in 2.3-2.5°C</li>
+      <li><strong>US Paris withdrawal</strong>: Cancels ~0.1°C of projected improvement</li>
+      <li><strong>Climate action indicators</strong>: Not one of 45 is on track for its 2030 target</li>
+    </ul>
+
+    <p>The State of Climate Action 2025 from the World Resources Institute is blunt: "Global efforts to reduce emissions are failing at the pace and scale needed."</p>
 
     <h2>IPCC Seventh Assessment</h2>
 
-    <p>The IPCC is preparing its Seventh Assessment Report (AR7). During its <a href="https://www.ipcc.ch/2025/">February 2025 plenary session</a> in Hangzhou, the panel agreed on outlines for the three Working Group contributions. At the <a href="https://enb.iisd.org/intergovernmental-panel-climate-change-ipcc-63-summary">October 2025 session</a> in Lima, they finalized content for the 2027 Methodology Report on Carbon Dioxide Removal Technologies. The Synthesis Report is expected by late 2029.</p>
+    <p>The IPCC is preparing its Seventh Assessment Report (AR7). During its February 2025 plenary session in Hangzhou, the panel agreed on outlines for the three Working Group contributions. At the October 2025 session in Lima, they finalized content for the 2027 Methodology Report on Carbon Dioxide Removal Technologies. The Synthesis Report is expected by late 2029.</p>
 
-    <h3>The Emissions Gap</h3>
-    <p>The <a href="https://www.unep.org/resources/emissions-gap-report-2025">UNEP Emissions Gap Report 2025</a> delivers sobering findings. Even with full implementation of current Nationally Determined Contributions, temperatures could rise 2.3-2.5°C this century. Based on current policies alone: 2.8°C. The U.S. withdrawal from the Paris Agreement will cancel about 0.1°C of projected improvement.</p>
+    <h2>Carbon Removal at Scale</h2>
 
-    <p><a href="https://www.wri.org/insights/climate-action-progress-1-5-degrees-c-2025">The State of Climate Action 2025</a> from the World Resources Institute is blunt: "Not one of the 45 indicators assessed is on track to achieve its 2030 target." Global efforts to reduce emissions are failing at the pace and scale needed.</p>
+    <h3>Direct Air Capture</h3>
+    <p>Climeworks and Occidental are scaling DAC technology. Current costs: $600-1,000 per ton of CO2 removed. Projections suggest $200-300/ton by 2030 at scale. Occidental's Stratos facility in Texas targets 500,000 tons annually—the largest DAC plant to date.</p>
+
+    <h3>Enhanced Weathering</h3>
+    <p>Spreading crusite minerals on croplands absorbs CO2 as they dissolve. Low-tech, slow, but potentially massive scale. Frontier Climate and Stripe fund pilots through advanced market commitments.</p>
 
     <h2>Where to Find Climate Data</h2>
 
     <h3>NASA Resources</h3>
     <ul>
-      <li><a href="https://data.giss.nasa.gov/">NASA GISS Data</a> - GISTEMP Surface Temperature, Model E Simulations</li>
-      <li><a href="https://www.earthdata.nasa.gov/">NASA Earthdata</a> - Earth science data access and discovery</li>
-      <li><a href="https://science.nasa.gov/climate-change/evidence/">NASA Climate Evidence</a> - Synthesis of climate change evidence</li>
+      <li><a href="https://data.giss.nasa.gov/">NASA GISS Data</a> - GISTEMP Surface Temperature</li>
+      <li><a href="https://www.earthdata.nasa.gov/">NASA Earthdata</a> - Earth science data access</li>
     </ul>
 
     <h3>NOAA Resources</h3>
     <ul>
       <li><a href="https://www.ncei.noaa.gov/">NCEI Climate Monitoring</a> - Monthly global climate reports</li>
       <li><a href="https://www.climate.gov/">Climate.gov</a> - Climate products and research</li>
-      <li><a href="https://psl.noaa.gov/ipcc/">NOAA PSL CMIP Archives</a> - Climate model data</li>
     </ul>
 
     <h3>International Resources</h3>
     <ul>
-      <li><a href="https://climate.copernicus.eu/">Copernicus Climate Change Service</a> - European climate monitoring</li>
-      <li><a href="https://climate.esa.int/en/data/">ESA Climate Change Initiative</a> - Satellite-derived climate records</li>
-      <li><a href="https://www.ipcc.ch/">IPCC</a> - Comprehensive assessments, freely available</li>
+      <li><a href="https://climate.copernicus.eu/">Copernicus Climate Change Service</a></li>
+      <li><a href="https://www.ipcc.ch/">IPCC</a> - Comprehensive assessments</li>
+      <li><a href="https://www.unep.org/resources/emissions-gap-report">UNEP Emissions Gap Reports</a></li>
     </ul>
 
     <h2>Why Climate Science Must Be Open</h2>
 
-    <p>Climate doesn't respect borders. A temperature record from Antarctica matters to researchers in Norway. Satellite data from ESA informs models at NOAA. International collaboration requires international data sharing.</p>
+    <p><strong>Global scope.</strong> Climate doesn't respect borders. A temperature record from Antarctica matters to researchers in Norway. International collaboration requires international data sharing.</p>
 
     <p><strong>Public funding.</strong> Most climate research is government-funded. Taxpayers paid for it; taxpayers can access it.</p>
 
-    <p><strong>Policy relevance.</strong> Climate data informs decisions affecting billions. Hiding it behind paywalls would undermine public trust and democratic deliberation.</p>
-
     <p><strong>Verification needs.</strong> Climate science faces organized denial. Open data and methods allow anyone to check the work—and confirms the science holds up.</p>
 
-    <p>The result is the most openly accessible body of science affecting public policy. Anyone can download the same temperature records that informed IPCC reports. Anyone can trace how we know 2024 was the hottest year ever recorded. The science that tells us we've crossed 1.5°C—temporarily, for now—is available to all.</p>
+    <p>The result: the most openly accessible body of science affecting public policy. Anyone can download the same temperature records that inform IPCC reports. Anyone can trace how we know we've crossed 1.5°C. The science is available to all.</p>
   </article>
 
   <footer>

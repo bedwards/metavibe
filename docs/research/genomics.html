@@ -16,6 +16,7 @@
       --accent: #6366f1;
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
+      --tag-research: #059669;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -24,6 +25,7 @@
         --text-muted: #999;
         --border: #333;
         --code-bg: #1a1a1a;
+        --tag-research: #34d399;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,7 +40,18 @@
     }
     .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
     .back:hover { text-decoration: underline; }
-    h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-research);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
     h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
     h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
     p { margin: 1rem 0; }
@@ -46,7 +59,7 @@
     ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
     li { margin: 0.5rem 0; }
     .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    blockquote { border-left: 3px solid var(--tag-research); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
     footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
   </style>
 </head>
@@ -54,71 +67,91 @@
   <a href="./" class="back">&larr; Back to Research</a>
 
   <article>
+    <span class="article-tag">Latest Research</span>
     <h1>Genomics & Bioinformatics</h1>
     <p class="meta">From Nobel Prize to Clinical Reality | December 2025</p>
 
-    <p>In October 2024, Demis Hassabis and John Jumper received the Nobel Prize in Chemistry for <a href="https://deepmind.google/science/alphafold/">AlphaFold</a>. By December, CRISPR gene therapy had treated its first patients with prime editing. The field of genomics has crossed from theoretical breakthrough to clinical reality with unprecedented speed.</p>
-
-    <p>The Human Genome Project established a precedent that still defines biological research: data should be free. Today, over 3 million researchers in 190 countries use AlphaFold. Preprint servers process thousands of papers monthly. The gap between discovery and application has collapsed from decades to months.</p>
+    <p>In October 2024, Demis Hassabis and John Jumper received the Nobel Prize in Chemistry for AlphaFold—the fastest Nobel win in science history. By December 2025, CRISPR therapies had expanded from sickle cell to at least a dozen active clinical programs. In May 2025, the FDA unveiled a new "plausible mechanism" pathway enabling bespoke gene therapies for conditions so rare they may affect only individuals. The field of genomics has crossed from theoretical breakthrough to clinical reality with unprecedented speed.</p>
 
     <h2>AlphaFold 3: Predicting All of Life's Molecules</h2>
 
-    <p><a href="https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/">AlphaFold 3</a>, released May 8, 2024, represents a quantum leap beyond its predecessor. While AlphaFold 2 predicted protein structures, AlphaFold 3 predicts the structures and interactions of proteins, DNA, RNA, and ligands—essentially all of life's molecules.</p>
+    <p>AlphaFold 3, released May 8, 2024, represents a quantum leap beyond its predecessor. While AlphaFold 2 solved the 50-year-old "protein folding problem," AlphaFold 3 provides a universal "digital microscope" predicting interactions of nearly all life's molecules—proteins, DNA, RNA, and complex drug ligands.</p>
 
-    <p>The accuracy improvements are dramatic. For interactions between proteins and other molecules, AlphaFold 3 shows <a href="https://www.isomorphiclabs.com/articles/rational-drug-design-with-alphafold-3">at least 50% improvement</a> over existing methods. For some interaction categories, accuracy has doubled. On the PoseBusters benchmark for drug-like interactions, it surpasses physics-based tools without requiring any structural input—the first AI system to achieve this.</p>
+    <p>The impact: over 3 million researchers in 190+ countries use AlphaFold. As of November 2025, the AlphaFold 3 paper has been cited more than 9,000 times. Isomorphic Labs—Google DeepMind's drug discovery spinoff—has secured multi-billion dollar partnerships with Eli Lilly and Novartis, focusing on "undruggable" targets associated with cancer and neurodegenerative diseases. By December 2025, early-stage drug discovery timelines have dropped by as much as 80%.</p>
 
-    <p>What took human researchers years—determining protein structures and how they interact with receptors—AlphaFold 3 predicts in seconds. <a href="https://deepmind.google/blog/alphafold-five-years-of-impact/">Isomorphic Labs</a> has deployed their frontier version in partnerships with pharmaceutical companies, demonstrating it can accurately characterize the progression of drug molecule design for targets like TIM-3, an immune checkpoint protein for cancer immunotherapy.</p>
-
-    <p>In November 2024, Google DeepMind <a href="https://academic.oup.com/pcm/article/8/3/pbaf015/8180385">released the AlphaFold 3 model code and weights</a> for academic use, democratizing access to structure prediction that would have been impossible just three years ago.</p>
+    <blockquote>Rumors circulate about AlphaFold 4, expected to move beyond static structures to model the dynamics of entire cellular environments in real-time.</blockquote>
 
     <h2>CRISPR Comes to Patients</h2>
 
-    <p>The FDA approved <a href="https://www.fda.gov/news-events/press-announcements/fda-approves-first-gene-therapies-treat-patients-sickle-cell-disease">Casgevy on December 8, 2023</a>—the first CRISPR/Cas9 gene therapy ever approved. It treats sickle cell disease by editing patients' blood stem cells to produce fetal hemoglobin, preventing red blood cells from sickling.</p>
+    <h3>Casgevy: The First Approval</h3>
 
-    <p>The clinical results are striking. Of 31 patients monitored for adequate follow-up, 29 achieved relief from vaso-occlusive crises lasting at least 12 consecutive months. No instances of graft failure or rejection occurred. By spring 2025, Casgevy had been <a href="https://innovativegenomics.org/news/crispr-clinical-trials-2025/">approved in the US, UK, EU, Switzerland, Canada, Bahrain, Saudi Arabia, and the UAE</a>. Over 50 patients have begun treatment across 50 active centers globally.</p>
+    <p>Casgevy, approved December 2023, treats sickle cell disease and transfusion-dependent thalassemia by editing patients' blood stem cells to produce fetal hemoglobin. Cost: $2.2 million per one-time treatment. Of 44 patients treated, 29 of 31 monitored achieved relief from vaso-occlusive crises lasting at least 12 consecutive months. By spring 2025, Casgevy had been approved in the US, UK, EU, Switzerland, Canada, Bahrain, Saudi Arabia, and the UAE.</p>
 
-    <h3>Beyond Cas9: Base and Prime Editing</h3>
+    <h3>FDA's "Plausible Mechanism" Pathway</h3>
 
-    <p><a href="https://www.the-scientist.com/david-liu-wins-2025-breakthrough-prize-for-base-editing-and-prime-editing-72888">David Liu won the 2025 Breakthrough Prize in Life Sciences</a> for developing base editing and prime editing—technologies that correct genetic mutations without creating double-stranded DNA breaks.</p>
+    <p>In May 2025, the FDA unveiled a revolutionary regulatory blueprint for bespoke gene therapies. Called the "plausible mechanism" pathway, it allows treatments for conditions so rare they may affect only individuals or handfuls of people—without requiring traditional clinical trial data. KJ became the world's first patient treated with a bespoke CRISPR-based therapy in May 2025, receiving a personalized treatment for a mutated carbamoyl-phosphate synthetase 1 (CPS1) gene via lipid nanoparticles.</p>
 
-    <p>Base editing changes single DNA letters. <a href="https://innovativegenomics.org/news/crispr-clinical-trials-2025/">Beam Therapeutics</a> has dosed at least 17 adult patients with their base editing therapy for sickle cell disease, showing effectiveness comparable to Casgevy. The FDA cleared them to treat adolescents as well. Preliminary Phase 1 results show promise for familial hypercholesterolemia and alpha-1 antitrypsin deficiency.</p>
+    <h2>Base Editing: Precise Single-Letter Changes</h2>
 
-    <p>Prime editing rewrites DNA sequences more precisely. In <a href="https://pubmed.ncbi.nlm.nih.gov/41038616/">May 2025, Prime Medicine announced</a> positive results from treating a patient with chronic granulomatous disease—the first clinical data showing efficacy and safety of prime editing in humans. The participant had robust restoration of protein function, potentially curative levels, with no serious adverse events.</p>
+    <p>David Liu won the 2025 Breakthrough Prize for developing base editing and prime editing—technologies that correct genetic mutations without creating double-stranded DNA breaks, reducing certain safety risks.</p>
 
-    <p>Researchers have also developed <a href="https://www.broadinstitute.org/news/single-prime-editing-system-could-potentially-treat-multiple-genetic-diseases">a prime editing strategy targeting nonsense mutations</a>, which cause about one-third of rare genetic diseases by halting protein production early. The system restored protein function in cell and animal models of four different diseases.</p>
+    <p>Beam Therapeutics has dosed at least 17 adult patients with their base editing therapy for sickle cell disease, with FDA clearance now extended to adolescents. Additional trials in 2025:</p>
 
-    <h2>Spatial Transcriptomics: Mapping Genes in 3D</h2>
+    <ul>
+      <li><strong>BEAM-302 for Alpha-1 Antitrypsin Deficiency</strong> - Positive initial data in March 2025 showing durable increases in functional AAT from a single dose</li>
+      <li><strong>Glycogen Storage Disease Type I</strong> - First patient dosed in May 2025 for the R83C mutation</li>
+      <li><strong>VERVE-102 for Heart Disease</strong> - Continuation after VERVE-101 was paused due to laboratory abnormalities</li>
+    </ul>
+
+    <h2>Prime Editing: First Human Results</h2>
+
+    <p>In May 2025, Prime Medicine announced the first clinical data showing prime editing efficacy and safety in humans. A patient with chronic granulomatous disease (CGD) received PM359, an autologous cell therapy correcting the delGT mutation in the NCF1 gene. Results: complete restoration of NADPH oxidase activity in 66% of neutrophils by Day 30—significantly above the 20% threshold for clinical benefit—with no serious adverse events.</p>
+
+    <p>Prime Medicine is undergoing "strategic reorganization" and seeking external partners for continued development, but the proof-of-concept stands: prime editing works in humans.</p>
+
+    <h2>Spatial Transcriptomics: Seeing Genes in Space</h2>
 
     <p>Traditional single-cell sequencing destroys tissue structure. Spatial transcriptomics preserves it—showing not just what genes cells express, but where those cells sit within tissue architecture.</p>
 
-    <h3>RAEFISH: Whole Transcriptome Imaging</h3>
-    <p><a href="https://www.cell.com/cell/fulltext/S0092-8674(25)01037-2">RAEFISH</a>, published in Cell in October 2025, delivers whole-transcriptome imaging (over 20,000 genes) at single-molecule resolution. It enables high-content CRISPR screens through direct gRNA detection—addressing fundamental limitations in transcriptomic coverage that plagued earlier spatial methods.</p>
+    <h3>10x Genomics 2025 Roadmap (AGBT February 2025)</h3>
 
-    <h3>Deep-STARmap: Thick Tissue Analysis</h3>
-    <p><a href="https://www.nature.com/articles/s41592-025-02867-0">Deep-STARmap and Deep-RIBOmap</a>, published in Nature Methods in November 2025, enable 3D quantification of thousands of gene transcripts within 60–200 micrometer thick tissue blocks. Most spatial techniques are limited to 5–20 micrometer thin sections. This breakthrough allows characterization of gene expression patterns in their full three-dimensional tissue context.</p>
+    <ul>
+      <li><strong>Xenium Prime Assay</strong> - 5,000-plex target panels for mouse and human</li>
+      <li><strong>Xenium RNA+Protein Multiomics</strong> - Simultaneous detection of RNA and proteins on the same tissue section</li>
+      <li><strong>Validated Protein Immunology Panel</strong> - Seven modular subpanels covering 28 protein targets for human FFPE tissues</li>
+      <li><strong>Visium HD XL</strong> - Expanded capture area for larger tissue sections at single-cell resolution</li>
+      <li><strong>Visium HD 3'</strong> - Whole transcriptome spatial profiling with de novo discovery capabilities</li>
+    </ul>
 
-    <h3>Stereo-cell Platform</h3>
-    <p><a href="https://www.science.org/doi/10.1126/science.adr0475">Stereo-cell</a>, published in Science, provides spatial single-cell sequencing with high-density DNA nanoball-patterned arrays. It enables scalable, unbiased cell capture and integrates with imaging modalities and multiomics strategies—including profiling of extracellular vesicles and microstructures.</p>
+    <p>The Xenium platform delivers subcellular resolution with nanometer precision, mapping hundreds of genes in situ. Nature Methods published best practices in March 2025 benchmarking open-source computational tools for Xenium data analysis.</p>
 
-    <h2>The Single-Cell Revolution</h2>
+    <h2>Other CRISPR Clinical Trials in 2025</h2>
 
-    <p>The single-cell sequencing market reached $1.95 billion in 2025, projected to hit <a href="https://www.globenewswire.com/news-release/2025/08/21/3137124/0/en/Global-Single-Cell-Sequencing-Market-to-Reach-USD-3-46-Billion-by-2030-MarketsandMarkets.html">$3.46 billion by 2030</a>. The technology has moved from research novelty to essential infrastructure.</p>
+    <ul>
+      <li><strong>PBGENE-HBV for Hepatitis B</strong> - Precision Biosciences received FDA IND clearance in March 2025</li>
+      <li><strong>ZVS203e for Retinitis Pigmentosa</strong> - Fixes rhodopsin gene mutation via subretinal injection; 75% of participants showed improved vision</li>
+      <li><strong>EDIT-101 for Leber Congenital Amaurosis 10</strong> - Initial safety established</li>
+      <li><strong>EBT-101 for HIV</strong> - First CRISPR therapy administered for infectious disease, using AAV9 to target three HIV genome locations</li>
+    </ul>
 
-    <p>Industry developments in 2025 include Parse Bioscience's Evercode WT Penta enabling 5-million-cell sequencing (February), BD's FACSDiscover A8 Cell Analyzer (May), and CS Genetics' 96-sample SimpleCell Kit (July). In January 2025, <a href="https://blog.crownbio.com/2025-and-beyond-the-future-of-genomic-data-analysis-and-innovations-in-genomics-services">Nvidia partnered with Illumina</a> to apply AI to multi-omics data in drug discovery.</p>
+    <h2>The Longevity Revolution</h2>
 
-    <p><a href="https://www.the-scientist.com/the-biggest-breakthroughs-in-cell-biology-in-2025-73835">A breakthrough in 2025</a> showed that AI can differentiate diseases based on T cell receptor repertoires from bulk sequencing data—proving that even without single-cell resolution, bulk data contains discriminative information when analyzed with modern machine learning.</p>
+    <p>The global anti-aging market generated over $85 billion in 2025, projected to reach $120 billion by 2030. Key developments:</p>
 
-    <h2>The openRxiv Transition</h2>
+    <ul>
+      <li><strong>Altos Labs</strong> - $3 billion funding, assembled top scientists including Jennifer Doudna (CRISPR Nobel), Shinya Yamanaka (reprogramming Nobel), and Steve Horvath (epigenetic clocks)</li>
+      <li><strong>NewLimit</strong> - $130M Series B for epigenetic reprogramming medicines targeting liver disease</li>
+      <li><strong>Senolytics</strong> - Drugs like dasatinib and quercetin selectively remove "zombie cells"; advanced trials for osteoarthritis, Alzheimer's, and cardiovascular disease</li>
+      <li><strong>Insilico Medicine</strong> - AI-designed senolytics reaching early-stage trials</li>
+    </ul>
 
-    <p>On March 11, 2025, bioRxiv and medRxiv <a href="https://www.nature.com/articles/d41586-025-00762-4">transferred to openRxiv</a>, a newly formed nonprofit dedicated to preprint infrastructure. After operating under Cold Spring Harbor Laboratory since their founding, the platforms gained organizational independence—signaling maturation from experimental alternative to essential infrastructure.</p>
-
-    <p>The platforms now view approximately 10 million people monthly. bioRxiv's bioinformatics collection contains over 38,700 preprints. Genomics has 21,100+. These aren't obscure papers—roughly two-thirds eventually appear in peer-reviewed journals. The preprint establishes priority and enables immediate community feedback, with 2-3 day turnaround versus months for traditional journals.</p>
+    <p>In October 2025, a Cell paper from Belmonte and colleagues showed that turning off specific genes may prevent cellular drift and restore more youthful cellular states.</p>
 
     <h2>Where to Find Genomics Research</h2>
 
     <h3>Preprint Servers</h3>
     <ul>
-      <li><a href="https://www.biorxiv.org/">bioRxiv</a> - Primary preprint server for biology</li>
+      <li><a href="https://www.biorxiv.org/">bioRxiv</a> - ~10 million monthly views, 38,700+ bioinformatics preprints</li>
       <li><a href="https://www.medrxiv.org/">medRxiv</a> - Health sciences preprints</li>
     </ul>
 
@@ -126,20 +159,12 @@
     <ul>
       <li><a href="https://alphafold.ebi.ac.uk/">AlphaFold Protein Structure Database</a> - 200+ million predicted structures</li>
       <li><a href="https://www.ncbi.nlm.nih.gov/genbank/">GenBank</a> - NIH genetic sequence database</li>
-      <li><a href="https://usegalaxy.org/">Galaxy</a> - Open-source bioinformatics platform</li>
-    </ul>
-
-    <h3>Clinical Trials</h3>
-    <ul>
       <li><a href="https://crisprmedicinenews.com/clinical-trials/">CRISPR Medicine News</a> - Tracks ~250 gene editing trials</li>
-      <li><a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a> - NIH registry</li>
     </ul>
 
     <h2>Why Genomics Shares</h2>
 
-    <p>The Human Genome Project precedent proved decisive. When the most ambitious biology project in history committed to immediate data release, it established a norm that proved hard to reverse. The reproducibility crisis reinforced it—open data helps verify results. COVID-19 cemented it—preprints proved essential infrastructure when speed saved lives.</p>
-
-    <p>Modern genomics produces datasets too large for any single lab to analyze. Sharing isn't just ethical—it's practical. AlphaFold predictions would be useless locked in Google's servers. CRISPR protocols shared openly have enabled a global explosion of gene editing research. The result is a field where Nobel Prize-winning discoveries become freely available tools within months.</p>
+    <p>The Human Genome Project precedent proved decisive. When the most ambitious biology project in history committed to immediate data release, it established a norm that proved hard to reverse. COVID-19 cemented it—preprints proved essential infrastructure when speed saved lives. AlphaFold predictions would be useless locked in Google's servers. The result: Nobel Prize-winning discoveries become freely available tools within months.</p>
   </article>
 
   <footer>
