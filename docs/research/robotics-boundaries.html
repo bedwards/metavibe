@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Physical Intelligence Explosion | metavibe</title>
+  <meta name="description" content="When robots learn any task from demonstration">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+      --tag-boundaries: #dc2626;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+        --tag-boundaries: #f87171;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-boundaries);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    blockquote { border-left: 3px solid var(--tag-boundaries); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <a href="./" class="back">&larr; Back to Research</a>
+
+  <article>
+    <span class="article-tag">Pushing the Boundaries</span>
+    <h1>The Physical Intelligence Explosion</h1>
+    <p class="meta">When Robots Learn Any Task from Demonstration | December 2025</p>
+
+    <p>GEN-0 trains on 270,000 hours of manipulation data, growing at 10,000 hours weekly. Tesla targets 5,000-10,000 Optimus units in 2025 at $20,000-$30,000 each. Figure 02 completed a 20-hour continuous shift. The Open X-Embodiment dataset pools 60 robot datasets from 34 labs worldwide.</p>
+
+    <p>The pattern is familiar from language models: data scales, capabilities emerge, costs fall. But these are physical systems in the physical world. The implications differ fundamentally from chatbots and code assistants.</p>
+
+    <h2>The Foundation Model Pattern</h2>
+
+    <p>Language models learned to code without being coded for. They write poetry without poetry-specific training. Scale produces emergence—capabilities that weren't in the training objective appear anyway.</p>
+
+    <p>Embodied AI follows the same trajectory. RT-2 demonstrated "emergent skill evaluations"—tasks the model could perform despite never being trained on them specifically. GEN-0 works across robot embodiments by design. Train on enough manipulation data, and manipulation generalizes.</p>
+
+    <p>The pattern predicts: at sufficient scale, a single foundation model handles any physical task that humans can demonstrate. Not programmed for each task, but trained on enough examples that the space of tasks is implicitly covered.</p>
+
+    <blockquote>What if showing a robot how to do something became the entire programming interface?</blockquote>
+
+    <h2>Step One: The Demonstration Interface</h2>
+
+    <p>Current robot programming requires experts. Engineers define motion paths, specify force limits, handle edge cases. Each deployment is a custom integration project. This is why industrial robots, despite decades of development, remain confined to structured environments with defined tasks.</p>
+
+    <p>Foundation models invert this. Instead of programming behavior, you demonstrate it. The human shows the robot how to fold laundry. The model generalizes to other laundry, other lighting, other rooms. No engineer required.</p>
+
+    <p>The demonstrations accumulate. Each human showing a robot something adds to the training corpus. GEN-0 grows at 10,000 hours per week—not from simulation, but from real-world demonstrations. The model gets better because humans keep showing it things.</p>
+
+    <h2>Step Two: The Hardware Commodity</h2>
+
+    <p>Tesla's target is deliberate: $20,000-$30,000, less than a car. Optimus isn't competing with industrial robots; it's competing with labor. At that price point, the calculation changes from "can we afford a robot" to "can we afford not to have one."</p>
+
+    <p>The hardware becomes commodity. Motors, sensors, batteries—components from automotive and smartphone supply chains. Mass production economics apply. Volume drives costs down; lower costs drive volume up.</p>
+
+    <p>This is the pattern that transformed computing. Mainframes to minicomputers to PCs to smartphones. Each step expanded the market by orders of magnitude. Each step made previous price points unimaginable. A $30,000 humanoid robot sounds expensive until you remember that the first industrial robots cost millions.</p>
+
+    <h2>Step Three: The Data Flywheel</h2>
+
+    <p>Cheap hardware deployed at scale generates data. Data improves models. Better models justify more hardware deployment. The flywheel spins.</p>
+
+    <p>Tesla understands this from autonomous driving. Millions of cars collecting billions of miles of data, training neural networks that improve driving, which justifies selling more cars. The same logic applies to humanoid robots.</p>
+
+    <p>Each Optimus in a warehouse, each Figure in a factory, each Boston Dynamics Atlas in a construction site—they're all data collection platforms. The network effects that made Google's search dominant apply to physical intelligence. The company with the most robots learns fastest. The company that learns fastest sells the most robots.</p>
+
+    <h2>Step Four: The Labor Substitution Cascade</h2>
+
+    <p>Project forward. Foundation models handle general manipulation. Hardware costs approach automotive levels. Deployment data improves capabilities continuously.</p>
+
+    <p>Which jobs become robot jobs?</p>
+
+    <p>Start with warehouse work. Structured environment, repetitive tasks, continuous operation. Already partially automated. Foundation model robots complete the automation—handling the edge cases that current systems can't.</p>
+
+    <p>Move to manufacturing. Assembly, inspection, material handling. Figure 02's 20-hour shift demonstrates viability. The economics favor three robots working three shifts over three humans working one each.</p>
+
+    <p>Extend to construction. Boston Dynamics targets this explicitly. Environments are less structured, but foundation models handle variation. A robot that can generalize to arbitrary manipulation can generalize to arbitrary construction sites.</p>
+
+    <p>Eventually: domestic work. Cleaning, cooking, elder care. Optimus's Kung Fu demonstration was theatrical but pointed—the same dexterity that enables martial arts enables housework. The home robot market dwarfs industrial applications.</p>
+
+    <h2>Step Five: The Economic Phase Transition</h2>
+
+    <p>At some deployment level, labor economics fundamentally change. Not gradually—a phase transition. Below the threshold, robots supplement human workers. Above it, humans supplement robots.</p>
+
+    <p>The transition point depends on capability and cost. Current estimates suggest it requires robots that can perform 80% of human manipulation tasks at 80% of human efficiency, at a cost competitive with minimum wage. We're not there. But each component improves independently. At current trajectories, the intersection arrives within a decade.</p>
+
+    <p>What happens then? Historical parallels are incomplete. Agricultural automation displaced farm workers over centuries. Manufacturing automation displaced factory workers over decades. Robot automation could displace manual labor in years.</p>
+
+    <h2>Perspective: The Worker</h2>
+
+    <p>For workers in affected industries, the transition is not abstract. Warehouse workers, factory assemblers, construction laborers—they'll experience displacement, not read about it.</p>
+
+    <p>Some optimists suggest new jobs will emerge. This has been true historically. It's also true that transitions are painful even when ultimate outcomes improve. The auto worker retrained as a software developer still experienced unemployment, uncertainty, identity disruption.</p>
+
+    <p>The foundation model era accelerates this. Previous automation waves took decades. Workers had time to age out, retrain, relocate. If physical AI deploys in years, the timeline compresses. The same person experiences displacement multiple times.</p>
+
+    <h2>Perspective: The Company</h2>
+
+    <p>For companies, physical AI is irresistible. Labor costs dominate many industries. A robot that costs $30,000 and works 20 hours daily competes favorably with employees who cost $50,000 annually and work 8 hours daily. The ROI calculation is obvious.</p>
+
+    <p>The first mover advantage is substantial. Companies that deploy robots earliest accumulate data fastest. Their robots improve while competitors' stagnate. Market position solidifies around capability gaps that widen over time.</p>
+
+    <p>But there's also dependency risk. Commit to Robot Corp's hardware, and you're locked to Robot Corp's AI updates. The same dynamics that created Microsoft and Google dependencies in software create Tesla and Figure dependencies in physical AI.</p>
+
+    <h2>Perspective: Society</h2>
+
+    <p>The deepest question is social organization. Modern economies assume most adults work for wages. Institutions—healthcare, retirement, education funding—depend on employment taxation. Culture assumes work provides identity and purpose.</p>
+
+    <p>If robots perform most physical labor, these assumptions fail. The productivity gains are real; someone captures them. But who? The robot owners? The companies deploying them? Governments taxing robotic labor? Workers receiving universal basic income?</p>
+
+    <p>We've debated these questions theoretically for years. The physical intelligence explosion makes them practical. The answers determine whether robot economics resemble the industrial revolution (painful transition, eventual prosperity) or something worse.</p>
+
+    <h2>The Explosion</h2>
+
+    <p>Intelligence explosion originally referred to recursive AI self-improvement. Physical intelligence explosion is different: it's the rapid deployment of embodied AI into the physical world, where economic feedback loops accelerate adoption.</p>
+
+    <p>The explosion isn't metaphor. Data grows exponentially. Hardware scales. Capabilities emerge. Investment floods in—billions in 2025 alone. The components compound.</p>
+
+    <p>We're in the early phase. The question isn't whether physical AI transforms labor markets, but how quickly and with what preparation. The robots are learning. The question is what we learn in response.</p>
+  </article>
+
+  <footer>
+    <p><a href="./">Research</a> | <a href="../">metavibe</a> | December 2025</p>
+  </footer>
+</body>
+</html>

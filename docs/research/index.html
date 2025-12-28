@@ -18,6 +18,8 @@
       --border: #e5e5e5;
       --code-bg: #f3f4f6;
       --card-bg: #fff;
+      --tag-research: #059669;
+      --tag-boundaries: #dc2626;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -28,14 +30,12 @@
         --border: #333;
         --code-bg: #1a1a1a;
         --card-bg: #1a1a1a;
+        --tag-research: #34d399;
+        --tag-boundaries: #f87171;
       }
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
@@ -45,10 +45,7 @@
       padding: 2rem;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .container { max-width: 900px; margin: 0 auto; }
 
     .back {
       display: inline-block;
@@ -57,134 +54,116 @@
       text-decoration: none;
       font-size: 0.9rem;
     }
-
-    .back:hover {
-      text-decoration: underline;
-    }
+    .back:hover { text-decoration: underline; }
 
     header {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       padding-bottom: 2rem;
       border-bottom: 1px solid var(--border);
     }
 
-    h1 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
+    h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .tagline { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-    .tagline {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto;
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
     }
-
-    h2 {
-      font-size: 1.35rem;
-      font-weight: 600;
-      margin: 2.5rem 0 1.5rem;
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
     }
+    .legend-dot.research { background: var(--tag-research); }
+    .legend-dot.boundaries { background: var(--tag-boundaries); }
 
-    .topics {
-      display: grid;
-      gap: 1.5rem;
+    .domain-section { margin-bottom: 3rem; }
+    .domain-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
     }
+    .domain-header h2 { font-size: 1.25rem; font-weight: 600; margin: 0; }
 
-    .topic-card {
+    .articles { display: flex; flex-direction: column; gap: 1rem; }
+
+    .article-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.25rem;
       text-decoration: none;
       color: inherit;
       transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .topic-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      text-decoration: none;
-    }
-
-    .topic-card h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .topic-card:hover h3 {
-      text-decoration: underline;
-    }
-
-    .topic-card .description {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .topic-card .meta {
       display: flex;
       gap: 1rem;
-      font-size: 0.85rem;
+      align-items: flex-start;
+    }
+    .article-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .article-tag {
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .article-tag.research {
+      background: var(--tag-research);
+      color: white;
+    }
+    .article-tag.boundaries {
+      background: var(--tag-boundaries);
+      color: white;
+    }
+
+    .article-content { flex: 1; }
+    .article-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--accent);
+    }
+    .article-card:hover h3 { text-decoration: underline; }
+    .article-content .description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .article-content .date {
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    .topic-card .tag {
-      background: var(--code-bg);
-      padding: 0.2em 0.6em;
-      border-radius: 4px;
-      font-size: 0.8rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .about {
-      margin: 3rem 0;
-      padding: 2rem;
+      margin: 2rem 0;
+      padding: 1.5rem;
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
     }
-
-    .about h2 {
-      margin-top: 0;
-    }
-
-    .about p {
-      margin-bottom: 1rem;
-    }
-
-    .about ul {
-      margin: 1rem 0;
-      padding-left: 1.5rem;
-    }
-
-    .about li {
-      margin-bottom: 0.5rem;
-    }
+    .about h2 { margin-top: 0; font-size: 1.1rem; }
+    .about p { margin-bottom: 0.75rem; font-size: 0.95rem; }
 
     footer {
-      margin-top: 4rem;
-      padding-top: 2rem;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       text-align: center;
       color: var(--text-muted);
@@ -198,97 +177,199 @@
 
     <header>
       <h1>Research</h1>
-      <p class="tagline">Bleeding-edge research areas with strong open-access publishing cultures</p>
+      <p class="tagline">Bleeding-edge research with open-access publishing</p>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-dot research"></span>
+          <span>Latest Research</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot boundaries"></span>
+          <span>Pushing the Boundaries</span>
+        </div>
+      </div>
     </header>
 
     <main>
-      <div class="section-header" style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem;">
-        <h2 style="margin: 0;">Research Areas</h2>
-        <span style="color: var(--text-muted);">or browse <a href="../books/">books</a>, <a href="../essays/">essays</a>, or <a href="../novels/">novels</a></span>
-      </div>
+      <!-- AI/ML -->
+      <section class="domain-section">
+        <div class="domain-header">
+          <h2>AI/ML</h2>
+        </div>
+        <div class="articles">
+          <a href="ai-ml-boundaries.html" class="article-card">
+            <span class="article-tag boundaries">Boundaries</span>
+            <div class="article-content">
+              <h3>The Recursive Intelligence Horizon</h3>
+              <p class="description">What happens when reasoning models train reasoning models? Projecting the convergence of o3, AlphaProof, and constitutional AI toward self-improving systems.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+          <a href="ai-ml.html" class="article-card">
+            <span class="article-tag research">Research</span>
+            <div class="article-content">
+              <h3>The Fastest-Moving Field in Science</h3>
+              <p class="description">GPT-5.2, Gemini 3, Claude 4.5, and the December 2025 model race. NeurIPS 2025 best papers and reasoning model breakthroughs.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+        </div>
+      </section>
 
-      <div class="topics">
-        <a href="ai-ml.html" class="topic-card">
-          <h3>AI/ML Research</h3>
-          <p class="description">The fastest-moving field in science. arXiv preprints, OpenReview, and major lab publications from DeepMind, OpenAI, Anthropic, and Meta AI.</p>
-          <div class="tags">
-            <span class="tag">arXiv</span>
-            <span class="tag">OpenReview</span>
-            <span class="tag">Preprints</span>
-          </div>
-        </a>
+      <!-- Genomics -->
+      <section class="domain-section">
+        <div class="domain-header">
+          <h2>Genomics & Bioinformatics</h2>
+        </div>
+        <div class="articles">
+          <a href="genomics-boundaries.html" class="article-card">
+            <span class="article-tag boundaries">Boundaries</span>
+            <div class="article-content">
+              <h3>The Programmable Body</h3>
+              <p class="description">AlphaFold 3 meets prime editing meets spatial transcriptomics. What happens when we can predict, edit, and map cellular systems simultaneously?</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+          <a href="genomics.html" class="article-card">
+            <span class="article-tag research">Research</span>
+            <div class="article-content">
+              <h3>From Nobel Prize to Clinical Reality</h3>
+              <p class="description">AlphaFold 3, CRISPR Casgevy approval, prime editing's first patients, and spatial transcriptomics breakthroughs.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+        </div>
+      </section>
 
-        <a href="genomics.html" class="topic-card">
-          <h3>Genomics & Bioinformatics</h3>
-          <p class="description">From bioRxiv preprints to NCBI databases. The Human Genome Project established the open-access precedent that defines the field.</p>
-          <div class="tags">
-            <span class="tag">bioRxiv</span>
-            <span class="tag">GenBank</span>
-            <span class="tag">Open Data</span>
-          </div>
-        </a>
+      <!-- Physics -->
+      <section class="domain-section">
+        <div class="domain-header">
+          <h2>Physics & Mathematics</h2>
+        </div>
+        <div class="articles">
+          <a href="physics-math-boundaries.html" class="article-card">
+            <span class="article-tag boundaries">Boundaries</span>
+            <div class="article-content">
+              <h3>The Quantum Information Universe</h3>
+              <p class="description">Willow's error correction meets LIGO's black hole spectroscopy. What if quantum computing could simulate the spacetime dynamics we're detecting?</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+          <a href="physics-math.html" class="article-card">
+            <span class="article-tag research">Research</span>
+            <div class="article-content">
+              <h3>Where Open Access Began</h3>
+              <p class="description">Google Willow's quantum breakthrough, LIGO's GW250114 detection, and mathematics' historic year of major proofs.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+        </div>
+      </section>
 
-        <a href="physics-math.html" class="topic-card">
-          <h3>Physics & Mathematics</h3>
-          <p class="description">Where open access began. arXiv launched in 1991 for physics preprints. High-energy physics, cosmology, and quantum computing lead the way.</p>
-          <div class="tags">
-            <span class="tag">arXiv</span>
-            <span class="tag">Quantum</span>
-            <span class="tag">Cosmology</span>
-          </div>
-        </a>
+      <!-- Cryptography -->
+      <section class="domain-section">
+        <div class="domain-header">
+          <h2>Cryptography & Security</h2>
+        </div>
+        <div class="articles">
+          <a href="cryptography-boundaries.html" class="article-card">
+            <span class="article-tag boundaries">Boundaries</span>
+            <div class="article-content">
+              <h3>The Post-Trust Internet</h3>
+              <p class="description">When ML-KEM meets zero-knowledge proofs meets homomorphic encryption. Imagining identity and privacy in a world where everything can be proven without revealing.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+          <a href="cryptography.html" class="article-card">
+            <span class="article-tag research">Research</span>
+            <div class="article-content">
+              <h3>The Post-Quantum Transition Begins</h3>
+              <p class="description">NIST standards finalized, HQC selected, Chrome and Signal deploy quantum-resistant cryptography.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+        </div>
+      </section>
 
-        <a href="cryptography.html" class="topic-card">
-          <h3>Cryptography & Security</h3>
-          <p class="description">IACR ePrint Archive for cryptography. Security conferences like CCS and USENIX with open proceedings. Responsible disclosure culture.</p>
-          <div class="tags">
-            <span class="tag">IACR ePrint</span>
-            <span class="tag">USENIX</span>
-            <span class="tag">Open Source</span>
-          </div>
-        </a>
+      <!-- Climate -->
+      <section class="domain-section">
+        <div class="domain-header">
+          <h2>Climate Science</h2>
+        </div>
+        <div class="articles">
+          <a href="climate-boundaries.html" class="article-card">
+            <span class="article-tag boundaries">Boundaries</span>
+            <div class="article-content">
+              <h3>The Terraforming Paradox</h3>
+              <p class="description">Climate models meet carbon capture meets stratospheric injection. What happens when geoengineering becomes cheaper than mitigation?</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+          <a href="climate.html" class="article-card">
+            <span class="article-tag research">Research</span>
+            <div class="article-content">
+              <h3>The 1.5°C Threshold</h3>
+              <p class="description">2024 hottest year on record, first to exceed 1.5°C. IPCC AR7 preparation and Emissions Gap Report 2025.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+        </div>
+      </section>
 
-        <a href="climate.html" class="topic-card">
-          <h3>Climate Science</h3>
-          <p class="description">IPCC reports freely available. NASA and NOAA publish data openly. Open-source Earth system models enable global collaboration.</p>
-          <div class="tags">
-            <span class="tag">IPCC</span>
-            <span class="tag">NASA</span>
-            <span class="tag">Open Models</span>
-          </div>
-        </a>
+      <!-- Neuroscience -->
+      <section class="domain-section">
+        <div class="domain-header">
+          <h2>Neuroscience</h2>
+        </div>
+        <div class="articles">
+          <a href="neuroscience-boundaries.html" class="article-card">
+            <span class="article-tag boundaries">Boundaries</span>
+            <div class="article-content">
+              <h3>The Extended Mind</h3>
+              <p class="description">BCIs meet LLMs meet connectome mapping. What happens when the interface between brain and AI becomes bidirectional and high-bandwidth?</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+          <a href="neuroscience.html" class="article-card">
+            <span class="article-tag research">Research</span>
+            <div class="article-content">
+              <h3>The Translation Era</h3>
+              <p class="description">13 Neuralink patients, Synchron's Stentrode, and the first mammalian connectome mapping 84,000 neurons.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+        </div>
+      </section>
 
-        <a href="neuroscience.html" class="topic-card">
-          <h3>Neuroscience</h3>
-          <p class="description">Allen Brain Atlas, Human Connectome Project, and open-source analysis tools. Brain imaging data increasingly shared publicly.</p>
-          <div class="tags">
-            <span class="tag">Allen Institute</span>
-            <span class="tag">Connectome</span>
-            <span class="tag">Open Tools</span>
-          </div>
-        </a>
-
-        <a href="robotics.html" class="topic-card">
-          <h3>Robotics</h3>
-          <p class="description">ROS ecosystem, simulation environments, and conference papers on arXiv. Hardware designs increasingly open-sourced.</p>
-          <div class="tags">
-            <span class="tag">ROS</span>
-            <span class="tag">Simulation</span>
-            <span class="tag">Open Hardware</span>
-          </div>
-        </a>
-      </div>
+      <!-- Robotics -->
+      <section class="domain-section">
+        <div class="domain-header">
+          <h2>Robotics</h2>
+        </div>
+        <div class="articles">
+          <a href="robotics-boundaries.html" class="article-card">
+            <span class="article-tag boundaries">Boundaries</span>
+            <div class="article-content">
+              <h3>The Physical Intelligence Explosion</h3>
+              <p class="description">Foundation models meet humanoid hardware meet open-source manipulation. What happens when robots can learn any task from demonstration?</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+          <a href="robotics.html" class="article-card">
+            <span class="article-tag research">Research</span>
+            <div class="article-content">
+              <h3>The Humanoid Moment</h3>
+              <p class="description">Tesla Optimus Gen 3, Figure 02's 20-hour shift, embodied AI foundation models, and billion-dollar investments.</p>
+              <span class="date">December 2025</span>
+            </div>
+          </a>
+        </div>
+      </section>
 
       <div class="about">
-        <h2>Why Open Access?</h2>
-        <p>These fields share research openly because:</p>
-        <ul>
-          <li><strong>Speed matters</strong> - Fast-moving fields where 18-month journal cycles are obsolete</li>
-          <li><strong>Reproducibility</strong> - Code and data sharing enables verification</li>
-          <li><strong>Public funding</strong> - Government-funded research mandates open access</li>
-          <li><strong>Community norms</strong> - Key figures established open culture early</li>
-        </ul>
-        <p><a href="https://arxiv.org">arXiv.org</a> is the single most important resource with over 2 million papers across physics, math, CS, biology, and economics.</p>
+        <h2>About These Categories</h2>
+        <p><strong>Latest Research</strong> synthesizes current findings from 2025—what's been published, proven, and deployed. Sources linked, facts verified.</p>
+        <p><strong>Pushing the Boundaries</strong> combines multiple research threads into near-future projections. What happens when breakthrough A meets breakthrough B? Hard science fiction grounded in real trajectories, extrapolated several steps forward.</p>
       </div>
     </main>
 

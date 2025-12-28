@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Post-Trust Internet | metavibe</title>
+  <meta name="description" content="When privacy, proof, and computation converge to eliminate trust requirements">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfcfa;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --accent: #6366f1;
+      --border: #e5e5e5;
+      --code-bg: #f3f4f6;
+      --tag-boundaries: #dc2626;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111;
+        --text: #e5e5e5;
+        --text-muted: #999;
+        --border: #333;
+        --code-bg: #1a1a1a;
+        --tag-boundaries: #f87171;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lexend', 'Roboto Slab', 'Rockwell', 'Courier Bold', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    .back { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .article-tag {
+      display: inline-block;
+      padding: 0.25em 0.6em;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: var(--tag-boundaries);
+      color: white;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0.5rem 0 1rem; }
+    h2 { font-size: 1.25rem; font-weight: 600; margin: 2rem 0 1rem; }
+    h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; }
+    p { margin: 1rem 0; }
+    a { color: var(--accent); }
+    ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+    li { margin: 0.5rem 0; }
+    .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    blockquote { border-left: 3px solid var(--tag-boundaries); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-muted); font-style: italic; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <a href="./" class="back">&larr; Back to Research</a>
+
+  <article>
+    <span class="article-tag">Pushing the Boundaries</span>
+    <h1>The Post-Trust Internet</h1>
+    <p class="meta">When Everything Can Be Proven Without Revealing | December 2025</p>
+
+    <p>Post-quantum cryptography protects data from future quantum attacks. Zero-knowledge proofs let you prove statements without revealing their contents. Homomorphic encryption enables computation on encrypted data. Three capabilities developing in parallel—each powerful alone, transformative together.</p>
+
+    <p>The internet as we know it runs on trust. You trust servers not to leak your data. You trust platforms to verify identities. You trust institutions to keep records. What happens when cryptography makes trust optional?</p>
+
+    <h2>The Trust Requirement</h2>
+
+    <p>Consider a simple transaction: proving you're over 21 to buy alcohol. Currently, you show your ID. The clerk sees your name, address, birth date, photo. They need only one bit of information—are you 21 or older—but they receive hundreds of bits.</p>
+
+    <p>Zero-knowledge proofs change this. You can prove you're over 21 without revealing your birth date. Without revealing your name. Without revealing anything except the single fact you want to establish.</p>
+
+    <p>The mathematics has existed for decades. What's new is efficiency. ZK-SNARKs (Succinct Non-interactive Arguments of Knowledge) can now prove complex statements in milliseconds, with proofs measured in kilobytes. Fast enough for real applications.</p>
+
+    <blockquote>What if identity verification revealed only what's being verified?</blockquote>
+
+    <h2>Step One: Private Credentials</h2>
+
+    <p>ML-KEM protects the channel. Data in transit is safe from harvest-now-decrypt-later attacks. But the endpoints still collect data. Amazon knows what you buy. Google knows what you search. Banks know every transaction.</p>
+
+    <p>Now add zero-knowledge credentials. Prove you have a valid credit card without revealing the number. Prove you live in a delivery zone without revealing your address. Prove you're a returning customer without revealing your purchase history.</p>
+
+    <p>The merchant receives exactly what they need for the transaction and nothing else. Regulatory compliance becomes possible without surveillance. KYC (Know Your Customer) becomes "Know This Fact About Your Customer."</p>
+
+    <h2>Step Two: Private Computation</h2>
+
+    <p>Homomorphic encryption lets you compute on encrypted data. Send encrypted numbers to a server; receive encrypted results. The server never sees the plaintext. It performs the calculation blind.</p>
+
+    <p>Current homomorphic encryption is slow—orders of magnitude slower than plaintext computation. But speed improves exponentially. Research at IACR shows performance approaching practical thresholds for targeted applications.</p>
+
+    <p>Combine with ML-KEM: the connection is quantum-safe. Combine with zero-knowledge proofs: the server proves it performed the correct computation on your encrypted data, without seeing it.</p>
+
+    <p>Cloud computing without trust. Your medical data analyzed by an AI that never decrypts it. Your financial data processed by algorithms that can't read it. Computation as a utility where privacy is architectural, not contractual.</p>
+
+    <h2>Step Three: The Credential Web</h2>
+
+    <p>Iterate further. What if every credential became zero-knowledge? Driver's licenses, diplomas, employment records, credit scores—each provable without revealing the underlying data.</p>
+
+    <p>Currently, background checks require exposing your history to verification services. They collect, aggregate, resell. The system works because you trust them more than you distrust them.</p>
+
+    <p>In a ZK-credential system, you prove your credentials directly. No middlemen. No aggregation. No data brokers compiling dossiers from leaked verifications. Each proof is atomic—it establishes one fact and nothing else.</p>
+
+    <h2>Step Four: Private Governance</h2>
+
+    <p>The hardest trust problem is governance. How do you verify elections without revealing individual votes? How do you prove reserve adequacy without exposing trading positions? How do you audit systems without accessing the data they hold?</p>
+
+    <p>Zero-knowledge proofs provide a path. A voting system that proves the count is correct without revealing any ballot. A financial audit that proves solvency without exposing individual accounts. Governance mechanisms that can be verified without being surveilled.</p>
+
+    <p>The paradox resolves: transparency about outcomes, privacy about inputs. Public verification of results, private protection of participants.</p>
+
+    <h2>The Trust Elimination Cascade</h2>
+
+    <p>Each step enables the next:</p>
+
+    <ul>
+      <li>Private credentials eliminate trust in identity providers.</li>
+      <li>Private computation eliminates trust in processors.</li>
+      <li>The credential web eliminates trust in aggregators.</li>
+      <li>Private governance eliminates trust in institutions.</li>
+    </ul>
+
+    <p>The endpoint: systems that work correctly by mathematical guarantee, not organizational promise. Trustless doesn't mean no relationships—it means no required trust. You can still choose to trust. You're no longer forced to.</p>
+
+    <h2>Perspective: The Individual</h2>
+
+    <p>For individuals, the post-trust internet restores something lost: practical privacy. Not hiding from everyone, but revealing only what's necessary. The digital exhaust that currently profiles you—purchase patterns, location history, social graphs—stops accumulating.</p>
+
+    <p>The cost is cognitive. Trustless systems require understanding what you're proving. Each credential, each transaction, each verification becomes an active choice. Some will embrace this control. Others will find it exhausting.</p>
+
+    <h2>Perspective: The Corporation</h2>
+
+    <p>For companies, the implications are mixed. Data-driven business models collapse. If you can't collect data, you can't monetize it. Advertising without tracking. Recommendations without surveillance. The entire attention economy needs new foundations.</p>
+
+    <p>But other opportunities emerge. Compliance becomes simpler when you can prove things without exposing things. International operations simplify when data never crosses borders in plaintext. Breach risk disappears when there's nothing to breach.</p>
+
+    <p>The transition is the hard part. Systems built on data collection don't gracefully transform into systems built on zero-knowledge. The companies that survive will be those that can deliver value without requiring trust.</p>
+
+    <h2>Perspective: The State</h2>
+
+    <p>For governments, the post-trust internet is a paradox. Zero-knowledge proofs enable privacy that's computationally perfect—no backdoors possible even in principle. Intelligence agencies lose visibility they've assumed for decades.</p>
+
+    <p>But the same technology enables verification that current systems can't provide. Tax compliance without invasive audits. Border control without comprehensive databases. Welfare distribution without surveillance of recipients. Governance that's simultaneously more private and more verifiable.</p>
+
+    <p>The question is which capability states prioritize: surveillance or verification. Different jurisdictions will choose differently. The technology enables both.</p>
+
+    <h2>The Transition</h2>
+
+    <p>We're in the transition. Post-quantum cryptography is standardized. Zero-knowledge proofs power blockchain systems. Homomorphic encryption remains research-grade but improving rapidly.</p>
+
+    <p>The pieces exist. Integration lags. A zero-knowledge driver's license requires government adoption. Private computation requires server infrastructure. The credential web requires protocols that don't exist yet.</p>
+
+    <p>But the trajectory is clear. Each year, cryptographic capabilities improve. Each year, privacy expectations evolve. Each year, the trust requirements of the current internet grow less acceptable. The post-trust internet isn't a prediction—it's a direction, accelerating.</p>
+
+    <p>Trust was always a workaround for computational limits. As computation catches up to mathematics, trust becomes optional. What we choose to do with that option defines the next era.</p>
+  </article>
+
+  <footer>
+    <p><a href="./">Research</a> | <a href="../">metavibe</a> | December 2025</p>
+  </footer>
+</body>
+</html>
