@@ -1,0 +1,14 @@
+{
+  "defaultTags": ["technology", "software", "ai"],
+  "imageStyle": {
+    "aesthetic": "warm, approachable, slightly abstract",
+    "avoid": ["corporate stock photos", "generic tech imagery", "AI-generated hands"],
+    "prefer": ["natural light", "thoughtful composition", "editorial quality"]
+  },
+  "writingGuidelines": {
+    "maxParagraphLength": 4,
+    "preferActiveVoice": true,
+    "targetReadingLevel": "educated-general-audience",
+    "avoidJargon": true
+  }
+}

@@ -38,22 +38,20 @@ if [ -n "$CONTENT_MD_FILES" ]; then
         if [ -f "$file" ]; then
             # Check if file has frontmatter (starts with ---)
             if head -1 "$file" | grep -q '^---$'; then
-                # Extract frontmatter and validate with node
+                # Validate YAML frontmatter with proper parser
                 node -e "
                     const fs = require('fs');
+                    const yaml = require('js-yaml');
                     const content = fs.readFileSync('$file', 'utf8');
                     const match = content.match(/^---\n([\s\S]*?)\n---/);
                     if (match) {
-                        const yaml = match[1];
-                        // Check for unquoted colons in values (common YAML error)
-                        const lines = yaml.split('\n');
-                        for (const line of lines) {
-                            if (line.match(/^[a-z]+:\s*[^\"'\[{].*:/i)) {
-                                console.error('YAML error: Value contains unquoted colon. Quote the value.');
-                                console.error('  File: $file');
-                                console.error('  Line: ' + line);
-                                process.exit(1);
-                            }
+                        try {
+                            yaml.load(match[1]);
+                        } catch (err) {
+                            console.error('YAML error in frontmatter:');
+                            console.error('  File: $file');
+                            console.error('  Error: ' + err.message);
+                            process.exit(1);
                         }
                     }
                 " 2>&1
