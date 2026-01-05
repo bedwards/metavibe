@@ -1,0 +1,37 @@
+---
+title: "Magnitude 9 Earthquake"
+author: "Brian Edwards"
+date: "January 5, 2026"
+documentclass: article
+geometry:
+  - margin=1.25in
+  - papersize=letter
+fontsize: 11pt
+mainfont: "Lexend"
+sansfont: "Lexend"
+monofont: "JetBrains Mono"
+linestretch: 1.4
+colorlinks: true
+linkcolor: black
+urlcolor: blue
+header-includes:
+  - \usepackage{fontspec}
+  - \setmainfont{Lexend}[
+      UprightFont = *-Regular,
+      BoldFont = *-Bold,
+      ItalicFont = *-Light
+    ]
+  - \usepackage{titlesec}
+  - \titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+  - \titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+  - \usepackage{parskip}
+  - \setlength{\parindent}{0pt}
+  - \setlength{\parskip}{0.5\baselineskip}
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhf{}
+  - \fancyhead[L]{\small Magnitude 9 Earthquake}
+  - \fancyhead[R]{\small Brian Edwards}
+  - \fancyfoot[C]{\thepage}
+  - \renewcommand{\headrulewidth}{0.4pt}
+---
