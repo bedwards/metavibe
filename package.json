@@ -57,7 +57,7 @@
     "@types/pngjs": "^6.0.5",
     "@typescript-eslint/eslint-plugin": "^8.8.0",
     "@typescript-eslint/parser": "^8.8.0",
-    "@vitest/coverage-v8": "^4.0.15",
+    "@vitest/coverage-v8": "^4.0.16",
     "concurrently": "^9.0.0",
     "eslint": "^9.11.0",
     "husky": "^9.1.6",
