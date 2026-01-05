@@ -47,7 +47,7 @@
     "pg": "^8.13.0",
     "stripe": "^20.0.0",
     "yaml": "^2.8.2",
-    "zod": "^4.1.13"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.48.0",
